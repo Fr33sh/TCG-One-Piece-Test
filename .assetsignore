@@ -1,0 +1,15 @@
+# Fichiers exclus de la mise en ligne Cloudflare (ils restent dans le dépôt GitHub)
+
+# Outils et configuration
+.git
+.gitignore
+.assetsignore
+.wrangler
+node_modules
+wrangler.jsonc
+CLAUDE.md
+
+# Sources graphiques non utilisées par le site (dont un fichier de 42 Mo > limite de 25 Mo)
+TCG Graphiques
+Images des Cartes
+*.zip
