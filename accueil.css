@@ -1,0 +1,303 @@
+/* Écran d'accueil, sur le thème des cartes de base : parchemin, cadre noir et filet doré. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #0b0a09;
+}
+
+/* Le parchemin descend sous les coins arrondis de la barre : aucun espace noir entre les deux */
+.cadre {
+  height: 100vh;
+  height: 100dvh;
+  padding: 8px 0 calc(var(--hauteur-navigation) - 16px);
+}
+
+/* Fond parchemin, comme l'intérieur des cartes de rang A */
+.parchemin {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  /* Même largeur et mêmes coins arrondis que la barre de navigation */
+  border-top: 2px solid #b8874d;
+  border-radius: 16px 16px 0 0;
+  background: radial-gradient(ellipse at 50% 45%, #e7d2a2 0%, #e0c48f 60%, #d5b47e 100%);
+  box-shadow: inset 0 0 60px rgb(120 80 30 / 35%);
+}
+
+/* Le booster est en plein milieu de l'écran (hors barre de navigation) */
+.contenu {
+  position: relative;
+  display: grid;
+  flex: 1;
+  place-items: center;
+}
+
+/* ── Profil (en haut au centre) et paramètres (en haut à droite) ── */
+
+.profil,
+.parametres {
+  position: absolute;
+  top: 14px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Descendu sous l'encoche de la caméra (celle du téléphone ou de l'émulateur) */
+.profil {
+  top: 44px;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  border: 3px solid #0b0a09;
+  background: #f1e2bd;
+  box-shadow: 0 0 0 2px #b8874d, 0 4px 10px rgb(60 35 10 / 35%);
+  transform: translateX(-50%);
+}
+
+.profil svg {
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  fill: #5b4a39;
+}
+
+.parametres {
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: linear-gradient(180deg, #d9bd86, #c3a26b);
+  box-shadow:
+    inset 0 2px 0 rgb(255 248 225 / 55%),
+    inset 0 -3px 0 rgb(90 60 25 / 35%),
+    0 3px 6px rgb(60 35 10 / 35%);
+  color: #1f1610;
+}
+
+.parametres svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Mode booster : zoom sur le paquet, le reste s'efface, les choix d'ouverture apparaissent ── */
+
+.cadre {
+  transition: padding-bottom 0.55s ease;
+}
+
+.zone-booster {
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.zone-booster:focus-visible {
+  border-radius: 12px;
+  outline: 3px solid #b8874d;
+  outline-offset: 8px;
+}
+
+.profil,
+.parametres,
+.navigation,
+.recharge,
+.reserve-boosters {
+  transition: opacity 0.45s ease, translate 0.5s ease, visibility 0s linear 0s;
+}
+
+/* ── Recharge : barre posée sur la languette du bas du booster, temps restant à l'intérieur ── */
+
+.recharge {
+  position: absolute;
+  right: 8%;
+  bottom: calc(var(--l) * 0.011);
+  left: 8%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  height: calc(var(--l) * 0.068);
+  overflow: hidden;
+  border: 2px solid #0b0a09;
+  border-radius: 999px;
+  background: #a9875a;
+  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 3px rgb(60 35 10 / 45%);
+}
+
+.recharge__remplissage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffe680, #f5c518);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%);
+  transition: width 1s linear;
+}
+
+.recharge__temps {
+  position: relative;
+  color: #1f1610;
+  font: 400 calc(var(--l) * 0.046) / 1 "Lilita One", "Arial Black", sans-serif;
+  text-shadow: 0 1px 0 rgb(255 248 225 / 70%);
+  white-space: nowrap;
+}
+
+/* ── Boosters disponibles : petits dos de cartes en éventail, en haut à gauche de la languette supérieure
+   (en face du code « EB ») ── */
+
+.reserve-boosters {
+  position: absolute;
+  top: calc(var(--l) * 0.035);
+  left: calc(var(--l) * 0.04);
+  z-index: 4;
+  display: flex;
+  pointer-events: none;
+}
+
+/* Icône discrète : le dos de nos cartes en petit, aux couleurs beige de notre univers (filtre « dos-beige »
+   d'accueil.html, posé sur l'image seule pour garder le contour) */
+.mini-booster {
+  position: relative;
+  width: calc(var(--l) * 0.068);
+  aspect-ratio: 1260 / 1760;
+  overflow: hidden;
+  border-radius: 1.5px;
+  box-shadow: 0 0 0 1px #5b4a39, 0 1px 2px rgb(0 0 0 / 35%);
+  transform-origin: 50% 110%;
+}
+
+.mini-booster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/cartes/dos.jpg") center / cover;
+  filter: url("#dos-beige");
+}
+
+.filtres-svg {
+  position: absolute;
+}
+
+.mini-booster + .mini-booster {
+  margin-left: calc(var(--l) * -0.03);
+}
+
+/* Le parchemin prend la place de la barre, qui glisse vers le bas */
+.mode-booster .cadre {
+  padding-bottom: 0;
+}
+
+.mode-booster .zone-booster {
+  cursor: default;
+  transform: translateY(-62px) scale(1.14);
+}
+
+.mode-booster .profil,
+.mode-booster .parametres,
+.mode-booster .navigation,
+.mode-booster .recharge,
+.mode-ouverture .recharge,
+.mode-booster .reserve-boosters,
+.mode-ouverture .reserve-boosters {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, translate 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.mode-booster .navigation {
+  translate: 0 100%;
+}
+
+.choix-booster {
+  position: absolute;
+  right: 24px;
+  bottom: 34px;
+  left: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+  justify-items: center;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 24px;
+  transition: opacity 0.3s ease, translate 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.mode-booster .choix-booster {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  transition: opacity 0.45s ease 0.2s, translate 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s, visibility 0s;
+}
+
+/* Bulles aux couleurs des cartes de base : parchemin clair, contour noir, filet doré, en relief */
+.bulle-choix,
+.bulle-retour {
+  border: 3px solid #0b0a09;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow:
+    0 0 0 2px #b8874d,
+    inset 0 2px 0 rgb(255 255 255 / 60%),
+    inset 0 -3px 0 rgb(120 80 30 / 30%),
+    0 5px 10px rgb(60 35 10 / 35%);
+  color: #1f1610;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.bulle-choix:active,
+.bulle-retour:active {
+  transform: translateY(2px);
+}
+
+/* Pas assez de boosters en réserve */
+.bulle-choix:disabled {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+  cursor: default;
+  transform: none;
+}
+
+.bulle-choix {
+  width: 100%;
+  padding: 15px 6px;
+  border-radius: 999px;
+  font: 400 15px / 1.1 "Lilita One", "Arial Black", sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.bulle-retour {
+  display: grid;
+  grid-column: 1 / -1;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.bulle-retour svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

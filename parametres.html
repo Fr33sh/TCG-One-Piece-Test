@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Paramètres</title>
+  <link rel="stylesheet" href="parametres.css">
+</head>
+<body>
+  <!-- Icônes : Lucide (licence ISC) -->
+  <header class="barre-parametres">
+    <a class="barre-parametres__retour" href="accueil.html" aria-label="Retour à l'accueil">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+    </a>
+    <h1 class="barre-parametres__titre">Paramètres</h1>
+  </header>
+
+  <!-- Une bulle par paramètre, les unes sous les autres ; la page défile de haut en bas -->
+  <main class="liste-parametres">
+    <section class="parametre" aria-labelledby="titre-audio">
+      <h2 class="parametre__titre" id="titre-audio">Audio</h2>
+      <!-- Musique et effets sonores : remplis par parametres.js -->
+      <div class="parametre__reglages" data-reglages="audio"></div>
+      <button class="parametre__reinitialiser" type="button" data-reinitialiser="audio">Réinitialiser ce paramètre</button>
+    </section>
+  </main>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="parametres.js"></script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+/* Écran de combat (portrait, mobile d'abord). Les cartes complètes viennent de carte.css. */
+
+body {
+  min-height: 100vh;
+  padding: 0;
+  background: radial-gradient(ellipse at 50% 40%, #1d4a6b 0%, #0f2a40 55%, #0a1a29 100%);
+  color: #f3e6c8;
+  font-family: "Lato", sans-serif;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Le bas de l'écran est réservé à la barre de navigation */
+.jeu {
+  max-width: 480px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 12px 16px calc(var(--hauteur-navigation) + 10px);
+}
+
+/* ── Choix du deck ── */
+
+.ecran__titre {
+  margin: 12px 0 20px;
+  font: 900 28px/1.2 "Playfair Display", serif;
+  text-align: center;
+}
+
+.decks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 0 12px;
+  border: 2px solid #b8874d;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #e7d2a2, #d5b47e);
+  color: #1f1610;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.deck:hover,
+.deck:focus-visible {
+  transform: translateY(-3px);
+}
+
+.deck__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.deck__nom {
+  margin: 10px 10px 4px;
+  font: 900 17px/1.15 "Playfair Display", serif;
+}
+
+.deck__description {
+  margin: 0 10px;
+  font: 400 13px/1.35 "Lato", sans-serif;
+  color: #4b3c2f;
+}
+
+/* ── Plateau ── */
+
+.ecran--combat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.camp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.infos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 13px;
+}
+
+.infos__nom {
+  flex: 1;
+  overflow: hidden;
+  font: 900 15px/1.2 "Playfair Display", serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.infos__points {
+  display: flex;
+  gap: 4px;
+}
+
+.point {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #e9b55b;
+  border-radius: 50%;
+}
+
+.point--gagne {
+  background: #e9b55b;
+}
+
+.infos__pa {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #f3e3bf;
+  color: #1f1610;
+  font-weight: 700;
+}
+
+.infos__detail {
+  color: #c9b791;
+}
+
+.poste,
+.banc {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.main {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  min-height: 82px;
+  padding: 4px 2px 6px;
+  overflow-x: auto;
+}
+
+/* ── Cartes miniatures ── */
+
+.jeton,
+.emplacement {
+  --l: 62px;
+
+  position: relative;
+  flex: none;
+  width: var(--l);
+  aspect-ratio: 5 / 7;
+  border-radius: 8px;
+}
+
+.poste .jeton,
+.poste .emplacement {
+  --l: 88px;
+}
+
+.main .jeton {
+  --l: 54px;
+}
+
+.emplacement {
+  border: 2px dashed rgb(243 230 200 / 25%);
+}
+
+.jeton {
+  overflow: hidden;
+  padding: 3px;
+  border: 0;
+  background: var(--cadre-jeton, #b8874d);
+  color: #f6ead4;
+  font-family: "Lato", sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jeton--rang-2 {
+  --cadre-jeton: linear-gradient(135deg, #d6aab2, #d3f1e4 30%, #a8d3ec 50%, #c2b0df 70%, #8c9199);
+}
+
+.jeton--rang-3.jeton--pirate { --cadre-jeton: linear-gradient(160deg, #f2949b, #c42a3d 50%, #6d0d14); }
+.jeton--rang-3.jeton--marine { --cadre-jeton: linear-gradient(160deg, #93b8ff, #2d5fbf 50%, #0f2a66); }
+.jeton--rang-3.jeton--civil { --cadre-jeton: linear-gradient(160deg, #93e2a8, #23824a 50%, #0e4a26); }
+
+.jeton--rang-4 {
+  --cadre-jeton: linear-gradient(160deg, #2fbf86, #3a8fd6 30%, #6d3cc9 55%, #c3367c 75%, #c9a03a);
+}
+
+.jeton__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  background: #3a2e22;
+}
+
+.jeton__rang {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 65%);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.jeton__bas {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 4px 4px;
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(transparent, rgb(0 0 0 / 85%) 45%);
+}
+
+.jeton__nom {
+  overflow: hidden;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.poste .jeton__nom {
+  font-size: 11px;
+}
+
+.jeton__pv,
+.jeton__cout {
+  font-size: 9px;
+  color: #e9d6b4;
+}
+
+.jeton__cout {
+  font-weight: 700;
+  color: #e9b55b;
+}
+
+.jeton__barre {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 20%);
+}
+
+.jeton__remplissage {
+  display: block;
+  height: 100%;
+  background: #6fd17c;
+}
+
+.jeton__etats {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.etat {
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.etat--etourdi { background: #e9c046; color: #2a1f17; }
+.etat--brule { background: #e5603a; color: #fff; }
+
+.jeton--choix {
+  outline: 3px solid #ffd54a;
+  outline-offset: 2px;
+  animation: pulsation 0.9s ease-in-out infinite alternate;
+}
+
+.jeton--touche {
+  animation: touche 0.5s ease-out;
+}
+
+@keyframes pulsation {
+  to { outline-color: rgb(255 213 74 / 35%); }
+}
+
+@keyframes touche {
+  0%, 100% { transform: translateX(0); filter: none; }
+  20% { transform: translateX(-5px); filter: brightness(1.6) sepia(1) hue-rotate(-40deg) saturate(4); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+}
+
+/* ── Bandeau central ── */
+
+.bandeau {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid rgb(233 181 91 / 40%);
+  border-radius: 10px;
+  background: rgb(10 20 32 / 70%);
+}
+
+.bandeau__message {
+  font: 700 14px/1.3 "Lato", sans-serif;
+  color: #f3e3bf;
+}
+
+.bandeau__journal {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0;
+  list-style: none;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #c9b791;
+}
+
+.bandeau__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.bandeau__actions:empty {
+  display: none;
+}
+
+/* ── Boutons ── */
+
+.bouton {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #e9b55b;
+  color: #1f1610;
+  font: 700 14px/1.2 "Lato", sans-serif;
+  cursor: pointer;
+}
+
+.bouton:disabled {
+  background: #6b5d48;
+  color: #c9b791;
+  cursor: not-allowed;
+}
+
+.bouton--action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+}
+
+.bouton__raison {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.bouton--discret {
+  width: 100%;
+  border: 1px solid #c9b791;
+  background: transparent;
+  color: #f3e3bf;
+}
+
+/* ── Fenêtre de détail ── */
+
+.modale {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 16px;
+  background: rgb(5 12 20 / 88%);
+}
+
+.modale__contenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: min(320px, 100%);
+  margin: auto 0;
+}
+
+.modale__carte {
+  --largeur-carte: min(300px, calc(100vw - 32px));
+}
+
+.modale__etat {
+  font-weight: 700;
+  color: #f3e3bf;
+}
+
+.modale__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.fin__titre {
+  font: 900 40px/1.1 "Playfair Display", serif;
+  color: #e9b55b;
+}
+
+.fin__texte {
+  font-size: 16px;
+}

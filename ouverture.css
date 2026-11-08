@@ -1,0 +1,329 @@
+/* Ouverture d'un booster : consigne et ligne de découpe, étoiles, paquet de cartes qui se dévoile, résumé. */
+
+/* Le pointeur joue le rôle du doigt : pas de sélection de texte, ni de défilement pendant le geste */
+.mode-ouverture {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.ouverture-glisser {
+  touch-action: none;
+}
+
+.mode-ouverture,
+.mode-ouverture .zone-booster {
+  cursor: pointer;
+}
+
+.mode-ouverture .booster {
+  animation-play-state: paused;
+}
+
+/* Nouveau zoom : le booster occupe presque tout l'écran (valeurs calculées par ouverture.js) */
+.mode-ouverture .zone-booster {
+  transform: var(--zoom-ouverture);
+}
+
+/* Pile de 10 boosters : les suivants sont derrière, décalés vers le haut pour montrer leur languette */
+.zone-booster .booster {
+  position: relative;
+}
+
+.pack--pile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: translate 0.15s ease;
+}
+
+.ouverture-dix .pack {
+  box-shadow: 0 -2px 6px rgb(0 0 0 / 35%);
+}
+
+.mode-ouverture .choix-booster {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* ── Consigne et ligne de découpe ── */
+
+.consigne-ouverture {
+  position: absolute;
+  right: 24px;
+  bottom: 64px;
+  left: 24px;
+  color: #1f1610;
+  font: 400 17px / 1.25 "Lilita One", "Arial Black", sans-serif;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  pointer-events: none;
+}
+
+.ouverture-glisser .consigne-ouverture {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease 0.2s, visibility 0s;
+}
+
+/* Ligne entre l'en-tête et l'illustration, et tracé lumineux qui suit le doigt */
+.decoupe {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.decoupe__guide {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-top: 2px dashed rgb(255 255 255 / 90%);
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 60%));
+  transform: translateY(-1px);
+  animation: decoupe-clignote 1.4s ease-in-out infinite;
+}
+
+@keyframes decoupe-clignote {
+  50% { border-top-color: rgb(255 255 255 / 40%); }
+}
+
+.decoupe__trace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px rgb(255 255 255 / 80%));
+}
+
+.decoupe__trace polyline {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Découpe pas réaliste : le tracé rougit puis s'efface */
+.decoupe__trace--ratee {
+  filter: drop-shadow(0 0 4px rgb(255 60 40 / 90%));
+}
+
+.decoupe__trace--ratee polyline {
+  stroke: #ff6a55;
+}
+
+/* ── Bulles « Tout révéler » et « Suivant » ── */
+
+.bulle-ouverture {
+  width: auto;
+  padding: 13px 34px;
+  pointer-events: auto;
+}
+
+.bulle-tout-reveler {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  translate: -50% 0;
+}
+
+/* Numéro du booster en cours (ouverture de 10 boosters), à droite des cartes */
+.numero-booster {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 7px;
+  border: 2px solid #0b0a09;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: 0 0 0 2px #b8874d, 0 4px 8px rgb(60 35 10 / 35%);
+  color: #1f1610;
+  font-family: "Lilita One", "Arial Black", sans-serif;
+  line-height: 1;
+  translate: 0 -50%;
+}
+
+.numero-booster span {
+  font-size: 11px;
+}
+
+.numero-booster strong {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Badge jaune des cartes obtenues pour la première fois, posé dans le coin haut gauche de la carte */
+.badge-nouveau {
+  position: absolute;
+  top: calc(var(--largeur-carte) * 0.05);
+  left: calc(var(--largeur-carte) * 0.05);
+  z-index: 2;
+  padding: 0.35em 0.7em 0.3em;
+  border: 2px solid #0b0a09;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffe680, #f5c518);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%), 0 2px 5px rgb(0 0 0 / 45%);
+  color: #1f1610;
+  font: 400 max(9px, calc(var(--largeur-carte) * 0.05)) / 1 "Lilita One", "Arial Black", sans-serif;
+  transform: rotate(-8deg);
+}
+
+/* ── Résumé : 3 cartes en haut, 2 en bas, puis « Suivant » ── */
+
+.resume {
+  --largeur-carte: min(118px, calc((100vw - 48px) / 3));
+
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px;
+  pointer-events: auto;
+}
+
+.resume__cartes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 12px;
+  width: calc(var(--largeur-carte) * 3 + 24px);
+}
+
+.resume__carte {
+  position: relative;
+}
+
+/* Titre « Booster n°X » dans le résumé de 10 boosters */
+.resume__entete {
+  color: #1f1610;
+  font: 400 24px / 1 "Lilita One", "Arial Black", sans-serif;
+}
+
+/* Sur les petites cartes du résumé, le badge déborde du coin pour ne pas cacher le titre */
+.resume .badge-nouveau {
+  top: -8px;
+  left: -8px;
+}
+
+/* Résumé de 10 boosters : chaque booster comme un booster seul (titre, 3 + 2 cartes), à la suite, qui défile */
+.resume--dix {
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 64px 16px 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.resume--dix::-webkit-scrollbar {
+  display: none;
+}
+
+.resume__booster {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* « Suivant » reste visible en bas pendant le défilement */
+.resume--dix .bulle-ouverture {
+  position: sticky;
+  bottom: 12px;
+  flex: none;
+  margin-top: 6px;
+}
+
+/* ── Couche d'ouverture, au-dessus de l'écran ── */
+
+.ouverture[hidden] {
+  display: none;
+}
+
+.ouverture {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sortie {
+  position: absolute;
+  inset: 0;
+}
+
+/* La bande arrachée pivote depuis la découpe, pas depuis le centre du paquet */
+.pack--bande {
+  position: absolute;
+  transform-origin: 50% 15%;
+}
+
+.etoile {
+  position: absolute;
+  filter: drop-shadow(0 0 1.5px #a35a00) drop-shadow(0 0 7px rgb(255 180 30 / 90%));
+}
+
+.etoile svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: #ffd23f;
+}
+
+/* ── Paquet de cartes ── */
+
+.paquet {
+  position: absolute;
+  width: var(--largeur-carte);
+  aspect-ratio: 1260 / 1760;
+  outline: none;
+  visibility: hidden;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.tirage {
+  position: absolute;
+  inset: 0;
+  perspective: 1400px;
+  transition: translate 0.25s ease;
+}
+
+.tirage__retournable {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+.tirage__face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.tirage__face--dos {
+  transform: rotateY(180deg);
+}
+
+.tirage__face--dos img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--largeur-carte) * 70 / 1260);
+  object-fit: cover;
+  box-shadow: 0 calc(var(--largeur-carte) * 0.016) calc(var(--largeur-carte) * 0.04) rgb(0 0 0 / 45%);
+}

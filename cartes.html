@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr" class="sans-barre-defilement">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Collection</title>
+  <link rel="stylesheet" href="carte.css">
+  <link rel="stylesheet" href="cartes.css">
+  <link rel="stylesheet" href="navigation.css">
+</head>
+<body class="avec-navigation">
+  <header class="barre-collection">
+    <!-- Icône : Lucide (licence ISC) -->
+    <button class="barre-collection__retour" type="button" aria-label="Revenir aux séries" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+    </button>
+    <h1 class="barre-collection__titre">Collection</h1>
+  </header>
+
+  <main>
+    <!-- Séries : chaque onglet porte l'illustration de son booster -->
+    <section class="series">
+      <button class="serie" type="button" aria-label="Ouvrir la série East Blue">
+        <img class="serie__image" src="assets/packs/east-blue.jpg" alt="">
+        <span class="serie__nom">East Blue</span>
+      </button>
+    </section>
+
+    <!-- Cartes de la série : celles pas encore obtenues sont des cases vides numérotées -->
+    <section class="apercu__grille" hidden></section>
+  </main>
+  <nav class="navigation navigation--fixe" data-actif="collection"></nav>
+
+  <!-- Carte agrandie : la toucher la retourne, la flèche ramène à la collection -->
+  <div class="zoom" hidden>
+    <div class="zoom__fond"></div>
+    <!-- Icône : Lucide (licence ISC) -->
+    <button class="zoom__retour" type="button" aria-label="Revenir à la collection">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+    </button>
+    <div class="zoom__scene">
+      <div class="zoom__carte" role="button" tabindex="0" aria-label="Retourner la carte">
+        <div class="zoom__retournable">
+          <div class="zoom__face zoom__face--avant"></div>
+          <div class="zoom__face zoom__face--dos">
+            <img src="assets/cartes/dos.jpg" alt="Dos de carte">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="donnees/cartes-east-blue.js"></script>
+  <script src="rendu-carte.js"></script>
+  <script src="collection.js"></script>
+  <script src="cartes.js"></script>
+  <script src="navigation.js"></script>
+</body>
+</html>

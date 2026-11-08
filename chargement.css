@@ -1,0 +1,190 @@
+/* Écran de chargement : fond marin animé et invitation à toucher l'écran. */
+
+@font-face {
+  font-family: "Lilita One";
+  src: url("assets/polices/lilita-one.woff2") format("woff2");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: #03121f;
+}
+
+.filtres {
+  position: absolute;
+}
+
+.ecran-chargement {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Fond : l'image ondule (filtre SVG) et tangue doucement comme sous la houle ── */
+
+.mer {
+  position: absolute;
+  inset: -6%;
+  animation: houle 16s ease-in-out infinite alternate;
+}
+
+.mer__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: url(#ondulation);
+}
+
+@keyframes houle {
+  0% { transform: translate(-1.5%, -1%) scale(1) rotate(-0.6deg); }
+  50% { transform: translate(1%, 1.2%) scale(1.04) rotate(0.4deg); }
+  100% { transform: translate(1.5%, -0.8%) scale(1.02) rotate(0.8deg); }
+}
+
+/* ── Rayons de lumière venant de la surface ── */
+
+.rayons {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.rayons span {
+  position: absolute;
+  top: -15%;
+  left: var(--x);
+  width: var(--l);
+  height: 120%;
+  background: linear-gradient(to bottom, rgb(190 250 255 / 45%), rgb(190 250 255 / 12%) 55%, transparent 85%);
+  filter: blur(14px);
+  transform: rotate(var(--angle));
+  transform-origin: top center;
+  animation: lueur var(--duree) ease-in-out infinite alternate;
+}
+
+@keyframes lueur {
+  0% { opacity: 0.15; translate: -2vw 0; }
+  100% { opacity: 0.75; translate: 2vw 0; }
+}
+
+/* ── Bulles et particules en suspension (créées par chargement.js) ── */
+
+.bulles,
+.particules {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bulle {
+  position: absolute;
+  bottom: -40px;
+  left: var(--x);
+  animation: monter var(--duree) linear var(--delai) infinite;
+}
+
+.bulle i {
+  display: block;
+  width: var(--taille);
+  height: var(--taille);
+  border: 1.5px solid rgb(220 250 255 / 70%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, rgb(255 255 255 / 80%) 0 14%, rgb(200 245 255 / 15%) 30%, transparent 62%);
+  animation: balancement 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes monter {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(-115vh); opacity: 0; }
+}
+
+@keyframes balancement {
+  from { transform: translateX(calc(var(--derive) * -1)); }
+  to { transform: translateX(var(--derive)); }
+}
+
+.particule {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--taille);
+  height: var(--taille);
+  border-radius: 50%;
+  background: rgb(220 250 255 / 55%);
+  filter: blur(1px);
+  animation: derive var(--duree) ease-in-out var(--delai) infinite alternate;
+}
+
+@keyframes derive {
+  from { transform: translate(0, 0); opacity: 0.2; }
+  to { transform: translate(var(--dx), var(--dy)); opacity: 0.8; }
+}
+
+/* ── Texte « Touchez » ── */
+
+.touchez {
+  position: relative;
+  font: 400 clamp(56px, 15vw, 128px) / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 4px 0 #0b3550,
+    0 7px 0 #072640,
+    0 0 28px rgb(120 230 255 / 85%),
+    0 0 60px rgb(60 180 255 / 55%);
+  animation: appel 1.8s ease-in-out infinite;
+}
+
+@keyframes appel {
+  0%, 100% { opacity: 0.55; transform: translateY(0) scale(0.97); }
+  50% { opacity: 1; transform: translateY(-6px) scale(1.03); }
+}
+
+/* ── Toucher l'écran : on plonge dedans, puis l'accueil s'ouvre ── */
+
+.ecran-chargement--plongee {
+  pointer-events: none;
+  animation: plongee 1s cubic-bezier(0.55, 0, 0.75, 0.45) forwards;
+}
+
+/* « Touchez » disparaît d'un coup, seul le fond plonge */
+.ecran-chargement--plongee .touchez {
+  visibility: hidden;
+}
+
+@keyframes plongee {
+  0% { transform: scale(1); opacity: 1; }
+  65% { opacity: 1; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mer,
+  .rayons span,
+  .bulle,
+  .bulle i,
+  .particule,
+  .touchez {
+    animation: none;
+  }
+
+  .mer__image {
+    filter: none;
+  }
+}

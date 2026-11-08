@@ -1,0 +1,293 @@
+/* Collection : barre du haut, séries, grille, carte agrandie. Les cartes elles-mêmes viennent de carte.css. */
+
+/* Collection : barre de défilement masquée, le défilement (molette, doigt) reste actif */
+.sans-barre-defilement {
+  scrollbar-width: none;
+}
+
+.sans-barre-defilement::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  /* Place réservée en haut pour l'encoche de la caméra (celle du téléphone ou de l'émulateur) */
+  --encoche: max(env(safe-area-inset-top), 48px);
+  --hauteur-barre-collection: calc(54px + var(--encoche));
+
+  min-height: 100vh;
+  padding: calc(var(--hauteur-barre-collection) + 20px) 16px 48px;
+  background: #13202c;
+  color: #f3e6c8;
+  font-family: "Lato", sans-serif;
+}
+
+/* Barre du haut : reste en place pendant le défilement, même parchemin en relief que la barre du bas */
+.barre-collection {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  height: var(--hauteur-barre-collection);
+  padding-top: var(--encoche);
+  border-bottom: 2px solid #9c7444;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
+  box-shadow:
+    inset 0 2px 0 rgb(255 248 225 / 50%),
+    inset 0 -2px 0 rgb(90 60 25 / 30%),
+    0 3px 8px rgb(0 0 0 / 35%);
+}
+
+.barre-collection__titre {
+  font: 400 26px / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: 0.03em;
+  color: #1f1610;
+  text-shadow: 0 1px 0 rgb(255 248 225 / 55%);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Flèche de retour vers les séries, à gauche dans la barre */
+.barre-collection__retour {
+  position: absolute;
+  bottom: 9px;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid #0b0a09;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 60%), 0 2px 4px rgb(60 35 10 / 35%);
+  color: #1f1610;
+  cursor: pointer;
+}
+
+.barre-collection__retour svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Séries : un onglet par collection, avec l'illustration de son booster ── */
+
+.series {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 170px));
+  justify-content: center;
+  gap: 16px;
+}
+
+.serie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 10px 14px;
+  border: 2px solid #9c7444;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
+  box-shadow:
+    inset 0 2px 0 rgb(255 248 225 / 50%),
+    inset 0 -3px 0 rgb(90 60 25 / 30%),
+    0 4px 10px rgb(0 0 0 / 40%);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.serie:active {
+  transform: translateY(2px);
+}
+
+.serie__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 900 / 960;
+  border: 2px solid #0b0a09;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #b8874d, 0 3px 8px rgb(60 35 10 / 40%);
+}
+
+.serie__nom {
+  color: #1f1610;
+  font: 400 20px / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Collection : lignes de 3 cartes */
+.apercu__grille {
+  --ecart: 12px;
+  --largeur-carte: calc((min(100vw, 900px) - 32px - var(--ecart) * 2) / 3);
+
+  display: grid;
+  grid-template-columns: repeat(3, var(--largeur-carte));
+  justify-content: center;
+  gap: 16px var(--ecart);
+}
+
+.apercu__grille .carte {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.apercu__grille .carte:hover,
+.apercu__grille .carte:focus-visible {
+  transform: translateY(-3px);
+}
+
+.emplacement {
+  position: relative;
+}
+
+/* Carte pas encore obtenue : case vide creusée, avec le numéro de la carte attendue */
+.case-vide {
+  display: grid;
+  place-items: center;
+  width: var(--largeur-carte);
+  aspect-ratio: 1260 / 1760;
+  border: 2px solid #2b4257;
+  border-radius: calc(var(--largeur-carte) * 70 / 1260);
+  background: linear-gradient(160deg, #0f1a24, #172736);
+  box-shadow:
+    inset 0 4px 10px rgb(0 0 0 / 65%),
+    inset 0 -2px 0 rgb(255 255 255 / 6%),
+    0 1px 0 rgb(255 255 255 / 10%);
+  color: #4f6a82;
+  font: 400 24px / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: 0.05em;
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 70%), 0 1px 0 rgb(255 255 255 / 12%);
+}
+
+/* Nombre d'exemplaires possédés, dans une petite bulle en bas à droite */
+.exemplaires {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  min-width: 28px;
+  padding: 5px 6px 4px;
+  border: 2px solid #0b0a09;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: 0 0 0 1.5px #b8874d, 0 2px 5px rgb(0 0 0 / 50%);
+  color: #1f1610;
+  font: 400 14px / 1 "Lilita One", "Arial Black", sans-serif;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Les deux barres et la grille s'effacent pendant qu'une carte est agrandie */
+.barre-collection,
+.apercu__grille,
+.avec-navigation .navigation {
+  transition: opacity 0.4s ease;
+}
+
+.zoom-actif .barre-collection,
+.zoom-actif .apercu__grille,
+.zoom-actif .navigation {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Carte agrandie ── */
+
+.zoom[hidden] {
+  display: none;
+}
+
+.zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+}
+
+.zoom__fond {
+  position: absolute;
+  inset: 0;
+  background: #13202c;
+}
+
+.zoom__scene {
+  perspective: 1400px;
+}
+
+.zoom__carte {
+  --largeur-carte: var(--largeur-zoom);
+
+  position: relative;
+  width: var(--largeur-zoom);
+  aspect-ratio: 1260 / 1760;
+  outline: none;
+  cursor: pointer;
+}
+
+.zoom__retournable {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.zoom__face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.zoom__face--dos {
+  transform: rotateY(180deg);
+}
+
+.zoom__face--dos img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--largeur-zoom) * 70 / 1260);
+  object-fit: cover;
+  box-shadow: 0 calc(var(--largeur-zoom) * 0.016) calc(var(--largeur-zoom) * 0.04) rgb(0 0 0 / 45%);
+}
+
+/* Petite flèche de retour, en haut à droite */
+.zoom__retour {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #0b0a09;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), 0 3px 8px rgb(0 0 0 / 40%);
+  color: #1f1610;
+  cursor: pointer;
+}
+
+.zoom__retour svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+

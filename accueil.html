@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Accueil</title>
+  <link rel="stylesheet" href="carte.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="pack.css">
+  <link rel="stylesheet" href="accueil.css">
+  <link rel="stylesheet" href="ouverture.css">
+</head>
+<body>
+  <!-- Icône des paramètres : Lucide (licence ISC) -->
+
+  <!-- Filtre des icônes de boosters disponibles : le dos de carte passe aux couleurs de notre univers
+       (le noir devient beige parchemin, l'emblème passe en brun doré puis brun foncé) -->
+  <svg class="filtres-svg" width="0" height="0" aria-hidden="true">
+    <filter id="dos-beige" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0 0 0 1 0" />
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.890 0.659 0.227" />
+        <feFuncG type="table" tableValues="0.800 0.475 0.165" />
+        <feFuncB type="table" tableValues="0.608 0.235 0.102" />
+      </feComponentTransfer>
+    </filter>
+  </svg>
+
+  <div class="cadre">
+    <div class="parchemin">
+      <main class="contenu">
+        <button class="profil" type="button" aria-label="Mon profil">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8.5" r="4.5" />
+            <path d="M3.5 22a8.5 8.5 0 0 1 17 0z" />
+          </svg>
+        </button>
+
+        <a class="parametres" href="parametres.html" aria-label="Paramètres">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </a>
+
+        <!-- Toucher le booster le met en avant et affiche les choix d'ouverture -->
+        <!-- Le booster est fabriqué par pack.js -->
+        <div class="zone-booster" role="button" tabindex="0" aria-label="Choisir comment ouvrir le booster East Blue"></div>
+
+        <!-- Recharge : un booster toutes les 8 h (rempli par recharge.js). La barre est posée sur la languette
+             du bas du booster (accueil.js l'y place) ; les boosters disponibles sont en éventail en dessous. -->
+        <div class="recharge" role="progressbar" aria-label="Prochain booster" aria-valuemin="0" aria-valuemax="100">
+          <span class="recharge__remplissage"></span>
+          <span class="recharge__temps"></span>
+        </div>
+        <div class="reserve-boosters"></div>
+
+        <div class="choix-booster">
+          <button class="bulle-choix bulle-choix--dix" type="button">Ouvrir 10 Boosters</button>
+          <button class="bulle-choix bulle-choix--un" type="button">Ouvrir 1 Booster</button>
+          <!-- Icône : Lucide (licence ISC) -->
+          <button class="bulle-retour" type="button" aria-label="Retour à l'accueil">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m12 19-7-7 7-7" />
+              <path d="M19 12H5" />
+            </svg>
+          </button>
+        </div>
+
+        <p class="consigne-ouverture">Glisse d'un bord à l'autre le long de la ligne pour ouvrir le booster</p>
+      </main>
+    </div>
+  </div>
+
+  <nav class="navigation navigation--fixe" data-actif="accueil"></nav>
+
+  <!-- Ouverture d'un booster : étoiles, paquet de cartes qui sort puis se dévoile carte par carte -->
+  <div class="ouverture" hidden></div>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="donnees/cartes-east-blue.js"></script>
+  <script src="rendu-carte.js"></script>
+  <script src="collection.js"></script>
+  <script src="tirage.js"></script>
+  <script src="recharge.js"></script>
+  <script src="pack.js"></script>
+  <script src="navigation.js"></script>
+  <script src="accueil.js"></script>
+  <script src="ouverture.js"></script>
+</body>
+</html>

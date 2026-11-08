@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Combat East Blue</title>
+  <link rel="stylesheet" href="carte.css">
+  <link rel="stylesheet" href="jeu.css">
+  <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+  <main class="jeu">
+    <section class="ecran ecran--decks">
+      <h1 class="ecran__titre">Choisis ton deck</h1>
+      <div class="decks"></div>
+    </section>
+
+    <section class="ecran ecran--combat" hidden>
+      <div class="camp camp--adverse">
+        <div class="infos infos--adverse"></div>
+        <div class="banc banc--adverse"></div>
+        <div class="poste poste--adverse"></div>
+      </div>
+
+      <div class="bandeau">
+        <p class="bandeau__message"></p>
+        <ol class="bandeau__journal"></ol>
+        <div class="bandeau__actions"></div>
+      </div>
+
+      <div class="camp camp--joueur">
+        <div class="poste poste--joueur"></div>
+        <div class="banc banc--joueur"></div>
+        <div class="infos infos--joueur"></div>
+        <div class="main"></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="navigation navigation--fixe" data-actif="combat"></nav>
+
+  <div class="modale" hidden>
+    <div class="modale__contenu"></div>
+  </div>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="donnees/cartes-east-blue.js"></script>
+  <script src="donnees/decks.js"></script>
+  <script src="rendu-carte.js"></script>
+  <script src="moteur.js"></script>
+  <script src="ia.js"></script>
+  <script src="jeu.js"></script>
+  <script src="navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: #1c86c7;
+}
+
+.accueil {
+  /* La taille des cartes suit le plus petit côté disponible, en portrait comme en paysage */
+  --largeur-carte: clamp(72px, min(27vw, 23vh), 240px);
+  --u: calc(var(--largeur-carte) / 100);
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: url("assets/fond-accueil.svg") center / cover no-repeat;
+}
+
+.carte {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 4);
+  width: var(--largeur-carte);
+  aspect-ratio: 63 / 88;
+  padding: calc(var(--u) * 6);
+  border: calc(var(--u) * 2) solid #17324d;
+  border-radius: calc(var(--u) * 6);
+  background: linear-gradient(160deg, #f8efd8, #e4d3ac);
+  box-shadow: calc(var(--u) * 2) calc(var(--u) * 4) calc(var(--u) * 10) rgb(8 35 60 / 45%);
+  transform: translate(-50%, -50%) rotate(var(--r));
+}
+
+.carte__entete {
+  flex: none;
+  height: calc(var(--u) * 10);
+  border-radius: calc(var(--u) * 3);
+  background: #17324d;
+}
+
+.carte__image {
+  flex: 1;
+  min-height: 0;
+  border: calc(var(--u) * 1) solid #17324d;
+  border-radius: calc(var(--u) * 3);
+  background: linear-gradient(180deg, #b9dcea, #8fbfd4);
+}
+
+.carte__texte {
+  flex: none;
+  height: calc(var(--u) * 24);
+  border-radius: calc(var(--u) * 3);
+  background: rgb(23 50 77 / 16%);
+}
