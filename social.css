@@ -1,9 +1,5 @@
 /* Page Social (le style commun des pages à bulles est dans page.css). */
 
-.bouton-profil {
-  align-self: flex-start;
-}
-
 /* Nombre d'éléments à côté du titre d'une liste */
 .compteur {
   color: #8a6d45;

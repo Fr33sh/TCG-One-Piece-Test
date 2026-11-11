@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Création du compte</title>
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="connexion.css">
+</head>
+<body>
+  <header class="barre-page">
+    <h1 class="barre-page__titre">Bienvenue</h1>
+  </header>
+
+  <main class="liste-bulles">
+    <!-- Création du compte : pseudo, puis liaison Discord (ou sans compte, après un avertissement) -->
+    <section class="bulle-page" data-etape="creation" aria-labelledby="titre-creation">
+      <h2 class="bulle-page__titre" id="titre-creation">Crée ton compte</h2>
+      <p class="bulle-page__texte">Choisis ton pseudo, puis lie ton compte Discord : ta progression sera sauvegardée en ligne et tu pourras ajouter des amis.</p>
+      <form class="creation" data-formulaire="creation" novalidate>
+        <input class="champ" name="pseudo" maxlength="16" autocomplete="nickname" placeholder="Ton pseudo" aria-label="Pseudo">
+        <button class="bouton-discord" type="submit" data-choix="discord">Lier mon compte Discord</button>
+        <button class="petite-bulle bouton-sans-compte" type="submit" data-choix="sans-compte">Continuer sans compte</button>
+      </form>
+      <p class="message-page" data-message role="status"></p>
+    </section>
+
+    <!-- Retour de Discord : connexion et récupération de la sauvegarde -->
+    <section class="bulle-page" data-etape="retour" hidden>
+      <h2 class="bulle-page__titre" data-titre-retour>Connexion…</h2>
+      <p class="bulle-page__texte" data-texte-retour>Récupération de ton compte Discord.</p>
+    </section>
+  </main>
+
+  <!-- Avertissement avant de jouer sans compte -->
+  <div class="avertissement" data-avertissement hidden>
+    <section class="bulle-page" role="alertdialog" aria-modal="true" aria-labelledby="titre-avertissement" aria-describedby="texte-avertissement">
+      <h2 class="bulle-page__titre" id="titre-avertissement">Attention</h2>
+      <p class="bulle-page__texte" id="texte-avertissement">
+        Sans compte Discord, ta progression (cartes, boosters, réglages) est enregistrée seulement sur cet appareil.
+        Si tu effaces les données de ton navigateur ou si tu changes d'appareil, tu risques de tout perdre.
+        Tu ne pourras pas non plus ajouter d'amis. Tu pourras lier ton compte plus tard depuis ton profil.
+      </p>
+      <div class="avertissement__choix">
+        <button class="petite-bulle" type="button" data-avertissement-choix="sans-compte">Continuer sans compte</button>
+        <button class="petite-bulle petite-bulle--principale" type="button" data-avertissement-choix="discord">Lier Discord</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="compte.js"></script>
+  <script src="sauvegarde.js"></script>
+  <script src="connexion.js"></script>
+</body>
+</html>

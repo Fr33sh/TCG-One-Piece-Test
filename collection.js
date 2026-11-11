@@ -18,4 +18,6 @@ function ajouterALaCollection(cartes) {
   } catch {
     // Stockage indisponible (navigation privée…) : les cartes ne sont pas gardées
   }
+  // Copie en ligne pour les comptes liés à Discord (sauvegarde.js, si la page le charge)
+  if (typeof signalerModification === "function") signalerModification();
 }

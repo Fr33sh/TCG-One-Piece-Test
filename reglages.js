@@ -22,6 +22,8 @@ function enregistrerReglages(reglages) {
   try {
     localStorage.setItem(CLE_REGLAGES, JSON.stringify(reglages));
   } catch {}
+  // Copie en ligne pour les comptes liés à Discord (sauvegarde.js, si la page le charge)
+  if (typeof signalerModification === "function") signalerModification();
   document.dispatchEvent(new Event(MESSAGE_REGLAGES));
   if (window.parent !== window) window.parent.postMessage(MESSAGE_REGLAGES, "*");
 }

@@ -170,6 +170,33 @@ body {
   color: #a9875a;
 }
 
+/* Bouton Discord, à sa couleur (création du compte, profil, social) */
+.bouton-discord {
+  padding: 13px 16px;
+  border: 3px solid #0b0a09;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #7983f5, #5865f2);
+  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 35%), 0 4px 8px rgb(60 35 10 / 35%);
+  color: #fff;
+  font: 400 17px / 1 "Lilita One", "Arial Black", sans-serif;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 35%);
+  cursor: pointer;
+}
+
+.bouton-discord:active {
+  transform: translateY(1px);
+}
+
+.bouton-discord:focus-visible {
+  outline: 3px solid #b8874d;
+  outline-offset: 3px;
+}
+
+.bouton-discord:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 /* Réponse du jeu après une action : réussite ou erreur */
 .message-page {
   padding: 0 4px;

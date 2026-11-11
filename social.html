@@ -14,11 +14,12 @@
   </header>
 
   <main class="liste-bulles">
-    <!-- Pas encore de profil : il en faut un pour ajouter des amis -->
+    <!-- Compte non lié : il faut un compte Discord pour ajouter des amis -->
     <section class="bulle-page" data-vue="sans-profil" hidden aria-labelledby="titre-sans-profil">
-      <h2 class="bulle-page__titre" id="titre-sans-profil">Crée ton profil</h2>
-      <p class="bulle-page__texte">Pour ajouter des amis, choisis d'abord ton pseudo dans ton profil.</p>
-      <a class="petite-bulle petite-bulle--principale bouton-profil" href="profil.html">Créer mon profil</a>
+      <h2 class="bulle-page__titre" id="titre-sans-profil">Lie ton compte Discord</h2>
+      <p class="bulle-page__texte">Pour ajouter des amis, lie d'abord ton compte Discord : tes amis pourront alors te trouver avec ton pseudo#1234.</p>
+      <button class="bouton-discord" type="button" data-lier-discord>Lier mon compte Discord</button>
+      <p class="message-page message-page--erreur" data-message="discord" role="status"></p>
     </section>
 
     <!-- Les fonctions en ligne ne sont pas disponibles (fichiers ouverts sur le PC, pas de connexion…) -->
@@ -58,6 +59,7 @@
   <script src="sons.js"></script>
   <script src="musique.js"></script>
   <script src="compte.js"></script>
+  <script src="sauvegarde.js"></script>
   <script src="social.js"></script>
   <script src="navigation.js"></script>
 </body>

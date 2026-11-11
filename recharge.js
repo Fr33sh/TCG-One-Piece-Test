@@ -17,6 +17,8 @@ function enregistrerOrigine(origine) {
   try {
     localStorage.setItem(CLE_RECHARGE, JSON.stringify({ origine }));
   } catch {}
+  // Copie en ligne pour les comptes liés à Discord (sauvegarde.js, si la page le charge)
+  if (typeof signalerModification === "function") signalerModification();
 }
 
 // Une seule date suffit : la réserve compte les périodes de 8 h écoulées depuis cette « origine »

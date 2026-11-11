@@ -20,27 +20,23 @@
   </header>
 
   <main class="liste-bulles">
-    <!-- Pas encore de profil : choisir son pseudo -->
-    <section class="bulle-page" data-vue="creation" hidden aria-labelledby="titre-creation">
-      <h2 class="bulle-page__titre" id="titre-creation">Crée ton profil</h2>
-      <p class="bulle-page__texte">Choisis ton pseudo. Un # suivi de 4 chiffres sera ajouté : avec lui, tes amis pourront te trouver.</p>
-      <form class="formulaire-ligne" data-formulaire="creation">
-        <input class="champ" name="pseudo" maxlength="16" autocomplete="nickname" placeholder="Ton pseudo" aria-label="Pseudo" required>
-        <button class="petite-bulle petite-bulle--principale" type="submit">Créer</button>
-      </form>
-      <p class="message-page" data-message="creation" role="status"></p>
-    </section>
-
-    <!-- Profil existant : identifiant à partager, et changement de pseudo -->
-    <section class="bulle-page" data-vue="profil" hidden aria-labelledby="titre-profil">
+    <section class="bulle-page" aria-labelledby="titre-profil">
       <h2 class="bulle-page__titre" id="titre-profil">Mon profil</h2>
       <p class="identifiant" data-identifiant></p>
-      <p class="bulle-page__texte">Donne cet identifiant à tes amis pour qu'ils t'ajoutent depuis l'onglet Social.</p>
+      <p class="bulle-page__texte" data-texte-profil></p>
       <form class="formulaire-ligne" data-formulaire="pseudo">
         <input class="champ" name="pseudo" maxlength="16" autocomplete="nickname" placeholder="Nouveau pseudo" aria-label="Nouveau pseudo" required>
         <button class="petite-bulle petite-bulle--principale" type="submit">Changer</button>
       </form>
       <p class="message-page" data-message="pseudo" role="status"></p>
+    </section>
+
+    <!-- Compte non lié : proposer Discord -->
+    <section class="bulle-page" data-vue="sans-lien" hidden aria-labelledby="titre-discord">
+      <h2 class="bulle-page__titre" id="titre-discord">Compte Discord</h2>
+      <p class="bulle-page__texte">Ton compte n'est pas lié : ta progression n'est enregistrée que sur cet appareil et tu ne peux pas ajouter d'amis. Lie ton compte Discord pour la sauvegarder en ligne.</p>
+      <button class="bouton-discord" type="button" data-lier-discord>Lier mon compte Discord</button>
+      <p class="message-page message-page--erreur" data-message="discord" role="status"></p>
     </section>
   </main>
 
@@ -48,6 +44,7 @@
   <script src="sons.js"></script>
   <script src="musique.js"></script>
   <script src="compte.js"></script>
+  <script src="sauvegarde.js"></script>
   <script src="profil.js"></script>
 </body>
 </html>

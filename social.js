@@ -1,5 +1,6 @@
-// Page Social : chercher un joueur par pseudo#1234 et lui demander d'être ami, répondre aux demandes reçues,
-// voir et retirer ses amis, annuler ses demandes envoyées. La page se met à jour toute seule.
+// Page Social (compte Discord obligatoire) : chercher un joueur par pseudo#1234 et lui demander d'être ami,
+// répondre aux demandes reçues, voir et retirer ses amis, annuler ses demandes envoyées.
+// La page se met à jour toute seule.
 
 const ACTUALISATION_SOCIAL = 20000; // ms
 
@@ -67,7 +68,7 @@ function remplirListe(nom, joueurs) {
 }
 
 async function actualiser() {
-  if (!lireCompte()) {
+  if (!compteLie()) {
     montrerVue("sans-profil");
     return;
   }
@@ -106,6 +107,14 @@ document.querySelector('[data-formulaire="ajout"]').addEventListener("submit", a
     afficherMessageAjout(erreur.message, true);
   } finally {
     bouton.disabled = false;
+  }
+});
+
+document.querySelector("[data-lier-discord]").addEventListener("click", () => {
+  try {
+    lancerConnexionDiscord();
+  } catch (erreur) {
+    document.querySelector('[data-message="discord"]').textContent = erreur.message;
   }
 });
 

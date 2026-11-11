@@ -101,6 +101,12 @@
     }
     ajusterEchelle();
     window.addEventListener("resize", ajusterEchelle);
+
+    // Retour de Discord (« #discord-… ») : le jeu reprend sur l'écran de création du compte
+    if (location.hash.startsWith("#discord-")) {
+      document.querySelector(".telephone__ecran").src = "connexion.html" + location.hash;
+      history.replaceState(null, "", location.pathname);
+    }
   </script>
 
   <!-- La musique est jouée ici : cette page reste ouverte quand le jeu change d'onglet -->

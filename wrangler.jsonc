@@ -14,5 +14,7 @@
   "durable_objects": {
     "bindings": [{ "name": "SOCIAL", "class_name": "Social" }]
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Social"] }]
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Social"] }],
+  // Garde les variables réglées dans Cloudflare (identifiants de l'application Discord) à chaque mise en ligne
+  "keep_vars": true
 }
