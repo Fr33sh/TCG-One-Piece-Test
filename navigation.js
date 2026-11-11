@@ -19,13 +19,20 @@ const ICONES_NAVIGATION = {
     <line x1="5" x2="9" y1="14" y2="18" />
     <line x1="7" x2="4" y1="17" y2="20" />
     <line x1="3" x2="5" y1="19" y2="21" />`,
+  // Deux personnes
+  social: `
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />`,
 };
 
-// 5 emplacements : la collection, l'accueil au centre, puis le combat
+// 5 emplacements : la collection, l'accueil au centre, puis le combat et le social
 const ONGLETS = [
   { id: "collection", nom: "Collection", lien: "cartes.html", colonne: 2 },
   { id: "accueil", nom: "Accueil", lien: "accueil.html", colonne: 3 },
   { id: "combat", nom: "Combat", lien: "jeu.html", colonne: 4 },
+  { id: "social", nom: "Social", lien: "social.html", colonne: 5 },
 ];
 
 for (const barre of document.querySelectorAll(".navigation[data-actif]")) {

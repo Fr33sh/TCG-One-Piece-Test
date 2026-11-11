@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Social</title>
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="social.css">
+  <link rel="stylesheet" href="navigation.css">
+</head>
+<body class="avec-navigation">
+  <header class="barre-page">
+    <h1 class="barre-page__titre">Social</h1>
+  </header>
+
+  <main class="liste-bulles">
+    <!-- Pas encore de profil : il en faut un pour ajouter des amis -->
+    <section class="bulle-page" data-vue="sans-profil" hidden aria-labelledby="titre-sans-profil">
+      <h2 class="bulle-page__titre" id="titre-sans-profil">Crée ton profil</h2>
+      <p class="bulle-page__texte">Pour ajouter des amis, choisis d'abord ton pseudo dans ton profil.</p>
+      <a class="petite-bulle petite-bulle--principale bouton-profil" href="profil.html">Créer mon profil</a>
+    </section>
+
+    <!-- Les fonctions en ligne ne sont pas disponibles (fichiers ouverts sur le PC, pas de connexion…) -->
+    <section class="bulle-page" data-vue="hors-ligne" hidden>
+      <p class="bulle-page__texte" data-message="hors-ligne"></p>
+    </section>
+
+    <section class="bulle-page" data-vue="social" hidden aria-labelledby="titre-ajouter">
+      <h2 class="bulle-page__titre" id="titre-ajouter">Ajouter un ami</h2>
+      <p class="bulle-page__texte">Ton identifiant : <span data-identifiant></span></p>
+      <form class="formulaire-ligne" data-formulaire="ajout">
+        <input class="champ" name="cible" maxlength="21" autocomplete="off" placeholder="Pseudo#1234" aria-label="Pseudo et 4 chiffres de ton ami" required>
+        <button class="petite-bulle petite-bulle--principale" type="submit">Envoyer</button>
+      </form>
+      <p class="message-page" data-message="ajout" role="status"></p>
+    </section>
+
+    <section class="bulle-page" data-vue="social" hidden aria-labelledby="titre-recues">
+      <h2 class="bulle-page__titre" id="titre-recues">Demandes reçues <span class="compteur" data-compteur="recues"></span></h2>
+      <ul class="liste-joueurs" data-liste="recues" data-vide="Aucune demande pour l'instant."></ul>
+    </section>
+
+    <section class="bulle-page" data-vue="social" hidden aria-labelledby="titre-amis">
+      <h2 class="bulle-page__titre" id="titre-amis">Amis <span class="compteur" data-compteur="amis"></span></h2>
+      <ul class="liste-joueurs" data-liste="amis" data-vide="Tu n'as pas encore d'amis : envoie une demande avec leur pseudo#1234."></ul>
+    </section>
+
+    <section class="bulle-page" data-vue="social" hidden aria-labelledby="titre-envoyees">
+      <h2 class="bulle-page__titre" id="titre-envoyees">Demandes envoyées <span class="compteur" data-compteur="envoyees"></span></h2>
+      <ul class="liste-joueurs" data-liste="envoyees" data-vide="Aucune demande en attente."></ul>
+    </section>
+  </main>
+
+  <nav class="navigation navigation--fixe" data-actif="social"></nav>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="compte.js"></script>
+  <script src="social.js"></script>
+  <script src="navigation.js"></script>
+</body>
+</html>

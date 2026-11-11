@@ -1,0 +1,45 @@
+/* Page Social (le style commun des pages à bulles est dans page.css). */
+
+.bouton-profil {
+  align-self: flex-start;
+}
+
+/* Nombre d'éléments à côté du titre d'une liste */
+.compteur {
+  color: #8a6d45;
+  font-size: 18px;
+}
+
+/* Une ligne par joueur : son nom, puis ses boutons */
+.liste-joueurs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.joueur {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  border: 2px solid #5b4a39;
+  border-radius: 14px;
+  background: #ead7aa;
+  box-shadow: inset 0 2px 4px rgb(120 80 30 / 20%);
+}
+
+.joueur .pseudo {
+  flex: 1;
+  min-width: 0;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.liste-joueurs__vide {
+  padding: 0 4px;
+  color: #8a6d45;
+  font-size: 14px;
+  line-height: 1.3;
+}

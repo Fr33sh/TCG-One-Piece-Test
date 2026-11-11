@@ -1,110 +1,4 @@
-/* Page Paramètres : barre du haut fixe (comme la collection), bulles parchemin les unes sous les autres. */
-
-@font-face {
-  font-family: "Lilita One";
-  src: url("assets/polices/lilita-one.woff2") format("woff2");
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-body {
-  /* Place réservée en haut pour l'encoche de la caméra (celle du téléphone ou de l'émulateur) */
-  --encoche: max(env(safe-area-inset-top), 48px);
-  --hauteur-barre: calc(54px + var(--encoche));
-
-  min-height: 100vh;
-  padding: calc(var(--hauteur-barre) + 20px) 16px 40px;
-  background: #13202c;
-  color: #1f1610;
-  font-family: "Lilita One", "Arial Black", sans-serif;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ── Barre du haut : titre et retour à l'accueil, reste en place pendant le défilement ── */
-
-.barre-parametres {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 5;
-  display: grid;
-  place-items: center;
-  height: var(--hauteur-barre);
-  padding-top: var(--encoche);
-  border-bottom: 2px solid #9c7444;
-  border-radius: 0 0 16px 16px;
-  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 50%),
-    inset 0 -2px 0 rgb(90 60 25 / 30%),
-    0 3px 8px rgb(0 0 0 / 35%);
-}
-
-.barre-parametres__titre {
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 0 rgb(255 248 225 / 55%);
-}
-
-.barre-parametres__retour {
-  position: absolute;
-  bottom: 9px;
-  left: 14px;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 2px solid #0b0a09;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 60%), 0 2px 4px rgb(60 35 10 / 35%);
-  color: #1f1610;
-}
-
-.barre-parametres__retour svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* ── Liste des paramètres ── */
-
-.liste-parametres {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-/* Grande bulle d'un paramètre, aux couleurs des cartes de base */
-.parametre {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px 14px 14px;
-  border: 3px solid #0b0a09;
-  border-radius: 22px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), 0 6px 14px rgb(0 0 0 / 40%);
-}
-
-.parametre__titre {
-  padding-left: 4px;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1;
-}
+/* Page Paramètres : réglages propres à chaque paramètre (le style commun des pages à bulles est dans page.css). */
 
 .parametre__reglages {
   display: flex;
@@ -112,21 +6,9 @@ body {
   gap: 12px;
 }
 
-/* Petite bulle en bas à droite */
-.parametre__reinitialiser {
+/* « Réinitialiser ce paramètre », en bas à droite de la bulle */
+.bouton-reinitialiser {
   align-self: flex-end;
-  padding: 8px 14px;
-  border: 2px solid #0b0a09;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 1.5px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), inset 0 -2px 0 rgb(120 80 30 / 25%), 0 3px 6px rgb(60 35 10 / 30%);
-  color: #1f1610;
-  font: 400 13px / 1 "Lilita One", "Arial Black", sans-serif;
-  cursor: pointer;
-}
-
-.parametre__reinitialiser:active {
-  transform: translateY(1px);
 }
 
 /* ── Réglage d'un son : nom, haut-parleur et interrupteur en haut, 10 crans en dessous ── */
@@ -231,9 +113,7 @@ body {
 }
 
 .interrupteur:focus-visible,
-.crans:focus-visible,
-.parametre__reinitialiser:focus-visible,
-.barre-parametres__retour:focus-visible {
+.crans:focus-visible {
   outline: 3px solid #b8874d;
   outline-offset: 3px;
 }

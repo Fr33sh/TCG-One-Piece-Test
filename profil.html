@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Profil</title>
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="profil.css">
+</head>
+<body>
+  <!-- Icône : Lucide (licence ISC) -->
+  <header class="barre-page">
+    <a class="barre-page__retour" href="accueil.html" aria-label="Retour à l'accueil">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+    </a>
+    <h1 class="barre-page__titre">Profil</h1>
+  </header>
+
+  <main class="liste-bulles">
+    <!-- Pas encore de profil : choisir son pseudo -->
+    <section class="bulle-page" data-vue="creation" hidden aria-labelledby="titre-creation">
+      <h2 class="bulle-page__titre" id="titre-creation">Crée ton profil</h2>
+      <p class="bulle-page__texte">Choisis ton pseudo. Un # suivi de 4 chiffres sera ajouté : avec lui, tes amis pourront te trouver.</p>
+      <form class="formulaire-ligne" data-formulaire="creation">
+        <input class="champ" name="pseudo" maxlength="16" autocomplete="nickname" placeholder="Ton pseudo" aria-label="Pseudo" required>
+        <button class="petite-bulle petite-bulle--principale" type="submit">Créer</button>
+      </form>
+      <p class="message-page" data-message="creation" role="status"></p>
+    </section>
+
+    <!-- Profil existant : identifiant à partager, et changement de pseudo -->
+    <section class="bulle-page" data-vue="profil" hidden aria-labelledby="titre-profil">
+      <h2 class="bulle-page__titre" id="titre-profil">Mon profil</h2>
+      <p class="identifiant" data-identifiant></p>
+      <p class="bulle-page__texte">Donne cet identifiant à tes amis pour qu'ils t'ajoutent depuis l'onglet Social.</p>
+      <form class="formulaire-ligne" data-formulaire="pseudo">
+        <input class="champ" name="pseudo" maxlength="16" autocomplete="nickname" placeholder="Nouveau pseudo" aria-label="Nouveau pseudo" required>
+        <button class="petite-bulle petite-bulle--principale" type="submit">Changer</button>
+      </form>
+      <p class="message-page" data-message="pseudo" role="status"></p>
+    </section>
+  </main>
+
+  <script src="reglages.js"></script>
+  <script src="sons.js"></script>
+  <script src="musique.js"></script>
+  <script src="compte.js"></script>
+  <script src="profil.js"></script>
+</body>
+</html>

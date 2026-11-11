@@ -3,8 +3,16 @@
   // Doit correspondre au "Project name" saisi dans Cloudflare
   "name": "tcg-one-piece-test",
   "compatibility_date": "2026-10-01",
-  // Site statique : les fichiers du dossier sont servis tels quels (aucun build)
+  // Serveur : ne répond qu'aux adresses /api/… (comptes et amis)
+  "main": "serveur/worker.js",
+  // Les fichiers du dossier sont servis tels quels (aucun build)
   "assets": {
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  // Base de données des comptes et des amis (un seul Durable Object, stockage SQLite)
+  "durable_objects": {
+    "bindings": [{ "name": "SOCIAL", "class_name": "Social" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Social"] }]
 }

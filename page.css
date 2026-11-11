@@ -1,0 +1,194 @@
+/* Pages à bulles (Paramètres, Profil, Social) : barre du haut fixe, comme la collection, et grandes bulles
+   parchemin les unes sous les autres ; la page défile de haut en bas. */
+
+@font-face {
+  font-family: "Lilita One";
+  src: url("assets/polices/lilita-one.woff2") format("woff2");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  /* Place réservée en haut pour l'encoche de la caméra (celle du téléphone ou de l'émulateur) */
+  --encoche: max(env(safe-area-inset-top), 48px);
+  --hauteur-barre: calc(54px + var(--encoche));
+
+  min-height: 100vh;
+  padding: calc(var(--hauteur-barre) + 20px) 16px 40px;
+  background: #13202c;
+  color: #1f1610;
+  font-family: "Lilita One", "Arial Black", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ── Barre du haut : titre (et retour), reste en place pendant le défilement ── */
+
+.barre-page {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  height: var(--hauteur-barre);
+  padding-top: var(--encoche);
+  border-bottom: 2px solid #9c7444;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
+  box-shadow:
+    inset 0 2px 0 rgb(255 248 225 / 50%),
+    inset 0 -2px 0 rgb(90 60 25 / 30%),
+    0 3px 8px rgb(0 0 0 / 35%);
+}
+
+.barre-page__titre {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 0 rgb(255 248 225 / 55%);
+}
+
+.barre-page__retour {
+  position: absolute;
+  bottom: 9px;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #0b0a09;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 60%), 0 2px 4px rgb(60 35 10 / 35%);
+  color: #1f1610;
+}
+
+.barre-page__retour svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Bulles ── */
+
+.liste-bulles {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Grande bulle, aux couleurs des cartes de base */
+.bulle-page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 14px 14px;
+  border: 3px solid #0b0a09;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), 0 6px 14px rgb(0 0 0 / 40%);
+}
+
+.bulle-page__titre {
+  padding-left: 4px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.bulle-page__texte {
+  padding: 0 4px;
+  font: 400 15px / 1.3 "Lilita One", "Arial Black", sans-serif;
+  color: #5b4a39;
+}
+
+/* Petite bulle (bouton) ; la version principale est jaune */
+.petite-bulle {
+  flex: none;
+  padding: 8px 14px;
+  border: 2px solid #0b0a09;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: 0 0 0 1.5px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), inset 0 -2px 0 rgb(120 80 30 / 25%), 0 3px 6px rgb(60 35 10 / 30%);
+  color: #1f1610;
+  font: 400 13px / 1 "Lilita One", "Arial Black", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.petite-bulle--principale {
+  padding: 11px 18px;
+  background: linear-gradient(180deg, #ffe680, #f5c518);
+  font-size: 15px;
+}
+
+.petite-bulle:active {
+  transform: translateY(1px);
+}
+
+.petite-bulle:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+/* Champ de saisie et son bouton, sur une ligne */
+.formulaire-ligne {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.champ {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 2px solid #5b4a39;
+  border-radius: 12px;
+  background: #fffaf0;
+  box-shadow: inset 0 2px 3px rgb(120 80 30 / 20%);
+  color: #1f1610;
+  font: 400 17px / 1.2 "Lilita One", "Arial Black", sans-serif;
+}
+
+.champ::placeholder {
+  color: #a9875a;
+}
+
+/* Réponse du jeu après une action : réussite ou erreur */
+.message-page {
+  padding: 0 4px;
+  font: 400 14px / 1.3 "Lilita One", "Arial Black", sans-serif;
+  color: #3d6b1f;
+}
+
+.message-page--erreur {
+  color: #9b2a1a;
+}
+
+/* Pseudo et ses 4 chiffres, le # un peu plus discret */
+.pseudo__tag {
+  color: #8a6d45;
+}
+
+.barre-page__retour:focus-visible,
+.petite-bulle:focus-visible,
+.champ:focus-visible {
+  outline: 3px solid #b8874d;
+  outline-offset: 3px;
+}

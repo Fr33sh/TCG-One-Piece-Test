@@ -1,0 +1,13 @@
+/* Page Profil (le style commun des pages à bulles est dans page.css). */
+
+/* Identifiant à partager, en grand : « Luffy#4821 » */
+.identifiant {
+  padding: 10px 12px;
+  border: 2px dashed #b8874d;
+  border-radius: 14px;
+  background: #fffaf0;
+  font-size: 26px;
+  line-height: 1.1;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
