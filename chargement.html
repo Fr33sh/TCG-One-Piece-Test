@@ -4,32 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Écran de chargement</title>
+  <link rel="stylesheet" href="fond-marin.css">
   <link rel="stylesheet" href="chargement.css">
 </head>
 <body data-musique="aventure">
-  <!-- Filtre d'ondulation de l'eau appliqué à tout le fond -->
-  <svg class="filtres" width="0" height="0" aria-hidden="true">
-    <filter id="ondulation" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.010" numOctaves="2" seed="7" result="bruit">
-        <animate attributeName="baseFrequency" dur="18s" values="0.004 0.010; 0.006 0.014; 0.004 0.010" repeatCount="indefinite" />
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="bruit" scale="22" xChannelSelector="R" yChannelSelector="G" />
-    </filter>
-  </svg>
-
   <a class="ecran-chargement" href="accueil.html" aria-label="Touchez pour commencer">
-    <div class="mer">
-      <img class="mer__image" src="assets/fonds/fond-mer.jpg" alt="">
-    </div>
-    <div class="rayons" aria-hidden="true">
-      <span style="--x: 18%; --l: 9%; --angle: 8deg; --duree: 7s"></span>
-      <span style="--x: 34%; --l: 6%; --angle: 4deg; --duree: 9s"></span>
-      <span style="--x: 52%; --l: 11%; --angle: -2deg; --duree: 8s"></span>
-      <span style="--x: 68%; --l: 7%; --angle: -6deg; --duree: 10s"></span>
-      <span style="--x: 84%; --l: 8%; --angle: -10deg; --duree: 7.5s"></span>
-    </div>
-    <div class="particules" aria-hidden="true"></div>
-    <div class="bulles" aria-hidden="true"></div>
+    <!-- Fond marin animé : fabriqué par fond-marin.js -->
+    <div class="fond-marin"></div>
     <p class="touchez">Touchez</p>
   </a>
 
@@ -38,6 +19,7 @@
   <script src="musique.js"></script>
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>
+  <script src="fond-marin.js"></script>
   <script src="chargement.js"></script>
 </body>
 </html>

@@ -8,10 +8,8 @@ const formulaire = document.querySelector('[data-formulaire="creation"]');
 const champPseudo = formulaire.elements.pseudo;
 const avertissement = document.querySelector("[data-avertissement]");
 
-function afficherMessage(texte, erreur = true) {
-  const message = document.querySelector("[data-message]");
-  message.textContent = texte;
-  message.classList.toggle("message-page--erreur", erreur);
+function afficherMessage(texte) {
+  document.querySelector("[data-message]").textContent = texte;
 }
 
 const entrerDansLeJeu = () => { location.href = "accueil.html"; };

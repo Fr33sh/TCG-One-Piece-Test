@@ -1,33 +1,249 @@
-/* Écran de création du compte (le style commun des pages à bulles est dans page.css). */
+/* Écran de création du compte, façon écran de connexion classique : le fond marin de l'écran de chargement
+   (fond-marin.css), le titre du jeu, et un panneau translucide au centre. */
 
-.creation {
+@font-face {
+  font-family: "Lilita One";
+  src: url("assets/polices/lilita-one.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 700;
+  src: url("assets/polices/lato-700.woff2") format("woff2");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: #03121f;
+}
+
+body {
+  color: #eaf8ff;
+  font: 700 15px / 1.4 "Lato", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.fond-marin {
+  position: fixed;
+}
+
+/* ── Titre et panneau, au centre de l'écran ── */
+
+.connexion {
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: max(env(safe-area-inset-top), 48px) 20px 32px;
+}
+
+.connexion__titre {
+  font: 400 clamp(40px, 12vw, 64px) / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-shadow:
+    0 3px 0 #0b3550,
+    0 5px 0 #072640,
+    0 0 24px rgb(120 230 255 / 75%);
+}
+
+.panneau {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(100%, 360px);
+  padding: 24px 22px;
+  border: 1px solid rgb(160 230 255 / 35%);
+  border-radius: 18px;
+  background: rgb(4 24 42 / 68%);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 45%), inset 0 1px 0 rgb(255 255 255 / 12%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.panneau__titre {
+  font: 400 24px / 1.1 "Lilita One", "Arial Black", sans-serif;
+  text-align: center;
+}
+
+.panneau__formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panneau__etiquette {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a9dcf2;
+}
+
+.panneau__champ {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 94%);
+  color: #0b1d2b;
+  font: 700 17px / 1.2 "Lato", system-ui, sans-serif;
+  outline: none;
+}
+
+.panneau__champ:focus {
+  border-color: #6fd2fb;
+  box-shadow: 0 0 0 3px rgb(111 210 251 / 30%);
+}
+
+.panneau__champ::placeholder {
+  color: #8aa3b3;
+}
+
+.panneau__texte {
+  color: #d5eefa;
+  text-align: center;
+}
+
+.panneau__texte strong {
+  color: #ffd27a;
+}
+
+.panneau__note {
+  color: #9cc6d9;
+  font-size: 13px;
+  text-align: center;
+}
+
+.panneau__message {
+  min-height: 1.4em;
+  color: #ff9b8a;
+  font-size: 13px;
+}
+
+.panneau__message:empty {
+  min-height: 0;
+}
+
+/* Pseudo et ses 4 chiffres, le # un peu plus discret */
+.pseudo__tag {
+  color: #9fdcf5;
+}
+
+/* ── Boutons ── */
+
+.bouton-discord,
+.bouton-secondaire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font: 700 16px / 1 "Lato", system-ui, sans-serif;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.bouton-discord {
+  margin-top: 6px;
+  border: 0;
+  background: #5865f2;
+  box-shadow: 0 4px 14px rgb(88 101 242 / 45%);
+  color: #fff;
+}
+
+.bouton-discord svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.bouton-secondaire {
+  border: 1px solid rgb(160 230 255 / 45%);
+  background: rgb(255 255 255 / 6%);
+  color: #eaf8ff;
+}
+
+.bouton-discord:hover,
+.bouton-secondaire:hover {
+  filter: brightness(1.1);
+}
+
+.bouton-discord:active,
+.bouton-secondaire:active {
+  transform: translateY(1px);
+}
+
+.bouton-discord:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.bouton-discord:focus-visible,
+.bouton-secondaire:focus-visible {
+  outline: 3px solid #6fd2fb;
+  outline-offset: 3px;
+}
+
+/* « ou » entre deux traits */
+.separateur {
+  display: flex;
+  align-items: center;
   gap: 12px;
+  color: #7fb3c9;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
-.bouton-sans-compte {
-  align-self: center;
+.separateur::before,
+.separateur::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgb(160 230 255 / 30%);
 }
 
-/* Avertissement par-dessus l'écran */
+/* ── Avertissement par-dessus l'écran ── */
+
 .avertissement {
   position: fixed;
   inset: 0;
   z-index: 10;
   display: grid;
   place-items: center;
-  padding: 16px;
-  background: rgb(0 0 0 / 60%);
+  padding: 20px;
+  background: rgb(0 8 16 / 65%);
 }
 
-.avertissement .bulle-page {
-  max-width: 420px;
+.panneau--avertissement {
+  border-color: rgb(255 210 122 / 55%);
+}
+
+.panneau--avertissement .panneau__titre {
+  color: #ffd27a;
 }
 
 .avertissement__choix {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
-  justify-content: flex-end;
+}
+
+.avertissement__choix .bouton-discord {
+  margin-top: 0;
 }
