@@ -111,6 +111,62 @@ body {
   stroke-linejoin: round;
 }
 
+/* ── Missions : tuile parchemin en bas à droite, juste au-dessus de la barre de navigation
+   (le bas du parchemin passe sous les coins arrondis de la barre, d'où les 16 px en plus) ── */
+
+.missions {
+  position: absolute;
+  right: 14px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border: 2px solid #0b0a09;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow:
+    0 0 0 1.5px #b8874d,
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    inset 0 -2px 0 rgb(120 80 30 / 25%),
+    0 3px 6px rgb(60 35 10 / 30%);
+  color: #1f1610;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.45s ease, visibility 0s linear 0s;
+}
+
+.missions:active {
+  transform: translateY(1px);
+}
+
+.missions:focus-visible {
+  outline: 3px solid #b8874d;
+  outline-offset: 3px;
+}
+
+.missions svg {
+  width: 34px;
+  height: 34px;
+  margin-top: -2px;
+  filter: drop-shadow(0 1px 1px rgb(60 35 10 / 30%));
+}
+
+.missions__nom {
+  font: 400 10px / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.mode-booster .missions,
+.mode-ouverture .missions {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.5s;
+}
+
 /* ── Mode booster : zoom sur le paquet, le reste s'efface, les choix d'ouverture apparaissent ── */
 
 .cadre {

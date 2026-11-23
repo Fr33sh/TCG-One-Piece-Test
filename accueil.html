@@ -42,6 +42,32 @@
         <stop offset="1" stop-color="#e9b10f" />
       </linearGradient>
     </defs>
+    <!-- Parchemin des missions : feuille beige, deux rouleaux en bois, lignes d'écriture, sceau de cire rouge -->
+    <symbol id="icone-parchemin" viewBox="0 0 48 48">
+      <path d="M12 11h24v26H12z" fill="#f4e4bc" stroke="#1f1610" stroke-width="1.4" stroke-linejoin="round" />
+      <path d="M12 11h24v4c-6 2-18 2-24 0z" fill="#5b4a39" opacity="0.12" />
+      <g fill="none" stroke="#8a6d45" stroke-width="1.5" stroke-linecap="round">
+        <path d="M16.5 18.5h15" />
+        <path d="M16.5 22.5h15" />
+        <path d="M16.5 26.5h9" />
+      </g>
+      <path d="M27.5 33.5l-1.6 6.5 2.6-1.6 2 2.2.6-6.6z" fill="#8f231c" stroke="#1f1610" stroke-width="0.8" stroke-linejoin="round" />
+      <circle cx="30" cy="31" r="4.3" fill="#c0392b" stroke="#1f1610" stroke-width="1.1" />
+      <circle cx="30" cy="31" r="2.2" fill="none" stroke="#f1d48c" stroke-width="0.9" opacity="0.85" />
+      <rect x="8" y="6" width="32" height="7" rx="3.5" fill="url(#parchemin-rouleau)" stroke="#1f1610" stroke-width="1.4" />
+      <rect x="8" y="35.5" width="32" height="7" rx="3.5" fill="url(#parchemin-rouleau)" stroke="#1f1610" stroke-width="1.4" />
+      <g fill="#7d4a1f" stroke="#1f1610" stroke-width="1">
+        <circle cx="7" cy="9.5" r="2.4" />
+        <circle cx="41" cy="9.5" r="2.4" />
+        <circle cx="7" cy="39" r="2.4" />
+        <circle cx="41" cy="39" r="2.4" />
+      </g>
+    </symbol>
+    <linearGradient id="parchemin-rouleau" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9cf95" />
+      <stop offset="1" stop-color="#b8874d" />
+    </linearGradient>
+
     <symbol id="icone-sablier" viewBox="0 0 48 48">
       <!-- Verre -->
       <path d="M15 9C15 17 22 20 22 24S15 31 15 39h18c0-8-7-11-7-15s7-7 7-15z" fill="#eaf6ff" fill-opacity="0.5" />
@@ -98,6 +124,12 @@
             <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
             <circle cx="12" cy="12" r="3" />
           </svg>
+        </a>
+
+        <!-- Missions : en bas à droite, au-dessus de la barre de navigation -->
+        <a class="missions" href="missions.html" aria-label="Missions">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#icone-parchemin" /></svg>
+          <span class="missions__nom">Missions</span>
         </a>
 
         <!-- Toucher le booster le met en avant et affiche les choix d'ouverture -->
