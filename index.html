@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>TCG One Piece</title>
   <!-- Ajout à l'écran d'accueil du téléphone : le jeu s'ouvre alors en plein écran, comme une application -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -12,7 +12,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="TCG One Piece">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- La page passe sous la barre d'état (heure, batterie) : la marge du haut est gérée plus bas -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <style>
     /* Affiche le jeu dans un téléphone de 390 × 844 points, réduit si la fenêtre est trop petite. */
     * {
@@ -72,13 +73,20 @@
       pointer-events: none;
     }
 
-    /* Sur un vrai téléphone : le jeu occupe tout l'écran, sans le cadre du téléphone */
+    /* Sur un vrai téléphone : le jeu occupe tout l'écran, sans le cadre du téléphone. Sous la barre d'état
+       (heure, batterie), une bande sombre de la couleur du cadre du jeu, au lieu d'une bande blanche. */
     @media (max-width: 500px) {
+      html,
+      body {
+        background: #0b0a09;
+      }
+
       .telephone {
         width: 100%;
         height: 100%;
-        padding: 0;
+        padding: env(safe-area-inset-top) 0 0;
         border-radius: 0;
+        background: #0b0a09;
         box-shadow: none;
         transform: none;
       }
