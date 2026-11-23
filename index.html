@@ -101,6 +101,14 @@
         display: none;
       }
     }
+
+    /* Appli de l'écran d'accueil (iPhone) : la page passe sous la barre d'état, mais sa hauteur « 100 % »
+       oublie cette barre, ce qui laissait une bande noire en bas. On rajoute la hauteur manquante. */
+    @media (max-width: 500px) and (display-mode: standalone) {
+      html {
+        height: calc(100% + env(safe-area-inset-top));
+      }
+    }
   </style>
 </head>
 <body>
