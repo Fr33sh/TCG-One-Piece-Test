@@ -52,20 +52,36 @@ body {
   padding: calc(var(--marge-haut, env(safe-area-inset-top)) + 12px) 0 28px;
 }
 
-/* L'image garde exactement ses proportions (1303 × 377) : elle est visible en entier, sans agrandissement ;
-   contour noir et liseré bleu comme le booster */
+/* Les bandes, parallèles et penchées ensemble, décalées tour à tour vers la gauche et la droite */
+.banniere__bandes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  transform: rotate(-7deg);
+}
+
+/* Chaque image garde exactement ses proportions (données dans la page) : visible en entier, sans
+   agrandissement ; contour noir et liseré bleu comme le booster */
 .banniere__bande {
   box-sizing: content-box;
-  width: 88%;
-  aspect-ratio: 1303 / 377;
+  width: 84%;
   overflow: hidden;
   border: 3px solid #0b0a09;
   border-radius: 8px;
   box-shadow:
     0 0 0 3px #3aaef4,
     0 0 0 5px #0b0a09,
-    0 12px 22px rgb(60 35 10 / 40%);
-  transform: rotate(-7deg);
+    0 10px 18px rgb(60 35 10 / 40%);
+}
+
+.banniere__bande:nth-child(odd) {
+  translate: -4% 0;
+}
+
+.banniere__bande:nth-child(even) {
+  translate: 4% 0;
 }
 
 .banniere__image {
@@ -80,7 +96,7 @@ body {
   position: relative;
   z-index: 1;
   align-self: flex-start;
-  margin: 0 0 -14px 20px;
+  margin: 0 0 -6px 20px;
   transform: rotate(-7deg);
   color: #fff8e1;
   font-size: 58px;
