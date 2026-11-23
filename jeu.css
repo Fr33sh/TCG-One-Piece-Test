@@ -40,62 +40,48 @@ body {
   overflow: hidden;
 }
 
-/* ── Bannière : une bande inclinée qui déborde de l'écran, liserés bleus comme le booster ── */
+/* ── Bannière : le titre puis l'illustration entière dans une bande penchée, au milieu de la place libre
+   au-dessus des boutons (qui restent en bas de l'écran) ── */
 
-/* La bannière prend toute la hauteur laissée libre par les boutons, qui restent en bas de l'écran */
 .banniere {
-  position: relative;
+  display: flex;
   flex: 1 1 auto;
-  min-height: 320px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--marge-haut, env(safe-area-inset-top)) + 12px) 0 28px;
 }
 
+/* L'image garde exactement ses proportions (1303 × 377) : elle est visible en entier, sans agrandissement ;
+   contour noir et liseré bleu comme le booster */
 .banniere__bande {
-  position: absolute;
-  top: -8%;
-  right: -14%;
-  bottom: 6%;
-  left: -14%;
+  box-sizing: content-box;
+  width: 88%;
+  aspect-ratio: 1303 / 377;
   overflow: hidden;
-  border-top: 9px solid #3aaef4;
-  border-bottom: 9px solid #3aaef4;
-  background: #1e8fe2;
+  border: 3px solid #0b0a09;
+  border-radius: 8px;
   box-shadow:
-    inset 0 3px 0 #9ad9ff,
-    inset 0 -3px 0 #9ad9ff,
-    0 10px 22px rgb(60 35 10 / 40%);
-  transform: rotate(-8deg);
-}
-
-/* L'illustration penche avec la bande. Très large et peu haute, elle n'est pas agrandie : elle occupe une
-   bande au milieu, cadrée sur Luffy (aux trois quarts de l'image), sur un fond de la même image floutée. */
-.banniere__fond {
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  object-fit: cover;
-  object-position: 74% 50%;
-  filter: blur(14px) brightness(0.75) saturate(1.15);
+    0 0 0 3px #3aaef4,
+    0 0 0 5px #0b0a09,
+    0 12px 22px rgb(60 35 10 / 40%);
+  transform: rotate(-7deg);
 }
 
 .banniere__image {
-  position: absolute;
-  top: 50%;
-  left: 0;
+  display: block;
   width: 100%;
-  height: min(46%, 300px);
+  height: 100%;
   object-fit: cover;
-  object-position: 74% 50%;
-  box-shadow: 0 0 18px 4px rgb(0 0 0 / 45%);
-  transform: translateY(-50%);
 }
 
-/* Le titre suit l'inclinaison de la bande, sous la barre d'état du téléphone */
+/* Le titre, penché comme la bande, déborde un peu sur son coin */
 .banniere__titre {
-  position: absolute;
-  top: 19%;
-  left: 15%;
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  margin: 0 0 -14px 20px;
+  transform: rotate(-7deg);
   color: #fff8e1;
   font-size: 58px;
   font-weight: 400;
@@ -148,7 +134,7 @@ body {
   outline-offset: 4px;
 }
 
-/* Guide : rond, à droite, à cheval sur le bas de la bannière */
+/* Guide : rond, à droite, sous la bannière */
 .guide {
   position: relative;
   z-index: 2;
@@ -157,7 +143,7 @@ body {
   gap: 4px;
   align-items: center;
   align-self: flex-end;
-  margin: -44px 18px 6px 0;
+  margin: -10px 18px 6px 0;
   padding: 0;
   border: 0;
   background: none;
