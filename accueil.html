@@ -24,16 +24,60 @@
         <feFuncB type="table" tableValues="0.608 0.235 0.102" />
       </feComponentTransfer>
     </filter>
-    <!-- Sablier de marine : montants en bois, verre, sable doré (même jaune que la barre de recharge) -->
-    <symbol id="icone-sablier" viewBox="0 0 24 24">
-      <path d="M8 5C8 9 11 10.5 11 12S8 15 8 19h8c0-4-3-5.5-3-7s3-3 3-7z" fill="#fff8e1" fill-opacity="0.55" stroke="#1f1610" stroke-width="1" stroke-linejoin="round" />
-      <path d="M9.4 7.4Q12 8.2 14.6 7.4C14.1 9.2 12.6 10.3 12 11.2 11.4 10.3 9.9 9.2 9.4 7.4z" fill="#f5c518" />
-      <path d="M12 11.4v5.2" stroke="#e0a800" stroke-width="0.8" stroke-linecap="round" />
-      <path d="M8.5 19Q12 14.6 15.5 19z" fill="#f5c518" stroke="#b8874d" stroke-width="0.5" />
-      <rect x="5" y="4.5" width="1.7" height="15" rx="0.8" fill="#8a5a2b" stroke="#1f1610" stroke-width="0.8" />
-      <rect x="17.3" y="4.5" width="1.7" height="15" rx="0.8" fill="#8a5a2b" stroke="#1f1610" stroke-width="0.8" />
-      <rect x="3.5" y="2" width="17" height="3" rx="1.3" fill="#a8703a" stroke="#1f1610" stroke-width="1" />
-      <rect x="3.5" y="19" width="17" height="3" rx="1.3" fill="#a8703a" stroke="#1f1610" stroke-width="1" />
+    <!-- Sablier de marine : plateaux et montants en bois veiné, clous dorés, cordage, verre avec reflets,
+         sable doré (même jaune que la barre de recharge) qui s'écoule en quelques grains -->
+    <defs>
+      <linearGradient id="sablier-bois" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c08646" />
+        <stop offset="1" stop-color="#7d4a1f" />
+      </linearGradient>
+      <linearGradient id="sablier-montant" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a8703a" />
+        <stop offset="1" stop-color="#6e3f19" />
+      </linearGradient>
+      <linearGradient id="sablier-sable" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffe680" />
+        <stop offset="1" stop-color="#e9b10f" />
+      </linearGradient>
+    </defs>
+    <symbol id="icone-sablier" viewBox="0 0 48 48">
+      <!-- Verre -->
+      <path d="M15 9C15 17 22 20 22 24S15 31 15 39h18c0-8-7-11-7-15s7-7 7-15z" fill="#eaf6ff" fill-opacity="0.5" />
+      <!-- Sable : en haut, le filet qui tombe avec quelques grains, le tas en bas -->
+      <path d="M17.6 14Q24 15.6 30.4 14C29.4 18 25.6 20.4 24 23 22.4 20.4 18.6 18 17.6 14z" fill="url(#sablier-sable)" />
+      <path d="M24 23v9" stroke="#e0a800" stroke-width="1.1" stroke-linecap="round" />
+      <circle cx="23.2" cy="27.5" r="0.55" fill="#e0a800" />
+      <circle cx="24.8" cy="30" r="0.5" fill="#e0a800" />
+      <path d="M16.4 39Q17.6 32.6 24 32 30.4 32.6 31.6 39z" fill="url(#sablier-sable)" stroke="#b8874d" stroke-width="0.6" />
+      <!-- Contour et reflets du verre -->
+      <path d="M15 9C15 17 22 20 22 24S15 31 15 39h18c0-8-7-11-7-15s7-7 7-15z" fill="none" stroke="#1f1610" stroke-width="1.4" stroke-linejoin="round" />
+      <path d="M17.3 11.5C17.6 15 19.4 17.4 20.9 18.8" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="1.2" stroke-linecap="round" />
+      <path d="M17.6 36.6C17.9 34.6 18.9 33.4 19.8 32.8" fill="none" stroke="#fff" stroke-opacity="0.6" stroke-width="1" stroke-linecap="round" />
+      <!-- Montants, avec un cordage enroulé au milieu -->
+      <rect x="8.6" y="8.5" width="3.6" height="31" rx="1.6" fill="url(#sablier-montant)" stroke="#1f1610" stroke-width="1.1" />
+      <rect x="35.8" y="8.5" width="3.6" height="31" rx="1.6" fill="url(#sablier-montant)" stroke="#1f1610" stroke-width="1.1" />
+      <g fill="#e3cc9b" stroke="#5b4a39" stroke-width="0.6">
+        <rect x="8" y="21.4" width="4.8" height="1.8" rx="0.9" />
+        <rect x="8" y="24.2" width="4.8" height="1.8" rx="0.9" />
+        <rect x="35.2" y="21.4" width="4.8" height="1.8" rx="0.9" />
+        <rect x="35.2" y="24.2" width="4.8" height="1.8" rx="0.9" />
+      </g>
+      <!-- Plateaux en bois veiné -->
+      <rect x="5" y="3" width="38" height="6.5" rx="2.6" fill="url(#sablier-bois)" stroke="#1f1610" stroke-width="1.4" />
+      <rect x="5" y="38.5" width="38" height="6.5" rx="2.6" fill="url(#sablier-bois)" stroke="#1f1610" stroke-width="1.4" />
+      <g fill="none" stroke="#5e3414" stroke-opacity="0.55" stroke-width="0.7" stroke-linecap="round">
+        <path d="M14 5.4q5-1 10 0t9 0" />
+        <path d="M17 7.3q4 .8 8 0" />
+        <path d="M15 40.9q5-1 10 0t9 0" />
+        <path d="M19 42.8q4 .8 8 0" />
+      </g>
+      <!-- Clous dorés aux quatre coins -->
+      <g fill="#f1d48c" stroke="#8a5a2b" stroke-width="0.6">
+        <circle cx="9" cy="6.25" r="1.4" />
+        <circle cx="39" cy="6.25" r="1.4" />
+        <circle cx="9" cy="41.75" r="1.4" />
+        <circle cx="39" cy="41.75" r="1.4" />
+      </g>
     </symbol>
   </svg>
 
@@ -58,18 +102,25 @@
         <!-- Le booster est fabriqué par pack.js -->
         <div class="zone-booster" role="button" tabindex="0" aria-label="Choisir comment ouvrir le booster East Blue"></div>
 
-        <!-- Recharge : un booster toutes les 8 h (rempli par recharge.js). La barre est posée sur la languette
-             du bas du booster (accueil.js l'y place) ; les boosters disponibles sont en éventail en dessous. -->
-        <div class="recharge" role="progressbar" aria-label="Prochain booster" aria-valuemin="0" aria-valuemax="100">
-          <span class="recharge__remplissage"></span>
-          <span class="recharge__temps"></span>
-        </div>
+        <!-- Les boosters disponibles, en éventail sur la languette du haut du booster (accueil.js les y place) -->
         <div class="reserve-boosters"></div>
 
-        <!-- Sabliers possédés : à droite de la barre de recharge, sur la languette du bas (accueil.js l'y place) -->
-        <div class="sabliers" role="status" aria-label="Sabliers">
-          <svg aria-hidden="true"><use href="#icone-sablier" /></svg>
-          <span class="sabliers__nombre">0</span>
+        <!-- Sous le booster : recharge d'un booster toutes les 8 h (barre et temps restant, remplis par recharge.js)
+             et, à droite, les Sabliers possédés. Icône de l'horloge : Lucide (licence ISC) -->
+        <div class="recharge-bloc">
+          <div class="recharge-bulle">
+            <div class="recharge" role="progressbar" aria-label="Prochain booster" aria-valuemin="0" aria-valuemax="100">
+              <span class="recharge__remplissage"></span>
+            </div>
+            <span class="recharge__temps">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+              <span class="recharge__texte"></span>
+            </span>
+          </div>
+          <div class="sabliers" role="status" aria-label="Sabliers">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#icone-sablier" /></svg>
+            <span class="sabliers__nombre">0</span>
+          </div>
         </div>
 
         <!-- Sous chaque bouton, le prix en Sabliers quand la réserve ne suffit pas (rempli par recharge.js) -->

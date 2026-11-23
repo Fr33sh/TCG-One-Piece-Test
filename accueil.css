@@ -31,12 +31,14 @@ body {
   box-shadow: inset 0 0 60px rgb(120 80 30 / 35%);
 }
 
-/* Le booster est en plein milieu de l'écran (hors barre de navigation) */
+/* Le booster et, dessous, la recharge sont au milieu de l'écran (hors barre de navigation) */
 .contenu {
   position: relative;
-  display: grid;
+  display: flex;
   flex: 1;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── Profil (en haut au centre) et paramètres (en haut à droite) ── */
@@ -115,28 +117,52 @@ body {
 .profil,
 .parametres,
 .navigation,
-.recharge,
+.recharge-bloc,
 .reserve-boosters {
   transition: opacity 0.45s ease, translate 0.5s ease, visibility 0s linear 0s;
 }
 
-/* ── Recharge : barre posée sur la languette du bas du booster, temps restant à l'intérieur,
-   et les Sabliers à sa droite ── */
+/* ── Sous le booster : la bulle de recharge (barre, puis temps restant) et, collée à sa droite,
+   la tuile des Sabliers. Mêmes couleurs que les bulles de choix : parchemin, contour noir, filet doré ── */
 
+.recharge-bloc {
+  display: flex;
+  align-items: center;
+  margin-top: 26px;
+}
+
+.recharge-bulle,
+.sabliers {
+  border: 3px solid #0b0a09;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow:
+    0 0 0 2px #b8874d,
+    inset 0 2px 0 rgb(255 255 255 / 60%),
+    inset 0 -3px 0 rgb(120 80 30 / 25%),
+    0 5px 10px rgb(60 35 10 / 30%);
+  color: #1f1610;
+}
+
+.recharge-bulle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  width: 172px;
+  padding: 9px 14px 7px;
+  border-radius: 22px;
+}
+
+/* La barre, creusée dans la bulle */
 .recharge {
-  position: absolute;
-  right: 34%;
-  bottom: calc(var(--l) * 0.011);
-  left: 8%;
-  z-index: 4;
-  display: grid;
-  place-items: center;
-  height: calc(var(--l) * 0.068);
+  position: relative;
+  width: 100%;
+  height: 12px;
   overflow: hidden;
   border: 2px solid #0b0a09;
   border-radius: 999px;
   background: #a9875a;
-  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 3px rgb(60 35 10 / 45%);
+  box-shadow: inset 0 2px 3px rgb(60 35 10 / 45%);
 }
 
 .recharge__remplissage {
@@ -151,47 +177,67 @@ body {
 }
 
 .recharge__temps {
-  position: relative;
-  color: #1f1610;
-  font: 400 calc(var(--l) * 0.046) / 1 "Lilita One", "Arial Black", sans-serif;
-  text-shadow: 0 1px 0 rgb(255 248 225 / 70%);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #5b4a39;
+  font: 400 15px / 1 "Lilita One", "Arial Black", sans-serif;
   white-space: nowrap;
 }
 
-/* Compteur de Sabliers : même pastille que la barre, en parchemin clair ; le sablier dépasse un peu */
+.recharge__temps svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Tuile des Sabliers : un grand sablier, le nombre en bas à droite ; une petite pointe la relie à la bulle */
 .sabliers {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-left: 14px;
+  border-radius: 16px;
+}
+
+.sabliers::before {
+  content: "";
   position: absolute;
-  right: 8%;
-  bottom: calc(var(--l) * 0.011);
-  z-index: 4;
-  display: flex;
-  gap: calc(var(--l) * 0.008);
-  align-items: center;
-  justify-content: center;
-  width: 22%;
-  height: calc(var(--l) * 0.068);
-  border: 2px solid #0b0a09;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 2px #b8874d, inset 0 -2px 0 rgb(120 80 30 / 25%);
-  color: #1f1610;
-  font: 400 calc(var(--l) * 0.05) / 1 "Lilita One", "Arial Black", sans-serif;
-  transition: opacity 0.45s ease, visibility 0s linear 0s;
+  top: 50%;
+  left: -10px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 3px solid #0b0a09;
+  border-left: 3px solid #0b0a09;
+  background: #eedcb4;
+  box-shadow: -2px 2px 0 0 #b8874d;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .sabliers svg {
-  flex: none;
-  width: calc(var(--l) * 0.085);
-  height: calc(var(--l) * 0.085);
-  margin-left: calc(var(--l) * -0.012);
-  filter: drop-shadow(0 1px 0 rgb(60 35 10 / 35%));
+  width: 44px;
+  height: 44px;
+  margin: -6px 0 0 -8px;
+  filter: drop-shadow(0 2px 1px rgb(60 35 10 / 35%));
 }
 
-/* Pendant l'ouverture, le compteur s'efface comme le reste (il reste visible au choix d'ouverture) */
-.mode-ouverture .sabliers {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0s linear 0.5s;
+.sabliers__nombre {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  color: #1f1610;
+  font: 400 17px / 1 "Lilita One", "Arial Black", sans-serif;
+  text-shadow:
+    1px 0 0 #f6ead0,
+    -1px 0 0 #f6ead0,
+    0 1px 0 #f6ead0,
+    0 -1px 0 #f6ead0;
 }
 
 /* ── Boosters disponibles : petits dos de cartes en éventail, en haut à gauche de la languette supérieure
@@ -247,8 +293,8 @@ body {
 .mode-booster .profil,
 .mode-booster .parametres,
 .mode-booster .navigation,
-.mode-booster .recharge,
-.mode-ouverture .recharge,
+.mode-booster .recharge-bloc,
+.mode-ouverture .recharge-bloc,
 .mode-booster .reserve-boosters,
 .mode-ouverture .reserve-boosters {
   opacity: 0;

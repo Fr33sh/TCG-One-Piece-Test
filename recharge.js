@@ -1,6 +1,6 @@
 // Recharge des boosters : un booster toutes les 8 h, jusqu'à 3 en réserve ; le tout premier est disponible
-// tout de suite. La barre, sur la languette du bas du booster, avance vers le prochain et affiche le temps
-// restant ; les boosters disponibles sont de petites icônes en éventail, comme des cartes en main.
+// tout de suite. Sous le booster, la barre avance vers le prochain et le temps restant s'affiche dessous, à côté
+// du nombre de Sabliers ; les boosters disponibles sont de petites icônes en éventail, comme des cartes en main.
 // « Ouvrir 1 Booster » demande 1 booster en réserve, « Ouvrir 10 Boosters » en demande 10 : ce qui manque
 // se paie en Sabliers (sabliers.js, 1 Sablier = 1 heure de recharge).
 
@@ -11,7 +11,7 @@ const ANGLE_EVENTAIL = 10; // degrés entre deux icônes
 
 const barreRecharge = document.querySelector(".recharge");
 const remplissageRecharge = document.querySelector(".recharge__remplissage");
-const tempsRecharge = document.querySelector(".recharge__temps");
+const tempsRecharge = document.querySelector(".recharge__texte");
 const reserveBoosters = document.querySelector(".reserve-boosters");
 const compteurSabliers = document.querySelector(".sabliers__nombre");
 
