@@ -42,20 +42,19 @@ body {
 
 /* ── Bannière : une bande inclinée qui déborde de l'écran, liserés bleus comme le booster ── */
 
+/* La bannière prend toute la hauteur laissée libre par les boutons, qui restent en bas de l'écran */
 .banniere {
   position: relative;
-  height: 52vh;
-  height: 52dvh;
-  min-height: 300px;
-  max-height: 460px;
+  flex: 1 1 auto;
+  min-height: 320px;
 }
 
 .banniere__bande {
   position: absolute;
-  top: -14%;
-  right: -20%;
-  bottom: 7%;
-  left: -20%;
+  top: -8%;
+  right: -14%;
+  bottom: 6%;
+  left: -14%;
   overflow: hidden;
   border-top: 9px solid #3aaef4;
   border-bottom: 9px solid #3aaef4;
@@ -67,22 +66,21 @@ body {
   transform: rotate(-8deg);
 }
 
-/* L'illustration reste droite à l'intérieur de la bande penchée */
+/* L'illustration penche avec la bande, sans zoom : on la voit presque en entier */
 .banniere__image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 30%;
-  transform: rotate(8deg) scale(1.3);
+  object-position: 40% 15%;
 }
 
-/* Le titre suit l'inclinaison de la bande */
+/* Le titre suit l'inclinaison de la bande, sous la barre d'état du téléphone */
 .banniere__titre {
   position: absolute;
-  top: 30%;
-  left: 19%;
+  top: 19%;
+  left: 15%;
   color: #fff8e1;
   font-size: 58px;
   font-weight: 400;
