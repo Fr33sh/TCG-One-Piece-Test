@@ -4,9 +4,9 @@
 const zoneBooster = document.querySelector(".zone-booster");
 const choixBooster = document.querySelector(".choix-booster");
 zoneBooster.append(creerPack());
-// La barre de recharge (languette du bas) et les boosters disponibles (languette du haut)
+// La barre de recharge et les Sabliers (languette du bas) et les boosters disponibles (languette du haut)
 // suivent le booster et son flottement
-zoneBooster.querySelector(".booster").append(document.querySelector(".reserve-boosters"), document.querySelector(".recharge"));
+zoneBooster.querySelector(".booster").append(document.querySelector(".reserve-boosters"), document.querySelector(".recharge"), document.querySelector(".sabliers"));
 
 function afficherChoixBooster(visible) {
   document.body.classList.toggle("mode-booster", visible);

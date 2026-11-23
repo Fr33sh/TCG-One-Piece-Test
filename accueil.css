@@ -94,49 +94,6 @@ body {
   stroke-linejoin: round;
 }
 
-/* ── Sabliers (en haut à gauche) : même relief que le bouton des paramètres ── */
-
-.sabliers {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  height: 44px;
-  padding: 0 14px 0 10px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #d9bd86, #c3a26b);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 55%),
-    inset 0 -3px 0 rgb(90 60 25 / 35%),
-    0 3px 6px rgb(60 35 10 / 35%);
-  color: #1f1610;
-  font: 400 19px / 1 "Lilita One", "Arial Black", sans-serif;
-  transition: opacity 0.45s ease, visibility 0s linear 0s;
-}
-
-.sabliers svg,
-.bulle-choix__cout svg {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.sabliers svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Pendant l'ouverture, le compteur s'efface comme le reste */
-.mode-ouverture .sabliers {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0s linear 0.5s;
-}
-
 /* ── Mode booster : zoom sur le paquet, le reste s'efface, les choix d'ouverture apparaissent ── */
 
 .cadre {
@@ -163,11 +120,12 @@ body {
   transition: opacity 0.45s ease, translate 0.5s ease, visibility 0s linear 0s;
 }
 
-/* ── Recharge : barre posée sur la languette du bas du booster, temps restant à l'intérieur ── */
+/* ── Recharge : barre posée sur la languette du bas du booster, temps restant à l'intérieur,
+   et les Sabliers à sa droite ── */
 
 .recharge {
   position: absolute;
-  right: 8%;
+  right: 34%;
   bottom: calc(var(--l) * 0.011);
   left: 8%;
   z-index: 4;
@@ -198,6 +156,42 @@ body {
   font: 400 calc(var(--l) * 0.046) / 1 "Lilita One", "Arial Black", sans-serif;
   text-shadow: 0 1px 0 rgb(255 248 225 / 70%);
   white-space: nowrap;
+}
+
+/* Compteur de Sabliers : même pastille que la barre, en parchemin clair ; le sablier dépasse un peu */
+.sabliers {
+  position: absolute;
+  right: 8%;
+  bottom: calc(var(--l) * 0.011);
+  z-index: 4;
+  display: flex;
+  gap: calc(var(--l) * 0.008);
+  align-items: center;
+  justify-content: center;
+  width: 22%;
+  height: calc(var(--l) * 0.068);
+  border: 2px solid #0b0a09;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
+  box-shadow: 0 0 0 2px #b8874d, inset 0 -2px 0 rgb(120 80 30 / 25%);
+  color: #1f1610;
+  font: 400 calc(var(--l) * 0.05) / 1 "Lilita One", "Arial Black", sans-serif;
+  transition: opacity 0.45s ease, visibility 0s linear 0s;
+}
+
+.sabliers svg {
+  flex: none;
+  width: calc(var(--l) * 0.085);
+  height: calc(var(--l) * 0.085);
+  margin-left: calc(var(--l) * -0.012);
+  filter: drop-shadow(0 1px 0 rgb(60 35 10 / 35%));
+}
+
+/* Pendant l'ouverture, le compteur s'efface comme le reste (il reste visible au choix d'ouverture) */
+.mode-ouverture .sabliers {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.5s;
 }
 
 /* ── Boosters disponibles : petits dos de cartes en éventail, en haut à gauche de la languette supérieure
@@ -341,9 +335,8 @@ body {
 }
 
 .bulle-choix__cout svg {
-  width: 15px;
-  height: 15px;
-  stroke-width: 2.4;
+  width: 17px;
+  height: 17px;
 }
 
 .bulle-retour {
