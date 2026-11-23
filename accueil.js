@@ -1,6 +1,9 @@
 // Accueil : toucher le booster le met en avant (zoom, le reste s'efface) et affiche les choix d'ouverture ;
 // la flèche de retour revient à l'accueil.
 
+// Mission quotidienne « Se connecter au jeu »
+progresserMission("connexion");
+
 // Le bouton du profil montre l'icône choisie par le joueur
 document.querySelector(".profil").replaceChildren(creerIconeProfil());
 

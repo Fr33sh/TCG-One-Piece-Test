@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Missions</title>
   <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="missions.css">
 </head>
 <body>
   <!-- Icône : Lucide (licence ISC) -->
@@ -19,11 +20,32 @@
     <h1 class="barre-page__titre">Missions</h1>
   </header>
 
-  <!-- Les missions viendront ici, une bulle par mission ou par groupe de missions -->
   <main class="liste-bulles">
-    <section class="bulle-page" aria-labelledby="titre-bientot">
-      <h2 class="bulle-page__titre" id="titre-bientot">Bientôt</h2>
-      <p class="bulle-page__texte">Les premières missions arrivent bientôt. Reviens vite, moussaillon !</p>
+    <!-- Missions quotidiennes : barre de progression (et son Sablier bonus), puis les 3 missions (missions.js) -->
+    <section class="bulle-page" aria-labelledby="titre-quotidiennes">
+      <div class="missions-entete">
+        <h2 class="bulle-page__titre" id="titre-quotidiennes">Missions quotidiennes</h2>
+        <span class="missions-entete__sabliers" aria-label="Sabliers possédés">
+          <img src="assets/icones/sablier.svg" alt=""><span data-sabliers></span>
+        </span>
+      </div>
+      <p class="missions-renouvellement" data-renouvellement></p>
+
+      <div class="progression">
+        <div class="progression__piste" role="progressbar" aria-label="Missions accomplies aujourd'hui" aria-valuemin="0" aria-valuemax="3">
+          <span class="progression__remplissage"></span>
+          <span class="progression__cran" style="left: 33.33%"></span>
+          <span class="progression__cran" style="left: 66.67%"></span>
+          <span class="progression__texte" data-progression-texte></span>
+        </div>
+        <button class="progression__bonus" type="button" data-bonus aria-label="Sablier bonus">
+          <img src="assets/icones/sablier.svg" alt="">
+          <span class="progression__gain">+1</span>
+        </button>
+      </div>
+
+      <ul class="liste-missions" data-liste-missions></ul>
+      <p class="message-page" data-message role="status"></p>
     </section>
   </main>
 
@@ -32,5 +54,8 @@
   <script src="musique.js"></script>
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>
+  <script src="sabliers.js"></script>
+  <script src="missions-quotidiennes.js"></script>
+  <script src="missions.js"></script>
 </body>
 </html>

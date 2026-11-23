@@ -71,6 +71,8 @@ function utiliserBoosters(nombre) {
   else origineRecharge += nombre * DUREE_RECHARGE;
   enregistrerOrigine(origineRecharge);
   afficherRecharge();
+  // Mission quotidienne « Ouvrir 2 boosters » (missions-quotidiennes.js)
+  if (typeof progresserMission === "function") progresserMission("boosters", nombre);
   return true;
 }
 

@@ -139,7 +139,14 @@ function afficher() {
 
   afficherBandeau();
   partie.touches = [];
-  if (partie.phase === "fin") afficherFin();
+  if (partie.phase === "fin") {
+    // Mission quotidienne « Disputer un combat » : comptée une seule fois par partie, gagnée ou perdue
+    if (!partie.missionComptee) {
+      partie.missionComptee = true;
+      progresserMission("combat");
+    }
+    afficherFin();
+  }
 }
 
 function afficherBandeau() {

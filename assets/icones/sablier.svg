@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Sablier de marine (monnaie du jeu) : plateaux et montants en bois veiné, clous dorés, cordage, verre avec
+       reflets, sable doré (même jaune que la barre de recharge) qui s'écoule en quelques grains -->
+  <defs>
+    <linearGradient id="bois" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c08646" />
+      <stop offset="1" stop-color="#7d4a1f" />
+    </linearGradient>
+    <linearGradient id="montant" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a8703a" />
+      <stop offset="1" stop-color="#6e3f19" />
+    </linearGradient>
+    <linearGradient id="sable" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe680" />
+      <stop offset="1" stop-color="#e9b10f" />
+    </linearGradient>
+  </defs>
+  <!-- Verre -->
+  <path d="M15 9C15 17 22 20 22 24S15 31 15 39h18c0-8-7-11-7-15s7-7 7-15z" fill="#eaf6ff" fill-opacity="0.5" />
+  <!-- Sable : en haut, le filet qui tombe avec quelques grains, le tas en bas -->
+  <path d="M17.6 14Q24 15.6 30.4 14C29.4 18 25.6 20.4 24 23 22.4 20.4 18.6 18 17.6 14z" fill="url(#sable)" />
+  <path d="M24 23v9" stroke="#e0a800" stroke-width="1.1" stroke-linecap="round" />
+  <circle cx="23.2" cy="27.5" r="0.55" fill="#e0a800" />
+  <circle cx="24.8" cy="30" r="0.5" fill="#e0a800" />
+  <path d="M16.4 39Q17.6 32.6 24 32 30.4 32.6 31.6 39z" fill="url(#sable)" stroke="#b8874d" stroke-width="0.6" />
+  <!-- Contour et reflets du verre -->
+  <path d="M15 9C15 17 22 20 22 24S15 31 15 39h18c0-8-7-11-7-15s7-7 7-15z" fill="none" stroke="#1f1610" stroke-width="1.4" stroke-linejoin="round" />
+  <path d="M17.3 11.5C17.6 15 19.4 17.4 20.9 18.8" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M17.6 36.6C17.9 34.6 18.9 33.4 19.8 32.8" fill="none" stroke="#fff" stroke-opacity="0.6" stroke-width="1" stroke-linecap="round" />
+  <!-- Montants, avec un cordage enroulé au milieu -->
+  <rect x="8.6" y="8.5" width="3.6" height="31" rx="1.6" fill="url(#montant)" stroke="#1f1610" stroke-width="1.1" />
+  <rect x="35.8" y="8.5" width="3.6" height="31" rx="1.6" fill="url(#montant)" stroke="#1f1610" stroke-width="1.1" />
+  <g fill="#e3cc9b" stroke="#5b4a39" stroke-width="0.6">
+    <rect x="8" y="21.4" width="4.8" height="1.8" rx="0.9" />
+    <rect x="8" y="24.2" width="4.8" height="1.8" rx="0.9" />
+    <rect x="35.2" y="21.4" width="4.8" height="1.8" rx="0.9" />
+    <rect x="35.2" y="24.2" width="4.8" height="1.8" rx="0.9" />
+  </g>
+  <!-- Plateaux en bois veiné -->
+  <rect x="5" y="3" width="38" height="6.5" rx="2.6" fill="url(#bois)" stroke="#1f1610" stroke-width="1.4" />
+  <rect x="5" y="38.5" width="38" height="6.5" rx="2.6" fill="url(#bois)" stroke="#1f1610" stroke-width="1.4" />
+  <g fill="none" stroke="#5e3414" stroke-opacity="0.55" stroke-width="0.7" stroke-linecap="round">
+    <path d="M14 5.4q5-1 10 0t9 0" />
+    <path d="M17 7.3q4 .8 8 0" />
+    <path d="M15 40.9q5-1 10 0t9 0" />
+    <path d="M19 42.8q4 .8 8 0" />
+  </g>
+  <!-- Clous dorés aux quatre coins -->
+  <g fill="#f1d48c" stroke="#8a5a2b" stroke-width="0.6">
+    <circle cx="9" cy="6.25" r="1.4" />
+    <circle cx="39" cy="6.25" r="1.4" />
+    <circle cx="9" cy="41.75" r="1.4" />
+    <circle cx="39" cy="41.75" r="1.4" />
+  </g>
+</svg>

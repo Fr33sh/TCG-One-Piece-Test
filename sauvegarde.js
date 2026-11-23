@@ -7,6 +7,7 @@ const CLES_SAUVEGARDEES = [
   "tcg-one-piece/recharge",
   "tcg-one-piece/sabliers",
   "tcg-one-piece/icone",
+  "tcg-one-piece/missions",
   "tcg-one-piece/parametres",
 ];
 const DELAI_SAUVEGARDE = 1500; // ms : plusieurs changements rapprochés partent en un seul envoi

@@ -291,7 +291,7 @@ body {
   transform: translateY(-50%) rotate(45deg);
 }
 
-.sabliers svg {
+.sabliers img {
   width: 28px;
   height: 28px;
   margin: -4px 0 0 -5px;
@@ -451,7 +451,7 @@ body {
   display: none;
 }
 
-.bulle-choix__cout svg {
+.bulle-choix__cout img {
   width: 17px;
   height: 17px;
 }
