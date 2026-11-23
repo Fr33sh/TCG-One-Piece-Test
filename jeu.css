@@ -62,11 +62,12 @@ body {
   transform: rotate(-7deg);
 }
 
-/* Chaque image garde exactement ses proportions (données dans la page) : visible en entier, sans
-   agrandissement ; contour noir et liseré bleu comme le booster */
+/* Toutes les bandes ont le format de la bannière d'« Episode of East Blue » (1303 × 377), visible en entier ;
+   les affiches y sont découpées en bande (cadrage donné dans la page). Contour noir et liseré bleu. */
 .banniere__bande {
   box-sizing: content-box;
   width: 84%;
+  aspect-ratio: 1303 / 377;
   overflow: hidden;
   border: 3px solid #0b0a09;
   border-radius: 8px;
