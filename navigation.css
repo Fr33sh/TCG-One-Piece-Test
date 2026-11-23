@@ -1,8 +1,11 @@
 /* Barre de navigation commune : parchemin plus sombre, en relief, icônes noires.
    Elle est identique et posée en bas de l'écran sur toutes les pages. */
 
+/* Sous les icônes, on ne garde qu'une partie de la zone de la barre d'accueil de l'iPhone (le petit trait en bas) :
+   juste assez pour que les icônes restent au-dessus du trait */
 :root {
-  --hauteur-navigation: calc(70px + env(safe-area-inset-bottom));
+  --marge-bas-navigation: max(8px, calc(env(safe-area-inset-bottom) - 14px));
+  --hauteur-navigation: calc(60px + var(--marge-bas-navigation));
 }
 
 .navigation {
@@ -11,7 +14,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
-  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  padding: 6px 8px var(--marge-bas-navigation);
   border-top: 2px solid #9c7444;
   background: linear-gradient(180deg, #d4b47c 0%, var(--fond-barre) 45%, #b8955f 100%);
   box-shadow:
