@@ -10,8 +10,9 @@
 }
 
 body {
-  /* Place réservée en haut pour l'encoche de la caméra (celle du téléphone ou de l'émulateur) */
-  --encoche: max(env(safe-area-inset-top), 48px);
+  /* Place réservée en haut pour l'encoche de la caméra et la barre d'état (celles du téléphone, mesurées par
+     marge-haut.js, ou celle de l'émulateur) */
+  --encoche: max(var(--marge-haut, env(safe-area-inset-top)), 48px);
   --hauteur-barre-collection: calc(54px + var(--encoche));
 
   min-height: 100vh;
@@ -262,10 +263,10 @@ body {
   box-shadow: 0 calc(var(--largeur-zoom) * 0.016) calc(var(--largeur-zoom) * 0.04) rgb(0 0 0 / 45%);
 }
 
-/* Petite flèche de retour, en haut à droite */
+/* Petite flèche de retour, en haut à droite (sous la barre d'état du téléphone) */
 .zoom__retour {
   position: absolute;
-  top: 14px;
+  top: max(14px, calc(var(--marge-haut, env(safe-area-inset-top)) + 6px));
   right: 14px;
   z-index: 1;
   display: grid;

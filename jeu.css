@@ -12,13 +12,13 @@ body {
   display: none !important;
 }
 
-/* Le bas de l'écran est réservé à la barre de navigation */
+/* Le haut de l'écran est laissé à la barre d'état du téléphone (marge-haut.js), le bas à la barre de navigation */
 .jeu {
   max-width: 480px;
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0 auto;
-  padding: 12px 16px calc(var(--hauteur-navigation) + 10px);
+  padding: calc(12px + var(--marge-haut, env(safe-area-inset-top))) 16px calc(var(--hauteur-navigation) + 10px);
 }
 
 /* ── Choix du deck ── */

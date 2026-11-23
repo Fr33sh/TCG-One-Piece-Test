@@ -48,7 +48,7 @@ body {
   gap: 22px;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: max(env(safe-area-inset-top), 48px) 20px 32px;
+  padding: max(var(--marge-haut, env(safe-area-inset-top)), 48px) 20px 32px;
 }
 
 .connexion__titre {
