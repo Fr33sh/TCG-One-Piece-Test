@@ -3,211 +3,240 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Aperçu : nom et logo du jeu (direction cristal)</title>
-  <!-- Page TEMPORAIRE : 10 nouveaux noms et logos, tous dans la direction artistique « cristal » (sarcelle et
-       argent) choisie. À supprimer après le choix. -->
+  <title>Aperçu : nom, logo et design du jeu (thèmes sombres)</title>
+  <!-- Page TEMPORAIRE : 10 propositions de nom, logo et direction artistique, thèmes sombres sans excès.
+       À supprimer après le choix. -->
   <style>
     @font-face { font-family: "Lilita One"; src: url("assets/polices/lilita-one.woff2") format("woff2"); }
     @font-face { font-family: "Alfa Slab One"; src: url("assets/polices/alfa-slab-one.woff2") format("woff2"); }
     @font-face { font-family: "Playfair Display"; font-weight: 900; src: url("assets/polices/playfair-display-900.woff2") format("woff2"); }
+    @font-face { font-family: "IM Fell English SC"; src: url("assets/polices/im-fell-english-sc.woff2") format("woff2"); }
     @font-face { font-family: "Lato"; font-weight: 700; src: url("assets/polices/lato-700.woff2") format("woff2"); }
     @font-face { font-family: "Lato"; font-weight: 400; src: url("assets/polices/lato-400.woff2") format("woff2"); }
 
     * { box-sizing: border-box; margin: 0; }
 
-    body {
-      padding: max(env(safe-area-inset-top), 24px) 14px 40px;
-      background: #071d22;
-      color: #dff9f6;
-      font-family: "Lato", sans-serif;
-    }
-
+    body { padding: max(env(safe-area-inset-top), 24px) 14px 40px; background: #121318; color: #e8e8ee; font-family: "Lato", sans-serif; }
     h1 { font: 400 23px "Lilita One", sans-serif; text-align: center; }
-    .aide { margin: 6px 0 20px; color: #8fb9b4; font-size: 14px; text-align: center; }
+    .aide { margin: 6px 0 20px; color: #a0a3b0; font-size: 14px; text-align: center; }
 
     .propositions { display: flex; flex-direction: column; gap: 24px; max-width: 460px; margin: 0 auto; }
     .proposition { display: flex; gap: 14px; align-items: flex-start; }
-
     .infos { flex: 1; min-width: 0; }
-    .infos .numero { font: 400 28px "Lilita One", sans-serif; color: #8fe3d9; line-height: 1; }
+    .infos .numero { font: 400 28px "Lilita One", sans-serif; color: #f5c518; line-height: 1; }
     .infos h2 { margin: 2px 0 4px; font: 400 20px "Lilita One", sans-serif; color: #fff; }
-    .infos p { color: #b5d6d2; font-size: 13px; line-height: 1.35; }
+    .infos p { color: #c3c5cf; font-size: 13px; line-height: 1.35; }
+    .infos .palette { display: flex; gap: 4px; margin-top: 8px; }
+    .infos .palette span { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgb(255 255 255 / 25%); }
 
-    /* Mini-écran d'accueil, direction « cristal » : fond sarcelle profond, reflets, accents sarcelle clair et argent */
     .ecran {
-      --accent: #8fe3d9;
-
-      position: relative;
-      display: flex;
-      flex: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      width: 168px;
-      height: 300px;
-      padding: 24px 12px 14px;
-      overflow: hidden;
-      border: 3px solid #000;
-      border-radius: 22px;
-      background:
-        linear-gradient(125deg, transparent 0 38%, rgb(255 255 255 / 7%) 38% 52%, transparent 52%),
-        linear-gradient(55deg, transparent 0 60%, rgb(143 227 217 / 8%) 60% 72%, transparent 72%),
-        linear-gradient(160deg, #0b2b33, #0f4c55 55%, #0b2b33);
-      color: #dff9f6;
-      box-shadow: 0 6px 16px rgb(0 0 0 / 50%);
+      position: relative; display: flex; flex: none; flex-direction: column; align-items: center; justify-content: space-between;
+      width: 168px; height: 300px; padding: 24px 12px 14px; overflow: hidden;
+      border: 3px solid #000; border-radius: 22px; box-shadow: 0 6px 16px rgb(0 0 0 / 55%);
     }
-
     .logo { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
-    .logo svg { width: 66px; height: 66px; filter: drop-shadow(0 0 6px rgb(143 227 217 / 45%)); }
-
-    /* Le nom en dégradé blanc → sarcelle, comme le cristal */
-    .nom {
-      background: linear-gradient(180deg, #ffffff 20%, var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 0.95;
-    }
-
-    .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; color: var(--accent); }
-
-    .booster {
-      width: 62px;
-      height: 92px;
-      background: linear-gradient(160deg, var(--accent), #1f7f86 60%, #0b2b33);
-      clip-path: polygon(50% 0, 100% 15%, 100% 85%, 50% 100%, 0 85%, 0 15%);
-    }
-
-    .bouton {
-      width: 100%;
-      padding: 8px 0;
-      border: 1.5px solid var(--accent);
-      border-radius: 999px;
-      background: rgb(143 227 217 / 12%);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-align: center;
-    }
-
+    .logo svg { width: 64px; height: 64px; }
+    .booster { width: 62px; height: 92px; border-radius: 6px; }
+    .bouton { width: 100%; padding: 8px 0; border-radius: 999px; font-size: 12px; text-align: center; }
     .rubriques { display: flex; gap: 5px; }
-    .rubriques i { width: 30px; height: 36px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: var(--accent); opacity: 0.85; }
+    .rubriques i { width: 30px; height: 38px; border-radius: 5px; }
+    .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; }
+
+    /* 1. Éclipse : indigo profond, couronne dorée */
+    .t1 { background: radial-gradient(circle at 50% 22%, #2a3366, #141a33 65%); color: #f3e3b0; }
+    .t1 .nom { font: 900 26px "Playfair Display", serif; letter-spacing: 0.03em; }
+    .t1 .sous { color: #b9c0e8; }
+    .t1 .booster { background: linear-gradient(160deg, #2a3366, #0c1024); border: 1.5px solid #e9c46a; box-shadow: 0 0 14px rgb(233 196 106 / 35%); }
+    .t1 .bouton { background: linear-gradient(180deg, #f3d98a, #c99a35); color: #141a33; font: 900 12px "Playfair Display", serif; }
+    .t1 .rubriques i { border: 1.5px solid #e9c46a; background: rgb(233 196 106 / 10%); }
+
+    /* 2. Obsidia : graphite et améthyste */
+    .t2 { background: linear-gradient(160deg, #262a32, #1c1f24 60%, #15171b); color: #e6dcff; }
+    .t2 .nom { font: 400 25px "Alfa Slab One", serif; letter-spacing: 0.05em; background: linear-gradient(180deg, #fff, #b48cff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .t2 .sous { color: #9b6bff; }
+    .t2 .booster { background: linear-gradient(150deg, #3a2a5c, #1c1f24 55%, #9b6bff); clip-path: polygon(20% 0, 100% 8%, 92% 100%, 0 88%); }
+    .t2 .bouton { border: 1.5px solid #9b6bff; background: rgb(155 107 255 / 15%); font-weight: 700; letter-spacing: 0.1em; }
+    .t2 .rubriques i { background: #2c2f38; border: 1px solid #9b6bff; }
+
+    /* 3. Nocturne : bleu nuit et argent lunaire */
+    .t3 { background: radial-gradient(circle at 25% 15%, #fff 0 1px, transparent 1.5px) 0 0 / 30px 30px, linear-gradient(180deg, #16294f, #0f1e3d); color: #d8e1f0; }
+    .t3 .nom { font: 400 25px "IM Fell English SC", serif; letter-spacing: 0.06em; }
+    .t3 .sous { color: #8fa6cf; }
+    .t3 .booster { background: linear-gradient(170deg, #2b4a85, #0f1e3d); border: 1.5px solid #d8e1f0; }
+    .t3 .bouton { border: 1.5px solid #d8e1f0; color: #fff; font-weight: 700; letter-spacing: 0.08em; }
+    .t3 .rubriques i { background: rgb(216 225 240 / 12%); border: 1px solid #d8e1f0; }
+
+    /* 4. Crépuscule : prune et ambre */
+    .t4 { background: linear-gradient(180deg, #2b1a33 0%, #4a2238 55%, #6b2f3a 100%); color: #ffe2bd; }
+    .t4 .nom { font: 400 23px "Lilita One", sans-serif; letter-spacing: 0.03em; color: #ffb35c; text-shadow: 0 2px 0 #2b1a33; }
+    .t4 .sous { color: #f1a38a; }
+    .t4 .booster { background: linear-gradient(180deg, #ffb35c 0 35%, #c4524a 35% 60%, #2b1a33 60%); border-radius: 6px; }
+    .t4 .bouton { background: linear-gradient(180deg, #ffc477, #e08537); color: #2b1a33; font: 400 13px "Lilita One", sans-serif; }
+    .t4 .rubriques i { background: rgb(255 179 92 / 15%); border: 1px solid #ffb35c; }
+
+    /* 5. Umbra : anthracite sarcelle et jade (proche de la direction « cristal ») */
+    .t5 { background: linear-gradient(160deg, #18302f, #122226 60%, #0d1a1d); color: #d9fff2; }
+    .t5 .nom { font: 700 27px "Lato", sans-serif; letter-spacing: 0.2em; }
+    .t5 .sous { color: #4fd1a5; }
+    .t5 .booster { background: linear-gradient(160deg, #4fd1a5, #1c5a4c 55%, #122226); clip-path: polygon(50% 0, 100% 15%, 100% 85%, 50% 100%, 0 85%, 0 15%); }
+    .t5 .bouton { border: 1.5px solid #4fd1a5; background: rgb(79 209 165 / 12%); font-weight: 700; letter-spacing: 0.12em; }
+    .t5 .rubriques i { clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #4fd1a5; opacity: 0.8; }
+
+    /* 6. Rōnin : laque rouge, noir chaud, os */
+    .t6 { background: linear-gradient(180deg, #2a1618, #1e1214); color: #f1e6d6; }
+    .t6 .nom { font: 400 28px "Alfa Slab One", serif; letter-spacing: 0.06em; }
+    .t6 .sous { color: #c0392b; }
+    .t6 .booster { background: linear-gradient(160deg, #c0392b, #6e1a14); border: 2px solid #f1e6d6; }
+    .t6 .bouton { background: #c0392b; color: #f1e6d6; font: 400 13px "Alfa Slab One", serif; border-radius: 4px; }
+    .t6 .rubriques i { background: #2e1b1d; border: 1px solid #c0392b; border-radius: 2px; }
+
+    /* 7. Abysse : océan profond et lumière bioluminescente */
+    .t7 { background: radial-gradient(circle at 70% 35%, rgb(62 230 208 / 25%) 0 2px, transparent 3px) 0 0 / 40px 40px, linear-gradient(180deg, #0a3240, #06232e 50%, #041820); color: #c9fff6; }
+    .t7 .nom { font: 400 26px "Lilita One", sans-serif; letter-spacing: 0.04em; color: #3ee6d0; text-shadow: 0 0 10px rgb(62 230 208 / 60%); }
+    .t7 .sous { color: #8fd8ce; }
+    .t7 .booster { background: linear-gradient(180deg, #0f4c5c, #041820); border: 1.5px solid #3ee6d0; box-shadow: 0 0 12px rgb(62 230 208 / 40%); border-radius: 10px; }
+    .t7 .bouton { background: #3ee6d0; color: #041820; font: 400 13px "Lilita One", sans-serif; }
+    .t7 .rubriques i { background: rgb(62 230 208 / 12%); border: 1px solid #3ee6d0; border-radius: 10px; }
+
+    /* 8. Spectra : ardoise et reflets irisés */
+    .t8 { background: linear-gradient(160deg, #232737, #1b1e2b); color: #fff; }
+    .t8 .nom { font: 900 26px "Playfair Display", serif; background: linear-gradient(90deg, #ff9ad5, #b9a4ff, #8fe3ff, #a6ffcf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .t8 .sous { color: #b9a4ff; }
+    .t8 .booster { background: linear-gradient(160deg, #ff9ad5, #b9a4ff 35%, #8fe3ff 65%, #1b1e2b); }
+    .t8 .bouton { border: 1.5px solid transparent; background: linear-gradient(#1b1e2b, #1b1e2b) padding-box, linear-gradient(90deg, #ff9ad5, #8fe3ff) border-box; font-weight: 700; letter-spacing: 0.08em; }
+    .t8 .rubriques i { background: #2a2e40; border: 1px solid #b9a4ff; }
+
+    /* 9. Minuit : bleu-noir et or chaud */
+    .t9 { background: radial-gradient(ellipse at 50% 100%, #2a2440, #121826 60%); color: #f6e7c1; }
+    .t9 .nom { font: 400 27px "IM Fell English SC", serif; letter-spacing: 0.08em; color: #e9c46a; }
+    .t9 .sous { color: #a8a9c4; }
+    .t9 .booster { background: linear-gradient(180deg, #1d2438, #121826); border: 1.5px solid #e9c46a; border-radius: 30px 30px 6px 6px; }
+    .t9 .bouton { border: 1.5px solid #e9c46a; color: #e9c46a; font: 400 13px "IM Fell English SC", serif; letter-spacing: 0.08em; }
+    .t9 .rubriques i { background: rgb(233 196 106 / 12%); border: 1px solid #e9c46a; }
+
+    /* 10. Astralis : violet profond et constellations */
+    .t10 { background: radial-gradient(circle at 30% 20%, #fff 0 1px, transparent 1.6px) 0 0 / 26px 26px, radial-gradient(circle at 80% 70%, #ffd86b 0 1px, transparent 1.6px) 0 0 / 38px 38px, linear-gradient(180deg, #241a52, #1a1440); color: #f0e9ff; }
+    .t10 .nom { font: 400 24px "Lilita One", sans-serif; letter-spacing: 0.05em; color: #ffd86b; }
+    .t10 .sous { color: #b6a6ff; }
+    .t10 .booster { background: linear-gradient(160deg, #3b2d85, #1a1440); border: 1.5px solid #ffd86b; border-radius: 8px; }
+    .t10 .bouton { background: linear-gradient(180deg, #ffe08a, #e0a930); color: #1a1440; font: 400 13px "Lilita One", sans-serif; }
+    .t10 .rubriques i { background: rgb(182 166 255 / 15%); border: 1px solid #b6a6ff; }
   </style>
 </head>
 <body>
-  <h1>10 nouveaux noms, direction « cristal »</h1>
-  <p class="aide">Même univers visuel que le n°7 (sarcelle, argent, facettes),<br>avec un nom et un logo différents à chaque fois. Réponds avec un numéro.</p>
+  <h1>10 nouvelles idées, thèmes sombres</h1>
+  <p class="aide">Sombre mais pas noir total : des fonds profonds et des accents lumineux.<br>Réponds avec un numéro (ou une combinaison : « le nom du 3 avec le design du 5 »).</p>
 
   <div class="propositions">
 
     <div class="proposition">
-      <div class="ecran">
+      <div class="ecran t1">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><path d="M2 34h22" stroke="#fff" stroke-width="3" /><path d="M32 8l20 40H12z" fill="#0f4c55" stroke="#8fe3d9" stroke-width="2.5" /><path d="M32 8l-8 40M32 8l8 40" stroke="#8fe3d9" stroke-width="1" opacity="0.6" /><path d="M42 30l20-8M43 34l20 0M42 38l20 8" stroke-width="3" stroke-linecap="round" /><path d="M42 30l20-8" stroke="#2f9be0" /><path d="M43 34h20" stroke="#f28c28" /><path d="M42 38l20 8" stroke="#e6e6e6" /></svg>
-          <span class="nom" style="font: 400 27px 'Alfa Slab One', serif; letter-spacing: 0.06em">PRISMA</span><span class="sous">TRADING CARD GAME</span>
+          <svg viewBox="0 0 64 64"><g stroke="#e9c46a" stroke-width="2" stroke-linecap="round"><path d="M32 3v7M32 54v7M3 32h7M54 32h7M11 11l5 5M48 48l5 5M53 11l-5 5M11 53l5-5" /></g><circle cx="32" cy="32" r="18" fill="#f3d98a" /><circle cx="36" cy="29" r="17" fill="#141a33" /></svg>
+          <span class="nom">Éclipse</span><span class="sous">TRADING CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">1</span><h2>Prisma</h2><p>Un prisme : une seule lumière entre, et elle ressort en plusieurs couleurs, une par anime. Court, facile à retenir, et il colle parfaitement au style cristal.</p></div>
+      <div class="infos"><span class="numero">1</span><h2>Éclipse</h2><p>Quand deux astres se croisent, comme deux mondes d'anime. Un soleil noir couronné d'or sur un indigo profond : élégant et mystérieux.</p><div class="palette"><span style="background:#141a33"></span><span style="background:#2a3366"></span><span style="background:#e9c46a"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran" style="--accent: #9ff0e6">
+      <div class="ecran t2">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke="#8fe3d9" stroke-width="2" stroke-linejoin="round"><path d="M14 52V26l7-12 7 12v26z" fill="#0f4c55" /><path d="M36 52V20l7-14 7 14v32z" fill="#1f7f86" /><path d="M25 56V30l7-14 7 14v26z" fill="#8fe3d9" stroke="#dff9f6" /><path d="M32 16v40" stroke="#0b2b33" stroke-width="1.2" /><path d="M6 56h52" stroke-linecap="round" /></svg>
-          <span class="nom" style="font: 400 27px 'Lilita One', sans-serif; letter-spacing: 0.04em">KESSHŌ</span><span class="sous">結晶 · CARD GAME</span>
+          <svg viewBox="0 0 64 64" stroke-linejoin="round"><path d="M22 4l26 8 10 26-18 22L10 50 6 22z" fill="#2c2f38" stroke="#b48cff" stroke-width="2" /><path d="M22 4l8 24 28 10M30 28L10 50M30 28l10 32" fill="none" stroke="#9b6bff" stroke-width="1.2" /><path d="M22 4l8 24-24-6z" fill="#3a2a5c" /></svg>
+          <span class="nom">OBSIDIA</span><span class="sous">CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">2</span><h2>Kesshō</h2><p>« Kesshō » (結晶) veut dire « cristal » en japonais, avec une touche manga dans le nom. Le logo est une grappe de cristaux qui poussent, comme la collection.</p></div>
+      <div class="infos"><span class="numero">2</span><h2>Obsidia</h2><p>Tiré de l'obsidienne, la pierre volcanique noire et brillante. Graphite et reflets améthyste, logo en éclat taillé.</p><div class="palette"><span style="background:#1c1f24"></span><span style="background:#3a2a5c"></span><span style="background:#9b6bff"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran">
+      <div class="ecran t3">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke="#8fe3d9" stroke-width="1.6" stroke-linejoin="round"><path d="M32 22l6 10-6 10-6-10z" fill="#dff9f6" /><path d="M30 18l-6-14 12 4z" fill="#1f7f86" /><path d="M42 26l16-6-4 12z" fill="#0f4c55" /><path d="M42 40l14 10-12 2z" fill="#1f7f86" /><path d="M24 44l-8 14-4-10z" fill="#0f4c55" /><path d="M20 28L4 24l10-8z" fill="#8fe3d9" /></svg>
-          <span class="nom" style="font: 900 28px 'Playfair Display', serif">Éclats</span><span class="sous">JEU DE CARTES</span>
+          <svg viewBox="0 0 64 64"><path d="M40 6a26 26 0 1 0 18 40A22 22 0 0 1 40 6z" fill="#d8e1f0" /><path d="M46 14l1.6 4.4 4.4 1.6-4.4 1.6L46 26l-1.6-4.4-4.4-1.6 4.4-1.6z" fill="#fff" /><rect x="20" y="30" width="16" height="22" rx="2" fill="#16294f" stroke="#d8e1f0" stroke-width="1.6" transform="rotate(-10 28 41)" /></svg>
+          <span class="nom">Nocturne</span><span class="sous">TRADING CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">3</span><h2>Éclats</h2><p>Un cristal qui vole en éclats : chaque carte est un éclat d'un monde d'anime à rassembler. Un nom français, simple et élégant.</p></div>
+      <div class="infos"><span class="numero">3</span><h2>Nocturne</h2><p>Les parties se jouent souvent le soir : un jeu « de nuit », calme et soigné. Bleu nuit étoilé, croissant de lune argenté et carte.</p><div class="palette"><span style="background:#0f1e3d"></span><span style="background:#2b4a85"></span><span style="background:#d8e1f0"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran" style="--accent: #a9e8ff">
+      <div class="ecran t4">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><ellipse cx="32" cy="34" rx="29" ry="10" fill="none" stroke="#a9e8ff" stroke-width="2" transform="rotate(-18 32 34)" /><path d="M32 6l14 26-14 26-14-26z" fill="#0f4c55" stroke="#dff9f6" stroke-width="2" /><path d="M18 32h28M32 6v52" stroke="#8fe3d9" stroke-width="1" /><path d="M32 6l7 26-7 26" fill="#1f7f86" opacity="0.7" /></svg>
-          <span class="nom" style="font: 700 29px 'Lato', sans-serif; letter-spacing: 0.12em">ÆTHER</span><span class="sous">TRADING CARD GAME</span>
+          <svg viewBox="0 0 64 64"><path d="M10 40a22 22 0 0 1 44 0z" fill="#ffb35c" /><g stroke="#ffb35c" stroke-width="2.4" stroke-linecap="round"><path d="M32 8v6M14 16l4 4M50 16l-4 4M6 32h5M53 32h5" /></g><path d="M4 44q7-4 14 0t14 0 14 0 14 0" fill="none" stroke="#f1a38a" stroke-width="3" stroke-linecap="round" /><path d="M10 52q6-3 12 0t12 0 12 0 8 0" fill="none" stroke="#c4524a" stroke-width="3" stroke-linecap="round" /></svg>
+          <span class="nom">CRÉPUSCULE</span><span class="sous">JEU DE CARTES</span>
         </div>
-        <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
+        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">4</span><h2>Æther</h2><p>L'éther, l'élément mystique qui relie tous les mondes. Un cristal en losange entouré d'une orbite. Le nom le plus « fantasy » de la série.</p></div>
+      <div class="infos"><span class="numero">4</span><h2>Crépuscule</h2><p>Le moment où le jour bascule : un soleil couchant sur la mer, prune et ambre. Le plus chaleureux des thèmes sombres.</p><div class="palette"><span style="background:#2b1a33"></span><span style="background:#6b2f3a"></span><span style="background:#ffb35c"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran">
+      <div class="ecran t5">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><circle cx="32" cy="32" r="29" fill="none" stroke="#8fe3d9" stroke-width="2" /><circle cx="32" cy="32" r="24" fill="none" stroke="#dff9f6" stroke-width="0.8" opacity="0.6" /><path d="M32 12l17 10v20L32 52 15 42V22z" fill="#0f4c55" stroke="#dff9f6" stroke-width="2" /><path d="M32 12v20l17 10M32 32L15 42" stroke="#8fe3d9" stroke-width="1.4" fill="none" /><path d="M32 32l17-10M32 32V52M32 32L15 22" stroke="#8fe3d9" stroke-width="0.8" opacity="0.5" fill="none" /></svg>
-          <span class="nom" style="font: 400 27px 'Alfa Slab One', serif; letter-spacing: 0.05em">OMNIA</span><span class="sous">CARD GAME</span>
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#4fd1a5" stroke-width="2.5" /><path d="M8 32q24-24 48 0-24 24-48 0z" fill="#18302f" stroke="#d9fff2" stroke-width="2" /><circle cx="32" cy="32" r="8" fill="#4fd1a5" /><circle cx="32" cy="32" r="3.5" fill="#0d1a1d" /></svg>
+          <span class="nom">UMBRA</span><span class="sous">CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">5</span><h2>Omnia</h2><p>« Omnia » veut dire « tout » en latin : tous les animes réunis. Le logo est un cube de cristal vu en hexagone, dans un cercle-portail.</p></div>
+      <div class="infos"><span class="numero">5</span><h2>Umbra</h2><p>« L'ombre » en latin : les héros surgissent de l'ombre. Anthracite sarcelle et jade, facettes : la version plus sombre de la direction « cristal » que tu as aimée.</p><div class="palette"><span style="background:#122226"></span><span style="background:#1c5a4c"></span><span style="background:#4fd1a5"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran" style="--accent: #b9f3c9">
+      <div class="ecran t6">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><path d="M18 4h28l8 10v36l-8 10H18l-8-10V14z" fill="#0f4c55" stroke="#dff9f6" stroke-width="2" /><path d="M32 18l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#b9f3c9" /><path d="M10 14h44M10 50h44" stroke="#8fe3d9" stroke-width="1" opacity="0.6" /></svg>
-          <span class="nom" style="font: 400 26px 'Lilita One', sans-serif; letter-spacing: 0.03em">ANIMYTH</span><span class="sous">TRADING CARD GAME</span>
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="#c0392b" /><path d="M10 54L54 10" stroke="#1e1214" stroke-width="7" stroke-linecap="round" /><path d="M14 50L52 12" stroke="#f1e6d6" stroke-width="3" stroke-linecap="round" /><path d="M16 42l6 6" stroke="#1e1214" stroke-width="4" stroke-linecap="round" /></svg>
+          <span class="nom">RŌNIN</span><span class="sous">TRADING CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">6</span><h2>Animyth</h2><p>« Anime » + « mythe » : les personnages d'anime deviennent des légendes. Le logo est une carte en cristal frappée d'une étoile.</p></div>
+      <div class="infos"><span class="numero">6</span><h2>Rōnin</h2><p>Le samouraï errant, sans maître : un combattant libre qui passe d'un monde à l'autre. Laque rouge, noir chaud, lame couleur os. Très « shōnen ».</p><div class="palette"><span style="background:#1e1214"></span><span style="background:#c0392b"></span><span style="background:#f1e6d6"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran">
+      <div class="ecran t7">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke="#8fe3d9" stroke-width="1.3" stroke-linejoin="round"><g fill="#0f4c55"><path d="M32 6l8 4.6v9.2L32 24.4l-8-4.6v-9.2z" /><path d="M48 15l8 4.6v9.2L48 33.4l-8-4.6v-9.2z" /><path d="M16 15l8 4.6v9.2L16 33.4l-8-4.6v-9.2z" /><path d="M48 33l8 4.6v9.2L48 51.4l-8-4.6v-9.2z" /><path d="M16 33l8 4.6v9.2L16 51.4l-8-4.6v-9.2z" /><path d="M32 42l8 4.6v9.2L32 60.4l-8-4.6v-9.2z" /></g><path d="M32 24l8 4.6v9.2L32 42.4l-8-4.6v-9.2z" fill="#8fe3d9" stroke="#dff9f6" /></svg>
-          <span class="nom" style="font: 900 27px 'Playfair Display', serif">Myriad</span><span class="sous">TRADING CARD GAME</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-linecap="round"><path d="M32 32m-4 0a4 4 0 1 1 8 0 8 8 0 1 1-16 0 12 12 0 1 1 24 0 16 16 0 1 1-32 0 20 20 0 1 1 40 0" stroke="#3ee6d0" stroke-width="2.6" /><circle cx="32" cy="32" r="2.5" fill="#c9fff6" /></svg>
+          <span class="nom">ABYSSE</span><span class="sous">JEU DE CARTES</span>
         </div>
-        <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
+        <span class="booster"></span><span class="bouton">Plonger</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">7</span><h2>Myriad</h2><p>Une myriade de héros et de mondes. Une ruche de cristaux hexagonaux autour d'un cœur lumineux : chaque case est une collection à remplir.</p></div>
+      <div class="infos"><span class="numero">7</span><h2>Abysse</h2><p>Les profondeurs de l'océan, éclairées par des lueurs bioluminescentes : un clin d'œil à One Piece et à la mer. Bleu abyssal et cyan lumineux.</p><div class="palette"><span style="background:#06232e"></span><span style="background:#0f4c5c"></span><span style="background:#3ee6d0"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran" style="--accent: #c8f5ff">
+      <div class="ecran t8">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><path d="M32 2l3 8M32 2l-3 8M22 6l5 7M42 6l-5 7" stroke="#c8f5ff" stroke-width="1.6" stroke-linecap="round" /><path d="M32 12l10 18-4 30H26l-4-30z" fill="#0f4c55" stroke="#dff9f6" stroke-width="2" /><path d="M32 12v48M22 30h20" stroke="#8fe3d9" stroke-width="1.2" /><path d="M32 12l10 18H32z" fill="#8fe3d9" opacity="0.8" /></svg>
-          <span class="nom" style="font: 700 27px 'Lato', sans-serif; letter-spacing: 0.14em">ZÉNITH</span><span class="sous">CARD GAME</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="3"><circle cx="32" cy="32" r="26" stroke="#ff9ad5" /><circle cx="32" cy="32" r="20" stroke="#b9a4ff" /><circle cx="32" cy="32" r="14" stroke="#8fe3ff" /><circle cx="32" cy="32" r="8" stroke="#a6ffcf" /><circle cx="32" cy="32" r="3" fill="#fff" stroke="none" /></svg>
+          <span class="nom">Spectra</span><span class="sous">TRADING CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">8</span><h2>Zénith</h2><p>Le plus haut point du ciel : là où se rencontrent les plus grands héros. Une flèche de cristal qui rayonne vers le haut.</p></div>
+      <div class="infos"><span class="numero">8</span><h2>Spectra</h2><p>Le spectre des couleurs : chaque série a sa teinte. Fond ardoise sobre, touches irisées rose-violet-cyan comme les cartes holographiques.</p><div class="palette"><span style="background:#1b1e2b"></span><span style="background:#ff9ad5"></span><span style="background:#8fe3ff"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran">
+      <div class="ecran t9">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><g stroke="#dff9f6" stroke-width="1.4" stroke-linecap="round" opacity="0.8"><path d="M32 2v8M32 54v8M2 32h8M54 32h8M10 10l6 6M48 48l6 6M54 10l-6 6M10 54l6-6" /></g><path d="M32 14l12 18-12 18-12-18z" fill="#8fe3d9" stroke="#fff" stroke-width="2" /><path d="M32 14v36M20 32h24" stroke="#0f4c55" stroke-width="1.2" /><circle cx="32" cy="32" r="3" fill="#fff" /></svg>
-          <span class="nom" style="font: 400 28px 'Alfa Slab One', serif; letter-spacing: 0.04em">LUMINA</span><span class="sous">TRADING CARD GAME</span>
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="#1d2438" stroke="#e9c46a" stroke-width="2.5" /><g stroke="#e9c46a" stroke-width="2" stroke-linecap="round"><path d="M32 9v4M32 51v4M9 32h4M51 32h4" /></g><path d="M32 32V16" stroke="#f6e7c1" stroke-width="3" stroke-linecap="round" /><path d="M32 32V20" stroke="#e9c46a" stroke-width="3" stroke-linecap="round" transform="rotate(8 32 32)" /><circle cx="32" cy="32" r="3" fill="#e9c46a" /></svg>
+          <span class="nom">MINUIT</span><span class="sous">JEU DE CARTES</span>
         </div>
-        <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
+        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">9</span><h2>Lumina</h2><p>La lumière qui révèle les cartes rares. Un cristal qui brille de tous ses feux : parfait pour l'ouverture des boosters.</p></div>
+      <div class="infos"><span class="numero">9</span><h2>Minuit</h2><p>L'heure où tout bascule… et où tes missions et boosters se renouvellent ! Une horloge dorée sur fond bleu-noir, élégant et sobre.</p><div class="palette"><span style="background:#121826"></span><span style="background:#2a2440"></span><span style="background:#e9c46a"></span></div></div>
     </div>
 
     <div class="proposition">
-      <div class="ecran" style="--accent: #9fe9ff">
+      <div class="ecran t10">
         <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><circle cx="32" cy="32" r="27" fill="#0f4c55" stroke="#dff9f6" stroke-width="2" /><path d="M32 5L18 20l14 8 14-8zM18 20L8 38l14 6-4-24zM46 20l10 18-14 6 4-24zM22 44l10 15 10-15-10-16z" fill="#1f7f86" stroke="#8fe3d9" stroke-width="1.2" /><path d="M32 28l-10 16h20z" fill="#8fe3d9" /></svg>
-          <span class="nom" style="font: 400 24px 'Lilita One', sans-serif; letter-spacing: 0.03em">SHARDVERSE</span><span class="sous">TRADING CARD GAME</span>
+          <svg viewBox="0 0 64 64"><g stroke="#b6a6ff" stroke-width="1.4"><path d="M32 6L44 26 60 30 46 42 50 60 32 50 14 60 18 42 4 30 20 26z" fill="none" /></g><g fill="#ffd86b"><circle cx="32" cy="6" r="3" /><circle cx="60" cy="30" r="3" /><circle cx="50" cy="60" r="3" /><circle cx="14" cy="60" r="3" /><circle cx="4" cy="30" r="3" /></g><g fill="#fff"><circle cx="44" cy="26" r="1.8" /><circle cx="46" cy="42" r="1.8" /><circle cx="32" cy="50" r="1.8" /><circle cx="18" cy="42" r="1.8" /><circle cx="20" cy="26" r="1.8" /></g></svg>
+          <span class="nom">ASTRALIS</span><span class="sous">TRADING CARD GAME</span>
         </div>
         <span class="booster"></span><span class="bouton">OUVRIR</span><span class="rubriques"><i></i><i></i><i></i></span>
       </div>
-      <div class="infos"><span class="numero">10</span><h2>Shardverse</h2><p>« Shard » (éclat) + « universe » (univers) : un univers fait d'éclats de mondes d'anime. Le logo est une planète à facettes de cristal.</p></div>
+      <div class="infos"><span class="numero">10</span><h2>Astralis</h2><p>Les héros deviennent des étoiles : une constellation qui dessine une étoile. Violet profond étoilé et or, le plus « magique ».</p><div class="palette"><span style="background:#1a1440"></span><span style="background:#3b2d85"></span><span style="background:#ffd86b"></span></div></div>
     </div>
 
   </div>
