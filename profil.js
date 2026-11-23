@@ -12,6 +12,41 @@ function afficherProfil() {
   document.querySelector('[data-vue="sans-lien"]').hidden = lie;
 }
 
+// Icône de profil : celle du joueur à côté de son identifiant, et le choix parmi toutes les icônes, par série
+function afficherIcones() {
+  const choisie = lireIcone();
+  document.querySelector("[data-icone-actuelle]").replaceChildren(creerIconeProfil(choisie));
+
+  const series = new Map();
+  for (const icone of ICONES_PROFIL) series.set(icone.serie, [...(series.get(icone.serie) || []), icone]);
+  const blocs = [...series].map(([serie, icones]) => {
+    const bloc = document.createElement("div");
+    const titre = document.createElement("h3");
+    titre.className = "serie-icones__titre";
+    titre.textContent = serie;
+    const liste = document.createElement("div");
+    liste.className = "serie-icones__liste";
+    liste.setAttribute("role", "radiogroup");
+    liste.setAttribute("aria-label", serie);
+    for (const icone of icones) {
+      const bouton = document.createElement("button");
+      bouton.type = "button";
+      bouton.className = "choix-icone";
+      bouton.setAttribute("role", "radio");
+      bouton.setAttribute("aria-checked", String(icone.id === choisie));
+      bouton.append(creerIconeProfil(icone.id), icone.nom);
+      bouton.addEventListener("click", () => {
+        choisirIcone(icone.id);
+        afficherIcones();
+      });
+      liste.append(bouton);
+    }
+    bloc.append(titre, liste);
+    return bloc;
+  });
+  document.querySelector("[data-choix-icones]").replaceChildren(...blocs);
+}
+
 function afficherMessage(nom, texte, erreur = false) {
   const message = document.querySelector(`[data-message="${nom}"]`);
   message.textContent = texte;
@@ -58,6 +93,7 @@ document.querySelector("[data-lier-discord]").addEventListener("click", () => {
 });
 
 afficherProfil();
+afficherIcones();
 
 // Le pseudo a pu changer depuis un autre appareil : on le met à jour
 if (compteLie()) {

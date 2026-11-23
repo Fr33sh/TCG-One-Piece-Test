@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Profil</title>
   <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="icones-profil.css">
   <link rel="stylesheet" href="profil.css">
 </head>
 <body>
@@ -23,13 +24,22 @@
   <main class="liste-bulles">
     <section class="bulle-page" aria-labelledby="titre-profil">
       <h2 class="bulle-page__titre" id="titre-profil">Mon profil</h2>
-      <p class="identifiant" data-identifiant></p>
+      <div class="profil-tete">
+        <span data-icone-actuelle></span>
+        <p class="identifiant" data-identifiant></p>
+      </div>
       <p class="bulle-page__texte" data-texte-profil></p>
       <form class="formulaire-ligne" data-formulaire="pseudo">
         <input class="champ" name="pseudo" maxlength="16" autocomplete="nickname" placeholder="Nouveau pseudo" aria-label="Nouveau pseudo" required>
         <button class="petite-bulle petite-bulle--principale" type="submit">Changer</button>
       </form>
       <p class="message-page" data-message="pseudo" role="status"></p>
+    </section>
+
+    <!-- Choix de l'icône de profil, série par série (remplie par profil.js) -->
+    <section class="bulle-page" aria-labelledby="titre-icones">
+      <h2 class="bulle-page__titre" id="titre-icones">Icône de profil</h2>
+      <div class="series-icones" data-choix-icones></div>
     </section>
 
     <!-- Compte non lié : proposer Discord -->
@@ -46,6 +56,7 @@
   <script src="musique.js"></script>
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>
+  <script src="icones-profil.js"></script>
   <script src="profil.js"></script>
 </body>
 </html>

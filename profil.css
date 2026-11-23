@@ -1,7 +1,21 @@
 /* Page Profil (le style commun des pages à bulles est dans page.css). */
 
+/* Icône du joueur à gauche de son identifiant */
+.profil-tete {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.profil-tete .icone-profil {
+  width: 64px;
+}
+
 /* Identifiant à partager, en grand : « Luffy#4821 » */
 .identifiant {
+  flex: 1;
+  min-width: 0;
   padding: 10px 12px;
   border: 2px dashed #b8874d;
   border-radius: 14px;
@@ -10,4 +24,80 @@
   line-height: 1.1;
   text-align: center;
   overflow-wrap: anywhere;
+}
+
+/* ── Choix de l'icône : une série par ligne (« Icône de Base »), ses jetons côte à côte ── */
+
+.series-icones {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.serie-icones__titre {
+  padding-left: 4px;
+  font: 400 15px / 1 "Lilita One", "Arial Black", sans-serif;
+  color: #5b4a39;
+}
+
+.serie-icones__liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  padding-left: 4px;
+}
+
+/* Un jeton et son nom ; celui qui est choisi est soulevé, avec un filet jaune et une coche */
+.choix-icone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 84px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #5b4a39;
+  font: 400 12px / 1.15 "Lilita One", "Arial Black", sans-serif;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choix-icone .icone-profil {
+  width: 72px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.choix-icone[aria-checked="true"] {
+  color: #1f1610;
+}
+
+.choix-icone[aria-checked="true"] .icone-profil {
+  box-shadow: 0 0 0 3px #f5c518, 0 0 0 5px #0b0a09, 0 6px 12px rgb(60 35 10 / 40%);
+  transform: translateY(-2px);
+}
+
+.choix-icone[aria-checked="true"]::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #0b0a09;
+  border-radius: 50%;
+  background: #f5c518 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1610' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 13px no-repeat;
+}
+
+.choix-icone:active .icone-profil {
+  transform: translateY(1px);
+}
+
+.choix-icone:focus-visible {
+  outline: 3px solid #b8874d;
+  outline-offset: 4px;
+  border-radius: 12px;
 }
