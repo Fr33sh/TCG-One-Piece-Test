@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aperçu : nom, logo et design du jeu</title>
+  <!-- Page TEMPORAIRE : 10 propositions de nom, logo et design pour le TCG multi-animes. À supprimer après le choix. -->
+  <style>
+    @font-face { font-family: "Lilita One"; src: url("assets/polices/lilita-one.woff2") format("woff2"); }
+    @font-face { font-family: "Alfa Slab One"; src: url("assets/polices/alfa-slab-one.woff2") format("woff2"); }
+    @font-face { font-family: "Playfair Display"; font-weight: 900; src: url("assets/polices/playfair-display-900.woff2") format("woff2"); }
+    @font-face { font-family: "IM Fell English SC"; src: url("assets/polices/im-fell-english-sc.woff2") format("woff2"); }
+    @font-face { font-family: "IM Fell English"; src: url("assets/polices/im-fell-english.woff2") format("woff2"); }
+    @font-face { font-family: "Lato"; font-weight: 700; src: url("assets/polices/lato-700.woff2") format("woff2"); }
+    @font-face { font-family: "Lato"; font-weight: 400; src: url("assets/polices/lato-400.woff2") format("woff2"); }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      padding: max(env(safe-area-inset-top), 24px) 14px 40px;
+      background: #1b1d22;
+      color: #eee;
+      font-family: "Lato", sans-serif;
+    }
+
+    h1 { font: 400 24px "Lilita One", sans-serif; text-align: center; }
+    .aide { margin: 6px 0 20px; color: #aab; font-size: 14px; text-align: center; }
+
+    .propositions { display: flex; flex-direction: column; gap: 26px; max-width: 460px; margin: 0 auto; }
+
+    .proposition { display: flex; gap: 14px; align-items: flex-start; }
+
+    .infos { flex: 1; min-width: 0; }
+    .infos .numero { font: 400 28px "Lilita One", sans-serif; color: #f5c518; line-height: 1; }
+    .infos h2 { margin: 2px 0 4px; font: 400 19px "Lilita One", sans-serif; }
+    .infos p { color: #c9cbd2; font-size: 13px; line-height: 1.35; }
+    .infos .palette { display: flex; gap: 4px; margin-top: 8px; }
+    .infos .palette span { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgb(255 255 255 / 30%); }
+
+    /* Mini-écran d'accueil */
+    .ecran {
+      position: relative;
+      display: flex;
+      flex: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 168px;
+      height: 300px;
+      padding: 26px 12px 14px;
+      overflow: hidden;
+      border: 3px solid #000;
+      border-radius: 22px;
+      box-shadow: 0 6px 16px rgb(0 0 0 / 50%);
+    }
+    .ecran .logo { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+    .ecran .logo svg { width: 64px; height: 64px; }
+    .ecran .booster { width: 62px; height: 92px; border-radius: 6px; }
+    .ecran .bouton { width: 100%; padding: 8px 0; border-radius: 999px; font-size: 12px; text-align: center; }
+    .ecran .rubriques { display: flex; gap: 5px; }
+    .ecran .rubriques i { width: 30px; height: 40px; border-radius: 4px; }
+
+    /* ── 1. Kizuna : papier washi, encre, sceau vermillon ── */
+    .t1 { background: #f3ead8 radial-gradient(ellipse at 50% 0%, #fbf5e8, #efe3c9); color: #1b1612; }
+    .t1 .nom { font: 400 26px "Alfa Slab One", serif; letter-spacing: 0.06em; }
+    .t1 .sous { font: 700 9px "Lato", sans-serif; letter-spacing: 0.3em; color: #b8321f; }
+    .t1 .booster { background: linear-gradient(160deg, #b8321f, #7d1c10); box-shadow: 0 4px 0 #1b1612; }
+    .t1 .bouton { border: 2px solid #1b1612; background: #fbf5e8; font-family: "Alfa Slab One", serif; }
+    .t1 .rubriques i { background: #e3d3b0; border: 1.5px solid #1b1612; }
+
+    /* ── 2. Arc Collector : nuit étoilée, or ── */
+    .t2 { background: radial-gradient(circle at 20% 15%, #fff 0 1px, transparent 2px) 0 0 / 34px 34px, radial-gradient(circle at 70% 60%, #fff 0 1px, transparent 2px) 0 0 / 46px 46px, linear-gradient(180deg, #0f1a3a, #1d2c5c); color: #f3d27a; }
+    .t2 .nom { font: 400 22px "Lilita One", sans-serif; letter-spacing: 0.04em; line-height: 0.95; }
+    .t2 .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.35em; color: #9fb3e8; }
+    .t2 .booster { background: linear-gradient(160deg, #2b3f80, #10183a); border: 2px solid #f3d27a; }
+    .t2 .bouton { background: linear-gradient(180deg, #f8de8c, #d9a937); color: #10183a; font: 400 13px "Lilita One", sans-serif; }
+    .t2 .rubriques i { border: 1.5px solid #f3d27a; background: rgb(243 210 122 / 15%); }
+
+    /* ── 3. Anime Saga : violet profond, néon magenta ── */
+    .t3 { background: radial-gradient(ellipse at 50% 20%, #4a1f7a, #170a2b 70%); color: #fff; }
+    .t3 .nom { font: 900 25px "Playfair Display", serif; line-height: 0.95; text-shadow: 0 0 10px #ff3fb4, 0 0 2px #ff3fb4; }
+    .t3 .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; color: #ff9be0; }
+    .t3 .booster { background: linear-gradient(160deg, #ff3fb4, #6a2bd1); box-shadow: 0 0 14px #ff3fb4; }
+    .t3 .bouton { border: 1.5px solid #ff3fb4; color: #ffd0f1; box-shadow: 0 0 8px #ff3fb4 inset; font-weight: 700; }
+    .t3 .rubriques i { background: rgb(255 63 180 / 18%); border: 1px solid #ff3fb4; }
+
+    /* ── 4. Multivers : blanc épuré, trois couleurs (orange, bleu, noir) ── */
+    .t4 { background: #f6f7f9; color: #15171c; }
+    .t4 .nom { font: 700 21px "Lato", sans-serif; letter-spacing: 0.22em; }
+    .t4 .sous { font: 400 9px "Lato", sans-serif; letter-spacing: 0.3em; color: #6b7280; }
+    .t4 .booster { background: linear-gradient(135deg, #f28c28 0 33%, #2f78b8 33% 66%, #15171c 66%); }
+    .t4 .bouton { background: #15171c; color: #fff; font-weight: 700; letter-spacing: 0.1em; }
+    .t4 .rubriques i:nth-child(1) { background: #2f78b8; } .t4 .rubriques i:nth-child(2) { background: #f28c28; } .t4 .rubriques i:nth-child(3) { background: #15171c; }
+
+    /* ── 5. Shōnen Clash : manga, trame, jaune et noir ── */
+    .t5 { background: repeating-conic-gradient(from 0deg at 50% 32%, #fff 0 4deg, #f7f2d6 4deg 9deg); color: #111; }
+    .t5::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgb(0 0 0 / 16%) 1px, transparent 1.4px) 0 0 / 6px 6px; pointer-events: none; }
+    .t5 .nom { font: 400 27px "Lilita One", sans-serif; font-style: italic; line-height: 0.9; color: #ffd400; -webkit-text-stroke: 1.5px #111; text-shadow: 3px 3px 0 #111; transform: rotate(-6deg); }
+    .t5 .sous { font: 700 9px "Lato", sans-serif; letter-spacing: 0.25em; background: #111; color: #ffd400; padding: 2px 6px; transform: rotate(-6deg); }
+    .t5 .booster { background: #ffd400; border: 3px solid #111; box-shadow: 4px 4px 0 #111; }
+    .t5 .bouton { position: relative; z-index: 1; background: #111; color: #ffd400; font: 400 13px "Lilita One", sans-serif; transform: skew(-8deg); }
+    .t5 .rubriques i { background: #fff; border: 2px solid #111; }
+
+    /* ── 6. Gaiden : la continuité du parchemin actuel ── */
+    .t6 { background: radial-gradient(ellipse at 50% 45%, #e7d2a2 0%, #e0c48f 60%, #d5b47e 100%); color: #1f1610; }
+    .t6 .nom { font: 400 30px "IM Fell English SC", serif; line-height: 0.9; }
+    .t6 .sous { font: 400 10px "IM Fell English", serif; font-style: italic; color: #8a5a2b; }
+    .t6 .booster { background: linear-gradient(160deg, #6fd2fb, #1e8fe2); border: 2px solid #0b0a09; box-shadow: 0 0 0 2px #b8874d; }
+    .t6 .bouton { border: 2px solid #0b0a09; background: linear-gradient(180deg, #f6ead0, #e3cc9b); box-shadow: 0 0 0 1.5px #b8874d; font: 400 13px "Lilita One", sans-serif; }
+    .t6 .rubriques i { background: #f1e2bd; border: 1.5px solid #0b0a09; }
+
+    /* ── 7. Nexus Heroes : cristal, sarcelle et argent ── */
+    .t7 { background: linear-gradient(160deg, #0b2b33, #0f4c55 55%, #0b2b33); color: #dff9f6; }
+    .t7 .nom { font: 400 21px "Alfa Slab One", serif; line-height: 0.95; letter-spacing: 0.03em; background: linear-gradient(180deg, #ffffff, #8fe3d9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .t7 .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; color: #8fe3d9; }
+    .t7 .booster { background: linear-gradient(160deg, #8fe3d9, #1f7f86 60%, #0b2b33); clip-path: polygon(50% 0, 100% 15%, 100% 85%, 50% 100%, 0 85%, 0 15%); }
+    .t7 .bouton { border: 1.5px solid #8fe3d9; background: rgb(143 227 217 / 12%); font-weight: 700; letter-spacing: 0.1em; }
+    .t7 .rubriques i { clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #8fe3d9; }
+
+    /* ── 8. Héros d'Encre : sumi-e, encre noire, sceau rouge ── */
+    .t8 { background: #fbfaf6; color: #101010; }
+    .t8 .nom { font: 400 25px "IM Fell English SC", serif; line-height: 0.95; }
+    .t8 .sous { font: 400 10px "IM Fell English", serif; font-style: italic; color: #555; }
+    .t8 .booster { background: radial-gradient(circle at 35% 30%, #444, #101010 70%); border-radius: 4px; }
+    .t8 .bouton { border-top: 2px solid #101010; border-bottom: 2px solid #101010; border-radius: 0; font: 400 13px "IM Fell English SC", serif; }
+    .t8 .rubriques i { background: #fff; border: 1px solid #101010; box-shadow: 2px 2px 0 #c62d1f; }
+
+    /* ── 9. Legend Arcs : héroïque, bleu royal et or ── */
+    .t9 { background: radial-gradient(ellipse at 50% 30%, #2a56c6, #10275e 70%); color: #fff; }
+    .t9 .nom { font: 900 23px "Playfair Display", serif; line-height: 0.95; color: #ffe08a; text-shadow: 0 2px 0 #7a4f0e; }
+    .t9 .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; color: #cfe0ff; }
+    .t9 .booster { background: linear-gradient(160deg, #ffe08a, #c9932b); border: 2px solid #fff; }
+    .t9 .bouton { background: linear-gradient(180deg, #ffe08a, #c9932b); color: #10275e; font: 900 12px "Playfair Display", serif; }
+    .t9 .rubriques i { background: rgb(255 255 255 / 15%); border: 1.5px solid #ffe08a; }
+
+    /* ── 10. Manga Rift : déchirure lumineuse, noir et cyan ── */
+    .t10 { background: linear-gradient(115deg, #050608 0 46%, #00e5ff 48%, #b8fbff 49%, #00e5ff 50%, #050608 52%), #050608; color: #fff; }
+    .t10 .nom { font: 400 26px "Lilita One", sans-serif; line-height: 0.9; letter-spacing: 0.03em; text-shadow: 0 0 12px #00e5ff; }
+    .t10 .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; color: #7ff3ff; }
+    .t10 .booster { background: linear-gradient(115deg, #111 0 40%, #00e5ff 50%, #111 60%); border: 1.5px solid #00e5ff; }
+    .t10 .bouton { background: #00e5ff; color: #050608; font: 400 13px "Lilita One", sans-serif; box-shadow: 0 0 10px #00e5ff; }
+    .t10 .rubriques i { background: #111; border: 1px solid #00e5ff; }
+  </style>
+</head>
+<body>
+  <h1>Nom, logo et design : 10 propositions</h1>
+  <p class="aide">Chaque mini-écran montre l'accueil : logo, booster, bouton, rubriques.<br>Réponds avec un numéro (on peut aussi combiner : « le nom du 2 avec le design du 6 »).</p>
+
+  <div class="propositions">
+
+    <div class="proposition">
+      <div class="ecran t1">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#b8321f" /><circle cx="32" cy="32" r="25" fill="none" stroke="#f3ead8" stroke-width="1.5" /><text x="32" y="44" text-anchor="middle" font-size="34" fill="#f3ead8" font-family="serif">絆</text></svg>
+          <span class="nom">KIZUNA</span><span class="sous">TRADING CARD GAME</span>
+        </div>
+        <span class="booster"></span><span class="bouton">Ouvrir un booster</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">1</span><h2>Kizuna</h2><p>« Kizuna » (絆) veut dire « lien » en japonais : le lien entre les héros de tous les mondes. Ambiance papier washi, encre noire et sceau vermillon.</p><div class="palette"><span style="background:#f3ead8"></span><span style="background:#b8321f"></span><span style="background:#1b1612"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t2">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" fill="none" stroke-linecap="round"><path d="M8 50a24 24 0 0 1 48 0" stroke="#f3d27a" stroke-width="5" /><path d="M16 50a16 16 0 0 1 32 0" stroke="#9fb3e8" stroke-width="5" /><path d="M24 50a8 8 0 0 1 16 0" stroke="#ff8a5c" stroke-width="5" /><path d="M32 6l2.4 6 6 2.4-6 2.4L32 23l-2.4-6.2-6-2.4 6-2.4z" fill="#fff" stroke="none" /></svg>
+          <span class="nom">ARC<br>COLLECTOR</span><span class="sous">TCG</span>
+        </div>
+        <span class="booster"></span><span class="bouton">Ouvrir un booster</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">2</span><h2>Arc Collector</h2><p>Chaque collection est un « arc » d'un anime : le nom dit exactement ce qu'est le jeu. Ambiance nuit étoilée, cartes comme des constellations, touches d'or.</p><div class="palette"><span style="background:#0f1a3a"></span><span style="background:#f3d27a"></span><span style="background:#9fb3e8"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t3">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><path d="M8 18c9-4 17-4 24 2 7-6 15-6 24-2v32c-9-4-17-4-24 2-7-6-15-6-24-2z" fill="#2a0f4a" stroke="#ff3fb4" stroke-width="2.5" stroke-linejoin="round" /><path d="M32 20v32" stroke="#ff3fb4" stroke-width="2" /><path d="M36 10l-8 16h7l-5 14 12-19h-7l5-11z" fill="#fff36b" stroke="#ff3fb4" stroke-width="1" /></svg>
+          <span class="nom">ANIME<br>SAGA</span><span class="sous">CARD BATTLE</span>
+        </div>
+        <span class="booster"></span><span class="bouton">Ouvrir un booster</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">3</span><h2>Anime Saga</h2><p>Un grand livre des sagas d'anime, frappé d'un éclair. Ambiance sombre et néon, violet profond et magenta, très « soirée d'arcade ».</p><div class="palette"><span style="background:#170a2b"></span><span style="background:#ff3fb4"></span><span style="background:#fff36b"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t4">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="5"><circle cx="24" cy="26" r="14" stroke="#2f78b8" /><circle cx="40" cy="26" r="14" stroke="#f28c28" /><circle cx="32" cy="40" r="14" stroke="#15171c" /></svg>
+          <span class="nom">MULTIVERS</span><span class="sous">TCG</span>
+        </div>
+        <span class="booster"></span><span class="bouton">OUVRIR</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">4</span><h2>Multivers</h2><p>Trois portails qui se croisent, un par anime (bleu One Piece, orange Naruto, noir Bleach). Design blanc, épuré et moderne ; chaque série apporte sa couleur.</p><div class="palette"><span style="background:#2f78b8"></span><span style="background:#f28c28"></span><span style="background:#15171c"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t5">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><path d="M32 2l5 14 13-8-5 15 15 2-13 8 11 11-15-2 1 15-11-10-8 13-3-15-14 6 7-13-13-6 14-5-6-14 14 6z" fill="#ffd400" stroke="#111" stroke-width="2.5" stroke-linejoin="round" /><text x="32" y="40" text-anchor="middle" font-family="Lilita One, sans-serif" font-size="20" fill="#111">VS</text></svg>
+          <span class="nom">SHŌNEN<br>CLASH</span><span class="sous">TRADING CARD GAME</span>
+        </div>
+        <span class="booster"></span><span class="bouton">OUVRIR !</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">5</span><h2>Shōnen Clash</h2><p>L'énergie des combats de manga : lignes de vitesse, trame, onomatopées, jaune et noir. Le plus « action » des dix.</p><div class="palette"><span style="background:#ffd400"></span><span style="background:#111"></span><span style="background:#fff"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t6">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><g transform="rotate(-30 32 32)"><rect x="6" y="24" width="50" height="16" rx="8" fill="#f4e4bc" stroke="#1f1610" stroke-width="2" /><ellipse cx="54" cy="32" rx="4" ry="8" fill="#ead59f" stroke="#1f1610" stroke-width="2" /><rect x="26" y="23" width="7" height="18" fill="#c0392b" stroke="#1f1610" stroke-width="1.5" /></g><text x="32" y="62" text-anchor="middle" font-size="12" fill="#8a5a2b" font-family="serif">外伝</text></svg>
+          <span class="nom">GAIDEN</span><span class="sous">les héros de tous les récits</span>
+        </div>
+        <span class="booster"></span><span class="bouton">Ouvrir un booster</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">6</span><h2>Gaiden</h2><p>« Gaiden » (外伝) = « récit parallèle » : les héros sortent de leur histoire. Garde le parchemin et les bulles actuels : la refonte la plus douce.</p><div class="palette"><span style="background:#e0c48f"></span><span style="background:#0b0a09"></span><span style="background:#b8874d"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t7">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><path d="M32 4l24 14v28L32 60 8 46V18z" fill="#0f4c55" stroke="#8fe3d9" stroke-width="2.5" stroke-linejoin="round" /><path d="M32 16l12 7v14l-12 7-12-7V23z" fill="#8fe3d9" /><path d="M32 16v28M20 23l24 14M44 23L20 37" stroke="#0b2b33" stroke-width="1.5" /></svg>
+          <span class="nom">NEXUS<br>HEROES</span><span class="sous">CARD GAME</span>
+        </div>
+        <span class="booster"></span><span class="bouton">OUVRIR</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">7</span><h2>Nexus Heroes</h2><p>Un cristal-nexus où se rejoignent les mondes. Ambiance cristal et technologie, sarcelle et argent, cartes à facettes.</p><div class="palette"><span style="background:#0b2b33"></span><span style="background:#8fe3d9"></span><span style="background:#ffffff"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t8">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" fill="none"><path d="M47 13A23 23 0 1 0 54 34" stroke="#101010" stroke-width="7" stroke-linecap="round" /><path d="M50 10c3 1 5 3 6 6" stroke="#101010" stroke-width="3" stroke-linecap="round" opacity="0.6" /><rect x="40" y="40" width="14" height="14" fill="#c62d1f" /><text x="47" y="51" text-anchor="middle" font-size="10" fill="#fff" font-family="serif">英</text></svg>
+          <span class="nom">HÉROS<br>D'ENCRE</span><span class="sous">jeu de cartes à collectionner</span>
+        </div>
+        <span class="booster"></span><span class="bouton">Ouvrir un booster</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">8</span><h2>Héros d'Encre</h2><p>Tous les héros naissent de l'encre des mangakas. Un cercle zen (ensō) au pinceau et un sceau rouge ; peinture à l'encre (sumi-e), noir sur blanc.</p><div class="palette"><span style="background:#fbfaf6"></span><span style="background:#101010"></span><span style="background:#c62d1f"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t9">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><path d="M32 4l24 8v18c0 15-10 25-24 30C18 55 8 45 8 30V12z" fill="#10275e" stroke="#ffe08a" stroke-width="3" stroke-linejoin="round" /><path d="M20 18v24M32 14v32M44 18v24" stroke="#ffe08a" stroke-width="4" stroke-linecap="round" /><path d="M32 6l2 5 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1z" fill="#fff" /></svg>
+          <span class="nom">LEGEND<br>ARCS</span><span class="sous">TRADING CARD GAME</span>
+        </div>
+        <span class="booster"></span><span class="bouton">Ouvrir un booster</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">9</span><h2>Legend Arcs</h2><p>Un blason héroïque à trois bandes, une par série. Ambiance épique, bleu royal et or, comme un tournoi de légendes.</p><div class="palette"><span style="background:#10275e"></span><span style="background:#ffe08a"></span><span style="background:#2a56c6"></span></div></div>
+    </div>
+
+    <div class="proposition">
+      <div class="ecran t10">
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><rect x="8" y="6" width="22" height="52" fill="#f3f3f3" stroke="#111" stroke-width="2" /><rect x="34" y="6" width="22" height="52" fill="#f3f3f3" stroke="#111" stroke-width="2" /><path d="M30 6l6 9-5 8 6 9-6 9 5 8-6 9" fill="none" stroke="#00e5ff" stroke-width="4" stroke-linejoin="round" /><path d="M12 14h12M12 20h10M40 40h12M40 46h10" stroke="#999" stroke-width="2" /></svg>
+          <span class="nom">MANGA<br>RIFT</span><span class="sous">TCG</span>
+        </div>
+        <span class="booster"></span><span class="bouton">OUVRIR</span>
+        <span class="rubriques"><i></i><i></i><i></i></span>
+      </div>
+      <div class="infos"><span class="numero">10</span><h2>Manga Rift</h2><p>Une page de manga se déchire et une faille lumineuse laisse passer les héros des autres mondes. Ambiance noire et cyan électrique.</p><div class="palette"><span style="background:#050608"></span><span style="background:#00e5ff"></span><span style="background:#f3f3f3"></span></div></div>
+    </div>
+
+  </div>
+</body>
+</html>
