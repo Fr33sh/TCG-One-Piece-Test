@@ -66,14 +66,29 @@ body {
   transform: rotate(-8deg);
 }
 
-/* L'illustration penche avec la bande ; très large, elle est cadrée sur Luffy (aux trois quarts de l'image) */
+/* L'illustration penche avec la bande. Très large et peu haute, elle n'est pas agrandie : elle occupe une
+   bande au milieu, cadrée sur Luffy (aux trois quarts de l'image), sur un fond de la même image floutée. */
+.banniere__fond {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  object-position: 74% 50%;
+  filter: blur(14px) brightness(0.75) saturate(1.15);
+}
+
 .banniere__image {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: min(46%, 300px);
   object-fit: cover;
-  object-position: 74% 40%;
+  object-position: 74% 50%;
+  box-shadow: 0 0 18px 4px rgb(0 0 0 / 45%);
+  transform: translateY(-50%);
 }
 
 /* Le titre suit l'inclinaison de la bande, sous la barre d'état du téléphone */
