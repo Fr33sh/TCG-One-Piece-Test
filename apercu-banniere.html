@@ -107,6 +107,10 @@
   <p class="aide">Réponds avec le numéro de ton choix.<br>Le cadrage pourra ensuite être ajusté.</p>
   <div class="grille"></div>
 
+  <h1 style="margin-top: 34px">Bannières larges (B1 à B12)</h1>
+  <p class="aide">Images entières : dis-moi laquelle et où se trouve Luffy (gauche, centre, droite),<br>je recadrerai la bannière sur lui.</p>
+  <div class="larges"></div>
+
   <script>
     const A = "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/";
     const ILLUSTRATIONS = [
@@ -131,6 +135,31 @@
         <div class="ecran"><div class="bande"><img src="${A}${fichier}" alt=""><b>Combat</b></div></div>
         <figcaption><span>${index + 1}</span>${nom}</figcaption>`;
       grille.append(figure);
+    });
+
+    const B = "https://s4.anilist.co/file/anilistcdn/media/anime/banner/";
+    const BANNIERES = [
+      ["Episode of East Blue", "99302-v3NwmsSnjj94.jpg"],
+      ["One Piece (série)", "21-wf37VakJmZqs.jpg"],
+      ["One Piece, le film (2000)", "459-JqlCjcwxxFrr.jpg"],
+      ["L'Aventure de l'île de l'horloge", "460-mWAlHAJ5MuBg.jpg"],
+      ["Le Pirate Ganzack", "466-uS8J4XwJ35Ws.png"],
+      ["L'Aventure sans issue", "462-Z074owEvilUu.jpg"],
+      ["Romance Dawn Story", "5252-tlTORLa2dR2u.jpg"],
+      ["Episode of Merry", "19123-QyRShJCfnIWD.jpg"],
+      ["Strong World", "4155-2PkLjTHddz2s.jpg"],
+      ["Film Z", "12859-XjlBW6o2YwUb.jpg"],
+      ["Gold", "21335-ps20iVSGUXbD.jpg"],
+      ["Stampede", "105143-y8oSKa8PSsgK.jpg"],
+    ];
+    const larges = document.querySelector(".larges");
+    BANNIERES.forEach(([nom, fichier], index) => {
+      const figure = document.createElement("figure");
+      figure.style.marginBottom = "14px";
+      figure.innerHTML = `
+        <img src="${B}${fichier}" alt="" style="display: block; width: 100%; border: 3px solid #0b0a09; border-radius: 10px; box-shadow: 0 0 0 2px #b8874d">
+        <figcaption><span>B${index + 1}</span>${nom}</figcaption>`;
+      larges.append(figure);
     });
   </script>
 </body>
