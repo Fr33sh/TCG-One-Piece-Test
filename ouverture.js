@@ -52,7 +52,7 @@ document.querySelector(".bulle-choix--un").addEventListener("click", () => comme
 document.querySelector(".bulle-choix--dix").addEventListener("click", () => commencerOuverture(10));
 
 function commencerOuverture(nombre) {
-  if (phase !== "repos" || etatRecharge().reserve < nombre) return;
+  if (phase !== "repos" || !peutOuvrir(nombre)) return;
   phase = "glisser";
 
   // Une carte est « nouvelle » si elle n'était pas encore dans la collection (un seul badge par carte)

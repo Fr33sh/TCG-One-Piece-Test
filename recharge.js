@@ -1,7 +1,8 @@
 // Recharge des boosters : un booster toutes les 8 h, jusqu'à 3 en réserve ; le tout premier est disponible
 // tout de suite. La barre, sur la languette du bas du booster, avance vers le prochain et affiche le temps
 // restant ; les boosters disponibles sont de petites icônes en éventail, comme des cartes en main.
-// « Ouvrir 1 Booster » demande 1 booster en réserve, « Ouvrir 10 Boosters » en demande 10.
+// « Ouvrir 1 Booster » demande 1 booster en réserve, « Ouvrir 10 Boosters » en demande 10 : ce qui manque
+// se paie en Sabliers (sabliers.js, 1 Sablier = 1 heure de recharge).
 
 const DUREE_RECHARGE = 8 * 60 * 60 * 1000; // ms
 const RESERVE_MAX = 3;
@@ -12,6 +13,7 @@ const barreRecharge = document.querySelector(".recharge");
 const remplissageRecharge = document.querySelector(".recharge__remplissage");
 const tempsRecharge = document.querySelector(".recharge__temps");
 const reserveBoosters = document.querySelector(".reserve-boosters");
+const compteurSabliers = document.querySelector(".sabliers__nombre");
 
 function enregistrerOrigine(origine) {
   try {
@@ -35,17 +37,6 @@ function lireOrigine() {
 
 let origineRecharge = lireOrigine();
 
-// Cadeau temporaire, pour voir le rendu des icônes : 3 boosters d'un coup, une seule fois par navigateur.
-// À retirer avant de partager le jeu.
-const CLE_CADEAU = "tcg-one-piece/cadeau-3-boosters";
-try {
-  if (!localStorage.getItem(CLE_CADEAU)) {
-    origineRecharge = Date.now() - RESERVE_MAX * DUREE_RECHARGE;
-    enregistrerOrigine(origineRecharge);
-    localStorage.setItem(CLE_CADEAU, "1");
-  }
-} catch {}
-
 function etatRecharge(maintenant = Date.now()) {
   const ecoule = Math.max(0, maintenant - origineRecharge);
   const gagnes = Math.floor(ecoule / DUREE_RECHARGE);
@@ -55,13 +46,28 @@ function etatRecharge(maintenant = Date.now()) {
   return { reserve: gagnes, progression: dansLaPeriode / DUREE_RECHARGE, restant: DUREE_RECHARGE - dansLaPeriode };
 }
 
-// Retire des boosters de la réserve ; renvoie faux s'il n'y en a pas assez
+// Sabliers à dépenser pour ouvrir « nombre » boosters : les heures qui manquent, en comptant la réserve
+// et le temps déjà écoulé vers le prochain (une heure entamée compte pour un Sablier entier).
+// Réserve pleine : le temps est arrêté, rien n'est écoulé vers le suivant.
+function coutSabliers(nombre, maintenant = Date.now()) {
+  const { reserve, restant } = etatRecharge(maintenant);
+  if (reserve >= nombre) return 0;
+  const ecoule = reserve >= RESERVE_MAX ? 0 : DUREE_RECHARGE - restant;
+  return Math.ceil(((nombre - reserve) * DUREE_RECHARGE - ecoule) / DUREE_SABLIER);
+}
+
+const peutOuvrir = nombre => coutSabliers(nombre) <= lireSabliers();
+
+// Retire des boosters de la réserve, en complétant avec des Sabliers si besoin ; renvoie faux s'il n'y en a pas assez
 function utiliserBoosters(nombre) {
   const maintenant = Date.now();
   const { reserve } = etatRecharge(maintenant);
-  if (reserve < nombre) return false;
+  const cout = coutSabliers(nombre, maintenant);
+  if (!depenserSabliers(cout)) return false;
+  // Avec des Sabliers, toute la réserve et le temps écoulé sont utilisés : la recharge repart de zéro
+  if (cout > 0) origineRecharge = maintenant;
   // Si la réserve était pleine, l'attente du suivant ne commence que maintenant
-  if (reserve >= RESERVE_MAX) origineRecharge = maintenant - (RESERVE_MAX - nombre) * DUREE_RECHARGE;
+  else if (reserve >= RESERVE_MAX) origineRecharge = maintenant - (RESERVE_MAX - nombre) * DUREE_RECHARGE;
   else origineRecharge += nombre * DUREE_RECHARGE;
   enregistrerOrigine(origineRecharge);
   afficherRecharge();
@@ -100,8 +106,19 @@ function afficherRecharge() {
   barreRecharge.setAttribute("aria-valuenow", Math.floor(progression * 100));
   tempsRecharge.textContent = reserve >= RESERVE_MAX ? "Réserve pleine" : formaterDuree(restant);
   afficherReserve(reserve);
-  document.querySelector(".bulle-choix--un").disabled = reserve < 1;
-  document.querySelector(".bulle-choix--dix").disabled = reserve < 10;
+  compteurSabliers.textContent = lireSabliers();
+  afficherCoutBouton(".bulle-choix--un", 1);
+  afficherCoutBouton(".bulle-choix--dix", 10);
+}
+
+// Sous le texte du bouton : le prix en Sabliers, s'il faut en dépenser
+function afficherCoutBouton(selecteur, nombre) {
+  const bouton = document.querySelector(selecteur);
+  const cout = coutSabliers(nombre);
+  bouton.disabled = cout > lireSabliers();
+  bouton.querySelector(".bulle-choix__cout").hidden = !cout;
+  bouton.querySelector(".bulle-choix__prix").textContent = cout;
+  bouton.setAttribute("aria-label", `${bouton.firstChild.textContent.trim()}${cout ? `, ${cout} Sablier${cout > 1 ? "s" : ""}` : ""}`);
 }
 
 afficherRecharge();

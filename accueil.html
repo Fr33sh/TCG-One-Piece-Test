@@ -55,9 +55,21 @@
         </div>
         <div class="reserve-boosters"></div>
 
+        <!-- Sabliers possédés (en haut à gauche) ; icône du sablier : Lucide (licence ISC) -->
+        <div class="sabliers" role="status" aria-label="Sabliers">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 22h14" />
+            <path d="M5 2h14" />
+            <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" />
+            <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" />
+          </svg>
+          <span class="sabliers__nombre">0</span>
+        </div>
+
+        <!-- Sous chaque bouton, le prix en Sabliers quand la réserve ne suffit pas (rempli par recharge.js) -->
         <div class="choix-booster">
-          <button class="bulle-choix bulle-choix--dix" type="button">Ouvrir 10 Boosters</button>
-          <button class="bulle-choix bulle-choix--un" type="button">Ouvrir 1 Booster</button>
+          <button class="bulle-choix bulle-choix--dix" type="button">Ouvrir 10 Boosters<span class="bulle-choix__cout" hidden><span class="bulle-choix__prix"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22h14" /><path d="M5 2h14" /><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></svg></span></button>
+          <button class="bulle-choix bulle-choix--un" type="button">Ouvrir 1 Booster<span class="bulle-choix__cout" hidden><span class="bulle-choix__prix"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22h14" /><path d="M5 2h14" /><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></svg></span></button>
           <!-- Icône : Lucide (licence ISC) -->
           <button class="bulle-retour" type="button" aria-label="Retour à l'accueil">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -85,6 +97,7 @@
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>
   <script src="collection.js"></script>
+  <script src="sabliers.js"></script>
   <script src="tirage.js"></script>
   <script src="recharge.js"></script>
   <script src="pack.js"></script>
