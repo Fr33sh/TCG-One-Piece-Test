@@ -1,6 +1,5 @@
 // Fabrique l'affichage complet d'une carte (modèles du jeu), utilisé par la galerie et par le combat.
 
-const TITRES_CAMP = { pirate: "WANTED", marine: "MARINE", civil: "CIVIL" };
 const LETTRES_RANG = { 1: "A", 2: "S", 3: "SR", 4: "SSR" };
 
 function element(balise, classe, texte) {
@@ -28,8 +27,8 @@ function creerCarte(carte) {
   const cadre = element("div", "carte__cadre");
   const interieur = element("div", "carte__interieur");
 
+  // En-tête : seulement le rang (le camp n'est plus écrit sur la carte ; il garde la couleur du cadre des SR)
   const entete = element("header", "carte__entete");
-  entete.append(element("h2", "carte__titre", TITRES_CAMP[carte.camp]));
   const rang = element("div", "carte__rang");
   rang.append(element("span", "carte__rang-label", "RANG"));
   rang.append(element("span", "carte__rang-lettre", LETTRES_RANG[carte.rang]));

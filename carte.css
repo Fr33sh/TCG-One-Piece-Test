@@ -63,7 +63,7 @@
   z-index: 1;
 }
 
-/* En-tête : WANTED / MARINE / CIVIL + rang */
+/* En-tête : le rang, en haut à droite */
 
 .carte__entete {
   position: relative;
@@ -72,17 +72,6 @@
   align-items: center;
   justify-content: center;
   height: calc(var(--u) * 106);
-}
-
-.carte__titre {
-  font: 900 calc(var(--u) * 128) / 1 "Playfair Display", serif;
-  letter-spacing: calc(var(--u) * 4);
-}
-
-.carte--marine .carte__titre {
-  font-family: "Alfa Slab One", serif;
-  font-weight: 400;
-  font-size: calc(var(--u) * 116);
 }
 
 .carte__rang {
