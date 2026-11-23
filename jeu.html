@@ -4,59 +4,71 @@
   <meta charset="utf-8">
   <script src="marge-haut.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Combat East Blue</title>
-  <link rel="stylesheet" href="carte.css">
-  <link rel="stylesheet" href="jeu.css">
+  <title>Combat</title>
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="jeu.css">
 </head>
 <body>
-  <main class="jeu">
-    <section class="ecran ecran--decks">
-      <h1 class="ecran__titre">Choisis ton deck</h1>
-      <div class="decks"></div>
-    </section>
-
-    <section class="ecran ecran--combat" hidden>
-      <div class="camp camp--adverse">
-        <div class="infos infos--adverse"></div>
-        <div class="banc banc--adverse"></div>
-        <div class="poste poste--adverse"></div>
-      </div>
-
-      <div class="bandeau">
-        <p class="bandeau__message"></p>
-        <ol class="bandeau__journal"></ol>
-        <div class="bandeau__actions"></div>
-      </div>
-
-      <div class="camp camp--joueur">
-        <div class="poste poste--joueur"></div>
-        <div class="banc banc--joueur"></div>
-        <div class="infos infos--joueur"></div>
-        <div class="main"></div>
+  <!-- Onglet Combat : bannière inclinée, Guide, modes Versus et Solo, gestion des decks.
+       Le moteur des règles (moteur.js), l'IA (ia.js) et les decks préconstruits (donnees/decks.js) restent
+       dans le projet, prêts à resservir, mais ne sont plus chargés ici. -->
+  <main class="combat">
+    <section class="banniere" aria-labelledby="titre-combat">
+      <div class="banniere__bande">
+        <img class="banniere__image" src="assets/packs/east-blue.jpg" alt="">
+        <h1 class="banniere__titre" id="titre-combat">Combat</h1>
       </div>
     </section>
+
+    <button class="guide" type="button" data-bientot="Le guide des combats arrive bientôt !">
+      <span class="guide__rond" aria-hidden="true">?</span>
+      <span class="guide__nom">Guide</span>
+    </button>
+
+    <div class="modes">
+      <!-- Un soldat de la Marine (bleu) face à un pirate (rouge), une étincelle entre les deux -->
+      <button class="mode" type="button" data-bientot="Les combats Versus arrivent bientôt !">
+        <svg viewBox="0 0 48 48" aria-hidden="true" stroke="#1f1610" stroke-width="1.6" stroke-linejoin="round">
+          <path d="M24 4.5l1.6 4.1 4.1-1.6-1.6 4.1 4.1 1.6-4.1 1.6 1.6 4.1-4.1-1.6-1.6 4.1-1.6-4.1-4.1 1.6 1.6-4.1-4.1-1.6 4.1-1.6-1.6-4.1 4.1 1.6z" fill="#f5c518" />
+          <circle cx="13" cy="20" r="6" fill="#4f97d1" />
+          <path d="M3 41c0-8.5 4.5-13 10-13s10 4.5 10 13z" fill="#4f97d1" />
+          <circle cx="35" cy="20" r="6" fill="#c0392b" />
+          <path d="M25 41c0-8.5 4.5-13 10-13s10 4.5 10 13z" fill="#c0392b" />
+        </svg>
+        <span class="mode__nom">Versus</span>
+      </button>
+      <!-- Un pirate seul, une étincelle au-dessus de l'épaule -->
+      <button class="mode" type="button" data-bientot="Les combats Solo arrivent bientôt !">
+        <svg viewBox="0 0 48 48" aria-hidden="true" stroke="#1f1610" stroke-width="1.6" stroke-linejoin="round">
+          <path d="M37 5l1.6 4.1 4.1-1.6-1.6 4.1 4.1 1.6-4.1 1.6 1.6 4.1-4.1-1.6-1.6 4.1-1.6-4.1-4.1 1.6 1.6-4.1-4.1-1.6 4.1-1.6-1.6-4.1 4.1 1.6z" fill="#f5c518" />
+          <circle cx="22" cy="19" r="7" fill="#c0392b" />
+          <path d="M9 43c0-9.5 5.5-14.5 13-14.5S35 33.5 35 43z" fill="#c0392b" />
+        </svg>
+        <span class="mode__nom">Solo</span>
+      </button>
+    </div>
+
+    <div class="raccourcis">
+      <!-- Une boîte de deck en bois, une carte qui dépasse -->
+      <button class="raccourci" type="button" data-bientot="La gestion des decks arrive bientôt !">
+        <svg viewBox="0 0 48 48" aria-hidden="true" stroke="#1f1610" stroke-width="1.6" stroke-linejoin="round">
+          <rect x="15" y="4" width="18" height="12" rx="2" fill="#f4e4bc" />
+          <rect x="10" y="11" width="28" height="32" rx="3" fill="#a8703a" />
+          <circle cx="24" cy="27" r="6.5" fill="none" stroke="#f1d48c" />
+        </svg>
+        <span class="raccourci__nom">Decks</span>
+      </button>
+    </div>
+
+    <p class="bientot" role="status" hidden></p>
   </main>
 
   <nav class="navigation navigation--fixe" data-actif="combat"></nav>
 
-  <div class="modale" hidden>
-    <div class="modale__contenu"></div>
-  </div>
-
   <script src="reglages.js"></script>
   <script src="sons.js"></script>
   <script src="musique.js"></script>
-  <script src="compte.js"></script>
-  <script src="sauvegarde.js"></script>
-  <script src="sabliers.js"></script>
-  <script src="missions-quotidiennes.js"></script>
-  <script src="donnees/cartes-east-blue.js"></script>
-  <script src="donnees/decks.js"></script>
-  <script src="rendu-carte.js"></script>
-  <script src="moteur.js"></script>
-  <script src="ia.js"></script>
-  <script src="jeu.js"></script>
   <script src="navigation.js"></script>
+  <script src="jeu.js"></script>
 </body>
 </html>
