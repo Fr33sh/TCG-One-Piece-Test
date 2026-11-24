@@ -176,24 +176,29 @@
   object-fit: cover;
 }
 
-/* ── Nom, juste au-dessus de la description ── */
+/* ── Nom : vertical, le long du bord gauche, à lire de bas en haut (comme sur une affiche de manga) ── */
 
-.carte__nom {
-  flex: none;
-  margin-top: auto;
-  padding-top: calc(var(--u) * 24);
-  font: 400 calc(var(--u) * 74) / 1.05 "IM Fell English", serif;
-  text-align: center;
+.carte__interieur > .carte__nom {
+  position: absolute;
+  top: calc(var(--u) * 150);
+  bottom: calc(var(--u) * 300);
+  left: calc(var(--u) * 34);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font: 400 calc(var(--u) * 86) / 1 "Lilita One", "Arial Black", sans-serif;
+  letter-spacing: calc(var(--u) * 6);
+  text-align: left;
   text-transform: uppercase;
 }
 
-.carte__nom--long { font-size: calc(var(--u) * 60); }
-.carte__nom--tres-long { font-size: calc(var(--u) * 48); }
+.carte__nom--long { font-size: calc(var(--u) * 70); }
+.carte__nom--tres-long { font-size: calc(var(--u) * 56); }
 
 /* ── Bas de la carte : description (2 lignes au plus), équipe, rôle, numéro ── */
 
 .carte__texte {
   flex: none;
+  margin-top: auto;
 }
 
 .carte__pied {
