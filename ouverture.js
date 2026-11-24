@@ -371,7 +371,9 @@ function creerPaquet({ cartes, nouvelles }) {
     const tirage = element("div", "tirage");
     tirage.style.zIndex = cartes.length - index;
     const retournable = element("div", "tirage__retournable");
+    // La face avant reste masquée tant que la carte montre son dos (voir retournerPaquet)
     const avant = element("div", "tirage__face tirage__face--avant");
+    avant.style.visibility = "hidden";
     avant.append(creerCarte(carte));
     if (nouvelles[index]) avant.append(creerBadgeNouveau());
     const dos = element("div", "tirage__face tirage__face--dos");
@@ -410,13 +412,18 @@ async function placerPaquet() {
   return { hauteur, centreX, centreY };
 }
 
-// Les cartes passent de dos à face visible
+// Les cartes passent de dos à face visible. La face avant n'apparaît qu'à mi-chemin (carte de profil) : sinon
+// Safari laisse voir ses textes à travers le dos (ceux qui ont leurs propres effets, comme le nom vertical).
 function retournerPaquet() {
+  const duree = 700;
+  setTimeout(() => {
+    for (const face of paquet.querySelectorAll(".tirage__face--avant")) face.style.visibility = "";
+  }, duree / 2);
   return Promise.all([...paquet.querySelectorAll(".tirage__retournable")].map(retournable => animer(retournable, [
     { transform: "rotateY(180deg) scale(1)" },
     { transform: "rotateY(90deg) scale(1.06)", offset: 0.5 },
     { transform: "rotateY(0deg) scale(1)" },
-  ], 700, { courbe: "cubic-bezier(0.45, 0.05, 0.35, 1)" })));
+  ], duree, { courbe: "cubic-bezier(0.45, 0.05, 0.35, 1)" })));
 }
 
 // Dix boosters : le paquet du booster suivant arrive de dos au centre, puis se retourne

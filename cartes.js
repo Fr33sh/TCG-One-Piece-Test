@@ -79,6 +79,7 @@ function ouvrirZoom(carte, vignette) {
   const largeur = Math.min(360, window.innerWidth * 0.86, (window.innerHeight - 110) * 1260 / 1760);
   carteZoom.style.setProperty("--largeur-zoom", `${largeur}px`);
   faceAvant.replaceChildren(creerCarte(carte));
+  faceAvant.style.visibility = "";
   retournable.style.transform = "";
   zoom.hidden = false;
   document.body.classList.add("zoom-actif");
@@ -120,19 +121,24 @@ function fermerZoom() {
   }, DUREE_ZOOM);
 }
 
-// Retournement : la carte pivote sur elle-même en se soulevant légèrement, comme prise en main
+// Retournement : la carte pivote sur elle-même en se soulevant légèrement, comme prise en main.
+// À mi-chemin (carte de profil), la face avant est masquée ou réaffichée : sinon Safari laisse voir ses textes
+// à travers le dos (ceux qui ont leurs propres effets, comme le nom vertical).
 function retourner(pendantFermeture = false) {
   if (enMouvement && !pendantFermeture) return;
   const depart = retournee ? 180 : 0;
   const arrivee = depart + 180;
+  const duree = pendantFermeture ? DUREE_ZOOM : DUREE_RETOURNEMENT;
   retournee = !retournee;
   if (!pendantFermeture) enMouvement = true;
   retournable.animate([
     { transform: `rotateY(${depart}deg) scale(1)` },
     { transform: `rotateY(${depart + 90}deg) scale(1.08)`, offset: 0.5 },
     { transform: `rotateY(${arrivee}deg) scale(1)` },
-  ], { duration: pendantFermeture ? DUREE_ZOOM : DUREE_RETOURNEMENT, easing: "cubic-bezier(0.45, 0.05, 0.35, 1)" });
+  ], { duration: duree, easing: "cubic-bezier(0.45, 0.05, 0.35, 1)" });
   retournable.style.transform = `rotateY(${arrivee % 360}deg)`;
+  const dosVisible = retournee;
+  setTimeout(() => { faceAvant.style.visibility = dosVisible ? "hidden" : ""; }, duree / 2);
   if (!pendantFermeture) setTimeout(() => { enMouvement = false; }, DUREE_RETOURNEMENT);
 }
 
