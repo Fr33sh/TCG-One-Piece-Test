@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aperçu : jetons de profil de base et monnaie</title>
+  <!-- Page TEMPORAIRE : 10 paires de jetons de profil de base et 10 idées de monnaie, dessinées pour le jeu.
+       À supprimer après le choix. -->
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { padding: max(env(safe-area-inset-top), 24px) 14px 40px; background: var(--fond-eclaire) fixed; color: var(--texte); font-family: var(--police-texte); }
+    h1 { font: 400 24px var(--police-titre); text-align: center; }
+    h2 { margin: 30px 0 4px; font: 400 22px var(--police-titre); }
+    .aide { margin-top: 6px; color: var(--texte-doux); font-size: 14px; line-height: 1.35; }
+    .grille { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 520px; margin: 14px auto 0; }
+    figure { padding: 12px 10px; border: 1px solid var(--bord); border-radius: 18px; background: var(--surface); text-align: center; }
+    .paire { display: flex; gap: 10px; justify-content: center; }
+    .jeton { width: 70px; height: 70px; overflow: hidden; border: 2px solid var(--texte); border-radius: 50%; box-shadow: var(--ombre-legere); }
+    .jeton svg, .piece svg { display: block; width: 100%; height: 100%; }
+    .piece { width: 84px; height: 84px; margin: 0 auto; filter: drop-shadow(0 6px 10px rgb(0 0 0 / 55%)); }
+    figcaption { margin-top: 10px; color: var(--texte-doux); font-size: 12px; line-height: 1.3; }
+    figcaption b { display: block; color: var(--texte); font: 400 16px var(--police-titre); }
+    figcaption b span { background: var(--prisma); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
+</head>
+<body>
+  <h1>Jetons de profil et monnaie</h1>
+  <p class="aide" style="text-align: center">Tout est dessiné pour le jeu, dans notre style.<br>Réponds par exemple : « jetons 4, monnaie 2 ».</p>
+
+  <h2>Jetons de profil de base (10 paires)</h2>
+  <p class="aide">Les deux jetons offerts à tous les joueurs dès le départ.</p>
+  <div class="grille" data-jetons></div>
+
+  <h2>Monnaie du jeu (10 idées)</h2>
+  <p class="aide">Pour la future boutique ; un nom est proposé pour chacune.</p>
+  <div class="grille" data-monnaies></div>
+
+  <script>
+    const J = "'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif";
+    const T = 'stroke="#0b0b0d" stroke-linejoin="round" stroke-linecap="round"';
+    const fond = (id, c1, c2) => `<defs><radialGradient id="${id}" cx="50%" cy="35%" r="75%"><stop offset="0" stop-color="${c1}" /><stop offset="1" stop-color="${c2}" /></radialGradient></defs><rect width="100" height="100" fill="url(#${id})" />`;
+
+    // [nom, explication, jeton 1, jeton 2]
+    const PAIRES = [
+      ["Soleil et Lune", "Le jour et la nuit : un soleil rayonnant, un croissant de lune étoilé.",
+        `${fond("s1", "#ffd27a", "#f08a3c")}<g stroke="#fff6dc" stroke-width="4" stroke-linecap="round">${Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6; return `<path d="M${50 + 26 * Math.cos(a)} ${50 + 26 * Math.sin(a)}L${50 + 36 * Math.cos(a)} ${50 + 36 * Math.sin(a)}" />`; }).join("")}</g><circle cx="50" cy="50" r="19" fill="#fff6dc" />`,
+        `${fond("s2", "#2b3f80", "#0f1a3a")}<path d="M58 24a27 27 0 1 0 18 44 23 23 0 0 1-18-44z" fill="#f1f4ff" /><path d="M70 26l1.6 4 4 1.6-4 1.6L70 37l-1.6-3.8-4-1.6 4-1.6z" fill="#fff" /><circle cx="78" cy="48" r="1.6" fill="#fff" /><circle cx="26" cy="26" r="1.2" fill="#fff" />`],
+
+      ["Kitsune et Tanuki", "Les deux esprits farceurs du folklore japonais : le renard et le tanuki.",
+        `${fond("k1", "#7a2b2b", "#2a0e12")}<path d="M24 22l14 18h24l14-18 2 34c-4 14-16 24-28 24S26 70 22 56z" fill="#fbf7f0" ${T} stroke-width="2.5" /><path d="M28 28l8 10M72 28l-8 10" stroke="#e23b3b" stroke-width="3" /><path d="M34 52q6-5 12 0M54 52q6-5 12 0" fill="none" stroke="#e23b3b" stroke-width="3" stroke-linecap="round" /><path d="M46 70h8l-4 4z" fill="#0b0b0d" /><path d="M42 44l3-6M58 44l-3-6" stroke="#e23b3b" stroke-width="2.5" stroke-linecap="round" />`,
+        `${fond("k2", "#6b4a2b", "#2a1a0e")}<circle cx="30" cy="30" r="9" fill="#8a5a33" ${T} stroke-width="2.5" /><circle cx="70" cy="30" r="9" fill="#8a5a33" ${T} stroke-width="2.5" /><ellipse cx="50" cy="56" rx="30" ry="27" fill="#b07a48" ${T} stroke-width="2.5" /><path d="M22 52q14-10 28 0 14-10 28 0-6 12-14 10-8-2-14-6-6 4-14 6-8 2-14-10z" fill="#3a2414" /><circle cx="38" cy="54" r="3.5" fill="#fff" /><circle cx="62" cy="54" r="3.5" fill="#fff" /><ellipse cx="50" cy="66" rx="5" ry="3.5" fill="#1a0f08" /><path d="M42 74q8 5 16 0" fill="none" ${T} stroke-width="2" />`],
+
+      ["Oni rouge et Oni bleu", "Le célèbre duo de démons du folklore : Aka-oni et Ao-oni.",
+        `${fond("o1", "#ff7a6b", "#b3261e")}<path d="M30 30l-6-18 14 12M70 30l6-18-14 12" fill="#fff1c9" ${T} stroke-width="2" /><circle cx="50" cy="56" r="30" fill="#e0453a" ${T} stroke-width="2.5" /><path d="M34 48l10 4M66 48l-10 4" stroke="#0b0b0d" stroke-width="3" stroke-linecap="round" /><circle cx="40" cy="56" r="3" fill="#0b0b0d" /><circle cx="60" cy="56" r="3" fill="#0b0b0d" /><path d="M36 70q14 8 28 0" fill="none" ${T} stroke-width="2.5" /><path d="M40 70l2 6 2-5M60 70l-2 6-2-5" fill="#fff" ${T} stroke-width="1.2" />`,
+        `${fond("o2", "#6bb5ff", "#1c4f9e")}<path d="M30 30l-6-18 14 12M70 30l6-18-14 12" fill="#fff1c9" ${T} stroke-width="2" /><circle cx="50" cy="56" r="30" fill="#3a7fe0" ${T} stroke-width="2.5" /><path d="M34 52l10-4M66 52l-10-4" stroke="#0b0b0d" stroke-width="3" stroke-linecap="round" /><circle cx="40" cy="58" r="3" fill="#0b0b0d" /><circle cx="60" cy="58" r="3" fill="#0b0b0d" /><path d="M38 74q12-6 24 0" fill="none" ${T} stroke-width="2.5" /><path d="M42 72l2-6 2 5M58 72l-2-6-2 5" fill="#fff" ${T} stroke-width="1.2" />`],
+
+      ["Lumière et Ombre", "Deux kanji : 光 (la lumière) sur fond clair, 闇 (l'ombre) sur fond noir.",
+        `${fond("l1", "#ffffff", "#d9d9e2")}<circle cx="50" cy="50" r="36" fill="none" stroke="url(#lp)" stroke-width="3" /><defs><linearGradient id="lp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7eb6" /><stop offset=".5" stop-color="#fff07a" /><stop offset="1" stop-color="#7cc8ff" /></linearGradient></defs><text x="50" y="64" text-anchor="middle" font-family="${J}" font-weight="700" font-size="40" fill="#0b0b0d">光</text>`,
+        `${fond("l2", "#2a2a33", "#0b0b0d")}<circle cx="50" cy="50" r="36" fill="none" stroke="url(#lp2)" stroke-width="3" /><defs><linearGradient id="lp2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b98cff" /><stop offset=".5" stop-color="#7cc8ff" /><stop offset="1" stop-color="#ff7eb6" /></linearGradient></defs><text x="50" y="64" text-anchor="middle" font-family="${J}" font-weight="700" font-size="40" fill="#fff">闇</text>`],
+
+      ["Sakura et Momiji", "Le printemps et l'automne : la fleur de cerisier et la feuille d'érable.",
+        `${fond("f1", "#3a2033", "#160b14")}<g transform="translate(50 50)">${Array.from({ length: 5 }, (_, i) => `<path d="M0 -6C-10 -14 -12 -26 -4 -32l4 4 4-4c8 6 6 18-4 26z" fill="#ffb7d0" ${T} stroke-width="1.8" transform="rotate(${i * 72})" />`).join("")}<circle r="5" fill="#ffe07a" ${T} stroke-width="1.5" /></g>`,
+        `${fond("f2", "#3a2418", "#140b08")}<path d="M50 14l5 16 12-8-3 14 16-2-12 12 12 6-16 4 6 14-14-8-6 14-6-14-14 8 6-14-16-4 12-6-12-12 16 2-3-14 12 8z" fill="#e4572e" ${T} stroke-width="2" /><path d="M50 30v52" stroke="#7a2614" stroke-width="2.5" stroke-linecap="round" />`],
+
+      ["Katana et Shuriken", "Les deux armes cultes des mangas : le sabre du samouraï et l'étoile du ninja.",
+        `${fond("a1", "#3b3f4a", "#121418")}<path d="M24 80L74 22l4 4-50 58z" fill="#e8edf3" ${T} stroke-width="2" /><path d="M74 22l6-6 2 2-4 8z" fill="#e8edf3" ${T} stroke-width="1.5" /><path d="M30 66l10 10" stroke="#d9a400" stroke-width="5" stroke-linecap="round" /><path d="M16 88l14-14" stroke="#7a1f1f" stroke-width="7" stroke-linecap="round" />`,
+        `${fond("a2", "#3b3f4a", "#121418")}<g transform="translate(50 50) rotate(20)"><path d="M0 -36L8 -8 36 0 8 8 0 36-8 8-36 0-8-8z" fill="#c9d1db" ${T} stroke-width="2.5" /><path d="M0 -36L8 -8 0 0zM36 0L8 8 0 0zM0 36l-8-8 8-8zM-36 0l28-8 8 8z" fill="#eef2f6" /><circle r="6" fill="#121418" stroke="#c9d1db" stroke-width="2" /></g>`],
+
+      ["Feu et Eau", "Deux éléments opposés : une flamme vive et une grande vague.",
+        `${fond("e1", "#5a1a10", "#1a0804")}<path d="M50 14c4 14 22 22 22 42 0 14-10 26-22 26S28 70 28 56c0-10 6-16 10-22 0 8 4 12 8 12-4-12 0-24 4-32z" fill="#ff8a2a" ${T} stroke-width="2.5" /><path d="M50 46c2 8 10 12 10 22 0 6-4 10-10 10s-10-4-10-10c0-6 4-8 6-12 0 4 2 6 4 6-2-6 0-12 0-16z" fill="#ffe07a" />`,
+        `${fond("e2", "#0f3d66", "#06182b")}<path d="M12 70c10-4 14-18 26-26 14-10 34-6 40 6-10-4-20 0-22 8 8-6 20-2 22 8 4 14-8 22-20 20H12z" fill="#4aa3e8" ${T} stroke-width="2.5" /><path d="M56 52c6-4 14-2 16 4" fill="none" stroke="#e8f6ff" stroke-width="3" stroke-linecap="round" /><path d="M12 82h76" stroke="#e8f6ff" stroke-width="3" stroke-linecap="round" opacity="0.6" />`],
+
+      ["Âme blanche et Âme noire", "Le 魂 de notre logo, en noir sur blanc et en blanc sur noir.",
+        `${fond("m1", "#ffffff", "#e3e3ea")}<text x="50" y="66" text-anchor="middle" font-family="${J}" font-weight="700" font-size="50" fill="#0b0b0d">魂</text>`,
+        `${fond("m2", "#26262f", "#0b0b0d")}<text x="50" y="66" text-anchor="middle" font-family="${J}" font-weight="700" font-size="50" fill="#fff">魂</text>`],
+
+      ["Héros et Héroïne", "Deux silhouettes d'anime : cheveux en pics pour lui, couettes pour elle.",
+        `${fond("h1", "#7cc8ff", "#2f5fae")}<path d="M28 44l-6-10 12 4-2-14 12 8 6-14 6 14 12-8-2 14 12-4-6 10z" fill="#0b0b0d" /><circle cx="50" cy="52" r="16" fill="#0b0b0d" /><path d="M24 100c0-18 12-28 26-28s26 10 26 28z" fill="#0b0b0d" />`,
+        `${fond("h2", "#ff9ad5", "#a8327a")}<circle cx="50" cy="48" r="17" fill="#0b0b0d" /><path d="M33 46c-2-12 6-22 17-22s19 10 17 22c-6-6-10-8-17-8s-11 2-17 8z" fill="#0b0b0d" /><path d="M32 40c-12 4-16 18-10 30 2-10 6-16 12-20zM68 40c12 4 16 18 10 30-2-10-6-16-12-20z" fill="#0b0b0d" /><path d="M24 100c0-18 12-28 26-28s26 10 26 28z" fill="#0b0b0d" />`],
+
+      ["Onigiri et Dango", "Deux douceurs cultes des animes : la boule de riz et les brochettes de dango.",
+        `${fond("g1", "#ffe9a8", "#e0a84a")}<path d="M50 16c6 0 34 44 34 56 0 8-8 12-34 12S16 80 16 72c0-12 28-56 34-56z" fill="#fff" ${T} stroke-width="2.5" /><path d="M32 66h36v18H32z" fill="#1d3a2a" /><circle cx="42" cy="50" r="2.4" fill="#0b0b0d" /><circle cx="58" cy="50" r="2.4" fill="#0b0b0d" /><path d="M46 56q4 3 8 0" fill="none" ${T} stroke-width="2" />`,
+        `${fond("g2", "#cde8c4", "#5e9a52")}<path d="M28 86L74 14" stroke="#c9a36a" stroke-width="4" stroke-linecap="round" /><circle cx="62" cy="32" r="12" fill="#ffb7d0" ${T} stroke-width="2.5" /><circle cx="51" cy="49" r="12" fill="#fff" ${T} stroke-width="2.5" /><circle cx="40" cy="66" r="12" fill="#9fd68a" ${T} stroke-width="2.5" />`],
+    ];
+
+    // [nom de la monnaie, explication, pièce]
+    const MONNAIES = [
+      ["Âmes", "Une pièce d'or frappée du 魂 de notre logo, avec un liseré prisma.",
+        `<defs><radialGradient id="p1" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff2b0" /><stop offset=".6" stop-color="#e8b43a" /><stop offset="1" stop-color="#a8761a" /></radialGradient><linearGradient id="pp1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7eb6" /><stop offset=".33" stop-color="#fff07a" /><stop offset=".66" stop-color="#7dffc4" /><stop offset="1" stop-color="#b98cff" /></linearGradient></defs><circle cx="50" cy="50" r="44" fill="url(#p1)" stroke="url(#pp1)" stroke-width="4" /><circle cx="50" cy="50" r="35" fill="none" stroke="#a8761a" stroke-width="2" /><text x="50" y="64" text-anchor="middle" font-family="${J}" font-weight="700" font-size="40" fill="#8a5a10">魂</text>`],
+      ["Ryō", "Le koban, l'ancienne pièce d'or ovale du Japon (le ryō est aussi la monnaie de Naruto).",
+        `<defs><linearGradient id="p2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1a8" /><stop offset=".5" stop-color="#e0aa2c" /><stop offset="1" stop-color="#9c6a0e" /></linearGradient></defs><ellipse cx="50" cy="50" rx="30" ry="45" fill="url(#p2)" stroke="#7a520a" stroke-width="2.5" /><g stroke="#b88418" stroke-width="1.6" opacity="0.7">${Array.from({ length: 9 }, (_, i) => `<path d="M30 ${22 + i * 7}h40" />`).join("")}</g><rect x="40" y="36" width="20" height="28" rx="3" fill="#f6d36a" stroke="#7a520a" stroke-width="1.8" /><text x="50" y="56" text-anchor="middle" font-family="${J}" font-weight="700" font-size="14" fill="#7a520a">両</text>`],
+      ["Mon", "La pièce ronde en bronze percée d'un trou carré, l'ancienne monnaie japonaise.",
+        `<defs><radialGradient id="p3" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#e8b88a" /><stop offset=".6" stop-color="#b07a48" /><stop offset="1" stop-color="#6b4222" /></radialGradient></defs><circle cx="50" cy="50" r="44" fill="url(#p3)" stroke="#4a2c14" stroke-width="2.5" /><circle cx="50" cy="50" r="36" fill="none" stroke="#6b4222" stroke-width="2" /><rect x="40" y="40" width="20" height="20" fill="#0b0b0d" stroke="#4a2c14" stroke-width="2" /><text x="50" y="30" text-anchor="middle" font-family="${J}" font-weight="700" font-size="12" fill="#4a2c14">魂</text><text x="50" y="80" text-anchor="middle" font-family="${J}" font-weight="700" font-size="12" fill="#4a2c14">通</text>`],
+      ["Gemmes", "Une gemme taillée aux reflets prisma, comme un éclat de carte rare.",
+        `<defs><linearGradient id="p4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9ad5" /><stop offset=".35" stop-color="#b9a4ff" /><stop offset=".7" stop-color="#8fe3ff" /><stop offset="1" stop-color="#a6ffcf" /></linearGradient></defs><path d="M28 18h44l18 24-40 46-40-46z" fill="url(#p4)" stroke="#fff" stroke-width="2" stroke-linejoin="round" /><path d="M10 42h80M28 18l10 24 12-24 12 24 10-24M38 42l12 46 12-46" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" opacity="0.75" /><path d="M30 22l6 14" stroke="#fff" stroke-width="3" stroke-linecap="round" />`],
+      ["Éclats", "Un éclat de cristal brut, blanc et prisma, comme ceux qui composent un monde.",
+        `<defs><linearGradient id="p5" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7cc8ff" /><stop offset=".5" stop-color="#ffffff" /><stop offset="1" stop-color="#ff9ad5" /></linearGradient></defs><path d="M46 6l22 30-6 52-28 6-12-44z" fill="url(#p5)" stroke="#0b0b0d" stroke-width="2.5" stroke-linejoin="round" /><path d="M46 6l-4 44 20 38M42 50L22 50" fill="none" stroke="#0b0b0d" stroke-width="1.5" opacity="0.4" /><path d="M48 16l12 18" stroke="#fff" stroke-width="3" stroke-linecap="round" />`],
+      ["Orbes", "Une petite flamme d'âme dans une sphère lumineuse, avec un halo prisma.",
+        `<defs><radialGradient id="p6" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#ffffff" /><stop offset=".5" stop-color="#b9e6ff" /><stop offset="1" stop-color="#3a6fd8" /></radialGradient><radialGradient id="h6"><stop offset=".6" stop-color="#b98cff" stop-opacity=".6" /><stop offset="1" stop-color="#b98cff" stop-opacity="0" /></radialGradient></defs><circle cx="50" cy="50" r="48" fill="url(#h6)" /><circle cx="50" cy="50" r="34" fill="url(#p6)" stroke="#fff" stroke-width="2" /><path d="M50 30c-2 8-10 12-10 22 0 6 4 10 10 10s10-4 10-10c0-6-4-9-6-13 0 4-2 6-4 6 2-6 0-11 0-15z" fill="#fff" opacity="0.9" />`],
+      ["Jetons", "Un jeton hexagonal argenté avec le 魂 au centre, comme un jeton de casino.",
+        `<defs><linearGradient id="p7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f8" /><stop offset=".5" stop-color="#9aa1ab" /><stop offset="1" stop-color="#e3e7ec" /></linearGradient></defs><path d="M50 4l40 23v46L50 96 10 73V27z" fill="url(#p7)" stroke="#4a4f57" stroke-width="2.5" stroke-linejoin="round" /><path d="M50 14l31 18v36L50 86 19 68V32z" fill="#2a2d33" /><text x="50" y="64" text-anchor="middle" font-family="${J}" font-weight="700" font-size="34" fill="#f4f6f8">魂</text>`],
+      ["Étoiles", "Une pièce dorée en forme d'étoile, qui brille comme les cartes SSR.",
+        `<defs><linearGradient id="p8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3b8" /><stop offset=".55" stop-color="#e0aa2c" /><stop offset="1" stop-color="#9c6a0e" /></linearGradient></defs><path d="M50 4l13 28 30 4-22 21 6 30-27-15-27 15 6-30L7 36l30-4z" fill="url(#p8)" stroke="#7a520a" stroke-width="2.5" stroke-linejoin="round" /><path d="M50 20l7 15 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="none" stroke="#fff6d0" stroke-width="2" stroke-linejoin="round" opacity="0.8" />`],
+      ["Perles", "Une perle irisée, nacrée aux couleurs du prisma.",
+        `<defs><radialGradient id="p9" cx="38%" cy="32%" r="70%"><stop offset="0" stop-color="#ffffff" /><stop offset=".35" stop-color="#ffe3f1" /><stop offset=".6" stop-color="#d6e9ff" /><stop offset=".85" stop-color="#c9b8ff" /><stop offset="1" stop-color="#8a7ab8" /></radialGradient></defs><circle cx="50" cy="52" r="40" fill="url(#p9)" /><ellipse cx="36" cy="36" rx="10" ry="6" fill="#fff" opacity="0.85" transform="rotate(-30 36 36)" />`],
+      ["Sceaux", "Un sceau rouge japonais (hanko) frappé du 魂, comme un tampon officiel.",
+        `<defs><radialGradient id="p10" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ff6b5a" /><stop offset="1" stop-color="#a8231a" /></radialGradient></defs><rect x="8" y="8" width="84" height="84" rx="14" fill="url(#p10)" stroke="#6e1410" stroke-width="2.5" /><rect x="16" y="16" width="68" height="68" rx="8" fill="none" stroke="#ffe6e0" stroke-width="3" /><text x="50" y="66" text-anchor="middle" font-family="${J}" font-weight="700" font-size="44" fill="#ffe6e0">魂</text>`],
+    ];
+
+    document.querySelector("[data-jetons]").append(...PAIRES.map(([nom, texte, j1, j2], i) => {
+      const figure = document.createElement("figure");
+      figure.innerHTML = `<div class="paire"><span class="jeton"><svg viewBox="0 0 100 100">${j1}</svg></span><span class="jeton"><svg viewBox="0 0 100 100">${j2}</svg></span></div>
+        <figcaption><b><span>${i + 1}</span> · ${nom}</b>${texte}</figcaption>`;
+      return figure;
+    }));
+
+    document.querySelector("[data-monnaies]").append(...MONNAIES.map(([nom, texte, piece], i) => {
+      const figure = document.createElement("figure");
+      figure.innerHTML = `<div class="piece"><svg viewBox="0 0 100 100">${piece}</svg></div>
+        <figcaption><b><span>${i + 1}</span> · ${nom}</b>${texte}</figcaption>`;
+      return figure;
+    }));
+  </script>
+</body>
+</html>
