@@ -19,6 +19,14 @@ const RENUMEROTATIONS = [
     "NA-009": "NA-012", "NA-010": "NA-013", "NA-011": "NA-015", "NA-012": "NA-016", "NA-013": "NA-017",
     "NA-014": "NA-018", "NA-015": "NA-019", "NA-016": "NA-021", "NA-017": "NA-022",
   },
+  // Version 3 (24/11/2026) : Tazuna, Tsunami, Inari, Kaiza, Zôri & Waraji complètent la collection Naruto
+  {
+    "NA-002": "NA-007", "NA-003": "NA-008", "NA-004": "NA-009", "NA-005": "NA-010", "NA-006": "NA-011",
+    "NA-007": "NA-012", "NA-008": "NA-013", "NA-009": "NA-014", "NA-010": "NA-015", "NA-011": "NA-016",
+    "NA-012": "NA-017", "NA-013": "NA-018", "NA-014": "NA-019", "NA-015": "NA-020", "NA-016": "NA-021",
+    "NA-017": "NA-022", "NA-018": "NA-023", "NA-019": "NA-024", "NA-020": "NA-025", "NA-021": "NA-026",
+    "NA-022": "NA-027",
+  },
 ];
 const VERSION_COLLECTION = RENUMEROTATIONS.length;
 
