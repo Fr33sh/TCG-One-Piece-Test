@@ -7,8 +7,8 @@
   justify-content: space-between;
 }
 
-/* Sabliers possédés, en haut à droite du panneau */
-.missions-entete__sabliers {
+/* Sceaux possédés, en haut à droite du panneau */
+.missions-entete__sceaux {
   display: flex;
   flex: none;
   gap: 2px;
@@ -21,7 +21,7 @@
   line-height: 1;
 }
 
-.missions-entete__sabliers img {
+.missions-entete__sceaux img {
   width: 20px;
   height: 20px;
 }
@@ -33,7 +33,7 @@
   font: 700 13px / 1.2 var(--police-texte);
 }
 
-/* ── Barre de progression : un cran par mission, le Sablier bonus au bout ── */
+/* ── Barre de progression : un cran par mission, le Sceau bonus au bout ── */
 
 .progression {
   display: flex;
@@ -81,7 +81,7 @@
   text-shadow: 0 0 3px #000, 0 1px 2px #000;
 }
 
-/* Le Sablier bonus : éteint tant que la barre n'est pas pleine, anneau prisma qui pulse quand il est prêt */
+/* Le Sceau bonus : éteint tant que la barre n'est pas pleine, anneau prisma qui pulse quand il est prêt */
 .progression__bonus {
   position: relative;
   display: grid;

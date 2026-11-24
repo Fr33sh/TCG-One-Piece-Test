@@ -1,5 +1,5 @@
 // Page Missions : les 3 missions quotidiennes (missions-quotidiennes.js), leur barre de progression avec le
-// Sablier bonus au bout, le temps avant les nouvelles missions et les boutons « Récupérer ».
+// Sceau bonus au bout, le temps avant les nouvelles missions et les boutons « Récupérer ».
 
 const ACTUALISATION_MISSIONS = 30000; // ms : compte à rebours et changement de jour
 
@@ -47,7 +47,7 @@ function creerLigneMission(mission, etat) {
         <span class="mission__compte">${avancement} / ${mission.objectif}</span>
       </span>
     </div>
-    <span class="mission__recompense" aria-label="Récompense : ${mission.recompense} Sablier"><img src="assets/icones/sablier.svg" alt="">+${mission.recompense}</span>`;
+    <span class="mission__recompense" aria-label="Récompense : ${nomSceaux(mission.recompense)}"><img src="assets/icones/sceau.svg" alt="">+${mission.recompense}</span>`;
   ligne.querySelector(".mission__titre").textContent = mission.titre;
   ligne.append(creerBoutonRecompense(mission.id, etat));
   return ligne;
@@ -58,10 +58,10 @@ function afficherMissions() {
   const accomplies = missionsAccomplies(etat);
   const total = MISSIONS_QUOTIDIENNES.length;
 
-  document.querySelector("[data-sabliers]").textContent = lireSabliers();
+  document.querySelector("[data-sceaux]").textContent = lireSceaux();
   document.querySelector("[data-renouvellement]").textContent = `Nouvelles missions dans ${avantNouvellesMissions()}`;
 
-  // Barre de progression : un tiers par mission accomplie ; pleine, elle offre le Sablier bonus
+  // Barre de progression : un tiers par mission accomplie ; pleine, elle offre le Sceau bonus
   const piste = document.querySelector(".progression__piste");
   piste.setAttribute("aria-valuenow", accomplies);
   document.querySelector(".progression__remplissage").style.width = `${(accomplies / total) * 100}%`;
@@ -77,7 +77,7 @@ function afficherMissions() {
 function recuperer(id) {
   const gain = recupererRecompense(id);
   if (gain) {
-    messageMissions.textContent = `+${gain} Sablier${gain > 1 ? "s" : ""} !`;
+    messageMissions.textContent = `+${nomSceaux(gain)} !`;
     if (typeof jouerCarillon === "function") jouerCarillon();
   }
   afficherMissions();
