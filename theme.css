@@ -54,3 +54,21 @@
 
   color-scheme: dark;
 }
+
+/* Solde d'une monnaie (Animas…) : pastille sombre, la pièce puis le nombre ; rempli par animas.js */
+.solde {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 11px 4px 5px;
+  border: 1px solid var(--bord-clair);
+  border-radius: 999px;
+  background: var(--creux);
+  color: var(--texte);
+  font: 400 15px / 1 var(--police-titre);
+}
+
+.solde img {
+  width: 22px;
+  height: 22px;
+}

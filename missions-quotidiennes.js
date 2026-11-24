@@ -2,14 +2,14 @@
 // 1 Sceau ; une fois les 3 accomplies, la barre de progression est pleine et offre 1 Sceau bonus.
 // Les récompenses se récupèrent à la main sur la page Missions. Utilise sceaux.js (à charger avant).
 //
-// Avancement : connexion → accueil.js, boosters → recharge.js (utiliserBoosters), combat → jeu.js.
+// Avancement : connexion → accueil.js, boosters → recharge.js (utiliserBoosters), recyclage → animas.js (recycler).
 
 const CLE_MISSIONS = "tcg-one-piece/missions";
 
 const MISSIONS_QUOTIDIENNES = [
   { id: "connexion", titre: "Se connecter au jeu", objectif: 1, recompense: 1 },
   { id: "boosters", titre: "Ouvrir 2 boosters", objectif: 2, recompense: 1 },
-  { id: "combat", titre: "Disputer un combat", objectif: 1, recompense: 1 },
+  { id: "recyclage", titre: "Recycler un doublon", objectif: 1, recompense: 1 },
 ];
 const RECOMPENSE_BONUS = 1;
 

@@ -1,6 +1,7 @@
 // Collection : les séries (onglet East Blue, avec l'illustration de son booster), puis les cartes de la série en lignes de 3.
 // Une carte pas encore obtenue est une case vide portant son numéro. Toucher une carte possédée l'agrandit
 // (le reste s'efface), la toucher à nouveau la retourne, la flèche la renvoie à sa place dans la grille.
+// Sous la carte agrandie, ses doublons peuvent être recyclés en Animas (animas.js) ; on en garde toujours un.
 
 const DUREE_ZOOM = 550;
 const DUREE_RETOURNEMENT = 700;
@@ -16,10 +17,13 @@ const boutonRetour = document.querySelector(".zoom__retour");
 const carteZoom = document.querySelector(".zoom__carte");
 const retournable = document.querySelector(".zoom__retournable");
 const faceAvant = document.querySelector(".zoom__face--avant");
+const panneauRecyclage = document.querySelector(".recyclage");
 
 let vignetteOuverte = null;
+let carteOuverte = null;
 let retournee = false;
 let enMouvement = false;
+let nombreARecycler = 1;
 
 function afficherSerie(visible) {
   series.hidden = visible;
@@ -73,10 +77,15 @@ function superposer(depuis, vers) {
 function ouvrirZoom(carte, vignette) {
   if (vignetteOuverte) return;
   vignetteOuverte = vignette;
+  carteOuverte = carte;
   retournee = false;
   enMouvement = true;
+  nombreARecycler = 1;
+  document.querySelector("[data-recyclage-message]").textContent = "";
+  afficherRecyclage();
 
-  const largeur = Math.min(360, window.innerWidth * 0.86, (window.innerHeight - 110) * 1260 / 1760);
+  // La carte laisse de la place en bas pour le panneau de recyclage
+  const largeur = Math.min(360, window.innerWidth * 0.86, (window.innerHeight - 260) * 1260 / 1760);
   carteZoom.style.setProperty("--largeur-zoom", `${largeur}px`);
   faceAvant.replaceChildren(creerCarte(carte));
   faceAvant.style.visibility = "";
@@ -93,8 +102,60 @@ function ouvrirZoom(carte, vignette) {
   setTimeout(() => { enMouvement = false; }, DUREE_ZOOM);
   fond.animate([{ opacity: 0 }, { opacity: 1 }], { duration: DUREE_ZOOM, easing: "ease" });
   boutonRetour.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: DUREE_ZOOM * 0.6, fill: "backwards" });
+  panneauRecyclage.animate([{ opacity: 0, translate: "-50% 12px" }, { opacity: 1, translate: "-50% 0" }], { duration: 300, delay: DUREE_ZOOM * 0.6, fill: "backwards" });
   carteZoom.focus({ preventScroll: true });
 }
+
+// ── Recyclage des doublons de la carte agrandie ──
+
+function afficherRecyclage() {
+  const exemplaires = lireCollection()[carteOuverte.id] || 0;
+  const disponibles = doublons(carteOuverte);
+  nombreARecycler = Math.min(Math.max(1, nombreARecycler), Math.max(1, disponibles));
+  const valeur = VALEUR_RECYCLAGE[carteOuverte.rang];
+
+  panneauRecyclage.hidden = false;
+  document.querySelector("[data-recyclage-info]").textContent = disponibles
+    ? `${exemplaires} exemplaires · ${disponibles} doublon${disponibles > 1 ? "s" : ""} à recycler (${nomAnimas(valeur)} chacun)`
+    : "Exemplaire unique : rien à recycler.";
+  document.querySelector("[data-recyclage-choix]").hidden = !disponibles;
+  document.querySelector("[data-recyclage-nombre]").textContent = nombreARecycler;
+  document.querySelector("[data-recyclage-gain]").textContent = nombreARecycler * valeur;
+  document.querySelector('[data-recyclage-pas="-1"]').disabled = nombreARecycler <= 1;
+  document.querySelector('[data-recyclage-pas="1"]').disabled = nombreARecycler >= disponibles;
+}
+
+// Le badge « ×3 » de la carte dans la grille suit le nombre d'exemplaires
+function mettreAJourBadge(vignette, exemplaires) {
+  const emplacement = vignette.parentElement;
+  let badge = emplacement.querySelector(".exemplaires");
+  if (exemplaires <= 1) {
+    badge?.remove();
+    return;
+  }
+  if (!badge) {
+    badge = element("span", "exemplaires");
+    emplacement.append(badge);
+  }
+  badge.textContent = `×${exemplaires}`;
+}
+
+for (const pas of document.querySelectorAll("[data-recyclage-pas]")) {
+  pas.addEventListener("click", () => {
+    nombreARecycler += Number(pas.dataset.recyclagePas);
+    afficherRecyclage();
+  });
+}
+
+document.querySelector("[data-recycler]").addEventListener("click", () => {
+  const gain = recycler(carteOuverte, nombreARecycler);
+  if (!gain) return;
+  document.querySelector("[data-recyclage-message]").textContent = `+${nomAnimas(gain)} !`;
+  if (typeof jouerCarillon === "function") jouerCarillon();
+  mettreAJourBadge(vignetteOuverte, lireCollection()[carteOuverte.id]);
+  nombreARecycler = 1;
+  afficherRecyclage();
+});
 
 function fermerZoom() {
   if (!vignetteOuverte || enMouvement) return;
@@ -110,6 +171,7 @@ function fermerZoom() {
     carteZoom.animate([{ transform: "none" }, { transform: superposer(arrivee, depart) }], { duration: DUREE_ZOOM, easing: COURBE, fill: "forwards" }),
     fond.animate([{ opacity: 1 }, { opacity: 0 }], { duration: DUREE_ZOOM, easing: "ease", fill: "forwards" }),
     boutonRetour.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, fill: "forwards" }),
+    panneauRecyclage.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, fill: "forwards" }),
   ];
   setTimeout(() => {
     vignette.style.visibility = "";

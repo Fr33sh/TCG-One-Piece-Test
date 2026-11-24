@@ -81,6 +81,13 @@ body {
   color: var(--texte);
 }
 
+/* Solde d'Animas, à droite dans la barre (Boutique) */
+.barre-page__solde {
+  position: absolute;
+  right: 14px;
+  bottom: 11px;
+}
+
 .barre-page__retour svg {
   width: 18px;
   height: 18px;

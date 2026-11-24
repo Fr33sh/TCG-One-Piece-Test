@@ -10,9 +10,7 @@ function lireCollection() {
   }
 }
 
-function ajouterALaCollection(cartes) {
-  const collection = lireCollection();
-  for (const carte of cartes) collection[carte.id] = (collection[carte.id] || 0) + 1;
+function enregistrerCollection(collection) {
   try {
     localStorage.setItem(CLE_COLLECTION, JSON.stringify(collection));
   } catch {
@@ -20,4 +18,17 @@ function ajouterALaCollection(cartes) {
   }
   // Copie en ligne pour les comptes liés à Discord (sauvegarde.js, si la page le charge)
   if (typeof signalerModification === "function") signalerModification();
+}
+
+function ajouterALaCollection(cartes) {
+  const collection = lireCollection();
+  for (const carte of cartes) collection[carte.id] = (collection[carte.id] || 0) + 1;
+  enregistrerCollection(collection);
+}
+
+// Retire des exemplaires d'une carte (recyclage des doublons, animas.js) ; il en reste toujours au moins un
+function retirerDeLaCollection(id, nombre) {
+  const collection = lireCollection();
+  collection[id] = Math.max(1, (collection[id] || 0) - nombre);
+  enregistrerCollection(collection);
 }
