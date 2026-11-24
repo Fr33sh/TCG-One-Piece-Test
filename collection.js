@@ -13,6 +13,12 @@ const RENUMEROTATIONS = [
     "NA-009": "NA-010", "NA-010": "NA-011", "NA-011": "NA-012", "NA-012": "NA-013",
     "NA-013": "NA-014", "NA-014": "NA-015", "NA-015": "NA-016", "NA-016": "NA-017",
   },
+  // Version 2 (24/11/2026) : Ino, Shikamaru, Gôzu & Meizu, Sakura et Kakashi rejoignent la collection Naruto
+  {
+    "NA-004": "NA-006", "NA-005": "NA-007", "NA-006": "NA-008", "NA-007": "NA-009", "NA-008": "NA-011",
+    "NA-009": "NA-012", "NA-010": "NA-013", "NA-011": "NA-015", "NA-012": "NA-016", "NA-013": "NA-017",
+    "NA-014": "NA-018", "NA-015": "NA-019", "NA-016": "NA-021", "NA-017": "NA-022",
+  },
 ];
 const VERSION_COLLECTION = RENUMEROTATIONS.length;
 
