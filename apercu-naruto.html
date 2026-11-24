@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Collection Naruto : choix des illustrations</title>
-  <!-- Page TEMPORAIRE : 2 illustrations candidates par personnage de la collection Naruto (images officielles de
-       l'anime, MyAnimeList et AniList), dans le format des cartes. À supprimer après le choix. -->
+  <title>Collection Naruto : nouvelles illustrations</title>
+  <!-- Page TEMPORAIRE : 3 nouvelles illustrations candidates (C, D, E) pour les personnages principaux refusés
+       (images officielles de l'anime, MyAnimeList), au format des cartes. À supprimer après le choix. -->
   <link rel="stylesheet" href="theme.css">
   <style>
     * { box-sizing: border-box; margin: 0; }
@@ -15,66 +15,37 @@
     .liste { display: flex; flex-direction: column; gap: 14px; max-width: 520px; margin: 0 auto; }
     .perso { padding: 12px; border: 1px solid var(--bord); border-radius: 18px; background: var(--surface); }
     .perso h2 { display: flex; gap: 8px; align-items: baseline; font: 400 19px var(--police-titre); }
-    .perso h2 .numero { background: var(--prisma); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .rarete { margin-left: auto; padding: 3px 9px; border-radius: 999px; font: 700 12px var(--police-texte); letter-spacing: 0.08em; }
-    .r1 { background: #3a3c44; } .r2 { background: #2f6fd1; } .r3 { background: #c8323f; } .r4 { background: linear-gradient(90deg, #ff7eb6, #fff07a, #7cc8ff); color: var(--encre); }
-    .choix { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+    .r1 { background: #3a3c44; } .r2 { background: #2f6fd1; } .r4 { background: linear-gradient(90deg, #ff7eb6, #fff07a, #7cc8ff); color: var(--encre); }
+    .choix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
     figure { position: relative; }
-    /* Même proportions qu'une carte (1260 × 1760) */
-    .cadre { display: flex; gap: 2px; aspect-ratio: 1260 / 1760; overflow: hidden; border: 2px solid var(--bord-clair); border-radius: 12px; background: #000; }
-    .cadre img { flex: 1; min-width: 0; height: 100%; object-fit: cover; object-position: 50% 20%; }
-    figcaption { position: absolute; top: 6px; left: 6px; padding: 3px 9px; border-radius: 999px; background: rgb(0 0 0 / 70%); font: 400 15px var(--police-titre); }
+    .cadre { aspect-ratio: 1260 / 1760; overflow: hidden; border: 2px solid var(--bord-clair); border-radius: 10px; background: #000; }
+    .cadre img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+    figcaption { position: absolute; top: 5px; left: 5px; padding: 2px 8px; border-radius: 999px; background: rgb(0 0 0 / 70%); font: 400 14px var(--police-titre); }
   </style>
 </head>
 <body>
-  <h1>Collection Naruto : les illustrations</h1>
-  <p class="aide">Pour chaque personnage, 2 images officielles de l'anime, cadrées comme sur une carte.
-    Réponds avec la liste, par exemple : « 1A 2B 3A… ». Si aucune ne va (mauvaise époque), dis « 5 aucune » et j'en chercherai d'autres.</p>
+  <h1>Naruto : nouvelles illustrations</h1>
+  <p class="aide">3 nouvelles images pour chaque personnage refusé. Réponds par exemple « Kakashi D, Sakura C… »
+    (ou « aucune »).</p>
   <div class="liste"></div>
 
   <script>
     const LETTRES = { 1: "A", 2: "S", 3: "SR", 4: "SSR" };
-    // [nom, rareté, identifiants des images (un par personnage ; deux pour les duos)]
     const PERSONNAGES = [
-      ["Naruto Uzumaki", 4, ["17"]],
-      ["Sasuke Uchiha", 4, ["13"]],
-      ["Kakashi Hatake", 4, ["85"]],
-      ["Sakura Haruno", 2, ["145"]],
-      ["Hiruzen Sarutobi (3e Hokage)", 3, ["7571"]],
-      ["Iruka Umino", 2, ["2011"]],
-      ["Mizuki", 2, ["19253"]],
-      ["Ebisu", 1, ["10791"]],
-      ["Konohamaru Sarutobi", 1, ["3889"]],
-      ["Teuchi (Ichiraku Ramen)", 1, ["17312"]],
-      ["Ino Yamanaka", 1, ["2009"]],
-      ["Shikamaru Nara", 1, ["2007"]],
-      ["Chôji Akimichi", 1, ["2008"]],
-      ["Hinata Hyûga", 1, ["1555"]],
-      ["Kiba Inuzuka", 1, ["3495"]],
-      ["Shino Aburame", 1, ["3428"]],
-      ["Kyûbi", 4, ["7407"]],
-      ["4e Hokage", 3, ["2535"]],
-      ["Zabuza Momochi", 4, ["728"]],
-      ["Haku", 3, ["2039"]],
-      ["Gatô", 2, ["63793"]],
-      ["Gôzu & Meizu (les Frères Démons)", 1, ["16164", "16165"]],
-      ["Zôri & Waraji (gardes de Gatô)", 1, ["22931", "17552"]],
-      ["Tazuna", 1, ["17197"]],
-      ["Tsunami", 1, ["15077"]],
-      ["Kaiza (en flashback)", 1, ["22996"]],
-      ["Inari", 1, ["21365"]],
+      ["Kakashi Hatake", 4, "85"],
+      ["Sakura Haruno", 2, "145"],
+      ["Iruka Umino", 2, "2011"],
+      ["Ino Yamanaka", 1, "2009"],
+      ["Shikamaru Nara", 1, "2007"],
     ];
-    // Images téléchargées : assets/naruto/candidats/<id>-1.jpg (MyAnimeList) et <id>-2.(jpg|png)
-    const EXTENSIONS_2 = { "15077": "png", "16164": "png", "16165": "png", "17197": "png", "17552": "png", "19253": "png", "21365": "png", "22996": "png", "63793": "png" };
-    const image = (id, choix) => `assets/naruto/candidats/${id}-${choix}.${choix === 2 ? EXTENSIONS_2[id] || "jpg" : "jpg"}`;
-
-    document.querySelector(".liste").append(...PERSONNAGES.map(([nom, rang, ids], i) => {
+    document.querySelector(".liste").append(...PERSONNAGES.map(([nom, rang, id]) => {
       const bloc = document.createElement("section");
       bloc.className = "perso";
       bloc.innerHTML = `
-        <h2><span class="numero">${i + 1}</span> ${nom}<span class="rarete r${rang}">${LETTRES[rang]}</span></h2>
+        <h2>${nom}<span class="rarete r${rang}">${LETTRES[rang]}</span></h2>
         <div class="choix">
-          ${[1, 2].map(choix => `<figure><div class="cadre">${ids.map(id => `<img src="${image(id, choix)}" alt="">`).join("")}</div><figcaption>${choix === 1 ? "A" : "B"}</figcaption></figure>`).join("")}
+          ${["C", "D", "E"].map(l => `<figure><div class="cadre"><img src="assets/naruto/candidats2/${id}-${l}.jpg" alt=""></div><figcaption>${l}</figcaption></figure>`).join("")}
         </div>`;
       return bloc;
     }));
