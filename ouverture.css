@@ -158,18 +158,18 @@
   font-weight: 400;
 }
 
-/* Badge prisma des cartes obtenues pour la première fois, posé dans le coin haut gauche de la carte */
+/* Bulle rouge des cartes obtenues pour la première fois, posée dans le coin haut gauche de la carte */
 .badge-nouveau {
   position: absolute;
   top: calc(var(--largeur-carte) * 0.05);
   left: calc(var(--largeur-carte) * 0.05);
   z-index: 2;
   padding: 0.35em 0.7em 0.3em;
-  border: 2px solid var(--fond);
+  border: 2px solid #fff;
   border-radius: 999px;
-  background: var(--prisma);
+  background: linear-gradient(180deg, #ff5a52, #d61f2c);
   box-shadow: 0 2px 6px rgb(0 0 0 / 55%);
-  color: var(--encre);
+  color: #fff;
   font: 400 max(9px, calc(var(--largeur-carte) * 0.05)) / 1 var(--police-titre);
   transform: rotate(-8deg);
 }

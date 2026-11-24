@@ -2,7 +2,8 @@
 // de la ligne entre l'en-tête et l'illustration : la découpe suit grossièrement son tracé, en restant une courbe
 // réaliste, sinon elle se réinitialise. Un petit son (SR) ou des étoiles (SSR) annoncent les cartes rares.
 // À 10 boosters, ouvrir le premier ouvre les suivants un par un, puis chaque booster se dévoile à son tour.
-// Révélation : chaque toucher jette la carte de devant vers le coin en haut à gauche ; un appui maintenu
+// Révélation : les cartes arrivent de dos ; un toucher retourne la carte de devant, le suivant la jette vers le
+// coin en haut à gauche ; un appui maintenu
 // écarte la pile pour en voir les bords. La dernière carte (ou « Tout révéler ») mène au résumé.
 
 const MARGE_DECOUPE = 40; // px : la découpe peut s'écarter d'environ 1 cm au-dessus ou au-dessous de la ligne
@@ -305,10 +306,9 @@ async function ouvrirUnBooster(sens, trace) {
   await animer(paquet, [{ transform: dedans }, { transform: dehors }], 900, { courbe: "cubic-bezier(0.33, 0, 0.2, 1)" });
   sortie.style.clipPath = "none";
 
-  // Le booster vide descend et disparaît, le paquet vient au centre puis se retourne
+  // Le booster vide descend et disparaît, le paquet vient au centre, de dos : chaque carte se retourne au toucher
   animer(zoneBooster.querySelector(".booster"), [{ translate: "0 0", opacity: 1 }, { translate: "0 140px", opacity: 0 }], 500, { courbe: "ease-in" });
   await animer(paquet, [{ transform: dehors }, { transform: "none" }], 650);
-  await retournerPaquet();
   commencerRevelation();
 }
 
@@ -371,7 +371,7 @@ function creerPaquet({ cartes, nouvelles }) {
     const tirage = element("div", "tirage");
     tirage.style.zIndex = cartes.length - index;
     const retournable = element("div", "tirage__retournable");
-    // La face avant reste masquée tant que la carte montre son dos (voir retournerPaquet)
+    // La face avant reste masquée tant que la carte montre son dos (voir retournerCarte)
     const avant = element("div", "tirage__face tirage__face--avant");
     avant.style.visibility = "hidden";
     avant.append(creerCarte(carte));
@@ -412,21 +412,23 @@ async function placerPaquet() {
   return { hauteur, centreX, centreY };
 }
 
-// Les cartes passent de dos à face visible. La face avant n'apparaît qu'à mi-chemin (carte de profil) : sinon
-// Safari laisse voir ses textes à travers le dos (ceux qui ont leurs propres effets, comme le nom vertical).
-function retournerPaquet() {
-  const duree = 700;
-  setTimeout(() => {
-    for (const face of paquet.querySelectorAll(".tirage__face--avant")) face.style.visibility = "";
-  }, duree / 2);
-  return Promise.all([...paquet.querySelectorAll(".tirage__retournable")].map(retournable => animer(retournable, [
+// La carte de devant passe de dos à face visible. La face avant n'apparaît qu'à mi-chemin (carte de profil) :
+// sinon Safari laisse voir ses textes à travers le dos (ceux qui ont leurs propres effets, comme le nom vertical).
+const DUREE_RETOURNEMENT_CARTE = 650;
+
+function retournerCarte(tirage) {
+  enMouvement = true;
+  tirage.classList.add("tirage--retournee");
+  const retournable = tirage.querySelector(".tirage__retournable");
+  setTimeout(() => { tirage.querySelector(".tirage__face--avant").style.visibility = ""; }, DUREE_RETOURNEMENT_CARTE / 2);
+  animer(retournable, [
     { transform: "rotateY(180deg) scale(1)" },
-    { transform: "rotateY(90deg) scale(1.06)", offset: 0.5 },
+    { transform: "rotateY(90deg) scale(1.08)", offset: 0.5 },
     { transform: "rotateY(0deg) scale(1)" },
-  ], duree, { courbe: "cubic-bezier(0.45, 0.05, 0.35, 1)" })));
+  ], DUREE_RETOURNEMENT_CARTE, { courbe: "cubic-bezier(0.45, 0.05, 0.35, 1)" }).then(() => { enMouvement = false; });
 }
 
-// Dix boosters : le paquet du booster suivant arrive de dos au centre, puis se retourne
+// Dix boosters : le paquet du booster suivant arrive de dos au centre
 async function presenterBooster(index) {
   phase = "sortie";
   session.index = index;
@@ -439,7 +441,6 @@ async function presenterBooster(index) {
   paquet.style.visibility = "visible";
   jouerSortieCartes(0.5);
   await animer(paquet, [{ opacity: 0, transform: "translateY(60px) scale(0.85)" }, { opacity: 1, transform: "none" }], 400);
-  await retournerPaquet();
   commencerRevelation();
 }
 
@@ -522,10 +523,13 @@ function relacher(evenement) {
   }
 }
 
-// Toucher la carte de devant : elle est jetée. La dernière mène au booster suivant, ou au résumé.
+// Toucher la carte de devant : si elle est de dos, elle se retourne ; sinon elle est jetée. La dernière mène
+// au booster suivant, ou au résumé.
 async function passerALaSuivante() {
   const pile = cartesRestantes();
-  if (pile.length > 1) {
+  if (!pile[0].classList.contains("tirage--retournee")) {
+    retournerCarte(pile[0]);
+  } else if (pile.length > 1) {
     jeter(pile[0]);
   } else if (session.index < session.boosters.length - 1) {
     phase = "sortie";
