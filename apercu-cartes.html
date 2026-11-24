@@ -3,241 +3,172 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Aperçu : design de la face des cartes</title>
-  <!-- Page TEMPORAIRE : 5 intérieurs et 5 familles de bordures (× 4 raretés) pour la face des cartes.
-       Les cartes sont les vraies cartes du jeu (rendu-carte.js), seules les classes de design changent.
-       À supprimer après le choix. -->
+  <title>Aperçu : le nom sur les cartes</title>
+  <!-- Page TEMPORAIRE : 12 propositions de position et de police pour le nom des cartes. Les cartes sont les
+       vraies cartes du jeu (rendu-carte.js, carte.css) ; seule une classe « nom-N » change. À supprimer après le choix. -->
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="carte.css">
   <style>
     body { margin: 0; padding: max(env(safe-area-inset-top), 24px) 14px 40px; background: var(--fond-eclaire) fixed; color: var(--texte); font-family: var(--police-texte); }
     h1 { margin: 0; font: 400 24px var(--police-titre); text-align: center; }
-    h2 { margin: 34px 0 4px; font: 400 22px var(--police-titre); }
-    .aide { margin: 6px 0 0; color: var(--texte-doux); font-size: 14px; line-height: 1.35; }
+    .aide { margin: 6px 0 0; color: var(--texte-doux); font-size: 14px; line-height: 1.35; text-align: center; }
     .bloc { margin-top: 18px; padding: 14px 12px; border: 1px solid var(--bord); border-radius: 18px; background: var(--surface); }
     .bloc h3 { margin: 0 0 4px; font: 400 19px var(--police-titre); }
     .bloc h3 span { background: var(--prisma); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .bloc p { margin: 0 0 12px; color: var(--texte-doux); font-size: 13px; line-height: 1.35; }
-    .cartes { --largeur-carte: calc((min(100vw, 520px) - 28px - 24px - 12px) / 2); display: grid; grid-template-columns: repeat(2, var(--largeur-carte)); justify-content: center; gap: 14px 12px; }
-    .rarete { margin-top: 5px; color: var(--texte-faible); font: 700 11px var(--police-texte); letter-spacing: 0.15em; text-align: center; }
+    .cartes { --largeur-carte: calc((min(100vw, 520px) - 28px - 24px - 12px) / 2); display: grid; grid-template-columns: repeat(2, var(--largeur-carte)); justify-content: center; gap: 12px; }
 
-    /* ═════════ INTÉRIEURS ═════════ */
+    /* Positions sorties du flux : la description reste en bas */
+    .nom-3 .carte__texte, .nom-5 .carte__texte, .nom-10 .carte__texte { margin-top: auto; }
 
-    /* Seul le haut de l'image est assombri (pour le badge de rang) quand les textes ont leur propre encart */
-    .int-2 .carte__illustration--image::after,
-    .int-3 .carte__illustration--image::after,
-    .int-4 .carte__illustration--image::after {
-      background: linear-gradient(180deg, rgb(0 0 0 / 45%) 0%, transparent 14%);
-    }
+    /* 2 · Lilita, aligné à gauche */
+    .nom-2 .carte__nom { font: 400 calc(var(--u) * 82) / 1 var(--police-titre); text-align: left; text-transform: none; letter-spacing: calc(var(--u) * 1); }
+    .nom-2 .carte__nom--long { font-size: calc(var(--u) * 66); }
+    .nom-2 .carte__nom--tres-long { font-size: calc(var(--u) * 52); }
 
-    /* 2 · Verre : encart sombre translucide et flouté, textes en Lilita et Lato */
-    .int-2 .carte__texte {
-      margin: 0 calc(var(--u) * -14) calc(var(--u) * -14);
-      padding: calc(var(--u) * 26) calc(var(--u) * 30) calc(var(--u) * 24);
-      border: calc(var(--u) * 3) solid rgb(255 255 255 / 22%);
-      border-radius: calc(var(--u) * 34);
-      background: rgb(14 14 18 / 62%);
-      -webkit-backdrop-filter: blur(calc(var(--u) * 14));
-      backdrop-filter: blur(calc(var(--u) * 14));
-      font-family: var(--police-texte);
-    }
-    .int-2 .carte__nom { margin-top: 0; font: 400 calc(var(--u) * 66) / 1 var(--police-titre); letter-spacing: calc(var(--u) * 2); }
-    .int-2 .carte__nom--long { font-size: calc(var(--u) * 54); }
-    .int-2 .carte__nom--tres-long { font-size: calc(var(--u) * 44); }
-    .int-2 .carte__capacites { font-size: calc(var(--u) * 30); }
-    .int-2 .capacite__nom { font-family: var(--police-titre); }
-    .int-2 .carte__separateur { height: calc(var(--u) * 3); background: rgb(255 255 255 / 25%); }
+    /* 3 · En haut à gauche, Lato espacé */
+    .nom-3 .carte__nom { position: absolute; top: calc(var(--u) * 66); right: calc(var(--u) * 170); left: calc(var(--u) * 44); margin: 0; padding: 0; font: 700 calc(var(--u) * 50) / 1.1 var(--police-texte); letter-spacing: 0.12em; text-align: left; }
+    .nom-3 .carte__nom--long, .nom-3 .carte__nom--tres-long { font-size: calc(var(--u) * 40); }
 
-    /* 3 · Encart blanc : textes noirs sur un encart blanc, comme le dos ; séparateur prisma */
-    .int-3 .carte__texte {
-      --encre: #0c0c0f;
-      --encre-douce: #55555f;
-      --rouge: #c0392b;
-
-      margin: 0 calc(var(--u) * -14) calc(var(--u) * -14);
-      padding: calc(var(--u) * 26) calc(var(--u) * 30) calc(var(--u) * 24);
-      border-radius: calc(var(--u) * 34);
-      background: rgb(255 255 255 / 94%);
-      color: var(--encre);
-      font-family: var(--police-texte);
-      text-shadow: none;
-    }
-    .int-3 .carte__nom { margin-top: 0; font: 400 calc(var(--u) * 66) / 1 var(--police-titre); }
-    .int-3 .carte__nom--long { font-size: calc(var(--u) * 54); }
-    .int-3 .carte__nom--tres-long { font-size: calc(var(--u) * 44); }
-    .int-3 .carte__capacites { font-size: calc(var(--u) * 30); }
-    .int-3 .capacite__nom { font-family: var(--police-titre); }
-    .int-3 .carte__separateur { height: calc(var(--u) * 4); background: var(--prisma); }
-    .int-3 .capacite__pastille { border-color: #0c0c0f; background: #0c0c0f; color: #fff; }
-    .int-3 .capacite--talent .capacite__pastille { border-color: var(--rouge); background: transparent; color: var(--rouge); }
-
-    /* 4 · Manga : nom dans un bandeau noir penché, capacités dans une case de BD blanche tramée */
-    .int-4 .carte__texte { font-family: var(--police-texte); }
-    .int-4 .carte__nom {
-      align-self: flex-start;
-      margin: 0 0 0 calc(var(--u) * -8);
-      padding: calc(var(--u) * 10) calc(var(--u) * 34);
-      background: #0c0c0f;
-      color: #fff;
+    /* 4 · Bandeau noir sur toute la largeur, liseré prisma */
+    .nom-4 .carte__nom {
+      margin-right: calc(var(--u) * -44);
+      margin-left: calc(var(--u) * -44);
+      padding: calc(var(--u) * 16) calc(var(--u) * 44) calc(var(--u) * 20);
+      background: linear-gradient(var(--prisma)) bottom / 100% calc(var(--u) * 6) no-repeat, rgb(11 11 13 / 82%);
       font: 400 calc(var(--u) * 66) / 1 var(--police-titre);
       text-transform: none;
-      box-shadow: calc(var(--u) * 8) calc(var(--u) * 8) 0 #fff;
-      transform: skewX(-8deg) rotate(-2deg);
     }
-    .int-4 .carte__nom--long { font-size: calc(var(--u) * 54); }
-    .int-4 .carte__nom--tres-long { font-size: calc(var(--u) * 44); }
-    .int-4 .carte__infos {
-      align-self: flex-start;
-      margin-top: calc(var(--u) * 18);
-      padding: calc(var(--u) * 6) calc(var(--u) * 16);
-      border: calc(var(--u) * 4) solid #0c0c0f;
-      background: #fff;
-      color: #0c0c0f;
-      font-weight: 700;
+    .nom-4 .carte__nom--long { font-size: calc(var(--u) * 56); }
+    .nom-4 .carte__nom--tres-long { font-size: calc(var(--u) * 46); }
+
+    /* 5 · Vertical, le long du bord gauche (se lit de bas en haut) */
+    .nom-5 .carte__nom {
+      position: absolute;
+      top: calc(var(--u) * 150);
+      bottom: calc(var(--u) * 300);
+      left: calc(var(--u) * 34);
+      margin: 0;
+      padding: 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font: 400 calc(var(--u) * 86) / 1 var(--police-titre);
+      letter-spacing: calc(var(--u) * 6);
+      text-align: left;
+    }
+    .nom-5 .carte__nom--long { font-size: calc(var(--u) * 70); }
+    .nom-5 .carte__nom--tres-long { font-size: calc(var(--u) * 56); }
+
+    /* 6 · Cartouche au contour prisma */
+    .nom-6 .carte__nom {
+      align-self: center;
+      padding: calc(var(--u) * 14) calc(var(--u) * 44);
+      border: calc(var(--u) * 6) solid transparent;
+      border-radius: 999px;
+      background: linear-gradient(rgb(11 11 13 / 82%), rgb(11 11 13 / 82%)) padding-box, var(--prisma-diagonal) border-box;
+      font: 700 calc(var(--u) * 46) / 1 var(--police-texte);
+      letter-spacing: 0.1em;
+    }
+    .nom-6 .carte__nom--long, .nom-6 .carte__nom--tres-long { font-size: calc(var(--u) * 38); }
+
+    /* 7 · Grand titre Playfair, à gauche */
+    .nom-7 .carte__nom { font: 900 calc(var(--u) * 104) / 0.95 "Playfair Display", serif; text-align: left; text-transform: none; }
+    .nom-7 .carte__nom--long { font-size: calc(var(--u) * 84); }
+    .nom-7 .carte__nom--tres-long { font-size: calc(var(--u) * 66); }
+
+    /* 8 · Signature : italique à empattements, trait prisma dessous */
+    .nom-8 .carte__nom { font: italic 400 calc(var(--u) * 88) / 1 "IM Fell English", serif; text-align: left; text-transform: none; }
+    .nom-8 .carte__nom::after { content: ""; display: block; width: 38%; height: calc(var(--u) * 5); margin-top: calc(var(--u) * 12); border-radius: calc(var(--u) * 3); background: var(--prisma); }
+    .nom-8 .carte__nom--long { font-size: calc(var(--u) * 72); }
+    .nom-8 .carte__nom--tres-long { font-size: calc(var(--u) * 58); }
+
+    /* 9 · Contour manga : lettres blanches cernées de noir, ombre décalée */
+    .nom-9 .carte__nom {
+      font: 400 calc(var(--u) * 78) / 1.05 "Alfa Slab One", serif;
+      text-transform: none;
+      -webkit-text-stroke: calc(var(--u) * 12) #0b0b0d;
+      paint-order: stroke fill;
+      text-shadow: calc(var(--u) * 8) calc(var(--u) * 8) 0 #0b0b0d;
+      transform: rotate(-3deg);
+    }
+    .nom-9 .carte__nom--long { font-size: calc(var(--u) * 64); }
+    .nom-9 .carte__nom--tres-long { font-size: calc(var(--u) * 50); }
+
+    /* 10 · Plaque en haut au centre */
+    .nom-10 .carte__nom {
+      position: absolute;
+      top: calc(var(--u) * 50);
+      left: 50%;
+      max-width: calc(var(--u) * 800);
+      margin: 0;
+      padding: calc(var(--u) * 12) calc(var(--u) * 34);
+      border: calc(var(--u) * 3) solid rgb(255 255 255 / 35%);
+      border-radius: calc(var(--u) * 22);
+      background: rgb(11 11 13 / 72%);
+      font: 700 calc(var(--u) * 42) / 1.1 var(--police-texte);
+      letter-spacing: 0.14em;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .nom-10 .carte__nom--long, .nom-10 .carte__nom--tres-long { font-size: calc(var(--u) * 34); }
+
+    /* 11 · Lilita, aligné à droite */
+    .nom-11 .carte__nom { font: 400 calc(var(--u) * 82) / 1 var(--police-titre); text-align: right; text-transform: none; }
+    .nom-11 .carte__nom--long { font-size: calc(var(--u) * 66); }
+    .nom-11 .carte__nom--tres-long { font-size: calc(var(--u) * 52); }
+
+    /* 12 · Lettres prisma */
+    .nom-12 .carte__nom {
+      font: 400 calc(var(--u) * 84) / 1.05 var(--police-titre);
+      text-transform: none;
+      background: var(--prisma);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       text-shadow: none;
+      filter: drop-shadow(0 calc(var(--u) * 4) calc(var(--u) * 6) rgb(0 0 0 / 80%));
     }
-    .int-4 .carte__separateur { display: none; }
-    .int-4 .carte__capacites {
-      --encre: #0c0c0f;
-      --rouge: #c0392b;
-
-      margin-top: calc(var(--u) * 18);
-      padding: calc(var(--u) * 18) calc(var(--u) * 22);
-      border: calc(var(--u) * 6) solid #0c0c0f;
-      border-radius: calc(var(--u) * 16);
-      background: radial-gradient(circle, rgb(0 0 0 / 10%) calc(var(--u) * 2), transparent calc(var(--u) * 2.6)) 0 0 / calc(var(--u) * 12) calc(var(--u) * 12), #fff;
-      box-shadow: calc(var(--u) * 10) calc(var(--u) * 10) 0 #0c0c0f;
-      color: #0c0c0f;
-      font-size: calc(var(--u) * 29);
-      text-shadow: none;
-    }
-    .int-4 .capacite__nom { font-family: var(--police-titre); }
-    .int-4 .capacite__pastille { border-color: #0c0c0f; background: #0c0c0f; color: #fff; }
-    .int-4 .capacite--talent .capacite__pastille { border-color: var(--rouge); background: #fff; color: var(--rouge); }
-
-    /* 5 · Épuré : image plus visible (fondu doux), textes en Lato espacés, séparateur prisma */
-    .int-5 .carte__illustration--image::after {
-      background: linear-gradient(180deg, rgb(0 0 0 / 40%) 0%, transparent 14%, transparent 52%, rgb(0 0 0 / 82%) 72%, rgb(0 0 0 / 95%) 100%);
-    }
-    .int-5 .carte__texte { font-family: var(--police-texte); }
-    .int-5 .carte__nom { font: 700 calc(var(--u) * 58) / 1.05 var(--police-texte); letter-spacing: 0.12em; }
-    .int-5 .carte__nom--long { font-size: calc(var(--u) * 48); }
-    .int-5 .carte__nom--tres-long { font-size: calc(var(--u) * 40); }
-    .int-5 .carte__infos { font-weight: 700; letter-spacing: 0.35em; }
-    .int-5 .carte__separateur { height: calc(var(--u) * 3); background: var(--prisma); }
-    .int-5 .carte__capacites { font-size: calc(var(--u) * 29); }
-    .int-5 .capacite__nom { font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; }
-    .int-5 .capacite__pastille { border-color: #fff; background: transparent; color: #fff; }
-    .int-5 .capacite__degats { font: 700 calc(var(--u) * 46) / 1 var(--police-texte); }
-
-    /* ═════════ BORDURES ═════════ */
-
-    .bordure-2 .carte__cadre,
-    .bordure-3 .carte__cadre,
-    .bordure-4 .carte__cadre,
-    .bordure-5 .carte__cadre { border: 0; }
-
-    /* 2 · Blanc liseré : cadre blanc, fin liseré à la couleur de la rareté (gris, bleu, rouge, prisma) */
-    .carte.bordure-2 { --cadre: #f4f4f6; padding: calc(var(--u) * 40); }
-    .carte.bordure-2 .carte__cadre { padding: calc(var(--u) * 12); }
-    .carte.bordure-2.carte--rang-1 .carte__cadre { background: #b9bcc6; }
-    .carte.bordure-2.carte--rang-2 .carte__cadre { background: #3f86e6; }
-    .carte.bordure-2.carte--rang-3 .carte__cadre { background: #e8404f; }
-    .carte.bordure-2.carte--rang-4 .carte__cadre { padding: calc(var(--u) * 16); background: var(--prisma-diagonal); }
-
-    /* 3 · Noir lumineux : cadre noir, liseré lumineux à la couleur de la rareté, halo autour de la carte */
-    .carte.bordure-3 { --cadre: linear-gradient(160deg, #24242c, #0b0b0d); padding: calc(var(--u) * 40); }
-    .carte.bordure-3 .carte__cadre { padding: calc(var(--u) * 9); }
-    .carte.bordure-3.carte--rang-1 .carte__cadre { background: #8d909a; }
-    .carte.bordure-3.carte--rang-2 .carte__cadre { background: #4f9bff; }
-    .carte.bordure-3.carte--rang-2 { box-shadow: 0 0 calc(var(--u) * 50) rgb(79 155 255 / 45%); }
-    .carte.bordure-3.carte--rang-3 .carte__cadre { background: #ff4f63; }
-    .carte.bordure-3.carte--rang-3 { box-shadow: 0 0 calc(var(--u) * 50) rgb(255 79 99 / 45%); }
-    .carte.bordure-3.carte--rang-4 .carte__cadre { padding: calc(var(--u) * 12); background: var(--prisma-diagonal); }
-    .carte.bordure-3.carte--rang-4 { box-shadow: 0 0 calc(var(--u) * 60) rgb(185 140 255 / 55%); }
-
-    /* 4 · Métal : bronze, argent, or, puis holo-métal irisé pour les SSR */
-    .carte.bordure-4 .carte__cadre { padding: calc(var(--u) * 18); background: #0b0b0d; }
-    .carte.bordure-4.carte--rang-1 { --cadre: linear-gradient(160deg, #8c5a33, #e2a676 25%, #9a6236 50%, #d39a69 75%, #6b4222); }
-    .carte.bordure-4.carte--rang-2 { --cadre: linear-gradient(160deg, #8d939c, #f4f6f8 25%, #9aa1ab 50%, #e3e7ec 75%, #6d737c); }
-    .carte.bordure-4.carte--rang-3 { --cadre: linear-gradient(160deg, #a9771e, #ffe28a 25%, #c8952e 50%, #ffd76a 75%, #7d5410); }
-    .carte.bordure-4.carte--rang-4 {
-      --cadre:
-        repeating-linear-gradient(120deg, rgb(255 255 255 / 30%) 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 18)),
-        linear-gradient(160deg, #c9d6ff, #ffd1f0 20%, #c9fff0 40%, #fff3c4 60%, #d6c9ff 80%, #b9e6ff);
-    }
-
-    /* 5 · Prisma croissant : plus la carte est rare, plus le prisma prend de place */
-    .carte.bordure-5 .carte__cadre { padding: calc(var(--u) * 9); }
-    .carte.bordure-5.carte--rang-1 { --cadre: #f4f4f6; }
-    .carte.bordure-5.carte--rang-1 .carte__cadre { background: #0b0b0d; }
-    .carte.bordure-5.carte--rang-2 { --cadre: #f4f4f6; }
-    .carte.bordure-5.carte--rang-2 .carte__cadre { background: var(--prisma-diagonal); }
-    .carte.bordure-5.carte--rang-3 { --cadre: var(--prisma-diagonal); }
-    .carte.bordure-5.carte--rang-3 .carte__cadre { background: #fff; }
-    .carte.bordure-5.carte--rang-4 {
-      --cadre: radial-gradient(circle, rgb(255 255 255 / 90%) calc(var(--u) * 3), transparent calc(var(--u) * 4.5)) 0 0 / calc(var(--u) * 56) calc(var(--u) * 56), var(--prisma-diagonal);
-
-      padding: calc(var(--u) * 50);
-    }
-    .carte.bordure-5.carte--rang-4 .carte__cadre { background: #fff; }
+    .nom-12 .carte__nom--long { font-size: calc(var(--u) * 68); }
+    .nom-12 .carte__nom--tres-long { font-size: calc(var(--u) * 54); }
   </style>
 </head>
 <body>
-  <h1>Face des cartes : 25 propositions</h1>
-  <p class="aide" style="text-align: center">L'intérieur et la bordure se choisissent séparément.<br>Réponds par exemple : « intérieur 3, bordures 2 » (ou une bordure par rareté).</p>
-
-  <h2>Intérieur (5 modèles)</h2>
-  <p class="aide">La façon de présenter l'illustration et les textes. Montré sur une S et une SSR, avec la bordure actuelle.</p>
-  <div data-interieurs></div>
-
-  <h2>Bordures (5 familles × 4 raretés)</h2>
-  <p class="aide">Le cadre de la carte selon sa rareté (A, S, SR, SSR). Montré avec l'intérieur actuel.</p>
-  <div data-bordures></div>
+  <h1>Le nom sur les cartes : 12 propositions</h1>
+  <p class="aide">Position et police du nom, sur les vraies cartes (bordure Noir lumineux appliquée).<br>Réponds avec un numéro.</p>
+  <div data-propositions></div>
 
   <script src="donnees/cartes-east-blue.js"></script>
   <script src="rendu-carte.js"></script>
   <script>
-    const carte = id => CARTES.find(c => c.id === id);
-    const EXEMPLES = { 1: "EB-005", 2: "EB-028", 3: "EB-045", 4: "EB-057" };
-    const RARETES = { 1: "A", 2: "S", 3: "SR", 4: "SSR" };
-
-    const INTERIEURS = [
-      ["Actuel", "L'image assombrie en haut et en bas, textes clairs à empattements posés directement dessus."],
-      ["Verre", "Les textes dans un encart sombre translucide et flouté ; police plus moderne (Lilita et Lato)."],
-      ["Encart blanc", "Les textes en noir sur un encart blanc, comme le dos des cartes ; séparateur prisma."],
-      ["Manga", "Le nom dans un bandeau noir penché, les capacités dans une case de BD blanche tramée."],
-      ["Épuré", "L'image plus visible, textes en Lato espacés, séparateur prisma : très moderne et sobre."],
-    ];
-    const BORDURES = [
-      ["Actuelle", "A holographique, S bleu métal, SR rouge métal, SSR arc-en-ciel."],
-      ["Blanc liseré", "Cadre blanc, fin liseré à la couleur de la rareté : gris, bleu, rouge, prisma. Assorti au dos blanc."],
-      ["Noir lumineux", "Cadre noir, liseré lumineux à la couleur de la rareté et halo autour des cartes rares."],
-      ["Métal", "Bronze, argent, or, puis holo-métal irisé pour les SSR : la rareté se lit d'un coup d'œil."],
-      ["Prisma croissant", "Plus la carte est rare, plus le prisma prend de place : rien, un liseré, un cadre, un cadre étincelant."],
+    const PROPOSITIONS = [
+      ["Classique", "Centré au-dessus de la description, lettres capitales à empattements (le style actuel)."],
+      ["Lilita à gauche", "Aligné à gauche, police ronde et épaisse du jeu, sans capitales forcées."],
+      ["En haut à gauche", "Tout en haut, face à la rareté, en Lato espacé : l'illustration respire en bas."],
+      ["Bandeau noir", "Dans un bandeau noir sur toute la largeur, souligné d'un trait prisma."],
+      ["Vertical", "Le long du bord gauche, à lire de bas en haut, comme sur une affiche de manga."],
+      ["Cartouche prisma", "Dans une pastille sombre au contour prisma, centrée."],
+      ["Grand titre", "Très grand, en Playfair, aligné à gauche : très « affiche de film »."],
+      ["Signature", "En italique élégant, aligné à gauche, souligné d'un trait prisma."],
+      ["Contour manga", "Lettres blanches cernées de noir et ombre décalée, légèrement penchées."],
+      ["Plaque en haut", "Dans une petite plaque sombre, centrée en haut de la carte."],
+      ["Lilita à droite", "Aligné à droite, police ronde et épaisse du jeu."],
+      ["Lettres prisma", "Le nom écrit en dégradé prisma, police ronde du jeu."],
     ];
 
-    function bloc(numero, nom, texte, cartes) {
+    document.querySelector("[data-propositions]").append(...PROPOSITIONS.map(([nom, texte], i) => {
       const section = document.createElement("section");
       section.className = "bloc";
-      section.innerHTML = `<h3><span>${numero}</span> · ${nom}</h3><p>${texte}</p>`;
+      section.innerHTML = `<h3><span>${i + 1}</span> · ${nom}</h3><p>${texte}</p>`;
       const grille = document.createElement("div");
       grille.className = "cartes";
-      for (const [id, classe] of cartes) {
-        const place = document.createElement("div");
-        const rendu = creerCarte(carte(id));
-        if (classe) rendu.classList.add(classe);
-        place.append(rendu, Object.assign(document.createElement("div"), { className: "rarete", textContent: RARETES[carte(id).rang] }));
-        grille.append(place);
+      for (const id of ["EB-028", "EB-057"]) {
+        const rendu = creerCarte(CARTES.find(c => c.id === id));
+        if (i) rendu.classList.add(`nom-${i + 1}`);
+        grille.append(rendu);
       }
       section.append(grille);
       return section;
-    }
-
-    document.querySelector("[data-interieurs]").append(...INTERIEURS.map(([nom, texte], i) =>
-      bloc(i + 1, nom, texte, [[EXEMPLES[2], i ? `int-${i + 1}` : ""], [EXEMPLES[4], i ? `int-${i + 1}` : ""]])));
-    document.querySelector("[data-bordures]").append(...BORDURES.map(([nom, texte], i) =>
-      bloc(i + 1, nom, texte, [1, 2, 3, 4].map(rang => [EXEMPLES[rang], i ? `bordure-${i + 1}` : ""]))));
+    }));
 
     document.fonts.ready.then(() => ajusterProprietes());
   </script>
