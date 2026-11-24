@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Aperçu : nom du jeu (noir, prisma, blanc)</title>
-  <!-- Page TEMPORAIRE : 10 noms liés au manga, tous dans la direction choisie (noir, touche de prisma, blanc).
-       À supprimer après le choix. -->
+  <title>Aperçu : logos ANIMA</title>
+  <!-- Page TEMPORAIRE : 10 logos pour le nom ANIMA (noir, touche de prisma, blanc). À supprimer après le choix. -->
   <style>
     @font-face { font-family: "Lilita One"; src: url("assets/polices/lilita-one.woff2") format("woff2"); }
     @font-face { font-family: "Alfa Slab One"; src: url("assets/polices/alfa-slab-one.woff2") format("woff2"); }
@@ -13,173 +12,151 @@
     @font-face { font-family: "Lato"; font-weight: 700; src: url("assets/polices/lato-700.woff2") format("woff2"); }
     @font-face { font-family: "Lato"; font-weight: 400; src: url("assets/polices/lato-400.woff2") format("woff2"); }
 
-    :root {
-      /* La touche « prisma » : un dégradé arc-en-ciel doux, utilisé avec parcimonie */
-      --prisma: linear-gradient(90deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff);
-    }
-
     * { box-sizing: border-box; margin: 0; }
-
     body { padding: max(env(safe-area-inset-top), 24px) 14px 40px; background: #0b0b0d; color: #f2f2f4; font-family: "Lato", sans-serif; }
-    h1 { font: 400 23px "Lilita One", sans-serif; text-align: center; }
-    .barre-prisma { width: 120px; height: 3px; margin: 8px auto 0; border-radius: 3px; background: var(--prisma); }
-    .aide { margin: 10px 0 22px; color: #a9a9b3; font-size: 14px; text-align: center; }
-
-    .propositions { display: flex; flex-direction: column; gap: 24px; max-width: 460px; margin: 0 auto; }
-    .proposition { display: flex; gap: 14px; align-items: flex-start; }
-    .infos { flex: 1; min-width: 0; }
-    .infos .numero { font: 400 28px "Lilita One", sans-serif; background: var(--prisma); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; }
-    .infos h2 { margin: 2px 0 2px; font: 400 21px "Lilita One", sans-serif; }
-    .infos .jp { color: #c9c9d2; font-size: 14px; }
-    .infos p { margin-top: 4px; color: #b8b8c2; font-size: 13px; line-height: 1.35; }
-
-    /* Mini-écran d'accueil : noir, textes et boutons blancs, prisma en touches (liseré, reflet, ligne) */
-    .ecran {
-      position: relative; display: flex; flex: none; flex-direction: column; align-items: center; justify-content: space-between;
-      width: 168px; height: 300px; padding: 24px 12px 14px; overflow: hidden;
-      border: 3px solid #000; border-radius: 22px;
-      background: radial-gradient(ellipse at 50% 0%, #1d1d23, #0c0c0f 60%);
-      box-shadow: 0 0 0 1px #2a2a30, 0 6px 16px rgb(0 0 0 / 60%);
-    }
-    .ecran::before { content: ""; position: absolute; top: 0; right: 0; left: 0; height: 2px; background: var(--prisma); opacity: 0.8; }
-    .logo { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
-    .logo svg { width: 64px; height: 64px; }
-    .nom { color: #fff; line-height: 0.95; }
-    .ligne { width: 70%; height: 2px; border-radius: 2px; background: var(--prisma); }
-    .sous { font: 700 8px "Lato", sans-serif; letter-spacing: 0.4em; color: #b8b8c2; }
-    .booster { position: relative; width: 62px; height: 92px; overflow: hidden; border-radius: 6px; background: linear-gradient(160deg, #26262d, #111114); border: 1.5px solid #fff; }
-    .booster::after { content: ""; position: absolute; inset: -40% -60%; background: linear-gradient(110deg, transparent 40%, rgb(255 126 182 / 35%) 45%, rgb(255 240 122 / 35%) 50%, rgb(124 200 255 / 35%) 55%, transparent 60%); }
-    .bouton { width: 100%; padding: 8px 0; border-radius: 999px; background: #fff; color: #0c0c0f; font: 400 13px "Lilita One", sans-serif; text-align: center; }
-    .rubriques { display: flex; gap: 5px; }
-    .rubriques i { width: 30px; height: 38px; border-radius: 5px; border: 1px solid #3a3a42; background: #17171b; }
-    .rubriques i:first-child { border-color: transparent; background: linear-gradient(#17171b, #17171b) padding-box, var(--prisma) border-box; }
+    h1 { font: 400 24px "Lilita One", sans-serif; text-align: center; }
+    .aide { margin: 6px 0 22px; color: #a9a9b3; font-size: 14px; text-align: center; }
+    .logos { display: flex; flex-direction: column; gap: 18px; max-width: 460px; margin: 0 auto; }
+    figure { margin: 0; padding: 14px 14px 12px; border: 1px solid #2a2a30; border-radius: 18px; background: radial-gradient(ellipse at 50% 0%, #1d1d23, #0c0c0f 70%); }
+    figure svg { display: block; width: 100%; height: auto; }
+    figcaption { display: flex; gap: 10px; align-items: baseline; margin-top: 8px; color: #b8b8c2; font-size: 13px; line-height: 1.3; }
+    figcaption b { font: 400 24px "Lilita One", sans-serif; background: linear-gradient(90deg, #ff7eb6, #fff07a, #7cc8ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
   </style>
 </head>
 <body>
-  <h1>Le nom du jeu : 10 idées manga</h1>
-  <div class="barre-prisma"></div>
-  <p class="aide">Toutes dans ta direction : noir, une touche de prisma, du blanc.<br>Seuls le nom et le logo changent. Réponds avec un numéro.</p>
+  <h1>ANIMA : 10 logos</h1>
+  <p class="aide">Réponds avec un numéro (ou « le symbole du 4 avec l'écriture du 9 »).</p>
 
   <svg width="0" height="0" style="position: absolute" aria-hidden="true">
     <defs>
-      <linearGradient id="prisma" x1="0" y1="0" x2="1" y2="1">
+      <linearGradient id="p" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0" stop-color="#ff7eb6" /><stop offset="0.2" stop-color="#ffb86b" /><stop offset="0.4" stop-color="#fff07a" />
         <stop offset="0.6" stop-color="#7dffc4" /><stop offset="0.8" stop-color="#7cc8ff" /><stop offset="1" stop-color="#b98cff" />
       </linearGradient>
+      <linearGradient id="pd" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff7eb6" /><stop offset="0.2" stop-color="#ffb86b" /><stop offset="0.4" stop-color="#fff07a" />
+        <stop offset="0.6" stop-color="#7dffc4" /><stop offset="0.8" stop-color="#7cc8ff" /><stop offset="1" stop-color="#b98cff" />
+      </linearGradient>
+      <linearGradient id="reflet" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0.35" stop-color="#fff" stop-opacity="0" /><stop offset="0.45" stop-color="#ff7eb6" stop-opacity="0.7" />
+        <stop offset="0.52" stop-color="#fff07a" stop-opacity="0.7" /><stop offset="0.6" stop-color="#7cc8ff" stop-opacity="0.7" />
+        <stop offset="0.7" stop-color="#fff" stop-opacity="0" />
+      </linearGradient>
+      <clipPath id="carte2"><rect x="30" y="20" width="80" height="112" rx="10" /></clipPath>
     </defs>
   </svg>
 
-  <div class="propositions">
+  <div class="logos">
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64"><path d="M4 52L18 12h6l14 40h-7l-3-9H14l-3 9zM16 37h10l-5-15z" fill="#fff" /><path d="M34 52V12h6l8 18 8-18h6v40h-6V26l-8 17-8-17v26z" fill="#fff" /><path d="M2 46L62 26" stroke="url(#prisma)" stroke-width="3" stroke-linecap="round" /></svg>
-          <span class="nom" style="font: 400 24px 'Alfa Slab One', serif; letter-spacing: 0.06em">AM TCG</span><span class="ligne"></span><span class="sous">ANIME · MANGA</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">1</span><h2>AM TCG</h2><span class="jp">Anime · Manga Trading Card Game</span><p>Ton idée : court, clair, il dit tout. Monogramme « AM » blanc traversé d'un trait prisma.</p></div>
-    </div>
+    <!-- 1. Coup de pinceau prisma sous l'écriture -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <text x="150" y="88" text-anchor="middle" font-family="Alfa Slab One, serif" font-size="66" letter-spacing="6" fill="#fff">ANIMA</text>
+        <path d="M34 108c40-8 110-12 236-6-60 2-150 10-236 14z" fill="url(#p)" />
+        <text x="150" y="138" text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="11" letter-spacing="7" fill="#b8b8c2">TRADING CARD GAME</text>
+      </svg>
+      <figcaption><b>1</b>Coup de pinceau : l'écriture en lettres massives, soulignée d'un trait de pinceau prisma.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64"><path d="M32 6L58 54H6z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round" /><path d="M32 22L46 48H18z" fill="url(#prisma)" /></svg>
-          <span class="nom" style="font: 700 26px 'Lato', sans-serif; letter-spacing: 0.18em">ANIMA</span><span class="ligne"></span><span class="sous">TRADING CARD GAME</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">2</span><h2>Anima</h2><span class="jp">ANI(me) + MA(nga)</span><p>La contraction d'« anime » et de « manga », et « l'âme » en latin : l'âme des héros dans chaque carte. Le A est un prisme.</p></div>
-    </div>
+    <!-- 2. Carte blanche avec un reflet holo, et l'écriture à côté -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <rect x="30" y="20" width="80" height="112" rx="10" fill="#15151a" stroke="#fff" stroke-width="4" />
+        <g clip-path="url(#carte2)"><rect x="0" y="0" width="150" height="150" fill="url(#reflet)" /></g>
+        <text x="70" y="96" text-anchor="middle" font-family="Playfair Display, serif" font-weight="900" font-size="64" fill="#fff">A</text>
+        <text x="128" y="88" font-family="Lato, sans-serif" font-weight="700" font-size="40" letter-spacing="7" fill="#fff">ANIMA</text>
+        <text x="130" y="110" font-family="Lato, sans-serif" font-weight="700" font-size="9" letter-spacing="5" fill="#b8b8c2">TRADING CARD GAME</text>
+      </svg>
+      <figcaption><b>2</b>La carte holo : un « A » sur une carte traversée d'un reflet irisé, comme une carte rare.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64" stroke="#fff" stroke-width="3" stroke-linejoin="round"><path d="M6 6h30l-4 24H6z" fill="#0c0c0f" /><path d="M40 6h18v24H36z" fill="url(#prisma)" /><path d="M6 34h22v24H6z" fill="#0c0c0f" /><path d="M32 34h26v24H32z" fill="#0c0c0f" /><path d="M12 14h14M12 20h10" stroke-width="2" /></svg>
-          <span class="nom" style="font: 400 30px 'Lilita One', sans-serif; letter-spacing: 0.08em">KOMA</span><span class="ligne"></span><span class="sous">コマ · CARD GAME</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">3</span><h2>Koma</h2><span class="jp">コマ · « case de manga »</span><p>Une « koma », c'est une case de planche de manga : chaque carte est une case de l'histoire. Logo : une planche de 4 cases, dont une prisma.</p></div>
-    </div>
+    <!-- 3. Bulle de manga, ombre prisma -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <path d="M156 22c64 0 112 22 112 52s-48 52-112 52c-14 0-27-1-39-4l-37 22 12-31c-30-10-48-24-48-39 0-30 48-52 112-52z" fill="url(#pd)" transform="translate(7 7)" />
+        <path d="M156 22c64 0 112 22 112 52s-48 52-112 52c-14 0-27-1-39-4l-37 22 12-31c-30-10-48-24-48-39 0-30 48-52 112-52z" fill="#fff" stroke="#0c0c0f" stroke-width="3" />
+        <text x="156" y="94" text-anchor="middle" font-family="Lilita One, sans-serif" font-size="56" letter-spacing="3" fill="#0c0c0f">ANIMA</text>
+      </svg>
+      <figcaption><b>3</b>La bulle de manga : le nom crié dans une bulle blanche, avec une ombre prisma décalée. Le plus « manga ».</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" fill="none" stroke="url(#prisma)" stroke-width="3" /><text x="32" y="41" text-anchor="middle" font-size="24" fill="#fff" font-family="'Hiragino Mincho ProN','Yu Mincho',serif">仲間</text></svg>
-          <span class="nom" style="font: 400 26px 'Alfa Slab One', serif; letter-spacing: 0.04em">NAKAMA</span><span class="ligne"></span><span class="sous">TRADING CARD GAME</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">4</span><h2>Nakama</h2><span class="jp">仲間 · « compagnons »</span><p>Le mot que tout fan de manga connaît : les compagnons qu'on rassemble au fil de l'aventure, comme une collection.</p></div>
-    </div>
+    <!-- 4. Flamme d'âme (hitodama) -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <path d="M150 8c-6 18-30 30-30 58 0 20 13 34 30 34s30-14 30-34c0-16-8-26-14-36 0 10-4 16-10 18 4-14 0-28-6-40z" fill="#fff" />
+        <path d="M150 52c-4 10-14 16-14 30 0 10 6 16 14 16s14-6 14-16c0-8-4-13-7-18 0 5-2 8-5 9 2-7 0-14-2-21z" fill="url(#pd)" />
+        <text x="150" y="136" text-anchor="middle" font-family="Playfair Display, serif" font-weight="900" font-size="38" letter-spacing="10" fill="#fff">ANIMA</text>
+      </svg>
+      <figcaption><b>4</b>La flamme d'âme : « anima » veut dire « âme » ; une flamme blanche au cœur prisma (le « hitodama » des mangas).</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64"><path d="M20 4h24v56H20z" fill="#fff" /><path d="M20 4h24v6H20z" fill="url(#prisma)" /><text x="32" y="40" text-anchor="middle" font-size="22" fill="#0c0c0f" font-family="'Hiragino Mincho ProN','Yu Mincho',serif">札</text><path d="M24 50h16" stroke="#0c0c0f" stroke-width="2" /></svg>
-          <span class="nom" style="font: 400 30px 'Lilita One', sans-serif; letter-spacing: 0.1em">FUDA</span><span class="ligne"></span><span class="sous">札 · TCG</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">5</span><h2>Fuda</h2><span class="jp">札 · « carte », « talisman »</span><p>En japonais, « fuda » désigne une carte… et le talisman de papier des mangas de combat. Logo : un talisman blanc à liseré prisma.</p></div>
-    </div>
+    <!-- 5. Lignes de vitesse prisma derrière le nom -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <g stroke="url(#p)" stroke-width="2" stroke-linecap="round" opacity="0.85">
+          <path d="M150 75L10 10M150 75L4 60M150 75L12 132M150 75L70 4M150 75L80 148M150 75L230 4M150 75L220 148M150 75L290 12M150 75L296 70M150 75L288 136M150 75L150 2M150 75L150 148" />
+        </g>
+        <circle cx="150" cy="75" r="62" fill="#0c0c0f" opacity="0.85" />
+        <text x="150" y="94" text-anchor="middle" font-family="Lilita One, sans-serif" font-size="58" font-style="italic" letter-spacing="2" fill="#fff" stroke="#0c0c0f" stroke-width="3" paint-order="stroke" transform="skewX(-8) translate(12 0)">ANIMA</text>
+      </svg>
+      <figcaption><b>5</b>Lignes de vitesse : l'énergie d'une case de combat, les traits en prisma, le nom en italique.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><rect x="20" y="10" width="22" height="34" rx="2" fill="#26262d" stroke="#fff" stroke-width="2" transform="rotate(-18 31 44)" /><rect x="21" y="10" width="22" height="34" rx="2" fill="#26262d" stroke="#fff" stroke-width="2" /><rect x="22" y="10" width="22" height="34" rx="2" fill="url(#prisma)" stroke="#fff" stroke-width="2" transform="rotate(18 33 44)" /></svg>
-          <span class="nom" style="font: 900 27px 'Playfair Display', serif">Karuta</span><span class="ligne"></span><span class="sous">かるた · CARD GAME</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">6</span><h2>Karuta</h2><span class="jp">かるた · le jeu de cartes japonais</span><p>Le nom du jeu de cartes traditionnel japonais (il apparaît dans plusieurs animes). Logo : trois cartes en éventail, la dernière prisma.</p></div>
-    </div>
+    <!-- 6. Monogramme : deux cartes forment un A, une carte prisma fait la barre -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <rect x="56" y="18" width="34" height="100" rx="6" fill="#fff" transform="rotate(20 73 118)" />
+        <rect x="94" y="18" width="34" height="100" rx="6" fill="#fff" transform="rotate(-20 111 118)" />
+        <rect x="64" y="70" width="64" height="20" rx="5" fill="url(#p)" stroke="#0c0c0f" stroke-width="2" />
+        <text x="160" y="90" font-family="Alfa Slab One, serif" font-size="44" letter-spacing="3" fill="#fff">NIMA</text>
+        <text x="162" y="112" font-family="Lato, sans-serif" font-weight="700" font-size="9" letter-spacing="5" fill="#b8b8c2">TRADING CARD GAME</text>
+      </svg>
+      <figcaption><b>6</b>Le A en cartes : deux cartes blanches penchées forment le « A », une carte prisma en fait la barre.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64"><path d="M8 58L56 6" stroke="url(#prisma)" stroke-width="4" stroke-linecap="round" /><text x="22" y="32" text-anchor="middle" font-size="22" fill="#fff" font-family="'Hiragino Mincho ProN','Yu Mincho',serif">伝</text><text x="42" y="54" text-anchor="middle" font-size="22" fill="#fff" font-family="'Hiragino Mincho ProN','Yu Mincho',serif">説</text></svg>
-          <span class="nom" style="font: 400 23px 'Alfa Slab One', serif; letter-spacing: 0.04em">DENSETSU</span><span class="ligne"></span><span class="sous">伝説 · TCG</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">7</span><h2>Densetsu</h2><span class="jp">伝説 · « légende »</span><p>« Légende » en japonais : chaque carte raconte la légende d'un héros. Deux kanji tranchés par un coup de sabre prisma.</p></div>
-    </div>
+    <!-- 7. Sceau japonais « 魂 » (l'âme) -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <rect x="26" y="25" width="100" height="100" rx="8" fill="url(#pd)" />
+        <rect x="32" y="31" width="88" height="88" rx="5" fill="#fff" />
+        <text x="76" y="100" text-anchor="middle" font-family="'Hiragino Mincho ProN','Yu Mincho',serif" font-size="64" fill="#0c0c0f">魂</text>
+        <text x="142" y="88" font-family="Alfa Slab One, serif" font-size="40" letter-spacing="4" fill="#fff">ANIMA</text>
+        <text x="144" y="110" font-family="Lato, sans-serif" font-weight="700" font-size="9" letter-spacing="5" fill="#b8b8c2">アニマ · TCG</text>
+      </svg>
+      <figcaption><b>7</b>Le sceau : le kanji 魂 (« tamashii », l'âme) dans un sceau blanc au liseré prisma, et le nom en japonais dessous.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64"><path d="M32 3l7.6 17.6L58 22l-14 12.4L48 54 32 44 16 54l4-19.6L6 22l18.4-1.4z" fill="none" stroke="url(#prisma)" stroke-width="3" stroke-linejoin="round" /><text x="32" y="41" text-anchor="middle" font-size="20" fill="#fff" font-family="'Hiragino Mincho ProN','Yu Mincho',serif">英</text></svg>
-          <span class="nom" style="font: 400 30px 'Lilita One', sans-serif; letter-spacing: 0.08em">EIYŪ</span><span class="ligne"></span><span class="sous">英雄 · CARD GAME</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">8</span><h2>Eiyū</h2><span class="jp">英雄 · « héros »</span><p>« Héros » en japonais : le jeu de tous les héros d'anime. Une étoile au contour prisma autour du premier kanji.</p></div>
-    </div>
+    <!-- 8. Cercle zen au pinceau -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <path d="M197 30a64 58 0 1 0 14 64" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" />
+        <path d="M204 34c6 4 10 10 12 16" fill="none" stroke="url(#pd)" stroke-width="6" stroke-linecap="round" />
+        <circle cx="222" cy="58" r="4" fill="url(#pd)" />
+        <text x="150" y="85" text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="30" letter-spacing="9" fill="#fff">ANIMA</text>
+      </svg>
+      <figcaption><b>8</b>Le cercle zen (ensō) : un cercle tracé d'un seul coup de pinceau blanc, terminé par une goutte prisma. Sobre et élégant.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64" stroke="#0c0c0f" stroke-width="1" stroke-linejoin="round"><path d="M32 30L8 18l18 18z" fill="#fff" /><path d="M32 30L58 10 40 36z" fill="url(#prisma)" /><path d="M26 36l6-6 8 6-8 16z" fill="#e6e6ea" /><path d="M26 36L18 46l14 6z" fill="#fff" /><path d="M40 36l10 6-18 10z" fill="#cfcfd6" /><path d="M32 30l-4-12 4-6 2 6z" fill="#fff" /></svg>
-          <span class="nom" style="font: 400 30px 'Alfa Slab One', serif; letter-spacing: 0.1em">KAMI</span><span class="ligne"></span><span class="sous">紙 · 神 · TCG</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">9</span><h2>Kami</h2><span class="jp">紙 « papier » · 神 « dieu »</span><p>Un double sens japonais : « kami » veut dire « papier » et « dieu ». Des cartes en papier, des héros devenus légendes. Logo : une grue en origami, une aile prisma.</p></div>
-    </div>
+    <!-- 9. Le M en prisma -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <text x="150" y="92" text-anchor="middle" font-family="Playfair Display, serif" font-weight="900" font-size="70" letter-spacing="4" fill="#fff">ANI<tspan fill="url(#p)">M</tspan>A</text>
+        <path d="M60 112h180" stroke="#fff" stroke-width="1.5" opacity="0.5" />
+        <text x="150" y="134" text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="10" letter-spacing="7" fill="#b8b8c2">ANIME · MANGA · TCG</text>
+      </svg>
+      <figcaption><b>9</b>Le M prisma : une écriture élégante, seul le « M » (de « manga ») brille en prisma.</figcaption>
+    </figure>
 
-    <div class="proposition">
-      <div class="ecran">
-        <div class="logo">
-          <svg viewBox="0 0 64 64" stroke-linejoin="round"><path d="M32 4l14 22-8 22h-12l-8-22z" fill="#fff" /><path d="M32 4v30" stroke="#0c0c0f" stroke-width="2" /><circle cx="32" cy="34" r="3" fill="#0c0c0f" /><path d="M26 48h12l-2 6h-8z" fill="#cfcfd6" /><path d="M32 56c-5 0-8 3-8 6h16c0-3-3-6-8-6z" fill="url(#prisma)" /></svg>
-          <span class="nom" style="font: 900 25px 'Playfair Display', serif">Mangaka</span><span class="ligne"></span><span class="sous">漫画家 · TCG</span>
-        </div>
-        <span class="booster"></span><span class="bouton">Ouvrir</span><span class="rubriques"><i></i><i></i><i></i></span>
-      </div>
-      <div class="infos"><span class="numero">10</span><h2>Mangaka</h2><span class="jp">漫画家 · « auteur de manga »</span><p>Hommage aux auteurs qui ont créé tous ces héros. Logo : une plume de dessinateur (la « G-pen ») d'où coule une goutte d'encre prisma.</p></div>
-    </div>
+    <!-- 10. L'étoile holo à la place du I -->
+    <figure>
+      <svg viewBox="0 0 300 150">
+        <text x="134" y="96" text-anchor="end" font-family="Lilita One, sans-serif" font-size="66" letter-spacing="2" fill="#fff">AN</text>
+        <path d="M150 34l7 26 26 7-26 7-7 26-7-26-26-7 26-7z" fill="url(#pd)" />
+        <text x="166" y="96" font-family="Lilita One, sans-serif" font-size="66" letter-spacing="2" fill="#fff">MA</text>
+        <text x="150" y="134" text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="10" letter-spacing="7" fill="#b8b8c2">TRADING CARD GAME</text>
+      </svg>
+      <figcaption><b>10</b>L'étoile holo : le « I » est remplacé par l'éclat prisma qu'on voit sur les cartes rares.</figcaption>
+    </figure>
 
   </div>
 </body>
