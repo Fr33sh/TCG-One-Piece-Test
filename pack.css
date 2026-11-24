@@ -217,37 +217,50 @@
   letter-spacing: 1.5px;
 }
 
-/* ── Booster Naruto : en-tête et pied orange, motif du symbole 魂, logo du jeu en illustration ── */
+/* ── Booster Naruto : tons gris ciel (en-tête, pied et écritures), motif du symbole 魂 ── */
 
 .pack--naruto {
   --motif: url("assets/logo/anima-symbole.svg");
 }
 
 .pack--naruto .pack__entete {
-  background: linear-gradient(180deg, #ffb35c 0%, #f28c28 55%, #ffa24a 100%);
-  border-bottom-color: #ffd29a;
+  background: linear-gradient(180deg, #d3dfeb 0%, #a9bccf 55%, #c4d3e2 100%);
+  border-bottom-color: #eef4fa;
 }
 
 .pack--naruto .pack__entete::before,
 .pack--naruto .pack__pied::before {
-  opacity: 0.35;
+  opacity: 0.3;
 }
 
 .pack--naruto .pack__pied {
-  border-top-color: #ffd29a;
-  background: linear-gradient(180deg, #f28c28, #d9651a);
+  border-top-color: #eef4fa;
+  background: linear-gradient(180deg, #a9bccf, #8299b0);
 }
 
-.pack--naruto .pack__illustration {
-  background: radial-gradient(circle at 50% 42%, #2a2a33 0%, #111116 55%, #0b0b0d 100%);
+.pack--naruto .pack__logo {
+  color: #f1f6fb;
+  text-shadow:
+    0 calc(var(--l) * 0.006) 0 #1d2835,
+    calc(var(--l) * 0.006) 0 0 #1d2835,
+    0 calc(var(--l) * -0.006) 0 #1d2835,
+    calc(var(--l) * -0.006) 0 0 #1d2835,
+    calc(var(--l) * 0.005) calc(var(--l) * 0.01) 0 #304155;
 }
 
-.pack--naruto .pack__illustration img.pack__illustration-logo {
-  inset: 14% 22% auto;
-  width: 56%;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 calc(var(--l) * 0.06) rgb(255 255 255 / 25%));
+.pack--naruto .pack__sous-titre {
+  border-color: #d3dfeb;
+  background: #1d2835;
+  color: #e3edf6;
+}
+
+.pack--naruto .pack__edition {
+  color: #1d2835;
+  text-shadow:
+    0 calc(var(--l) * 0.005) 0 #eef4fa,
+    calc(var(--l) * 0.005) 0 0 #eef4fa,
+    0 calc(var(--l) * -0.005) 0 #eef4fa,
+    calc(var(--l) * -0.005) 0 0 #eef4fa;
 }
 
 /* ── Reflet qui balaie le paquet ── */

@@ -3,8 +3,7 @@
 
 const SERIES = [
   { id: "east-blue", nom: "East Blue", licence: "One Piece", code: "EB", image: "assets/packs/east-blue.jpg", cartes: CARTES_EAST_BLUE },
-  // Pour l'instant, le logo du jeu sert d'illustration
-  { id: "naruto", nom: "Naruto", licence: "Naruto", code: "NA", image: "assets/logo/anima.svg", cartes: CARTES_NARUTO },
+  { id: "naruto", nom: "Naruto", licence: "Naruto", code: "NA", image: "assets/packs/naruto.jpg", cartes: CARTES_NARUTO },
 ];
 
 const CARTES = SERIES.flatMap(serie => serie.cartes);

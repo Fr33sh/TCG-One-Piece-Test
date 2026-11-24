@@ -1,5 +1,5 @@
 // Fabrique le booster d'une série (styles dans pack.css), utilisé par l'accueil. Chaque série a son apparence :
-// East Blue (One Piece) et Naruto, qui porte pour l'instant le logo du jeu en illustration.
+// East Blue (One Piece), Naruto (tons gris ciel).
 
 const APPARENCES_PACK = {
   "east-blue": {
@@ -11,14 +11,15 @@ const APPARENCES_PACK = {
     degrade: ["#5b9cf0", "#2a6fd0", "#1749a8"],
     relief: ["#040f2b", "#071a46", "#0b2662", "#10347e"],
   },
+  // Tons gris ciel, écritures comprises
   naruto: {
     classe: "pack--naruto",
     entete: `<span class="pack__logo">Naruto</span>`,
     edition: "Anima",
-    illustration: `<img class="pack__illustration-logo" src="assets/logo/anima.svg" alt="">`,
+    illustration: `<img src="assets/packs/naruto.jpg" alt="">`,
     titre: "PAYS DES VAGUES",
-    degrade: ["#ffc277", "#f28c28", "#c2500f"],
-    relief: ["#2b1104", "#3f1a07", "#56240a", "#6e300e"],
+    degrade: ["#f1f6fb", "#b4c6d8", "#7d94ab"],
+    relief: ["#151d27", "#1d2835", "#263444", "#304155"],
   },
 };
 
