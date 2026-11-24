@@ -1,0 +1,2 @@
+# Bibliothèques des outils (réinstallables avec « npm install » dans outils)
+node_modules/
