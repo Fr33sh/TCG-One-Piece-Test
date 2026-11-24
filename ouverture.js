@@ -60,7 +60,7 @@ function commencerOuverture(nombre) {
   const possedees = lireCollection();
   const vues = new Set();
   const boosters = Array.from({ length: nombre }, () => {
-    const { cartes, godPack } = tirerBooster();
+    const { cartes, godPack } = tirerBooster(serieDe(zoneBooster.dataset.serie));
     const nouvelles = cartes.map(carte => {
       const nouvelle = !possedees[carte.id] && !vues.has(carte.id);
       vues.add(carte.id);

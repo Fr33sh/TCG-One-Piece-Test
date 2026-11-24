@@ -29,11 +29,14 @@ function ordonnerCartes(cartes) {
   return [...communes, ...rares];
 }
 
-function tirerBooster() {
+// Tire un booster de la série donnée (donnees/series.js)
+function tirerBooster(serie = SERIES[0]) {
   const godPack = Math.random() * 100 < CHANCE_GOD_PACK;
   const rangs = godPack ? RANGS_GOD_PACK : TAUX_PAR_CARTE.map(tirerRang);
   const cartes = rangs.map(rang => {
-    const possibles = CARTES.filter(carte => carte.rang === rang);
+    // Une série encore incomplète peut manquer d'un rang : on prend alors le rang inférieur le plus proche
+    let possibles = [];
+    for (let r = rang; r >= 1 && !possibles.length; r--) possibles = serie.cartes.filter(carte => carte.rang === r);
     return possibles[Math.floor(Math.random() * possibles.length)];
   });
   return { godPack, cartes: ordonnerCartes(cartes) };

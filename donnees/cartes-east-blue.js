@@ -11,7 +11,7 @@ const MOTS_CLES = {
   "Brûlé": "Le personnage subit 10 dégâts à la fin de chaque tour, jusqu'à ce qu'il quitte le poste actif.",
 };
 
-const CARTES = [
+const CARTES_EAST_BLUE = [
 
   // ── A · Civils ──
   {

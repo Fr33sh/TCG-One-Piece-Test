@@ -1,4 +1,5 @@
-// Collection : les séries (onglet East Blue, avec l'illustration de son booster), puis les cartes de la série en lignes de 3.
+// Collection : les séries (un onglet par série de donnees/series.js, avec son illustration), puis les cartes de la
+// série choisie en lignes de 3.
 // Une carte pas encore obtenue est une case vide portant son numéro. Toucher une carte possédée l'agrandit
 // (le reste s'efface), la toucher à nouveau la retourne, la flèche la renvoie à sa place dans la grille.
 // Sous la carte agrandie, ses doublons peuvent être recyclés en Animas (animas.js) ; on en garde toujours un.
@@ -8,7 +9,6 @@ const DUREE_RETOURNEMENT = 700;
 const COURBE = "cubic-bezier(0.22, 0.61, 0.36, 1)";
 
 const series = document.querySelector(".series");
-const boutonSerie = document.querySelector(".serie");
 const retourSeries = document.querySelector(".barre-collection__retour");
 const grille = document.querySelector(".apercu__grille");
 const zoom = document.querySelector(".zoom");
@@ -25,24 +25,43 @@ let retournee = false;
 let enMouvement = false;
 let nombreARecycler = 1;
 
-function afficherSerie(visible) {
-  series.hidden = visible;
-  grille.hidden = !visible;
-  retourSeries.hidden = !visible;
+// Affiche la grille d'une série (ou revient à la liste des séries si serie est nul)
+function afficherSerie(serie) {
+  series.hidden = Boolean(serie);
+  grille.hidden = !serie;
+  retourSeries.hidden = !serie;
   window.scrollTo(0, 0);
-  if (visible) ajusterProprietes(grille);
+  if (!serie) return;
+  remplirGrille(serie);
+  ajusterProprietes(grille);
 }
 
-boutonSerie.addEventListener("click", () => afficherSerie(true));
-retourSeries.addEventListener("click", () => afficherSerie(false));
+// Un onglet par série
+for (const serie of SERIES) {
+  const onglet = element("button", "serie");
+  onglet.type = "button";
+  onglet.setAttribute("aria-label", `Ouvrir la série ${serie.nom}`);
+  const image = element("img", `serie__image${serie.image.endsWith(".svg") ? " serie__image--logo" : ""}`);
+  image.src = serie.image;
+  image.alt = "";
+  const possedees = lireCollection();
+  const obtenues = serie.cartes.filter(carte => possedees[carte.id]).length;
+  onglet.append(image, element("span", "serie__nom", serie.nom), element("span", "serie__compte", `${obtenues} / ${serie.cartes.length}`));
+  onglet.addEventListener("click", () => afficherSerie(serie));
+  series.append(onglet);
+}
+retourSeries.addEventListener("click", () => afficherSerie(null));
 
-const possedees = lireCollection();
-for (const carte of CARTES) {
+function remplirGrille(serie) {
+  const possedees = lireCollection();
+  grille.replaceChildren(...serie.cartes.map(carte => creerEmplacement(carte, possedees[carte.id] || 0)));
+}
+
+function creerEmplacement(carte, exemplaires) {
   const emplacement = element("div", "emplacement");
-  const exemplaires = possedees[carte.id] || 0;
 
   if (!exemplaires) {
-    const caseVide = element("div", "case-vide", carte.id.replace("EB-", ""));
+    const caseVide = element("div", "case-vide", carte.id.split("-")[1]);
     caseVide.setAttribute("role", "img");
     caseVide.setAttribute("aria-label", `Carte ${carte.id} pas encore obtenue`);
     emplacement.append(caseVide);
@@ -61,7 +80,7 @@ for (const carte of CARTES) {
     emplacement.append(vignette);
     if (exemplaires > 1) emplacement.append(element("span", "exemplaires", `×${exemplaires}`));
   }
-  grille.append(emplacement);
+  return emplacement;
 }
 
 document.fonts.ready.then(() => ajusterProprietes(grille));

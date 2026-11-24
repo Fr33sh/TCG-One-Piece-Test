@@ -189,9 +189,21 @@ body {
   transition: padding-bottom 0.55s ease;
 }
 
+/* Les boosters des séries, côte à côte, plus petits que lorsqu'il n'y en avait qu'un */
+.boosters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.boosters .booster {
+  --l: min(40vw, 165px);
+}
+
 .zone-booster {
   cursor: pointer;
-  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease, visibility 0s linear 0s;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -316,26 +328,24 @@ body {
   text-shadow: 0 0 3px #000, 0 1px 2px #000;
 }
 
-/* ── Boosters disponibles : petits dos de cartes en éventail, en haut à gauche de la languette supérieure
-   (en face du code « EB ») ── */
+/* ── Boosters disponibles : petits dos de cartes en éventail, à gauche de la bulle de recharge ── */
 
 .reserve-boosters {
-  position: absolute;
-  top: calc(var(--l) * 0.035);
-  left: calc(var(--l) * 0.04);
-  z-index: 4;
   display: flex;
+  flex: none;
+  min-width: 22px;
+  margin-right: 10px;
   pointer-events: none;
 }
 
-/* Icône discrète : le dos blanc de nos cartes en petit, cerclé de noir */
+/* Icône discrète : le dos blanc de nos cartes en petit, cerclé de blanc */
 .mini-booster {
   position: relative;
-  width: calc(var(--l) * 0.068);
+  width: 15px;
   aspect-ratio: 1260 / 1760;
   overflow: hidden;
-  border-radius: 1.5px;
-  box-shadow: 0 0 0 1px rgb(11 11 13 / 70%), 0 1px 3px rgb(0 0 0 / 50%);
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 70%), 0 1px 3px rgb(0 0 0 / 50%);
   transform-origin: 50% 110%;
 }
 
@@ -351,7 +361,7 @@ body {
 }
 
 .mini-booster + .mini-booster {
-  margin-left: calc(var(--l) * -0.03);
+  margin-left: -6px;
 }
 
 /* Le fond prend la place de la barre, qui glisse vers le bas */
@@ -359,9 +369,19 @@ body {
   padding-bottom: 0;
 }
 
+/* Le booster choisi vient au centre et grandit ; les autres s'effacent */
 .mode-booster .zone-booster {
   cursor: default;
-  transform: translateY(-62px) scale(1.14);
+}
+
+.mode-booster .zone-booster--choisie {
+  transform: translateX(var(--decalage-x, 0px)) translateY(-62px) scale(1.45);
+}
+
+.mode-booster .zone-booster:not(.zone-booster--choisie) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .mode-booster .profil,

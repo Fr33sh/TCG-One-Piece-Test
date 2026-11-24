@@ -136,10 +136,24 @@ html {
   object-fit: cover;
 }
 
+/* Série illustrée par le logo du jeu (pour l'instant) : logo entier sur fond noir */
+.serie__image--logo {
+  padding: 18%;
+  background: radial-gradient(circle at 50% 42%, #2a2a33, #0b0b0d 75%);
+  object-fit: contain;
+}
+
 .serie__nom {
   color: var(--texte);
   font: 400 19px / 1 var(--police-titre);
   letter-spacing: 0.02em;
+}
+
+/* Cartes obtenues dans la série : « 12 / 66 » */
+.serie__compte {
+  margin-top: -6px;
+  color: var(--texte-faible);
+  font: 700 12px / 1 var(--police-texte);
 }
 
 /* Collection : lignes de 3 cartes */

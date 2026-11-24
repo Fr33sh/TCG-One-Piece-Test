@@ -26,13 +26,8 @@
   </header>
 
   <main>
-    <!-- Séries : chaque onglet porte l'illustration de son booster -->
-    <section class="series">
-      <button class="serie" type="button" aria-label="Ouvrir la série East Blue">
-        <img class="serie__image" src="assets/packs/east-blue.jpg" alt="">
-        <span class="serie__nom">East Blue</span>
-      </button>
-    </section>
+    <!-- Séries : un onglet par série, avec son illustration (rempli par cartes.js depuis donnees/series.js) -->
+    <section class="series"></section>
 
     <!-- Cartes de la série : celles pas encore obtenues sont des cases vides numérotées -->
     <section class="apercu__grille" hidden></section>
@@ -81,6 +76,8 @@
   <script src="sons.js"></script>
   <script src="musique.js"></script>
   <script src="donnees/cartes-east-blue.js"></script>
+  <script src="donnees/cartes-naruto.js"></script>
+  <script src="donnees/series.js"></script>
   <script src="rendu-carte.js"></script>
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>

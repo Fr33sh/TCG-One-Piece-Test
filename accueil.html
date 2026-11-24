@@ -70,16 +70,15 @@
           <span class="missions__nom">Missions</span>
         </a>
 
-        <!-- Toucher le booster le met en avant et affiche les choix d'ouverture -->
-        <!-- Le booster est fabriqué par pack.js -->
-        <div class="zone-booster" role="button" tabindex="0" aria-label="Choisir comment ouvrir le booster East Blue"></div>
+        <!-- Les boosters des séries, côte à côte (un par série, fabriqués par pack.js et placés par accueil.js) :
+             en toucher un le met en avant et affiche les choix d'ouverture -->
+        <div class="boosters"></div>
 
-        <!-- Les boosters disponibles, en éventail sur la languette du haut du booster (accueil.js les y place) -->
-        <div class="reserve-boosters"></div>
-
-        <!-- Sous le booster : recharge d'un booster toutes les 8 h (barre et temps restant, remplis par recharge.js)
-             et, à droite, les Sceaux possédés. Icône de l'horloge : Lucide (licence ISC) -->
+        <!-- Sous les boosters : les boosters disponibles en éventail, la recharge d'un booster toutes les 8 h
+             (barre et temps restant, remplis par recharge.js) et, à droite, les Sceaux possédés.
+             Icône de l'horloge : Lucide (licence ISC) -->
         <div class="recharge-bloc">
+          <div class="reserve-boosters"></div>
           <div class="recharge-bulle">
             <div class="recharge" role="progressbar" aria-label="Prochain booster" aria-valuemin="0" aria-valuemax="100">
               <span class="recharge__remplissage"></span>
@@ -122,6 +121,8 @@
   <script src="sons.js"></script>
   <script src="musique.js"></script>
   <script src="donnees/cartes-east-blue.js"></script>
+  <script src="donnees/cartes-naruto.js"></script>
+  <script src="donnees/series.js"></script>
   <script src="rendu-carte.js"></script>
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>

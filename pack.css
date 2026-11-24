@@ -211,6 +211,45 @@
   background: linear-gradient(180deg, #3aaef4, #1e8fe2);
 }
 
+/* Nom de collection long (« PAYS DES VAGUES ») : lettres plus petites pour tenir dans l'arc */
+.pack__titre--long .pack__titre-texte {
+  font-size: 34px;
+  letter-spacing: 1.5px;
+}
+
+/* ── Booster Naruto : en-tête et pied orange, motif du symbole 魂, logo du jeu en illustration ── */
+
+.pack--naruto {
+  --motif: url("assets/logo/anima-symbole.svg");
+}
+
+.pack--naruto .pack__entete {
+  background: linear-gradient(180deg, #ffb35c 0%, #f28c28 55%, #ffa24a 100%);
+  border-bottom-color: #ffd29a;
+}
+
+.pack--naruto .pack__entete::before,
+.pack--naruto .pack__pied::before {
+  opacity: 0.35;
+}
+
+.pack--naruto .pack__pied {
+  border-top-color: #ffd29a;
+  background: linear-gradient(180deg, #f28c28, #d9651a);
+}
+
+.pack--naruto .pack__illustration {
+  background: radial-gradient(circle at 50% 42%, #2a2a33 0%, #111116 55%, #0b0b0d 100%);
+}
+
+.pack--naruto .pack__illustration img.pack__illustration-logo {
+  inset: 14% 22% auto;
+  width: 56%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 calc(var(--l) * 0.06) rgb(255 255 255 / 25%));
+}
+
 /* ── Reflet qui balaie le paquet ── */
 
 .pack__reflet {
