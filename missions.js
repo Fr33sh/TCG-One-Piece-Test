@@ -85,6 +85,76 @@ function recuperer(id) {
 
 boutonBonus.addEventListener("click", () => recuperer("bonus"));
 
+// ── Onglets : missions quotidiennes et jetons SSR ──
+
+function ouvrirOnglet(nom) {
+  for (const bouton of document.querySelectorAll("[data-onglet]")) bouton.setAttribute("aria-selected", String(bouton.dataset.onglet === nom));
+  for (const panneau of document.querySelectorAll("[data-panneau]")) panneau.hidden = panneau.dataset.panneau !== nom;
+  if (nom === "jetons") afficherJetons();
+}
+
+for (const bouton of document.querySelectorAll("[data-onglet]")) {
+  bouton.addEventListener("click", () => ouvrirOnglet(bouton.dataset.onglet));
+}
+
+// ── Jetons SSR (jetons-ssr.js) : une case par SSR du jeu, série par série ──
+
+const ICONE_CADENAS = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>';
+
+function creerCaseJeton(carte) {
+  const etat = etatJetonSsr(carte);
+  const bouton = document.createElement("button");
+  bouton.type = "button";
+  bouton.className = `jeton-ssr jeton-ssr--${etat}`;
+  bouton.disabled = etat !== "pret";
+
+  const rond = document.createElement("span");
+  rond.className = "jeton-ssr__rond";
+  const image = document.createElement("img");
+  image.src = [].concat(carte.illustration)[0];
+  image.alt = "";
+  image.style.objectPosition = carte.cadrage || "50% 30%";
+  rond.append(image);
+  if (etat === "verrouille") rond.insertAdjacentHTML("beforeend", ICONE_CADENAS);
+
+  const nom = document.createElement("span");
+  nom.className = "jeton-ssr__nom";
+  // Une SSR pas encore obtenue garde son mystère : seul son numéro est affiché
+  nom.textContent = etat === "verrouille" ? carte.id : carte.nom;
+
+  const libelle = document.createElement("span");
+  libelle.className = "jeton-ssr__etat";
+  libelle.textContent = { verrouille: "À obtenir", pret: "Débloquer", debloque: "Débloqué ✓" }[etat];
+
+  bouton.setAttribute("aria-label", `${etat === "verrouille" ? carte.id : carte.nom} : ${libelle.textContent}`);
+  bouton.append(rond, nom, libelle);
+  bouton.addEventListener("click", () => {
+    if (!debloquerJetonSsr(carte)) return;
+    document.querySelector("[data-message-jetons]").textContent = `Jeton de ${carte.nom} débloqué ! Choisis-le dans ton profil.`;
+    if (typeof jouerCarillon === "function") jouerCarillon();
+    afficherJetons();
+  });
+  return bouton;
+}
+
+function afficherJetons() {
+  const toutes = cartesSsr();
+  const debloques = toutes.filter(carte => etatJetonSsr(carte) === "debloque").length;
+  document.querySelector("[data-jetons-compteur]").textContent = `${debloques} / ${toutes.length}`;
+  document.querySelector("[data-jetons]").replaceChildren(...SERIES.map(serie => {
+    const bloc = document.createElement("div");
+    bloc.className = "jetons-serie";
+    const titre = document.createElement("h3");
+    titre.className = "jetons-serie__titre";
+    titre.textContent = serie.nom;
+    const grille = document.createElement("div");
+    grille.className = "jetons-serie__grille";
+    grille.append(...serie.cartes.filter(carte => carte.rang === 4).map(creerCaseJeton));
+    bloc.append(titre, grille);
+    return bloc;
+  }));
+}
+
 afficherMissions();
 setInterval(() => {
   if (!document.hidden) afficherMissions();

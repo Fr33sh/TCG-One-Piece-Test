@@ -18,7 +18,7 @@ function afficherIcones() {
   document.querySelector("[data-icone-actuelle]").replaceChildren(creerIconeProfil(choisie));
 
   const series = new Map();
-  for (const icone of ICONES_PROFIL) series.set(icone.serie, [...(series.get(icone.serie) || []), icone]);
+  for (const icone of iconesProfil()) series.set(icone.serie, [...(series.get(icone.serie) || []), icone]);
   const blocs = [...series].map(([serie, icones]) => {
     const bloc = document.createElement("div");
     const titre = document.createElement("h3");

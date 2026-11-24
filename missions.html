@@ -7,6 +7,7 @@
   <title>Missions</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="icones-profil.css">
   <link rel="stylesheet" href="missions.css">
 </head>
 <body>
@@ -22,8 +23,14 @@
   </header>
 
   <main class="liste-bulles">
+    <!-- Deux onglets : les missions quotidiennes et les jetons SSR -->
+    <div class="onglets" role="tablist" aria-label="Missions">
+      <button class="onglets__bouton" type="button" role="tab" aria-selected="true" aria-controls="panneau-quotidiennes" data-onglet="quotidiennes">Quotidiennes</button>
+      <button class="onglets__bouton" type="button" role="tab" aria-selected="false" aria-controls="panneau-jetons" data-onglet="jetons">Jetons SSR</button>
+    </div>
+
     <!-- Missions quotidiennes : barre de progression (et son Sceau bonus), puis les 3 missions (missions.js) -->
-    <section class="bulle-page" aria-labelledby="titre-quotidiennes">
+    <section class="bulle-page" id="panneau-quotidiennes" role="tabpanel" data-panneau="quotidiennes" aria-labelledby="titre-quotidiennes">
       <div class="missions-entete">
         <h2 class="bulle-page__titre" id="titre-quotidiennes">Missions quotidiennes</h2>
         <span class="missions-entete__sceaux" aria-label="Sceaux possédés">
@@ -48,6 +55,17 @@
       <ul class="liste-missions" data-liste-missions></ul>
       <p class="message-page" data-message role="status"></p>
     </section>
+
+    <!-- Jetons SSR : chaque SSR obtenue débloque une icône de profil à son image (rempli par missions.js) -->
+    <section class="bulle-page" id="panneau-jetons" role="tabpanel" data-panneau="jetons" aria-labelledby="titre-jetons" hidden>
+      <div class="missions-entete">
+        <h2 class="bulle-page__titre" id="titre-jetons">Jetons SSR</h2>
+        <span class="jetons-compteur" data-jetons-compteur></span>
+      </div>
+      <p class="bulle-page__texte">Chaque carte SSR que tu obtiens débloque une icône de profil à son image, à choisir ensuite dans ton profil.</p>
+      <div class="jetons-series" data-jetons></div>
+      <p class="message-page" data-message-jetons role="status"></p>
+    </section>
   </main>
 
   <script src="reglages.js"></script>
@@ -57,6 +75,11 @@
   <script src="sauvegarde.js"></script>
   <script src="sceaux.js"></script>
   <script src="missions-quotidiennes.js"></script>
+  <script src="collection.js"></script>
+  <script src="donnees/cartes-east-blue.js"></script>
+  <script src="donnees/cartes-naruto.js"></script>
+  <script src="donnees/series.js"></script>
+  <script src="jetons-ssr.js"></script>
   <script src="missions.js"></script>
 </body>
 </html>

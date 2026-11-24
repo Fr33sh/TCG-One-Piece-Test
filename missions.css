@@ -224,8 +224,170 @@
   border-color: rgb(125 255 196 / 35%);
 }
 
+/* ── Onglets : Quotidiennes / Jetons SSR ── */
+
+.onglets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--bord);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.onglets__bouton {
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--texte-doux);
+  font: 400 15px / 1 var(--police-titre);
+  cursor: pointer;
+}
+
+.onglets__bouton[aria-selected="true"] {
+  background: #fff;
+  color: var(--encre);
+}
+
+.onglets__bouton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Jetons SSR : une grille par série ── */
+
+.jetons-compteur {
+  flex: none;
+  padding: 4px 10px;
+  border: 1px solid var(--bord-clair);
+  border-radius: 999px;
+  background: var(--creux);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.jetons-series {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.jetons-serie__titre {
+  padding-left: 4px;
+  color: var(--texte-doux);
+  font: 400 15px / 1 var(--police-titre);
+}
+
+.jetons-serie__grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 8px;
+  margin-top: 10px;
+}
+
+/* Une case : le jeton rond, le nom (ou le numéro), l'état */
+.jeton-ssr {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--texte);
+  font-family: var(--police-titre);
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.jeton-ssr:disabled {
+  cursor: default;
+}
+
+.jeton-ssr__rond {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 2px solid var(--bord-clair);
+  border-radius: 50%;
+  background: var(--creux);
+}
+
+.jeton-ssr__rond img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jeton-ssr__rond svg {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.jeton-ssr__nom {
+  font-size: 11px;
+  line-height: 1.1;
+}
+
+.jeton-ssr__etat {
+  color: var(--texte-faible);
+  font: 700 10px / 1 var(--police-texte);
+}
+
+/* Pas encore obtenue : image éteinte, cadenas */
+.jeton-ssr--verrouille .jeton-ssr__rond img {
+  filter: grayscale(1) brightness(0.3) blur(1px);
+}
+
+.jeton-ssr--verrouille .jeton-ssr__nom {
+  color: var(--texte-faible);
+}
+
+/* Prête à débloquer : anneau prisma qui pulse */
+.jeton-ssr--pret .jeton-ssr__rond {
+  border: 3px solid transparent;
+  background: linear-gradient(var(--creux), var(--creux)) padding-box, var(--prisma-diagonal) border-box;
+  animation: jeton-pret 1.6s ease-in-out infinite;
+}
+
+.jeton-ssr--pret .jeton-ssr__etat {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--encre);
+}
+
+@keyframes jeton-pret {
+  0%, 100% { box-shadow: 0 0 0 rgb(185 140 255 / 0%); transform: scale(1); }
+  50% { box-shadow: 0 0 14px rgb(185 140 255 / 60%); transform: scale(1.05); }
+}
+
+/* Débloquée : contour blanc */
+.jeton-ssr--debloque .jeton-ssr__rond {
+  border-color: #fff;
+}
+
+.jeton-ssr--debloque .jeton-ssr__etat {
+  color: var(--reussite);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .progression__bonus--pret {
+  .progression__bonus--pret,
+  .jeton-ssr--pret .jeton-ssr__rond {
     animation: none;
   }
 }
