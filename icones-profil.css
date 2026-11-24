@@ -1,4 +1,4 @@
-/* Jetons des icônes de profil (icones-profil.js) : ronds, contour noir et filet doré comme les bulles du jeu. */
+/* Jetons des icônes de profil (icones-profil.js) : ronds, fin contour blanc. */
 
 .icone-profil {
   display: block;
@@ -6,10 +6,10 @@
   width: 48px;
   aspect-ratio: 1;
   overflow: hidden;
-  border: 3px solid #0b0a09;
+  border: 2px solid var(--texte);
   border-radius: 50%;
-  background: #f1e2bd;
-  box-shadow: 0 0 0 2px #b8874d, 0 3px 8px rgb(60 35 10 / 35%);
+  background: var(--surface-haute);
+  box-shadow: var(--ombre-legere);
 }
 
 .icone-profil img {

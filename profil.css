@@ -1,4 +1,4 @@
-/* Page Profil (le style commun des pages à bulles est dans page.css). */
+/* Page Profil (le style commun des pages à panneaux est dans page.css, les couleurs dans theme.css). */
 
 /* Icône du joueur à gauche de son identifiant */
 .profil-tete {
@@ -17,10 +17,10 @@
   flex: 1;
   min-width: 0;
   padding: 10px 12px;
-  border: 2px dashed #b8874d;
+  border: 1px dashed var(--bord-clair);
   border-radius: 14px;
-  background: #fffaf0;
-  font-size: 26px;
+  background: var(--creux);
+  font-size: 25px;
   line-height: 1.1;
   text-align: center;
   overflow-wrap: anywhere;
@@ -36,8 +36,8 @@
 
 .serie-icones__titre {
   padding-left: 4px;
-  font: 400 15px / 1 "Lilita One", "Arial Black", sans-serif;
-  color: #5b4a39;
+  font: 400 15px / 1 var(--police-titre);
+  color: var(--texte-doux);
 }
 
 .serie-icones__liste {
@@ -48,7 +48,7 @@
   padding-left: 4px;
 }
 
-/* Un jeton et son nom ; celui qui est choisi est soulevé, avec un filet jaune et une coche */
+/* Un jeton et son nom ; celui qui est choisi est soulevé, avec un anneau prisma et une coche */
 .choix-icone {
   position: relative;
   display: flex;
@@ -59,8 +59,8 @@
   padding: 0;
   border: 0;
   background: none;
-  color: #5b4a39;
-  font: 400 12px / 1.15 "Lilita One", "Arial Black", sans-serif;
+  color: var(--texte-doux);
+  font: 400 12px / 1.15 var(--police-titre);
   text-align: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -68,15 +68,18 @@
 
 .choix-icone .icone-profil {
   width: 72px;
+  border-color: var(--bord-clair);
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .choix-icone[aria-checked="true"] {
-  color: #1f1610;
+  color: var(--texte);
 }
 
 .choix-icone[aria-checked="true"] .icone-profil {
-  box-shadow: 0 0 0 3px #f5c518, 0 0 0 5px #0b0a09, 0 6px 12px rgb(60 35 10 / 40%);
+  border: 3px solid transparent;
+  background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--prisma-diagonal) border-box;
+  box-shadow: 0 0 14px rgb(185 140 255 / 35%), var(--ombre-legere);
   transform: translateY(-2px);
 }
 
@@ -87,9 +90,9 @@
   right: 4px;
   width: 22px;
   height: 22px;
-  border: 2px solid #0b0a09;
+  border: 2px solid var(--surface);
   border-radius: 50%;
-  background: #f5c518 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1610' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 13px no-repeat;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c0c0f' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 13px no-repeat;
 }
 
 .choix-icone:active .icone-profil {
@@ -97,7 +100,7 @@
 }
 
 .choix-icone:focus-visible {
-  outline: 3px solid #b8874d;
+  outline: 2px solid #fff;
   outline-offset: 4px;
   border-radius: 12px;
 }

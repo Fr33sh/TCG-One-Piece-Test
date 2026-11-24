@@ -1,10 +1,5 @@
-/* Onglet Combat : fond parchemin comme l'accueil, grande bannière inclinée en haut, bouton Guide à cheval
-   sur son bord, deux grands boutons (Versus, Solo), puis les raccourcis (Decks). Mobile d'abord. */
-
-@font-face {
-  font-family: "Lilita One";
-  src: url("assets/polices/lilita-one.woff2") format("woff2");
-}
+/* Onglet Combat, thème Anima (theme.css) : bannière de bandes penchées en haut, bouton Guide, deux grands
+   boutons (Versus, Solo), puis les raccourcis (Decks). Mobile d'abord. */
 
 * {
   box-sizing: border-box;
@@ -14,13 +9,13 @@
 html,
 body {
   min-height: 100%;
-  background: #0b0a09;
+  background: var(--fond);
 }
 
 body {
-  background: radial-gradient(ellipse at 50% 60%, #e7d2a2 0%, #e0c48f 60%, #d5b47e 100%);
-  color: #1f1610;
-  font-family: "Lilita One", "Arial Black", sans-serif;
+  background: var(--fond-eclaire);
+  color: var(--texte);
+  font-family: var(--police-titre);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -63,18 +58,21 @@ body {
 }
 
 /* Toutes les bandes ont le format de la bannière d'« Episode of East Blue » (1303 × 377), visible en entier ;
-   les affiches y sont découpées en bande (cadrage donné dans la page). Contour noir et liseré bleu. */
+   les affiches y sont découpées en bande (cadrage donné dans la page). Fin contour blanc ; la bande du milieu
+   porte un liseré prisma. */
 .banniere__bande {
   box-sizing: content-box;
   width: 84%;
   aspect-ratio: 1303 / 377;
   overflow: hidden;
-  border: 3px solid #0b0a09;
+  border: 2px solid #fff;
   border-radius: 8px;
-  box-shadow:
-    0 0 0 3px #3aaef4,
-    0 0 0 5px #0b0a09,
-    0 10px 18px rgb(60 35 10 / 40%);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 60%);
+}
+
+.banniere__bande:nth-child(2) {
+  border-color: transparent;
+  background: var(--prisma-diagonal) border-box;
 }
 
 .banniere__bande:nth-child(odd) {
@@ -99,36 +97,32 @@ body {
   align-self: flex-start;
   margin: 0 0 -6px 20px;
   transform: rotate(-7deg);
-  color: #fff8e1;
+  color: #fff;
   font-size: 58px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.02em;
   text-shadow:
-    0 3px 0 #0b0a09,
-    3px 0 0 #0b0a09,
-    0 -3px 0 #0b0a09,
-    -3px 0 0 #0b0a09,
-    2px 2px 0 #0b0a09,
-    -2px -2px 0 #0b0a09,
-    2px -2px 0 #0b0a09,
-    -2px 2px 0 #0b0a09,
-    0 8px 12px rgb(0 0 0 / 45%);
+    0 3px 0 var(--fond),
+    3px 0 0 var(--fond),
+    0 -3px 0 var(--fond),
+    -3px 0 0 var(--fond),
+    2px 2px 0 var(--fond),
+    -2px -2px 0 var(--fond),
+    2px -2px 0 var(--fond),
+    -2px 2px 0 var(--fond),
+    0 8px 14px rgb(0 0 0 / 60%);
 }
 
-/* ── Boutons, aux couleurs des bulles du jeu : parchemin clair, contour noir, filet doré ── */
+/* ── Boutons : panneaux sombres à contour ── */
 
 .guide__rond,
 .mode,
 .raccourci {
-  border: 3px solid #0b0a09;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow:
-    0 0 0 2px #b8874d,
-    inset 0 2px 0 rgb(255 255 255 / 60%),
-    inset 0 -3px 0 rgb(120 80 30 / 25%),
-    0 5px 10px rgb(60 35 10 / 30%);
-  color: #1f1610;
+  border: 1px solid var(--bord-clair);
+  background: var(--surface);
+  box-shadow: var(--ombre);
+  color: var(--texte);
 }
 
 .guide,
@@ -147,7 +141,7 @@ body {
 .guide:focus-visible,
 .mode:focus-visible,
 .raccourci:focus-visible {
-  outline: 3px solid #b8874d;
+  outline: 2px solid #fff;
   outline-offset: 4px;
 }
 
@@ -164,7 +158,7 @@ body {
   padding: 0;
   border: 0;
   background: none;
-  color: #1f1610;
+  color: var(--texte);
 }
 
 .guide__rond {
@@ -226,7 +220,6 @@ body {
   width: 104px;
   height: 70px;
   padding: 6px;
-  border-width: 2px;
   border-radius: 16px;
 }
 
@@ -250,12 +243,12 @@ body {
   max-width: 420px;
   margin: 0 auto;
   padding: 12px 16px;
-  border: 2px solid #b8874d;
+  border: 1px solid var(--bord-clair);
   border-radius: 14px;
-  background: rgb(31 22 16 / 92%);
-  color: #f6ead0;
+  background: rgb(22 22 27 / 95%);
+  color: var(--texte);
   font-size: 15px;
   line-height: 1.2;
   text-align: center;
-  box-shadow: 0 6px 16px rgb(0 0 0 / 35%);
+  box-shadow: var(--ombre);
 }

@@ -1,14 +1,13 @@
-/* Pages à bulles (Paramètres, Profil, Social) : barre du haut fixe, comme la collection, et grandes bulles
-   parchemin les unes sous les autres ; la page défile de haut en bas. */
-
-@font-face {
-  font-family: "Lilita One";
-  src: url("assets/polices/lilita-one.woff2") format("woff2");
-}
+/* Pages à panneaux (Paramètres, Profil, Social, Missions) : barre du haut fixe, comme la collection, et grands
+   panneaux sombres les uns sous les autres ; la page défile de haut en bas. Couleurs : theme.css. */
 
 * {
   box-sizing: border-box;
   margin: 0;
+}
+
+html {
+  background: var(--fond);
 }
 
 body {
@@ -19,9 +18,9 @@ body {
 
   min-height: 100vh;
   padding: calc(var(--hauteur-barre) + 20px) 16px 40px;
-  background: #13202c;
-  color: #1f1610;
-  font-family: "Lilita One", "Arial Black", sans-serif;
+  background: var(--fond-eclaire) fixed;
+  color: var(--texte);
+  font-family: var(--police-titre);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -29,7 +28,7 @@ body {
   display: none !important;
 }
 
-/* ── Barre du haut : titre (et retour), reste en place pendant le défilement ── */
+/* ── Barre du haut : titre (et retour), reste en place pendant le défilement, liseré prisma en bas ── */
 
 .barre-page {
   position: fixed;
@@ -41,21 +40,31 @@ body {
   place-items: center;
   height: var(--hauteur-barre);
   padding-top: var(--encoche);
-  border-bottom: 2px solid #9c7444;
-  border-radius: 0 0 16px 16px;
-  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 50%),
-    inset 0 -2px 0 rgb(90 60 25 / 30%),
-    0 3px 8px rgb(0 0 0 / 35%);
+  border-bottom: 1px solid var(--bord);
+  border-radius: 0 0 18px 18px;
+  background: rgb(18 18 22 / 92%);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 45%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.barre-page::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -1px;
+  left: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--prisma);
+  opacity: 0.85;
 }
 
 .barre-page__titre {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 0 rgb(255 248 225 / 55%);
+  letter-spacing: 0.04em;
 }
 
 .barre-page__retour {
@@ -66,11 +75,10 @@ body {
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 2px solid #0b0a09;
+  border: 1px solid var(--bord-clair);
   border-radius: 50%;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 60%), 0 2px 4px rgb(60 35 10 / 35%);
-  color: #1f1610;
+  background: var(--surface-haute);
+  color: var(--texte);
 }
 
 .barre-page__retour svg {
@@ -83,58 +91,58 @@ body {
   stroke-linejoin: round;
 }
 
-/* ── Bulles ── */
+/* ── Panneaux ── */
 
 .liste-bulles {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   max-width: 520px;
   margin: 0 auto;
 }
 
-/* Grande bulle, aux couleurs des cartes de base */
 .bulle-page {
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 16px 14px 14px;
-  border: 3px solid #0b0a09;
-  border-radius: 22px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), 0 6px 14px rgb(0 0 0 / 40%);
+  border: 1px solid var(--bord);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--ombre);
 }
 
 .bulle-page__titre {
   padding-left: 4px;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 400;
   line-height: 1;
 }
 
 .bulle-page__texte {
   padding: 0 4px;
-  font: 400 15px / 1.3 "Lilita One", "Arial Black", sans-serif;
-  color: #5b4a39;
+  font: 400 14px / 1.4 var(--police-texte);
+  color: var(--texte-doux);
 }
 
-/* Petite bulle (bouton) ; la version principale est jaune */
+/* Petit bouton : sombre à contour ; la version principale est blanche */
 .petite-bulle {
   flex: none;
   padding: 8px 14px;
-  border: 2px solid #0b0a09;
+  border: 1px solid var(--bord-clair);
   border-radius: 999px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 1.5px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), inset 0 -2px 0 rgb(120 80 30 / 25%), 0 3px 6px rgb(60 35 10 / 30%);
-  color: #1f1610;
-  font: 400 13px / 1 "Lilita One", "Arial Black", sans-serif;
+  background: var(--surface-haute);
+  color: var(--texte);
+  font: 400 13px / 1 var(--police-titre);
   text-decoration: none;
   cursor: pointer;
 }
 
 .petite-bulle--principale {
   padding: 11px 18px;
-  background: linear-gradient(180deg, #ffe680, #f5c518);
+  border-color: #fff;
+  background: #fff;
+  color: var(--encre);
   font-size: 15px;
 }
 
@@ -143,7 +151,7 @@ body {
 }
 
 .petite-bulle:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: default;
   transform: none;
 }
@@ -159,28 +167,26 @@ body {
   flex: 1;
   min-width: 0;
   padding: 10px 12px;
-  border: 2px solid #5b4a39;
+  border: 1px solid var(--bord-clair);
   border-radius: 12px;
-  background: #fffaf0;
-  box-shadow: inset 0 2px 3px rgb(120 80 30 / 20%);
-  color: #1f1610;
-  font: 400 17px / 1.2 "Lilita One", "Arial Black", sans-serif;
+  background: var(--creux);
+  color: var(--texte);
+  font: 700 16px / 1.2 var(--police-texte);
 }
 
 .champ::placeholder {
-  color: #a9875a;
+  color: var(--texte-faible);
 }
 
 /* Bouton Discord, à sa couleur (création du compte, profil, social) */
 .bouton-discord {
   padding: 13px 16px;
-  border: 3px solid #0b0a09;
+  border: 0;
   border-radius: 999px;
-  background: linear-gradient(180deg, #7983f5, #5865f2);
-  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 35%), 0 4px 8px rgb(60 35 10 / 35%);
+  background: #5865f2;
+  box-shadow: 0 4px 14px rgb(88 101 242 / 35%);
   color: #fff;
-  font: 400 17px / 1 "Lilita One", "Arial Black", sans-serif;
-  text-shadow: 0 1px 0 rgb(0 0 0 / 35%);
+  font: 400 17px / 1 var(--police-titre);
   cursor: pointer;
 }
 
@@ -189,7 +195,7 @@ body {
 }
 
 .bouton-discord:focus-visible {
-  outline: 3px solid #b8874d;
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
@@ -201,22 +207,22 @@ body {
 /* Réponse du jeu après une action : réussite ou erreur */
 .message-page {
   padding: 0 4px;
-  font: 400 14px / 1.3 "Lilita One", "Arial Black", sans-serif;
-  color: #3d6b1f;
+  font: 700 14px / 1.3 var(--police-texte);
+  color: var(--reussite);
 }
 
 .message-page--erreur {
-  color: #9b2a1a;
+  color: var(--erreur);
 }
 
 /* Pseudo et ses 4 chiffres, le # un peu plus discret */
 .pseudo__tag {
-  color: #8a6d45;
+  color: var(--texte-faible);
 }
 
 .barre-page__retour:focus-visible,
 .petite-bulle:focus-visible,
 .champ:focus-visible {
-  outline: 3px solid #b8874d;
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }

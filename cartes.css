@@ -17,12 +17,16 @@ body {
 
   min-height: 100vh;
   padding: calc(var(--hauteur-barre-collection) + 20px) 16px 48px;
-  background: #13202c;
-  color: #f3e6c8;
-  font-family: "Lato", sans-serif;
+  background: var(--fond-eclaire) fixed;
+  color: var(--texte);
+  font-family: var(--police-texte);
 }
 
-/* Barre du haut : reste en place pendant le défilement, même parchemin en relief que la barre du bas */
+html {
+  background: var(--fond);
+}
+
+/* Barre du haut : reste en place pendant le défilement, sombre, liseré prisma en bas (comme les autres pages) */
 .barre-collection {
   position: fixed;
   top: 0;
@@ -33,20 +37,30 @@ body {
   place-items: center;
   height: var(--hauteur-barre-collection);
   padding-top: var(--encoche);
-  border-bottom: 2px solid #9c7444;
-  border-radius: 0 0 16px 16px;
-  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 50%),
-    inset 0 -2px 0 rgb(90 60 25 / 30%),
-    0 3px 8px rgb(0 0 0 / 35%);
+  border-bottom: 1px solid var(--bord);
+  border-radius: 0 0 18px 18px;
+  background: rgb(18 18 22 / 92%);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 45%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.barre-collection::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -1px;
+  left: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--prisma);
+  opacity: 0.85;
 }
 
 .barre-collection__titre {
-  font: 400 26px / 1 "Lilita One", "Arial Black", sans-serif;
-  letter-spacing: 0.03em;
-  color: #1f1610;
-  text-shadow: 0 1px 0 rgb(255 248 225 / 55%);
+  font: 400 24px / 1 var(--police-titre);
+  letter-spacing: 0.04em;
+  color: var(--texte);
 }
 
 [hidden] {
@@ -63,11 +77,10 @@ body {
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 2px solid #0b0a09;
+  border: 1px solid var(--bord-clair);
   border-radius: 50%;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 60%), 0 2px 4px rgb(60 35 10 / 35%);
-  color: #1f1610;
+  background: var(--surface-haute);
+  color: var(--texte);
   cursor: pointer;
 }
 
@@ -95,14 +108,11 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 18px 10px 14px;
-  border: 2px solid #9c7444;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #d4b47c 0%, #c8a76f 55%, #b8955f 100%);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 50%),
-    inset 0 -3px 0 rgb(90 60 25 / 30%),
-    0 4px 10px rgb(0 0 0 / 40%);
+  padding: 12px 10px 14px;
+  border: 1px solid var(--bord);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--ombre);
   cursor: pointer;
   transition: transform 0.1s;
 }
@@ -115,15 +125,13 @@ body {
   display: block;
   width: 100%;
   aspect-ratio: 900 / 960;
-  border: 2px solid #0b0a09;
-  border-radius: 10px;
+  border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 0 0 2px #b8874d, 0 3px 8px rgb(60 35 10 / 40%);
 }
 
 .serie__nom {
-  color: #1f1610;
-  font: 400 20px / 1 "Lilita One", "Arial Black", sans-serif;
+  color: var(--texte);
+  font: 400 19px / 1 var(--police-titre);
   letter-spacing: 0.02em;
 }
 
@@ -158,17 +166,13 @@ body {
   place-items: center;
   width: var(--largeur-carte);
   aspect-ratio: 1260 / 1760;
-  border: 2px solid #2b4257;
+  border: 1px solid var(--bord);
   border-radius: calc(var(--largeur-carte) * 70 / 1260);
-  background: linear-gradient(160deg, #0f1a24, #172736);
-  box-shadow:
-    inset 0 4px 10px rgb(0 0 0 / 65%),
-    inset 0 -2px 0 rgb(255 255 255 / 6%),
-    0 1px 0 rgb(255 255 255 / 10%);
-  color: #4f6a82;
-  font: 400 24px / 1 "Lilita One", "Arial Black", sans-serif;
+  background: linear-gradient(160deg, #101014, #17171c);
+  box-shadow: inset 0 4px 10px rgb(0 0 0 / 65%);
+  color: var(--texte-faible);
+  font: 400 24px / 1 var(--police-titre);
   letter-spacing: 0.05em;
-  text-shadow: 0 -1px 0 rgb(0 0 0 / 70%), 0 1px 0 rgb(255 255 255 / 12%);
 }
 
 /* Nombre d'exemplaires possédés, dans une petite bulle en bas à droite */
@@ -178,12 +182,12 @@ body {
   bottom: -5px;
   min-width: 28px;
   padding: 5px 6px 4px;
-  border: 2px solid #0b0a09;
+  border: 2px solid var(--fond);
   border-radius: 999px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 1.5px #b8874d, 0 2px 5px rgb(0 0 0 / 50%);
-  color: #1f1610;
-  font: 400 14px / 1 "Lilita One", "Arial Black", sans-serif;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 50%);
+  color: var(--encre);
+  font: 400 14px / 1 var(--police-titre);
   text-align: center;
   pointer-events: none;
 }
@@ -219,7 +223,7 @@ body {
 .zoom__fond {
   position: absolute;
   inset: 0;
-  background: #13202c;
+  background: var(--fond-eclaire);
 }
 
 .zoom__scene {
@@ -274,11 +278,11 @@ body {
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 2px solid #0b0a09;
+  border: 1px solid var(--bord-clair);
   border-radius: 50%;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow: 0 0 0 2px #b8874d, inset 0 2px 0 rgb(255 255 255 / 60%), 0 3px 8px rgb(0 0 0 / 40%);
-  color: #1f1610;
+  background: var(--surface-haute);
+  box-shadow: var(--ombre-legere);
+  color: var(--texte);
   cursor: pointer;
 }
 

@@ -1,4 +1,5 @@
-/* Écran d'accueil, sur le thème des cartes de base : parchemin, cadre noir et filet doré. */
+/* Écran d'accueil, thème Anima (theme.css) : fond noir, halo prisma discret derrière le booster, boutons blancs
+   ou sombres à contour. */
 
 * {
   box-sizing: border-box;
@@ -8,33 +9,35 @@
 html,
 body {
   height: 100%;
-  background: #0b0a09;
+  background: var(--fond);
 }
 
 /* Hauteur de la barre d'état du téléphone (heure, batterie) : 0 dans l'émulateur (marge-haut.js) */
 body {
   --haut: var(--marge-haut, env(safe-area-inset-top));
+
+  color: var(--texte);
+  font-family: var(--police-texte);
 }
 
-/* Le parchemin descend sous les coins arrondis de la barre : aucun espace noir entre les deux.
-   Sur le téléphone, il monte jusque sous la barre d'état (plus de liseré noir en haut). */
+/* Le fond descend sous les coins arrondis de la barre : aucun espace entre les deux.
+   Sur le téléphone, il monte jusque sous la barre d'état. */
 .cadre {
   height: 100vh;
   height: 100dvh;
   padding: max(0px, calc(8px - var(--haut) * 100)) 0 calc(var(--hauteur-navigation) - 16px);
 }
 
-/* Fond parchemin, comme l'intérieur des cartes de rang A */
+/* Le fond de l'accueil (l'élément garde son ancien nom « parchemin ») */
 .parchemin {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
   /* Même largeur et mêmes coins arrondis que la barre de navigation */
-  border-top: 2px solid #b8874d;
-  border-radius: 16px 16px 0 0;
-  background: radial-gradient(ellipse at 50% 45%, #e7d2a2 0%, #e0c48f 60%, #d5b47e 100%);
-  box-shadow: inset 0 0 60px rgb(120 80 30 / 35%);
+  border-top: 1px solid var(--bord);
+  border-radius: 18px 18px 0 0;
+  background: var(--fond-eclaire);
 }
 
 /* Le booster et, dessous, la recharge sont au milieu de l'écran (hors barre de navigation) */
@@ -45,6 +48,27 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+/* Halo prisma très doux derrière le booster, qui tourne lentement */
+.contenu::before {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: min(110vw, 520px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--prisma-conique);
+  opacity: 0.13;
+  filter: blur(70px);
+  translate: -50% -50%;
+  animation: halo 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes halo {
+  to { rotate: 360deg; }
 }
 
 /* ── Profil (en haut au centre) et paramètres (en haut à droite) ── */
@@ -60,15 +84,15 @@ body {
   cursor: pointer;
 }
 
-/* Descendu sous l'encoche de la caméra (celle du téléphone ou de l'émulateur) */
+/* Descendu sous l'encoche de la caméra (celle du téléphone ou de l'émulateur) ; anneau prisma */
 .profil {
   top: max(44px, calc(var(--haut) + 6px));
   left: 50%;
-  width: 48px;
-  height: 48px;
-  border: 3px solid #0b0a09;
-  background: #f1e2bd;
-  box-shadow: 0 0 0 2px #b8874d, 0 4px 10px rgb(60 35 10 / 35%);
+  width: 50px;
+  height: 50px;
+  border: 2.5px solid transparent;
+  background: linear-gradient(var(--surface-haute), var(--surface-haute)) padding-box, var(--prisma-diagonal) border-box;
+  box-shadow: 0 0 14px rgb(185 140 255 / 30%), var(--ombre-legere);
   overflow: hidden;
   transform: translateX(-50%);
 }
@@ -78,7 +102,7 @@ body {
   width: 30px;
   height: 30px;
   margin-top: 5px;
-  fill: #5b4a39;
+  fill: var(--texte-doux);
 }
 
 /* L'icône de profil choisie remplit le rond (le contour est déjà celui du bouton) */
@@ -92,18 +116,15 @@ body {
   right: 14px;
   width: 44px;
   height: 44px;
-  border: 0;
-  background: linear-gradient(180deg, #d9bd86, #c3a26b);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 55%),
-    inset 0 -3px 0 rgb(90 60 25 / 35%),
-    0 3px 6px rgb(60 35 10 / 35%);
-  color: #1f1610;
+  border: 1px solid var(--bord-clair);
+  background: var(--surface-haute);
+  box-shadow: var(--ombre-legere);
+  color: var(--texte);
 }
 
 .parametres svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -111,8 +132,8 @@ body {
   stroke-linejoin: round;
 }
 
-/* ── Missions : tuile parchemin en bas à droite, juste au-dessus de la barre de navigation
-   (le bas du parchemin passe sous les coins arrondis de la barre, d'où les 16 px en plus) ── */
+/* ── Missions : tuile en bas à droite, juste au-dessus de la barre de navigation
+   (le bas du fond passe sous les coins arrondis de la barre, d'où les 16 px en plus) ── */
 
 .missions {
   position: absolute;
@@ -125,15 +146,11 @@ body {
   justify-content: center;
   width: 58px;
   height: 58px;
-  border: 2px solid #0b0a09;
+  border: 1px solid var(--bord-clair);
   border-radius: 14px;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow:
-    0 0 0 1.5px #b8874d,
-    inset 0 1px 0 rgb(255 255 255 / 60%),
-    inset 0 -2px 0 rgb(120 80 30 / 25%),
-    0 3px 6px rgb(60 35 10 / 30%);
-  color: #1f1610;
+  background: var(--surface);
+  box-shadow: var(--ombre-legere);
+  color: var(--texte);
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   transition: opacity 0.45s ease, visibility 0s linear 0s;
@@ -144,7 +161,7 @@ body {
 }
 
 .missions:focus-visible {
-  outline: 3px solid #b8874d;
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
@@ -152,12 +169,11 @@ body {
   width: 34px;
   height: 34px;
   margin-top: -2px;
-  filter: drop-shadow(0 1px 1px rgb(60 35 10 / 30%));
 }
 
 .missions__nom {
-  font: 400 10px / 1 "Lilita One", "Arial Black", sans-serif;
-  letter-spacing: 0.02em;
+  font: 400 10px / 1 var(--police-titre);
+  letter-spacing: 0.03em;
 }
 
 .mode-booster .missions,
@@ -181,7 +197,7 @@ body {
 
 .zone-booster:focus-visible {
   border-radius: 12px;
-  outline: 3px solid #b8874d;
+  outline: 2px solid #fff;
   outline-offset: 8px;
 }
 
@@ -193,10 +209,11 @@ body {
   transition: opacity 0.45s ease, translate 0.5s ease, visibility 0s linear 0s;
 }
 
-/* ── Sous le booster : la bulle de recharge (barre, puis temps restant) et, collée à sa droite,
-   la tuile des Sabliers. Mêmes couleurs que les bulles de choix : parchemin, contour noir, filet doré ── */
+/* ── Sous le booster : la bulle de recharge (barre prisma, puis temps restant) et, collée à sa droite,
+   la tuile des Sabliers ── */
 
 .recharge-bloc {
+  position: relative;
   display: flex;
   align-items: center;
   margin-top: 18px;
@@ -204,36 +221,31 @@ body {
 
 .recharge-bulle,
 .sabliers {
-  border: 2px solid #0b0a09;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow:
-    0 0 0 1.5px #b8874d,
-    inset 0 1px 0 rgb(255 255 255 / 60%),
-    inset 0 -2px 0 rgb(120 80 30 / 25%),
-    0 3px 6px rgb(60 35 10 / 30%);
-  color: #1f1610;
+  border: 1px solid var(--bord-clair);
+  background: var(--surface);
+  box-shadow: var(--ombre-legere);
+  color: var(--texte);
 }
 
 .recharge-bulle {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   align-items: center;
   width: 112px;
-  padding: 5px 9px 4px;
+  padding: 6px 9px 5px;
   border-radius: 14px;
 }
 
-/* La barre, creusée dans la bulle */
+/* La barre : creusée, remplie de prisma */
 .recharge {
   position: relative;
   width: 100%;
-  height: 7px;
+  height: 6px;
   overflow: hidden;
-  border: 1.5px solid #0b0a09;
   border-radius: 999px;
-  background: #a9875a;
-  box-shadow: inset 0 1px 2px rgb(60 35 10 / 45%);
+  background: var(--creux);
+  box-shadow: inset 0 0 0 1px var(--bord);
 }
 
 .recharge__remplissage {
@@ -242,8 +254,7 @@ body {
   bottom: 0;
   left: 0;
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffe680, #f5c518);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%);
+  background: var(--prisma);
   transition: width 1s linear;
 }
 
@@ -251,8 +262,8 @@ body {
   display: flex;
   gap: 3px;
   align-items: center;
-  color: #5b4a39;
-  font: 400 11px / 1 "Lilita One", "Arial Black", sans-serif;
+  color: var(--texte-doux);
+  font: 400 11px / 1 var(--police-titre);
   white-space: nowrap;
 }
 
@@ -281,13 +292,12 @@ body {
   content: "";
   position: absolute;
   top: 50%;
-  left: -6px;
-  width: 7px;
-  height: 7px;
-  border-bottom: 2px solid #0b0a09;
-  border-left: 2px solid #0b0a09;
-  background: #eedcb4;
-  box-shadow: -1.5px 1.5px 0 0 #b8874d;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 1px solid var(--bord-clair);
+  border-left: 1px solid var(--bord-clair);
+  background: var(--surface);
   transform: translateY(-50%) rotate(45deg);
 }
 
@@ -295,20 +305,15 @@ body {
   width: 28px;
   height: 28px;
   margin: -4px 0 0 -5px;
-  filter: drop-shadow(0 1px 1px rgb(60 35 10 / 35%));
 }
 
 .sabliers__nombre {
   position: absolute;
   right: 3px;
   bottom: 2px;
-  color: #1f1610;
-  font: 400 11px / 1 "Lilita One", "Arial Black", sans-serif;
-  text-shadow:
-    1px 0 0 #f6ead0,
-    -1px 0 0 #f6ead0,
-    0 1px 0 #f6ead0,
-    0 -1px 0 #f6ead0;
+  color: #fff;
+  font: 400 11px / 1 var(--police-titre);
+  text-shadow: 0 0 3px #000, 0 1px 2px #000;
 }
 
 /* ── Boosters disponibles : petits dos de cartes en éventail, en haut à gauche de la languette supérieure
@@ -323,15 +328,14 @@ body {
   pointer-events: none;
 }
 
-/* Icône discrète : le dos de nos cartes en petit, aux couleurs beige de notre univers (filtre « dos-beige »
-   d'accueil.html, posé sur l'image seule pour garder le contour) */
+/* Icône discrète : le dos de nos cartes en petit, cerclé de blanc */
 .mini-booster {
   position: relative;
   width: calc(var(--l) * 0.068);
   aspect-ratio: 1260 / 1760;
   overflow: hidden;
   border-radius: 1.5px;
-  box-shadow: 0 0 0 1px #5b4a39, 0 1px 2px rgb(0 0 0 / 35%);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 85%), 0 1px 3px rgb(0 0 0 / 50%);
   transform-origin: 50% 110%;
 }
 
@@ -340,7 +344,6 @@ body {
   position: absolute;
   inset: 0;
   background: url("assets/cartes/dos.jpg") center / cover;
-  filter: url("#dos-beige");
 }
 
 .filtres-svg {
@@ -351,7 +354,7 @@ body {
   margin-left: calc(var(--l) * -0.03);
 }
 
-/* Le parchemin prend la place de la barre, qui glisse vers le bas */
+/* Le fond prend la place de la barre, qui glisse vers le bas */
 .mode-booster .cadre {
   padding-bottom: 0;
 }
@@ -399,19 +402,24 @@ body {
   transition: opacity 0.45s ease 0.2s, translate 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s, visibility 0s;
 }
 
-/* Bulles aux couleurs des cartes de base : parchemin clair, contour noir, filet doré, en relief */
+/* Boutons d'ouverture blancs ; bouton retour sombre à contour */
 .bulle-choix,
 .bulle-retour {
-  border: 3px solid #0b0a09;
-  background: linear-gradient(180deg, #f6ead0, #e3cc9b);
-  box-shadow:
-    0 0 0 2px #b8874d,
-    inset 0 2px 0 rgb(255 255 255 / 60%),
-    inset 0 -3px 0 rgb(120 80 30 / 30%),
-    0 5px 10px rgb(60 35 10 / 35%);
-  color: #1f1610;
   cursor: pointer;
   transition: transform 0.1s;
+}
+
+.bulle-choix {
+  width: 100%;
+  padding: 15px 6px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 50%);
+  color: var(--encre);
+  font: 400 15px / 1.1 var(--police-titre);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .bulle-choix:active,
@@ -421,19 +429,9 @@ body {
 
 /* Pas assez de boosters en réserve */
 .bulle-choix:disabled {
-  opacity: 0.5;
-  filter: grayscale(0.6);
+  opacity: 0.4;
   cursor: default;
   transform: none;
-}
-
-.bulle-choix {
-  width: 100%;
-  padding: 15px 6px;
-  border-radius: 999px;
-  font: 400 15px / 1.1 "Lilita One", "Arial Black", sans-serif;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
 }
 
 /* Prix en Sabliers, sous le texte du bouton */
@@ -444,7 +442,7 @@ body {
   justify-content: center;
   margin-top: 5px;
   font-size: 14px;
-  color: #5b4a39;
+  color: #55555f;
 }
 
 .bulle-choix__cout[hidden] {
@@ -460,18 +458,28 @@ body {
   display: grid;
   grid-column: 1 / -1;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   padding: 0;
+  border: 1px solid var(--bord-clair);
   border-radius: 50%;
+  background: var(--surface-haute);
+  box-shadow: var(--ombre-legere);
+  color: var(--texte);
 }
 
 .bulle-retour svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contenu::before {
+    animation: none;
+  }
 }

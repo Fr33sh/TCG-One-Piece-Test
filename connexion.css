@@ -1,16 +1,5 @@
-/* Écran de création du compte, façon écran de connexion classique : le fond marin de l'écran de chargement
-   (fond-marin.css), le titre du jeu, et un panneau translucide au centre. */
-
-@font-face {
-  font-family: "Lilita One";
-  src: url("assets/polices/lilita-one.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Lato";
-  font-weight: 700;
-  src: url("assets/polices/lato-700.woff2") format("woff2");
-}
+/* Écran de création du compte, façon écran de connexion classique : le fond animé de l'écran de chargement
+   (fond-anima.css), le logo du jeu, et un panneau sombre et translucide au centre. Couleurs : theme.css. */
 
 * {
   box-sizing: border-box;
@@ -20,12 +9,12 @@
 html,
 body {
   min-height: 100%;
-  background: #03121f;
+  background: var(--fond);
 }
 
 body {
-  color: #eaf8ff;
-  font: 700 15px / 1.4 "Lato", system-ui, sans-serif;
+  color: var(--texte);
+  font: 700 15px / 1.4 var(--police-texte);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -33,11 +22,11 @@ body {
   display: none !important;
 }
 
-.fond-marin {
+.fond-anima {
   position: fixed;
 }
 
-/* ── Titre et panneau, au centre de l'écran ── */
+/* ── Logo et panneau, au centre de l'écran ── */
 
 .connexion {
   position: relative;
@@ -45,38 +34,47 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 24px;
   min-height: 100vh;
   min-height: 100dvh;
   padding: max(var(--marge-haut, env(safe-area-inset-top)), 48px) 20px 32px;
 }
 
-.connexion__titre {
-  font: 400 clamp(40px, 12vw, 64px) / 1 "Lilita One", "Arial Black", sans-serif;
-  letter-spacing: 0.03em;
-  text-align: center;
-  text-shadow:
-    0 3px 0 #0b3550,
-    0 5px 0 #072640,
-    0 0 24px rgb(120 230 255 / 75%);
+.connexion__titre img {
+  display: block;
+  width: min(40vw, 170px);
+  filter: drop-shadow(0 0 16px rgb(255 255 255 / 15%));
 }
 
 .panneau {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
   width: min(100%, 360px);
   padding: 24px 22px;
-  border: 1px solid rgb(160 230 255 / 35%);
-  border-radius: 18px;
-  background: rgb(4 24 42 / 68%);
-  box-shadow: 0 20px 50px rgb(0 0 0 / 45%), inset 0 1px 0 rgb(255 255 255 / 12%);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--bord-clair);
+  border-radius: 20px;
+  background: rgb(22 22 27 / 82%);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 55%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Liseré prisma en haut du panneau */
+.panneau::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 24px;
+  left: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--prisma);
 }
 
 .panneau__titre {
-  font: 400 24px / 1.1 "Lilita One", "Arial Black", sans-serif;
+  font: 400 23px / 1.1 var(--police-titre);
   text-align: center;
 }
 
@@ -87,50 +85,49 @@ body {
 }
 
 .panneau__etiquette {
-  font-size: 13px;
-  letter-spacing: 0.06em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #a9dcf2;
+  color: var(--texte-doux);
 }
 
 .panneau__champ {
   width: 100%;
   padding: 12px 14px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background: rgb(255 255 255 / 94%);
-  color: #0b1d2b;
-  font: 700 17px / 1.2 "Lato", system-ui, sans-serif;
+  border: 1px solid var(--bord-clair);
+  border-radius: 12px;
+  background: var(--creux);
+  color: var(--texte);
+  font: 700 17px / 1.2 var(--police-texte);
   outline: none;
 }
 
 .panneau__champ:focus {
-  border-color: #6fd2fb;
-  box-shadow: 0 0 0 3px rgb(111 210 251 / 30%);
+  border-color: #fff;
 }
 
 .panneau__champ::placeholder {
-  color: #8aa3b3;
+  color: var(--texte-faible);
 }
 
 .panneau__texte {
-  color: #d5eefa;
+  color: var(--texte-doux);
   text-align: center;
 }
 
 .panneau__texte strong {
-  color: #ffd27a;
+  color: var(--texte);
 }
 
 .panneau__note {
-  color: #9cc6d9;
+  color: var(--texte-faible);
   font-size: 13px;
   text-align: center;
 }
 
 .panneau__message {
   min-height: 1.4em;
-  color: #ff9b8a;
+  color: var(--erreur);
   font-size: 13px;
 }
 
@@ -140,7 +137,7 @@ body {
 
 /* Pseudo et ses 4 chiffres, le # un peu plus discret */
 .pseudo__tag {
-  color: #9fdcf5;
+  color: var(--texte-faible);
 }
 
 /* ── Boutons ── */
@@ -153,8 +150,8 @@ body {
   gap: 10px;
   width: 100%;
   padding: 13px 16px;
-  border-radius: 10px;
-  font: 700 16px / 1 "Lato", system-ui, sans-serif;
+  border-radius: 999px;
+  font: 400 16px / 1 var(--police-titre);
   cursor: pointer;
   transition: filter 0.15s, transform 0.1s;
 }
@@ -163,7 +160,7 @@ body {
   margin-top: 6px;
   border: 0;
   background: #5865f2;
-  box-shadow: 0 4px 14px rgb(88 101 242 / 45%);
+  box-shadow: 0 4px 14px rgb(88 101 242 / 35%);
   color: #fff;
 }
 
@@ -174,9 +171,9 @@ body {
 }
 
 .bouton-secondaire {
-  border: 1px solid rgb(160 230 255 / 45%);
-  background: rgb(255 255 255 / 6%);
-  color: #eaf8ff;
+  border: 1px solid var(--bord-clair);
+  background: var(--surface-haute);
+  color: var(--texte);
 }
 
 .bouton-discord:hover,
@@ -196,7 +193,7 @@ body {
 
 .bouton-discord:focus-visible,
 .bouton-secondaire:focus-visible {
-  outline: 3px solid #6fd2fb;
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
@@ -205,7 +202,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #7fb3c9;
+  color: var(--texte-faible);
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -215,7 +212,7 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: rgb(160 230 255 / 30%);
+  background: var(--bord-clair);
 }
 
 /* ── Avertissement par-dessus l'écran ── */
@@ -227,15 +224,11 @@ body {
   display: grid;
   place-items: center;
   padding: 20px;
-  background: rgb(0 8 16 / 65%);
-}
-
-.panneau--avertissement {
-  border-color: rgb(255 210 122 / 55%);
+  background: rgb(0 0 0 / 65%);
 }
 
 .panneau--avertissement .panneau__titre {
-  color: #ffd27a;
+  color: #ffb86b;
 }
 
 .avertissement__choix {

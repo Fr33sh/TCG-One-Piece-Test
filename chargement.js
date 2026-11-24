@@ -1,4 +1,4 @@
-// Écran de chargement (fond marin : fond-marin.js). Toucher l'écran
+// Écran de chargement (logo et fond animé : fond-anima.js). Toucher l'écran
 // plonge dedans (zoom) pendant que la musique d'aventure laisse place en fondu à celle du jeu, puis
 // ouvre l'écran de création du compte (premier lancement) ou l'accueil. Pendant la plongée, un compte lié
 // à Discord récupère sa sauvegarde en ligne.

@@ -1,0 +1,56 @@
+/* Thème d'Anima TCG, commun à tous les écrans : du noir, du blanc, et une touche de prisma (reflets
+   arc-en-ciel) réservée aux détails : liserés des barres, barres de progression, éléments choisis.
+   À charger avant les styles propres à chaque écran. */
+
+@font-face {
+  font-family: "Lilita One";
+  src: url("assets/polices/lilita-one.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 400;
+  src: url("assets/polices/lato-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 700;
+  src: url("assets/polices/lato-700.woff2") format("woff2");
+}
+
+:root {
+  /* Fonds */
+  --fond: #0b0b0d;
+  --fond-eclaire: radial-gradient(ellipse at 50% 0%, #1e1e25 0%, #111115 45%, #0b0b0d 80%);
+  --surface: #16161b;
+  --surface-haute: #1f1f26;
+  --creux: #0f0f13;
+  --bord: #2b2b33;
+  --bord-clair: #3d3d47;
+
+  /* Textes */
+  --texte: #f4f4f6;
+  --texte-doux: #a9a9b3;
+  --texte-faible: #6d6d78;
+  --encre: #0c0c0f;
+
+  /* La touche de prisma */
+  --prisma: linear-gradient(90deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff);
+  --prisma-diagonal: linear-gradient(135deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff);
+  --prisma-conique: conic-gradient(from 200deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff, #ff7eb6);
+
+  /* États */
+  --reussite: #7dffc4;
+  --erreur: #ff8f8f;
+
+  /* Ombres */
+  --ombre: 0 6px 18px rgb(0 0 0 / 45%);
+  --ombre-legere: 0 3px 8px rgb(0 0 0 / 35%);
+
+  /* Polices */
+  --police-titre: "Lilita One", "Arial Black", sans-serif;
+  --police-texte: "Lato", system-ui, sans-serif;
+
+  color-scheme: dark;
+}

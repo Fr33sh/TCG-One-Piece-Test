@@ -1,5 +1,5 @@
-/* Barre de navigation commune : parchemin plus sombre, en relief, icônes noires.
-   Elle est identique et posée en bas de l'écran sur toutes les pages. */
+/* Barre de navigation commune : noire, liseré prisma en haut, icônes grises ; l'onglet ouvert est blanc,
+   posé sur une pastille sombre, avec un petit trait prisma dessous. Identique sur toutes les pages. */
 
 /* Sous les icônes, on ne garde qu'une partie de la zone de la barre d'accueil de l'iPhone (le petit trait en bas) :
    juste assez pour que les icônes restent au-dessus du trait */
@@ -9,18 +9,29 @@
 }
 
 .navigation {
-  --fond-barre: #c8a76f;
+  --fond-barre: #121216;
 
+  position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   padding: 6px 8px var(--marge-bas-navigation);
-  border-top: 2px solid #9c7444;
-  background: linear-gradient(180deg, #d4b47c 0%, var(--fond-barre) 45%, #b8955f 100%);
-  box-shadow:
-    inset 0 2px 0 rgb(255 248 225 / 50%),
-    inset 0 -2px 0 rgb(90 60 25 / 30%),
-    0 -3px 8px rgb(90 60 25 / 25%);
+  border-top: 1px solid var(--bord);
+  background: var(--fond-barre);
+  box-shadow: 0 -6px 16px rgb(0 0 0 / 45%);
+}
+
+/* Le liseré prisma, tout en haut de la barre */
+.navigation::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 18px;
+  left: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--prisma);
+  opacity: 0.85;
 }
 
 /* Laisse de la place sous le contenu pour la barre */
@@ -34,23 +45,24 @@
   bottom: 0;
   left: 0;
   z-index: 5;
-  border-radius: 16px 16px 0 0;
+  border-radius: 18px 18px 0 0;
 }
 
 .navigation__lien {
+  position: relative;
   display: grid;
   place-items: center;
   justify-self: center;
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  color: #1f1610;
-  transition: background 0.15s, box-shadow 0.15s;
+  color: var(--texte-faible);
+  transition: background 0.15s, color 0.15s;
 }
 
 .navigation__lien svg {
-  width: 28px;
-  height: 28px;
+  width: 27px;
+  height: 27px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -65,16 +77,28 @@
 
 .navigation__lien:hover,
 .navigation__lien:focus-visible {
-  background: rgb(255 248 225 / 25%);
+  color: var(--texte-doux);
 }
 
-/* Onglet ouvert : enfoncé dans la barre */
+/* Onglet ouvert : icône blanche sur une pastille sombre, petit trait prisma dessous */
 .navigation__lien--actif,
 .navigation__lien--actif:hover {
-  background: rgb(90 60 25 / 22%);
-  box-shadow: inset 0 2px 4px rgb(60 35 10 / 45%), 0 1px 0 rgb(255 248 225 / 45%);
+  background: var(--surface-haute);
+  color: var(--texte);
+}
+
+.navigation__lien--actif::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 18px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--prisma);
+  transform: translateX(-50%);
 }
 
 .navigation__lien--actif .icone__devant {
-  fill: #b39462;
+  fill: var(--surface-haute);
 }

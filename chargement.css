@@ -1,9 +1,4 @@
-/* Écran de chargement : fond marin animé et invitation à toucher l'écran. */
-
-@font-face {
-  font-family: "Lilita One";
-  src: url("assets/polices/lilita-one.woff2") format("woff2");
-}
+/* Écran de chargement : fond animé (fond-anima.css), logo d'Anima TCG au centre, invitation à toucher l'écran. */
 
 * {
   box-sizing: border-box;
@@ -14,38 +9,49 @@ html,
 body {
   height: 100%;
   overflow: hidden;
-  background: #03121f;
+  background: var(--fond);
 }
 
 .ecran-chargement {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9vh;
   overflow: hidden;
-  color: #fff;
+  color: var(--texte);
   text-decoration: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ── Texte « Touchez » ── */
+/* Le logo flotte doucement, avec une lueur blanche */
+.logo-chargement {
+  position: relative;
+  width: min(58vw, 280px);
+  filter: drop-shadow(0 0 18px rgb(255 255 255 / 18%));
+  animation: flotte 5s ease-in-out infinite;
+}
 
+@keyframes flotte {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* « Touchez l'écran », discret, qui respire */
 .touchez {
   position: relative;
-  font: 400 clamp(56px, 15vw, 128px) / 1 "Lilita One", "Arial Black", sans-serif;
-  letter-spacing: 0.04em;
-  text-shadow:
-    0 4px 0 #0b3550,
-    0 7px 0 #072640,
-    0 0 28px rgb(120 230 255 / 85%),
-    0 0 60px rgb(60 180 255 / 55%);
-  animation: appel 1.8s ease-in-out infinite;
+  font: 700 13px / 1 var(--police-texte);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  animation: appel 2.2s ease-in-out infinite;
 }
 
 @keyframes appel {
-  0%, 100% { opacity: 0.55; transform: translateY(0) scale(0.97); }
-  50% { opacity: 1; transform: translateY(-6px) scale(1.03); }
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
 }
 
 /* ── Toucher l'écran : on plonge dedans, puis l'accueil s'ouvre ── */
@@ -55,7 +61,7 @@ body {
   animation: plongee 1s cubic-bezier(0.55, 0, 0.75, 0.45) forwards;
 }
 
-/* « Touchez » disparaît d'un coup, seul le fond plonge */
+/* « Touchez l'écran » disparaît d'un coup, le logo et le fond plongent */
 .ecran-chargement--plongee .touchez {
   visibility: hidden;
 }
@@ -67,6 +73,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .logo-chargement,
   .touchez {
     animation: none;
   }

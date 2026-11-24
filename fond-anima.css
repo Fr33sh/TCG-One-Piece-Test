@@ -1,0 +1,72 @@
+/* Fond animé d'Anima TCG (fabriqué par fond-anima.js), commun à l'écran de chargement et à l'écran de création
+   du compte : noir, halo prisma qui tourne lentement, fines particules qui montent, reflet irisé qui balaie. */
+
+.fond-anima {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, #20202a 0%, #111116 45%, #0b0b0d 75%);
+  pointer-events: none;
+}
+
+/* Halo prisma flou derrière le logo */
+.fond-anima__halo {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: min(130vw, 700px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--prisma-conique);
+  opacity: 0.2;
+  filter: blur(80px);
+  translate: -50% -50%;
+  animation: fond-anima-tourne 26s linear infinite;
+}
+
+@keyframes fond-anima-tourne {
+  to { rotate: 360deg; }
+}
+
+/* Particules : de petits points lumineux, blancs ou teintés de prisma, qui montent en scintillant */
+.fond-anima__particule {
+  position: absolute;
+  bottom: -10px;
+  left: var(--x);
+  width: var(--taille);
+  height: var(--taille);
+  border-radius: 50%;
+  background: var(--couleur);
+  box-shadow: 0 0 6px var(--couleur);
+  opacity: 0;
+  animation: fond-anima-monte var(--duree) linear var(--delai) infinite;
+}
+
+@keyframes fond-anima-monte {
+  0% { opacity: 0; transform: translate(0, 0); }
+  15% { opacity: 0.8; }
+  50% { opacity: 0.35; }
+  85% { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(var(--derive), -105vh); }
+}
+
+/* Reflet irisé qui traverse l'écran en diagonale, de temps en temps */
+.fond-anima__reflet {
+  position: absolute;
+  inset: -50% -100%;
+  background: linear-gradient(115deg, transparent 44%, rgb(255 126 182 / 7%) 47%, rgb(255 240 122 / 8%) 50%, rgb(124 200 255 / 7%) 53%, transparent 56%);
+  animation: fond-anima-reflet 9s ease-in-out infinite;
+}
+
+@keyframes fond-anima-reflet {
+  0%, 35% { transform: translateX(-40%); }
+  75%, 100% { transform: translateX(40%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fond-anima__halo,
+  .fond-anima__particule,
+  .fond-anima__reflet {
+    animation: none;
+  }
+}
