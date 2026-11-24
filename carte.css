@@ -168,6 +168,13 @@
   object-fit: cover;
 }
 
+/* Bloc des textes, sous l'illustration : il prend la place restante (le pied reste tout en bas) */
+.carte__texte {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
 /* Nom, PV et type */
 
 .carte__nom {

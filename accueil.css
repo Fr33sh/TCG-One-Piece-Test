@@ -328,14 +328,14 @@ body {
   pointer-events: none;
 }
 
-/* Icône discrète : le dos de nos cartes en petit, cerclé de blanc */
+/* Icône discrète : le dos blanc de nos cartes en petit, cerclé de noir */
 .mini-booster {
   position: relative;
   width: calc(var(--l) * 0.068);
   aspect-ratio: 1260 / 1760;
   overflow: hidden;
   border-radius: 1.5px;
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 85%), 0 1px 3px rgb(0 0 0 / 50%);
+  box-shadow: 0 0 0 1px rgb(11 11 13 / 70%), 0 1px 3px rgb(0 0 0 / 50%);
   transform-origin: 50% 110%;
 }
 
@@ -343,7 +343,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("assets/cartes/dos.jpg") center / cover;
+  background: url("assets/cartes/dos.svg") center / cover;
 }
 
 .filtres-svg {

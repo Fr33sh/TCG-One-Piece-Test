@@ -73,15 +73,16 @@ function creerCarte(carte) {
   ref.append(element("div", "", carte.id));
   pied.append(proprietes, ref);
 
-  interieur.append(
-    entete,
-    illustration,
+  // Tous les textes sous l'illustration sont regroupés dans un bloc (encart possible selon le design)
+  const textes = element("div", "carte__texte");
+  textes.append(
     nom,
     element("p", "carte__infos", `${carte.pv} PV · ${carte.type}`),
     element("hr", "carte__separateur"),
     capacites,
     pied,
   );
+  interieur.append(entete, illustration, textes);
   cadre.append(interieur);
   racine.append(cadre);
   return racine;

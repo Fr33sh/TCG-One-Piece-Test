@@ -376,7 +376,7 @@ function creerPaquet({ cartes, nouvelles }) {
     if (nouvelles[index]) avant.append(creerBadgeNouveau());
     const dos = element("div", "tirage__face tirage__face--dos");
     const image = element("img");
-    image.src = "assets/cartes/dos.jpg";
+    image.src = "assets/cartes/dos.svg";
     image.alt = "";
     dos.append(image);
     retournable.append(avant, dos);
