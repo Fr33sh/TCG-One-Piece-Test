@@ -29,6 +29,22 @@
       <div class="parametre__reglages" data-reglages="audio"></div>
       <button class="petite-bulle bouton-reinitialiser" type="button" data-reinitialiser="audio">Réinitialiser ce paramètre</button>
     </section>
+
+    <!-- Mode test TEMPORAIRE (parametres-test.js) : à retirer avant de partager le jeu -->
+    <section class="bulle-page" aria-labelledby="titre-test">
+      <h2 class="bulle-page__titre" id="titre-test">Mode test</h2>
+      <p class="bulle-page__texte">Outils temporaires pour tester le jeu, valables sur cet appareil.</p>
+      <div class="reglage-son">
+        <div class="reglage-son__haut">
+          <span class="reglage-son__nom" id="nom-illimite">Boosters illimités</span>
+          <button class="interrupteur" type="button" role="switch" aria-labelledby="nom-illimite" data-mode-test>
+            <span class="interrupteur__pastille"></span>
+          </button>
+        </div>
+      </div>
+      <button class="petite-bulle petite-bulle--principale" type="button" data-toutes-cartes>Recevoir toutes les cartes</button>
+      <p class="message-page" role="status" data-message="test"></p>
+    </section>
   </main>
 
   <script src="reglages.js"></script>
@@ -37,5 +53,11 @@
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>
   <script src="parametres.js"></script>
+  <script src="collection.js"></script>
+  <script src="donnees/cartes-east-blue.js"></script>
+  <script src="donnees/cartes-naruto.js"></script>
+  <script src="donnees/series.js"></script>
+  <script src="mode-test.js"></script>
+  <script src="parametres-test.js"></script>
 </body>
 </html>
