@@ -286,38 +286,25 @@
   color: var(--encre-douce);
 }
 
-/* ── Rang 1 · Base : cadre noir et filet doré ── */
+/* ── Rang 1 · A : cadre holographique (Mini HIT) ── */
 
-.carte--rang-1 .carte__cadre {
-  padding: calc(var(--u) * 22);
-  border: calc(var(--u) * 3) solid #b8874d;
-}
-
-/* ── Rang 2 · Mini HIT : cadre holographique ── */
-
-.carte--rang-2 {
+.carte--rang-1 {
   --cadre: linear-gradient(135deg, #d6aab2 0%, #ece0c2 18%, #d3f1e4 32%, #a8d3ec 46%, #c2b0df 60%, #eeebf5 74%, #b8d8c4 86%, #8c9199 100%);
   --separateur: linear-gradient(90deg, #c9a9ae, #e9e3cf 25%, #a6cbe3 50%, #d6c8ec 75%, #9aa0aa);
 }
 
-/* ── Rang 3 · HIT : cadre métallisé à la couleur du camp ── */
+/* ── Rang 2 · S : cadre métallisé bleu (HIT bleu) ── */
 
-.carte--rang-3.carte--pirate {
-  --cadre: linear-gradient(160deg, #c96464 0%, #f2949b 22%, #c42a3d 45%, #ef4d5b 70%, #6d0d14 100%);
-  --separateur: linear-gradient(90deg, #a3202f, #f6b9bf 25%, #c42a3d 55%, #e8404f 80%, #6d0d14);
-  --accent: #c42a3d;
-}
-
-.carte--rang-3.carte--marine {
+.carte--rang-2 {
   --cadre: linear-gradient(160deg, #3f7cc6 0%, #93b8ff 22%, #2d5fbf 45%, #3f86e6 70%, #0f2a66 100%);
   --separateur: linear-gradient(90deg, #2d5fbf, #c9dcff 25%, #2d5fbf 55%, #3f86e6 80%, #0f2a66);
-  --accent: #3f7cc6;
 }
 
-.carte--rang-3.carte--civil {
-  --cadre: linear-gradient(160deg, #3f9a5e 0%, #93e2a8 22%, #23824a 45%, #45c06e 70%, #0e4a26 100%);
-  --separateur: linear-gradient(90deg, #23824a, #c8f0d4 25%, #23824a 55%, #45c06e 80%, #0e4a26);
-  --accent: #2f9a58;
+/* ── Rang 3 · SR : cadre métallisé rouge (HIT rouge), quel que soit le camp ── */
+
+.carte--rang-3 {
+  --cadre: linear-gradient(160deg, #c96464 0%, #f2949b 22%, #c42a3d 45%, #ef4d5b 70%, #6d0d14 100%);
+  --separateur: linear-gradient(90deg, #a3202f, #f6b9bf 25%, #c42a3d 55%, #e8404f 80%, #6d0d14);
 }
 
 /* ── Rang 4 · HIT+ : cadre arc-en-ciel ── */
