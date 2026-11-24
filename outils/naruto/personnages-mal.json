@@ -1,0 +1,1432 @@
+﻿[
+    {
+        "id":  "10524",
+        "slug":  "Seimei",
+        "nom":  "Seimei"
+    },
+    {
+        "id":  "10697",
+        "slug":  "Shibi_Aburame",
+        "nom":  "Aburame, Shibi"
+    },
+    {
+        "id":  "10698",
+        "slug":  "Akahoshi",
+        "nom":  "Akahoshi"
+    },
+    {
+        "id":  "10699",
+        "slug":  "Chouza_Akimichi",
+        "nom":  "Akimichi, Chouza"
+    },
+    {
+        "id":  "10700",
+        "slug":  "Akio",
+        "nom":  "Akio"
+    },
+    {
+        "id":  "10791",
+        "slug":  "Ebisu",
+        "nom":  "Ebisu"
+    },
+    {
+        "id":  "11813",
+        "slug":  "Shukaku",
+        "nom":  "Shukaku"
+    },
+    {
+        "id":  "12464",
+        "slug":  "Hashirama_Senju",
+        "nom":  "Senju, Hashirama"
+    },
+    {
+        "id":  "12465",
+        "slug":  "Tobirama_Senju",
+        "nom":  "Senju, Tobirama"
+    },
+    {
+        "id":  "12563",
+        "slug":  "Hanabi_Hyuuga",
+        "nom":  "Hyuuga, Hanabi"
+    },
+    {
+        "id":  "129493",
+        "slug":  "Unkai_Kurama",
+        "nom":  "Kurama, Unkai"
+    },
+    {
+        "id":  "13",
+        "slug":  "Sasuke_Uchiha",
+        "nom":  "Uchiha, Sasuke"
+    },
+    {
+        "id":  "13017",
+        "slug":  "Yashamaru",
+        "nom":  "Yashamaru"
+    },
+    {
+        "id":  "13454",
+        "slug":  "Moegi_Kazamatsuri",
+        "nom":  "Kazamatsuri, Moegi"
+    },
+    {
+        "id":  "14",
+        "slug":  "Itachi_Uchiha",
+        "nom":  "Uchiha, Itachi"
+    },
+    {
+        "id":  "14032",
+        "slug":  "Izumo_Kamizuki",
+        "nom":  "Kamizuki, Izumo"
+    },
+    {
+        "id":  "145",
+        "slug":  "Sakura_Haruno",
+        "nom":  "Haruno, Sakura"
+    },
+    {
+        "id":  "149421",
+        "slug":  "Iwana_Akame",
+        "nom":  "Akame, Iwana"
+    },
+    {
+        "id":  "149422",
+        "slug":  "Bekkou",
+        "nom":  "Bekkou"
+    },
+    {
+        "id":  "149423",
+        "slug":  "Ibara",
+        "nom":  "Ibara"
+    },
+    {
+        "id":  "149424",
+        "slug":  "Tsubaki",
+        "nom":  "Tsubaki"
+    },
+    {
+        "id":  "15039",
+        "slug":  "Hiashi_Hyuuga",
+        "nom":  "Hyuuga, Hiashi"
+    },
+    {
+        "id":  "15045",
+        "slug":  "Yugao_Uzuki",
+        "nom":  "Uzuki, Yugao"
+    },
+    {
+        "id":  "15072",
+        "slug":  "Inoichi_Yamanaka",
+        "nom":  "Yamanaka, Inoichi"
+    },
+    {
+        "id":  "15073",
+        "slug":  "Hana_Inuzuka",
+        "nom":  "Inuzuka, Hana"
+    },
+    {
+        "id":  "15074",
+        "slug":  "Tsume_Inuzuka",
+        "nom":  "Inuzuka, Tsume"
+    },
+    {
+        "id":  "15077",
+        "slug":  "Tsunami",
+        "nom":  "Tsunami"
+    },
+    {
+        "id":  "15081",
+        "slug":  "Baki",
+        "nom":  "Baki"
+    },
+    {
+        "id":  "15145",
+        "slug":  "Yotaka",
+        "nom":  "Yotaka"
+    },
+    {
+        "id":  "15176",
+        "slug":  "Kamikiri_Fuuma",
+        "nom":  "Fuuma, Kamikiri"
+    },
+    {
+        "id":  "15177",
+        "slug":  "Sasame_Fuuma",
+        "nom":  "Fuuma, Sasame"
+    },
+    {
+        "id":  "15178",
+        "slug":  "Haruna",
+        "nom":  "Haruna"
+    },
+    {
+        "id":  "15179",
+        "slug":  "Shigure",
+        "nom":  "Shigure"
+    },
+    {
+        "id":  "1555",
+        "slug":  "Hinata_Hyuuga",
+        "nom":  "Hyuuga, Hinata"
+    },
+    {
+        "id":  "15757",
+        "slug":  "Enma",
+        "nom":  "Enma"
+    },
+    {
+        "id":  "15759",
+        "slug":  "Mizura",
+        "nom":  "Mizura"
+    },
+    {
+        "id":  "160858",
+        "slug":  "Fukuyokana",
+        "nom":  "Fukuyokana"
+    },
+    {
+        "id":  "160859",
+        "slug":  "Shinayakana",
+        "nom":  "Shinayakana"
+    },
+    {
+        "id":  "161288",
+        "slug":  "Sanshou",
+        "nom":  "Sanshou"
+    },
+    {
+        "id":  "16164",
+        "slug":  "Gouzu",
+        "nom":  "Gouzu"
+    },
+    {
+        "id":  "16165",
+        "slug":  "Meizu",
+        "nom":  "Meizu"
+    },
+    {
+        "id":  "16304",
+        "slug":  "Kotetsu_Hagane",
+        "nom":  "Hagane, Kotetsu"
+    },
+    {
+        "id":  "16321",
+        "slug":  "Toki",
+        "nom":  "Toki"
+    },
+    {
+        "id":  "1662",
+        "slug":  "Gaara",
+        "nom":  "Gaara"
+    },
+    {
+        "id":  "1694",
+        "slug":  "Neji_Hyuuga",
+        "nom":  "Hyuuga, Neji"
+    },
+    {
+        "id":  "16952",
+        "slug":  "Gamatatsu",
+        "nom":  "Gamatatsu"
+    },
+    {
+        "id":  "16973",
+        "slug":  "Fugaku_Uchiha",
+        "nom":  "Uchiha, Fugaku"
+    },
+    {
+        "id":  "16974",
+        "slug":  "Mubi",
+        "nom":  "Mubi"
+    },
+    {
+        "id":  "16975",
+        "slug":  "Houki",
+        "nom":  "Houki"
+    },
+    {
+        "id":  "16976",
+        "slug":  "Jirochou_Wasabi",
+        "nom":  "Wasabi, Jirochou"
+    },
+    {
+        "id":  "16999",
+        "slug":  "Gamakichi",
+        "nom":  "Gamakichi"
+    },
+    {
+        "id":  "17",
+        "slug":  "Naruto_Uzumaki",
+        "nom":  "Uzumaki, Naruto"
+    },
+    {
+        "id":  "17165",
+        "slug":  "Chishima",
+        "nom":  "Chishima"
+    },
+    {
+        "id":  "17197",
+        "slug":  "Tazuna",
+        "nom":  "Tazuna"
+    },
+    {
+        "id":  "17199",
+        "slug":  "Genno",
+        "nom":  "Genno"
+    },
+    {
+        "id":  "17200",
+        "slug":  "Todoroki",
+        "nom":  "Todoroki"
+    },
+    {
+        "id":  "17298",
+        "slug":  "Raidou_Namiashi",
+        "nom":  "Namiashi, Raidou"
+    },
+    {
+        "id":  "17302",
+        "slug":  "Karashi",
+        "nom":  "Karashi"
+    },
+    {
+        "id":  "17305",
+        "slug":  "Ryuugan",
+        "nom":  "Ryuugan"
+    },
+    {
+        "id":  "17307",
+        "slug":  "Fukusuke_Hikyakuya",
+        "nom":  "Hikyakuya, Fukusuke"
+    },
+    {
+        "id":  "17310",
+        "slug":  "Ayame",
+        "nom":  "Ayame"
+    },
+    {
+        "id":  "17312",
+        "slug":  "Teuchi",
+        "nom":  "Teuchi"
+    },
+    {
+        "id":  "17313",
+        "slug":  "Jigumo_Fuuma",
+        "nom":  "Fuuma, Jigumo"
+    },
+    {
+        "id":  "17316",
+        "slug":  "Arashi_Fuuma",
+        "nom":  "Fuuma, Arashi"
+    },
+    {
+        "id":  "17414",
+        "slug":  "Ranmaru",
+        "nom":  "Ranmaru"
+    },
+    {
+        "id":  "17424",
+        "slug":  "Hokushin",
+        "nom":  "Hokushin"
+    },
+    {
+        "id":  "17425",
+        "slug":  "Renga",
+        "nom":  "Renga"
+    },
+    {
+        "id":  "17535",
+        "slug":  "Genzou",
+        "nom":  "Genzou"
+    },
+    {
+        "id":  "17536",
+        "slug":  "Gatsu",
+        "nom":  "Gatsu"
+    },
+    {
+        "id":  "17537",
+        "slug":  "Dengaku",
+        "nom":  "Dengaku"
+    },
+    {
+        "id":  "17538",
+        "slug":  "Manabu_Akado",
+        "nom":  "Akado, Manabu"
+    },
+    {
+        "id":  "17539",
+        "slug":  "Hokuto",
+        "nom":  "Hokuto"
+    },
+    {
+        "id":  "17540",
+        "slug":  "Mondai",
+        "nom":  "Mondai"
+    },
+    {
+        "id":  "17541",
+        "slug":  "Nagare",
+        "nom":  "Nagare"
+    },
+    {
+        "id":  "17542",
+        "slug":  "Nanafushi",
+        "nom":  "Nanafushi"
+    },
+    {
+        "id":  "17543",
+        "slug":  "Nan",
+        "nom":  "Nan"
+    },
+    {
+        "id":  "17544",
+        "slug":  "Kazabune",
+        "nom":  "Kazabune"
+    },
+    {
+        "id":  "17545",
+        "slug":  "Yakumo_Kurama",
+        "nom":  "Kurama, Yakumo"
+    },
+    {
+        "id":  "17546",
+        "slug":  "Sazanami",
+        "nom":  "Sazanami"
+    },
+    {
+        "id":  "17547",
+        "slug":  "Senta",
+        "nom":  "Senta"
+    },
+    {
+        "id":  "17548",
+        "slug":  "Shinemon",
+        "nom":  "Shin\u0026#039;emon"
+    },
+    {
+        "id":  "17549",
+        "slug":  "Yajirobee",
+        "nom":  "Yajirobee"
+    },
+    {
+        "id":  "17551",
+        "slug":  "Tanzou",
+        "nom":  "Tanzou"
+    },
+    {
+        "id":  "17552",
+        "slug":  "Waraji",
+        "nom":  "Waraji"
+    },
+    {
+        "id":  "17553",
+        "slug":  "Aoba_Yamashiro",
+        "nom":  "Yamashiro, Aoba"
+    },
+    {
+        "id":  "17557",
+        "slug":  "Jibachi_Kamizuru",
+        "nom":  "Kamizuru, Jibachi"
+    },
+    {
+        "id":  "17619",
+        "slug":  "Oboro",
+        "nom":  "Oboro"
+    },
+    {
+        "id":  "17666",
+        "slug":  "Tsubaki",
+        "nom":  "Tsubaki"
+    },
+    {
+        "id":  "18056",
+        "slug":  "Shikaku_Nara",
+        "nom":  "Nara, Shikaku"
+    },
+    {
+        "id":  "182621",
+        "slug":  "Zou",
+        "nom":  "Zou"
+    },
+    {
+        "id":  "1902",
+        "slug":  "Deidara",
+        "nom":  "Deidara"
+    },
+    {
+        "id":  "19253",
+        "slug":  "Mizuki_Touji",
+        "nom":  "Touji, Mizuki"
+    },
+    {
+        "id":  "197866",
+        "slug":  "Kurobachi_Kamizuru",
+        "nom":  "Kamizuru, Kurobachi"
+    },
+    {
+        "id":  "197867",
+        "slug":  "Suzumebachi_Kamizuru",
+        "nom":  "Kamizuru, Suzumebachi"
+    },
+    {
+        "id":  "2007",
+        "slug":  "Shikamaru_Nara",
+        "nom":  "Nara, Shikamaru"
+    },
+    {
+        "id":  "2008",
+        "slug":  "Chouji_Akimichi",
+        "nom":  "Akimichi, Chouji"
+    },
+    {
+        "id":  "2009",
+        "slug":  "Ino_Yamanaka",
+        "nom":  "Yamanaka, Ino"
+    },
+    {
+        "id":  "2011",
+        "slug":  "Iruka_Umino",
+        "nom":  "Umino, Iruka"
+    },
+    {
+        "id":  "20274",
+        "slug":  "Giichi",
+        "nom":  "Giichi"
+    },
+    {
+        "id":  "20276",
+        "slug":  "Jantou",
+        "nom":  "Jantou"
+    },
+    {
+        "id":  "20277",
+        "slug":  "Kusabi",
+        "nom":  "Kusabi"
+    },
+    {
+        "id":  "20278",
+        "slug":  "Hachidai",
+        "nom":  "Hachidai"
+    },
+    {
+        "id":  "20279",
+        "slug":  "Hakkaku",
+        "nom":  "Hakkaku"
+    },
+    {
+        "id":  "2039",
+        "slug":  "Haku",
+        "nom":  "Haku"
+    },
+    {
+        "id":  "206139",
+        "slug":  "Momiji",
+        "nom":  "Momiji"
+    },
+    {
+        "id":  "206141",
+        "slug":  "Kagero",
+        "nom":  "Kagero"
+    },
+    {
+        "id":  "206142",
+        "slug":  "Raijin",
+        "nom":  "Raijin"
+    },
+    {
+        "id":  "206143",
+        "slug":  "Fuujin",
+        "nom":  "Fuujin"
+    },
+    {
+        "id":  "206144",
+        "slug":  "Koumei",
+        "nom":  "Koumei"
+    },
+    {
+        "id":  "206145",
+        "slug":  "Ruiga",
+        "nom":  "Ruiga"
+    },
+    {
+        "id":  "20645",
+        "slug":  "Akane",
+        "nom":  "Akane"
+    },
+    {
+        "id":  "21122",
+        "slug":  "Mikoto_Uchiha",
+        "nom":  "Uchiha, Mikoto"
+    },
+    {
+        "id":  "21365",
+        "slug":  "Inari",
+        "nom":  "Inari"
+    },
+    {
+        "id":  "2174",
+        "slug":  "Temari",
+        "nom":  "Temari"
+    },
+    {
+        "id":  "22247",
+        "slug":  "Yoshino_Nara",
+        "nom":  "Nara, Yoshino"
+    },
+    {
+        "id":  "22248",
+        "slug":  "Karura",
+        "nom":  "Karura"
+    },
+    {
+        "id":  "22648",
+        "slug":  "Homura_Mitokado",
+        "nom":  "Mitokado, Homura"
+    },
+    {
+        "id":  "22649",
+        "slug":  "Koharu_Utatane",
+        "nom":  "Utatane, Koharu"
+    },
+    {
+        "id":  "227807",
+        "slug":  "Futa_Kagetsu",
+        "nom":  "Kagetsu, Futa"
+    },
+    {
+        "id":  "227808",
+        "slug":  "Toubei_Kagetsu",
+        "nom":  "Kagetsu, Toubei"
+    },
+    {
+        "id":  "227809",
+        "slug":  "Tsukiko_Kagetsu",
+        "nom":  "Kagetsu, Tsukiko"
+    },
+    {
+        "id":  "227810",
+        "slug":  "Mai_Kagetsu",
+        "nom":  "Kagetsu, Mai"
+    },
+    {
+        "id":  "227811",
+        "slug":  "Kikunojou",
+        "nom":  "Kikunojou"
+    },
+    {
+        "id":  "227812",
+        "slug":  "Shura_Sanjurou",
+        "nom":  "Sanjurou, Shura"
+    },
+    {
+        "id":  "227898",
+        "slug":  "Yurinojou",
+        "nom":  "Yurinojou"
+    },
+    {
+        "id":  "227899",
+        "slug":  "Hanzaki",
+        "nom":  "Hanzaki"
+    },
+    {
+        "id":  "227900",
+        "slug":  "Houki",
+        "nom":  "Houki"
+    },
+    {
+        "id":  "22876",
+        "slug":  "Dan_Katou",
+        "nom":  "Katou, Dan"
+    },
+    {
+        "id":  "22880",
+        "slug":  "Hizashi_Hyuuga",
+        "nom":  "Hyuuga, Hizashi"
+    },
+    {
+        "id":  "22881",
+        "slug":  "Kuromaru",
+        "nom":  "Kuromaru"
+    },
+    {
+        "id":  "22884",
+        "slug":  "Nawaki",
+        "nom":  "Nawaki"
+    },
+    {
+        "id":  "22889",
+        "slug":  "Tekka_Uchiha",
+        "nom":  "Uchiha, Tekka"
+    },
+    {
+        "id":  "22891",
+        "slug":  "Inabi_Uchiha",
+        "nom":  "Uchiha, Inabi"
+    },
+    {
+        "id":  "22908",
+        "slug":  "Yashiro_Uchiha",
+        "nom":  "Uchiha, Yashiro"
+    },
+    {
+        "id":  "22920",
+        "slug":  "Rasa",
+        "nom":  "Rasa"
+    },
+    {
+        "id":  "22921",
+        "slug":  "Misumi_Tsurugi",
+        "nom":  "Tsurugi, Misumi"
+    },
+    {
+        "id":  "22922",
+        "slug":  "Genyuumaru",
+        "nom":  "Genyuumaru"
+    },
+    {
+        "id":  "22923",
+        "slug":  "Ibiki_Morino",
+        "nom":  "Morino, Ibiki"
+    },
+    {
+        "id":  "22931",
+        "slug":  "Zouri",
+        "nom":  "Zouri"
+    },
+    {
+        "id":  "22996",
+        "slug":  "Kaiza",
+        "nom":  "Kaiza"
+    },
+    {
+        "id":  "23006",
+        "slug":  "Ami",
+        "nom":  "Ami"
+    },
+    {
+        "id":  "23052",
+        "slug":  "Udon_Ise",
+        "nom":  "Ise, Udon"
+    },
+    {
+        "id":  "23053",
+        "slug":  "Hiruko",
+        "nom":  "Hiruko"
+    },
+    {
+        "id":  "23056",
+        "slug":  "Kagari",
+        "nom":  "Kagari"
+    },
+    {
+        "id":  "23081",
+        "slug":  "Baiu",
+        "nom":  "Baiu"
+    },
+    {
+        "id":  "23083",
+        "slug":  "Midare",
+        "nom":  "Midare"
+    },
+    {
+        "id":  "23140",
+        "slug":  "Tonbo_Tobitake",
+        "nom":  "Tobitake, Tonbo"
+    },
+    {
+        "id":  "23143",
+        "slug":  "Teyaki_Uchiha",
+        "nom":  "Uchiha, Teyaki"
+    },
+    {
+        "id":  "23144",
+        "slug":  "Uruchi_Uchiha",
+        "nom":  "Uchiha, Uruchi"
+    },
+    {
+        "id":  "23145",
+        "slug":  "Shiba",
+        "nom":  "Shiba"
+    },
+    {
+        "id":  "23153",
+        "slug":  "Shiore",
+        "nom":  "Shiore"
+    },
+    {
+        "id":  "23154",
+        "slug":  "Suzume",
+        "nom":  "Suzume"
+    },
+    {
+        "id":  "23155",
+        "slug":  "Shimon_Hijiri",
+        "nom":  "Hijiri, Shimon"
+    },
+    {
+        "id":  "23156",
+        "slug":  "Shibire",
+        "nom":  "Shibire"
+    },
+    {
+        "id":  "23215",
+        "slug":  "Sagi",
+        "nom":  "Sagi"
+    },
+    {
+        "id":  "234151",
+        "slug":  "Narrator",
+        "nom":  "Narrator"
+    },
+    {
+        "id":  "23569",
+        "slug":  "Guruko",
+        "nom":  "Guruko"
+    },
+    {
+        "id":  "23759",
+        "slug":  "Iwashi_Tatami",
+        "nom":  "Tatami, Iwashi"
+    },
+    {
+        "id":  "2405",
+        "slug":  "Kabuto_Yakushi",
+        "nom":  "Yakushi, Kabuto"
+    },
+    {
+        "id":  "2423",
+        "slug":  "Jiraiya",
+        "nom":  "Jiraiya"
+    },
+    {
+        "id":  "24324",
+        "slug":  "Tobio",
+        "nom":  "Tobio"
+    },
+    {
+        "id":  "245051",
+        "slug":  "Kyuuroku_Wagarashi",
+        "nom":  "Wagarashi, Kyuuroku"
+    },
+    {
+        "id":  "2455",
+        "slug":  "Orochimaru",
+        "nom":  "Orochimaru"
+    },
+    {
+        "id":  "251508",
+        "slug":  "Rokusuke",
+        "nom":  "Rokusuke"
+    },
+    {
+        "id":  "251515",
+        "slug":  "Sangorou",
+        "nom":  "Sangorou"
+    },
+    {
+        "id":  "251571",
+        "slug":  "Sukeza",
+        "nom":  "Sukeza"
+    },
+    {
+        "id":  "251864",
+        "slug":  "Gosunkugi",
+        "nom":  "Gosunkugi"
+    },
+    {
+        "id":  "251865",
+        "slug":  "Michizou_Manaka",
+        "nom":  "Manaka, Michizou"
+    },
+    {
+        "id":  "252501",
+        "slug":  "Potcha",
+        "nom":  "Potcha"
+    },
+    {
+        "id":  "252721",
+        "slug":  "Oowashi",
+        "nom":  "Oowashi"
+    },
+    {
+        "id":  "252722",
+        "slug":  "Amachi",
+        "nom":  "Amachi"
+    },
+    {
+        "id":  "252723",
+        "slug":  "Hitode",
+        "nom":  "Hitode"
+    },
+    {
+        "id":  "252724",
+        "slug":  "Agari_Kaisen",
+        "nom":  "Kaisen, Agari"
+    },
+    {
+        "id":  "252725",
+        "slug":  "Hotarubi",
+        "nom":  "Hotarubi"
+    },
+    {
+        "id":  "252726",
+        "slug":  "Shisou",
+        "nom":  "Shisou"
+    },
+    {
+        "id":  "252729",
+        "slug":  "Kiyoyasu_Kagetsu",
+        "nom":  "Kagetsu, Kiyoyasu"
+    },
+    {
+        "id":  "252730",
+        "slug":  "Jiga",
+        "nom":  "Jiga"
+    },
+    {
+        "id":  "252731",
+        "slug":  "Chikara",
+        "nom":  "Chikara"
+    },
+    {
+        "id":  "252732",
+        "slug":  "Fuku",
+        "nom":  "Fuku"
+    },
+    {
+        "id":  "252733",
+        "slug":  "Kayo",
+        "nom":  "Kayo"
+    },
+    {
+        "id":  "252734",
+        "slug":  "Kouza_Kubisaki",
+        "nom":  "Kubisaki, Kouza"
+    },
+    {
+        "id":  "252737",
+        "slug":  "Genshou_Ryuudouin",
+        "nom":  "Ryuudouin, Genshou"
+    },
+    {
+        "id":  "252738",
+        "slug":  "Yagura",
+        "nom":  "Yagura"
+    },
+    {
+        "id":  "252741",
+        "slug":  "Agira_Ryuudouin",
+        "nom":  "Ryuudouin, Agira"
+    },
+    {
+        "id":  "252742",
+        "slug":  "Jakou_Ryuudouin",
+        "nom":  "Ryuudouin, Jakou"
+    },
+    {
+        "id":  "252743",
+        "slug":  "Rokkaku_Ryuudouin",
+        "nom":  "Ryuudouin, Rokkaku"
+    },
+    {
+        "id":  "252779",
+        "slug":  "Kanna",
+        "nom":  "Kanna"
+    },
+    {
+        "id":  "252908",
+        "slug":  "Uroko_Kurama",
+        "nom":  "Kurama, Uroko"
+    },
+    {
+        "id":  "252909",
+        "slug":  "Murakumo_Kurama",
+        "nom":  "Kurama, Murakumo"
+    },
+    {
+        "id":  "252910",
+        "slug":  "Monju",
+        "nom":  "Monju"
+    },
+    {
+        "id":  "252911",
+        "slug":  "Toki",
+        "nom":  "Toki"
+    },
+    {
+        "id":  "252912",
+        "slug":  "Tsuzumi",
+        "nom":  "Tsuzumi"
+    },
+    {
+        "id":  "252915",
+        "slug":  "Fuki",
+        "nom":  "Fuki"
+    },
+    {
+        "id":  "252916",
+        "slug":  "Shiin",
+        "nom":  "Shiin"
+    },
+    {
+        "id":  "252918",
+        "slug":  "Suiko",
+        "nom":  "Suiko"
+    },
+    {
+        "id":  "2535",
+        "slug":  "Minato_Namikaze",
+        "nom":  "Namikaze, Minato"
+    },
+    {
+        "id":  "255312",
+        "slug":  "Mozuku",
+        "nom":  "Mozuku"
+    },
+    {
+        "id":  "256932",
+        "slug":  "Madam_Shijimi",
+        "nom":  "Madam Shijimi"
+    },
+    {
+        "id":  "2672",
+        "slug":  "Kisame_Hoshigaki",
+        "nom":  "Hoshigaki, Kisame"
+    },
+    {
+        "id":  "267451",
+        "slug":  "Daikoku_Funeno",
+        "nom":  "Funeno, Daikoku"
+    },
+    {
+        "id":  "267452",
+        "slug":  "Chouhan",
+        "nom":  "Chouhan"
+    },
+    {
+        "id":  "268346",
+        "slug":  "Hostess-san",
+        "nom":  "Hostess-san"
+    },
+    {
+        "id":  "2766",
+        "slug":  "Pakkun",
+        "nom":  "Pakkun"
+    },
+    {
+        "id":  "2767",
+        "slug":  "Tsunade",
+        "nom":  "Tsunade"
+    },
+    {
+        "id":  "27688",
+        "slug":  "Kotohime_Fuuma",
+        "nom":  "Fuuma, Kotohime"
+    },
+    {
+        "id":  "2792",
+        "slug":  "Hidan",
+        "nom":  "Hidan"
+    },
+    {
+        "id":  "280888",
+        "slug":  "Ningame",
+        "nom":  "Ningame"
+    },
+    {
+        "id":  "286386",
+        "slug":  "Hyuuga_Elder",
+        "nom":  "Hyuuga Elder"
+    },
+    {
+        "id":  "286435",
+        "slug":  "Hakus_Father",
+        "nom":  "Haku\u0026#039;s Father"
+    },
+    {
+        "id":  "286440",
+        "slug":  "Kaguya_Clan_Patriarch",
+        "nom":  "Kaguya Clan Patriarch"
+    },
+    {
+        "id":  "287200",
+        "slug":  "Gama",
+        "nom":  "Gama"
+    },
+    {
+        "id":  "290758",
+        "slug":  "Komugi",
+        "nom":  "Komugi"
+    },
+    {
+        "id":  "294140",
+        "slug":  "Agari",
+        "nom":  "Agari"
+    },
+    {
+        "id":  "304267",
+        "slug":  "Kaori",
+        "nom":  "Kaori"
+    },
+    {
+        "id":  "304318",
+        "slug":  "Mitate",
+        "nom":  "Mitate"
+    },
+    {
+        "id":  "3052",
+        "slug":  "Tayuya",
+        "nom":  "Tayuya"
+    },
+    {
+        "id":  "306",
+        "slug":  "Rock_Lee",
+        "nom":  "Lee, Rock"
+    },
+    {
+        "id":  "307",
+        "slug":  "Guy_Might",
+        "nom":  "Might, Guy"
+    },
+    {
+        "id":  "307362",
+        "slug":  "Abiru",
+        "nom":  "Abiru"
+    },
+    {
+        "id":  "307703",
+        "slug":  "Tsuzumi_Sarugaku",
+        "nom":  "Sarugaku, Tsuzumi"
+    },
+    {
+        "id":  "307704",
+        "slug":  "Shinobu_Mibu",
+        "nom":  "Mibu, Shinobu"
+    },
+    {
+        "id":  "307787",
+        "slug":  "Minoji",
+        "nom":  "Minoji"
+    },
+    {
+        "id":  "307788",
+        "slug":  "Fuki",
+        "nom":  "Fuki"
+    },
+    {
+        "id":  "307789",
+        "slug":  "Kasumi",
+        "nom":  "Kasumi"
+    },
+    {
+        "id":  "307790",
+        "slug":  "Riichi",
+        "nom":  "Riichi"
+    },
+    {
+        "id":  "307791",
+        "slug":  "Kashike",
+        "nom":  "Kashike"
+    },
+    {
+        "id":  "307792",
+        "slug":  "Tomari",
+        "nom":  "Tomari"
+    },
+    {
+        "id":  "307793",
+        "slug":  "Tsuchino",
+        "nom":  "Tsuchino"
+    },
+    {
+        "id":  "307794",
+        "slug":  "Souzu",
+        "nom":  "Souzu"
+    },
+    {
+        "id":  "307795",
+        "slug":  "Houshou",
+        "nom":  "Houshou"
+    },
+    {
+        "id":  "307796",
+        "slug":  "Kitou",
+        "nom":  "Kitou"
+    },
+    {
+        "id":  "307797",
+        "slug":  "Kusushi",
+        "nom":  "Kusushi"
+    },
+    {
+        "id":  "307798",
+        "slug":  "Mogusa",
+        "nom":  "Mogusa"
+    },
+    {
+        "id":  "31197",
+        "slug":  "Idate_Morino",
+        "nom":  "Morino, Idate"
+    },
+    {
+        "id":  "3150",
+        "slug":  "Zetsu",
+        "nom":  "Zetsu"
+    },
+    {
+        "id":  "3178",
+        "slug":  "Kakuzu",
+        "nom":  "Kakuzu"
+    },
+    {
+        "id":  "3179",
+        "slug":  "Konan",
+        "nom":  "Konan"
+    },
+    {
+        "id":  "3180",
+        "slug":  "Pain",
+        "nom":  "Pain"
+    },
+    {
+        "id":  "31828",
+        "slug":  "Jouseki",
+        "nom":  "Jouseki"
+    },
+    {
+        "id":  "34075",
+        "slug":  "Bisuke",
+        "nom":  "Bisuke"
+    },
+    {
+        "id":  "3428",
+        "slug":  "Shino_Aburame",
+        "nom":  "Aburame, Shino"
+    },
+    {
+        "id":  "3438",
+        "slug":  "Kimimaro",
+        "nom":  "Kimimaro"
+    },
+    {
+        "id":  "3495",
+        "slug":  "Kiba_Inuzuka",
+        "nom":  "Inuzuka, Kiba"
+    },
+    {
+        "id":  "3710",
+        "slug":  "Tenten",
+        "nom":  "Tenten"
+    },
+    {
+        "id":  "3735",
+        "slug":  "Genma_Shiranui",
+        "nom":  "Shiranui, Genma"
+    },
+    {
+        "id":  "37929",
+        "slug":  "Manda",
+        "nom":  "Manda"
+    },
+    {
+        "id":  "3889",
+        "slug":  "Konohamaru_Sarutobi",
+        "nom":  "Sarutobi, Konohamaru"
+    },
+    {
+        "id":  "41366",
+        "slug":  "Ukon",
+        "nom":  "Ukon"
+    },
+    {
+        "id":  "4223",
+        "slug":  "Gamabunta",
+        "nom":  "Gamabunta"
+    },
+    {
+        "id":  "43923",
+        "slug":  "Kunihisa",
+        "nom":  "Kunihisa"
+    },
+    {
+        "id":  "43924",
+        "slug":  "Kunijirou",
+        "nom":  "Kunijirou"
+    },
+    {
+        "id":  "43972",
+        "slug":  "Matsuri",
+        "nom":  "Matsuri"
+    },
+    {
+        "id":  "4643",
+        "slug":  "Shizune",
+        "nom":  "Shizune"
+    },
+    {
+        "id":  "46605",
+        "slug":  "Shibuki",
+        "nom":  "Shibuki"
+    },
+    {
+        "id":  "4694",
+        "slug":  "Kankurou",
+        "nom":  "Kankurou"
+    },
+    {
+        "id":  "4773",
+        "slug":  "Kurenai_Yuuhi",
+        "nom":  "Yuuhi, Kurenai"
+    },
+    {
+        "id":  "4775",
+        "slug":  "Asuma_Sarutobi",
+        "nom":  "Sarutobi, Asuma"
+    },
+    {
+        "id":  "4799",
+        "slug":  "Akamaru",
+        "nom":  "Akamaru"
+    },
+    {
+        "id":  "50957",
+        "slug":  "Ran",
+        "nom":  "Ran"
+    },
+    {
+        "id":  "5737",
+        "slug":  "Isaribi",
+        "nom":  "Isaribi"
+    },
+    {
+        "id":  "63793",
+        "slug":  "Gatou",
+        "nom":  "Gatou"
+    },
+    {
+        "id":  "6598",
+        "slug":  "Aoi_Rokushou",
+        "nom":  "Rokushou, Aoi"
+    },
+    {
+        "id":  "67289",
+        "slug":  "Mebuki_Haruno",
+        "nom":  "Haruno, Mebuki"
+    },
+    {
+        "id":  "728",
+        "slug":  "Zabuza_Momochi",
+        "nom":  "Momochi, Zabuza"
+    },
+    {
+        "id":  "7310",
+        "slug":  "Matsuri",
+        "nom":  "Matsuri"
+    },
+    {
+        "id":  "7407",
+        "slug":  "Kurama",
+        "nom":  "Kurama"
+    },
+    {
+        "id":  "7571",
+        "slug":  "Hiruzen_Sarutobi",
+        "nom":  "Sarutobi, Hiruzen"
+    },
+    {
+        "id":  "7608",
+        "slug":  "Katsuyu",
+        "nom":  "Katsuyu"
+    },
+    {
+        "id":  "7738",
+        "slug":  "Hayate_Gekkou",
+        "nom":  "Gekkou, Hayate"
+    },
+    {
+        "id":  "77693",
+        "slug":  "Natsuhi",
+        "nom":  "Natsuhi"
+    },
+    {
+        "id":  "809",
+        "slug":  "Anko_Mitarashi",
+        "nom":  "Mitarashi, Anko"
+    },
+    {
+        "id":  "82609",
+        "slug":  "Sumaru",
+        "nom":  "Sumaru"
+    },
+    {
+        "id":  "83755",
+        "slug":  "Gantetsu",
+        "nom":  "Gantetsu"
+    },
+    {
+        "id":  "8495",
+        "slug":  "Jiroubou",
+        "nom":  "Jiroubou"
+    },
+    {
+        "id":  "8497",
+        "slug":  "Kidoumaru",
+        "nom":  "Kidoumaru"
+    },
+    {
+        "id":  "85",
+        "slug":  "Kakashi_Hatake",
+        "nom":  "Hatake, Kakashi"
+    },
+    {
+        "id":  "8760",
+        "slug":  "Sakon",
+        "nom":  "Sakon"
+    },
+    {
+        "id":  "8771",
+        "slug":  "Raiga_Kurosuki",
+        "nom":  "Kurosuki, Raiga"
+    },
+    {
+        "id":  "8810",
+        "slug":  "Menma",
+        "nom":  "Menma"
+    },
+    {
+        "id":  "88313",
+        "slug":  "Hakus_Mother",
+        "nom":  "Haku\u0026#039;s Mother"
+    },
+    {
+        "id":  "8997",
+        "slug":  "Zaku_Abumi",
+        "nom":  "Abumi, Zaku"
+    },
+    {
+        "id":  "90849",
+        "slug":  "Tonton",
+        "nom":  "Tonton"
+    },
+    {
+        "id":  "91137",
+        "slug":  "Kujaku",
+        "nom":  "Kujaku"
+    },
+    {
+        "id":  "9244",
+        "slug":  "Dosu_Kinuta",
+        "nom":  "Kinuta, Dosu"
+    },
+    {
+        "id":  "9680",
+        "slug":  "Kin_Tsuchi",
+        "nom":  "Tsuchi, Kin"
+    },
+    {
+        "id":  "9699",
+        "slug":  "Yoroi_Akado",
+        "nom":  "Akado, Yoroi"
+    }
+]
