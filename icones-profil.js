@@ -1,20 +1,16 @@
-// Icônes de profil : des jetons ronds, que le joueur choisit dans l'onglet Profil. Images officielles
-// (anime), découpées en carré sur le visage dans assets/icones-profil. Le choix est gardé dans le navigateur
-// (et en ligne avec sauvegarde.js). Styles : icones-profil.css.
+// Icônes de profil : des jetons ronds, que le joueur choisit dans l'onglet Profil (images dans
+// assets/icones-profil). Le choix est gardé dans le navigateur (et en ligne avec sauvegarde.js).
+// Styles : icones-profil.css.
 
 const CLE_ICONE = "tcg-one-piece/icone";
 
 const ICONES_PROFIL = [
-  // Série « Icône de Base » : des soldats de la Marine et des pirates sans grade
-  { id: "soldat-marine", serie: "Icône de Base", nom: "Soldat de la Marine", image: "assets/icones-profil/soldat-marine.jpg" },
-  { id: "ripper", serie: "Icône de Base", nom: "Ripper", image: "assets/icones-profil/ripper.jpg" },
-  { id: "nezumi", serie: "Icône de Base", nom: "Nezumi", image: "assets/icones-profil/nezumi.jpg" },
-  { id: "heppoko", serie: "Icône de Base", nom: "Heppoko", image: "assets/icones-profil/heppoko.jpg" },
-  { id: "peppoko", serie: "Icône de Base", nom: "Peppoko", image: "assets/icones-profil/peppoko.jpg" },
-  { id: "poppoko", serie: "Icône de Base", nom: "Poppoko", image: "assets/icones-profil/poppoko.jpg" },
+  // Série « Icône de Base » : les deux jetons offerts à tous, le 魂 du logo (fabriqués par outils/jetons.mjs)
+  { id: "ame-blanche", serie: "Icône de Base", nom: "Âme blanche", image: "assets/icones-profil/ame-blanche.svg" },
+  { id: "ame-noire", serie: "Icône de Base", nom: "Âme noire", image: "assets/icones-profil/ame-noire.svg" },
 ];
 
-const ICONE_DE_BASE = "soldat-marine";
+const ICONE_DE_BASE = "ame-blanche";
 
 function lireIcone() {
   try {
