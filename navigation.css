@@ -5,7 +5,7 @@
    juste assez pour que les icônes restent au-dessus du trait */
 :root {
   --marge-bas-navigation: max(8px, calc(env(safe-area-inset-bottom) - 14px));
-  --hauteur-navigation: calc(60px + var(--marge-bas-navigation));
+  --hauteur-navigation: calc(64px + var(--marge-bas-navigation));
 }
 
 .navigation {
@@ -48,26 +48,37 @@
   border-radius: 18px 18px 0 0;
 }
 
+/* Un onglet : l'icône, puis son nom en petit dessous */
 .navigation__lien {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
   justify-self: center;
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 56px;
   border-radius: 14px;
   color: var(--texte-faible);
+  text-decoration: none;
   transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navigation__lien svg {
-  width: 27px;
-  height: 27px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.navigation__nom {
+  font: 700 10px / 1 var(--police-texte);
+  letter-spacing: 0.02em;
 }
 
 /* La carte de devant cache le bas de celle de derrière */
@@ -90,7 +101,7 @@
 .navigation__lien--actif::after {
   content: "";
   position: absolute;
-  bottom: 5px;
+  bottom: -3px;
   left: 50%;
   width: 18px;
   height: 3px;
