@@ -6,8 +6,7 @@
 const SERIES = [
   { id: "east-blue", nom: "East Blue", licence: "One Piece", code: "EB", image: "assets/packs/east-blue.jpg", cartes: CARTES_EAST_BLUE },
   { id: "naruto", nom: "Naruto", licence: "Naruto", code: "NA", image: "assets/packs/naruto.jpg", cartes: CARTES_NARUTO },
-  // Booster en préparation : le logo du jeu sert d'illustration en attendant
-  { id: "bleach", nom: "Bleach", licence: "Bleach", code: "BL", image: "assets/logo/anima.svg", cartes: CARTES_BLEACH, booster: false },
+  { id: "bleach", nom: "Bleach", licence: "Bleach", code: "BL", image: "assets/packs/bleach.jpg", cartes: CARTES_BLEACH },
 ];
 
 const CARTES = SERIES.flatMap(serie => serie.cartes);

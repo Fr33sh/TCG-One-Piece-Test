@@ -1,5 +1,5 @@
 // Fabrique le booster d'une série (styles dans pack.css), utilisé par l'accueil. Chaque série a son apparence :
-// East Blue (One Piece), Naruto (tons gris ciel).
+// East Blue (One Piece), Naruto (tons gris ciel), Bleach (noir et blanc).
 
 const APPARENCES_PACK = {
   "east-blue": {
@@ -20,6 +20,16 @@ const APPARENCES_PACK = {
     titre: "PAYS DES VAGUES",
     degrade: ["#f1f6fb", "#b4c6d8", "#7d94ab"],
     relief: ["#151d27", "#1d2835", "#263444", "#304155"],
+  },
+  // Noir et blanc
+  bleach: {
+    classe: "pack--bleach",
+    entete: `<span class="pack__logo">Bleach</span>`,
+    edition: "Anima",
+    illustration: `<img src="assets/packs/bleach.jpg" alt="">`,
+    titre: "SHINIGAMI",
+    degrade: ["#ffffff", "#d9d9e0", "#9a9aa6"],
+    relief: ["#0b0b0d", "#16161b", "#202027", "#2b2b33"],
   },
 };
 

@@ -189,12 +189,25 @@ body {
   transition: padding-bottom 0.55s ease;
 }
 
-/* Les boosters des séries, côte à côte, plus petits que lorsqu'il n'y en avait qu'un */
+/* Les boosters des séries, en file qui déborde de l'écran et défile au doigt (accueil.js règle --defilement) */
 .boosters {
   display: flex;
+  flex: none;
   gap: 16px;
   align-items: center;
-  justify-content: center;
+  width: max-content;
+  transform: translateX(var(--defilement, 0px));
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  touch-action: pan-y;
+}
+
+/* Pendant que le doigt glisse, la file le suit sans délai */
+.boosters--glisse {
+  transition: none;
+}
+
+.boosters .zone-booster {
+  flex: none;
 }
 
 .boosters .booster {

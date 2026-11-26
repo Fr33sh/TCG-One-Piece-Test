@@ -263,6 +263,46 @@
     calc(var(--l) * -0.005) 0 0 #eef4fa;
 }
 
+/* ── Booster Bleach : noir et blanc, motif du symbole 魂 ── */
+
+.pack--bleach {
+  --motif: url("assets/logo/anima-symbole.svg");
+}
+
+.pack--bleach .pack__entete {
+  background: linear-gradient(180deg, #3a3a42, #121216 60%, #26262d);
+  border-bottom-color: #fff;
+}
+
+.pack--bleach .pack__entete::before,
+.pack--bleach .pack__pied::before {
+  opacity: 0.25;
+}
+
+.pack--bleach .pack__pied {
+  border-top-color: #fff;
+  background: linear-gradient(180deg, #26262d, #0b0b0d);
+}
+
+.pack--bleach .pack__logo {
+  color: #fff;
+}
+
+.pack--bleach .pack__sous-titre {
+  border-color: #fff;
+  background: #0b0b0d;
+  color: #fff;
+}
+
+.pack--bleach .pack__edition {
+  color: #0b0b0d;
+  text-shadow:
+    0 calc(var(--l) * 0.005) 0 #fff,
+    calc(var(--l) * 0.005) 0 0 #fff,
+    0 calc(var(--l) * -0.005) 0 #fff,
+    calc(var(--l) * -0.005) 0 0 #fff;
+}
+
 /* ── Reflet qui balaie le paquet ── */
 
 .pack__reflet {
