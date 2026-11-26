@@ -28,8 +28,9 @@ function enregistrerJetonsSsr(ids) {
   if (typeof signalerModification === "function") signalerModification();
 }
 
-// Toutes les SSR et les Z du jeu, série par série (le jeton d'une Z est animé)
-const aUnJeton = carte => carte.rang >= 4;
+// Toutes les SSR du jeu, série par série (le jeton animé d'une carte Z, lui, est offert dès qu'on l'obtient :
+// voir icones-profil.js)
+const aUnJeton = carte => carte.rang === 4;
 const cartesSsr = () => CARTES.filter(aUnJeton);
 
 // « verrouille » (carte pas encore obtenue), « pret » (obtenue, jeton à débloquer) ou « debloque »

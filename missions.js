@@ -110,9 +110,7 @@ function creerCaseJeton(carte) {
 
   const rond = document.createElement("span");
   rond.className = "jeton-ssr__rond";
-  // Jeton d'une Z : animé (sauf tant que la carte n'est pas obtenue)
-  rond.append(creerImageJeton([].concat(carte.illustration)[0], etat === "verrouille" ? null : carte.boucle, carte.cadrage || "50% 30%"));
-  if (carte.boucle) rond.classList.add("jeton-ssr__rond--anime");
+  rond.append(creerImageJeton([].concat(carte.illustration)[0], null, carte.cadrage || "50% 30%"));
   if (etat === "verrouille") rond.insertAdjacentHTML("beforeend", ICONE_CADENAS);
 
   const nom = document.createElement("span");

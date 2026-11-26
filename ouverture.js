@@ -438,16 +438,10 @@ function preparerVideoTirage(tirage) {
   return preparerVideoCarte(source);
 }
 
-// La carte s'illumine, sa vidéo s'ouvre depuis elle jusqu'au plein écran, puis s'y referme
+// Zoom sur l'illustration de la carte jusqu'à la vidéo en plein écran, puis retour dans la carte
 async function montrerVideoTirage(video, carte) {
   enMouvement = true;
-  const eclat = carte?.isConnected ? illuminerCarte(carte) : null;
-  if (eclat) await eclat.finished;
   await lancerVideoCarte(video, { depuis: carte });
-  if (eclat) {
-    eclat.reverse();
-    await eclat.finished;
-  }
   enMouvement = false;
 }
 

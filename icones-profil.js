@@ -1,8 +1,9 @@
 // Icônes de profil : des jetons ronds, que le joueur choisit dans l'onglet Profil. Le choix est gardé dans le
 // navigateur (et en ligne avec sauvegarde.js). Styles : icones-profil.css.
 // - Série « Icône de Base » : les deux jetons offerts à tous (assets/icones-profil, fabriqués par outils/jetons.mjs).
-// - Séries « Jetons SSR · … » : une icône à l'image de chaque carte SSR (ou Z, animée) dont le jeton a été
-//   débloqué dans les Missions (jetons-ssr.js ; seulement si la page charge les données des cartes).
+// - Séries « Jetons SSR · … » : une icône à l'image de chaque carte SSR dont le jeton a été débloqué dans les
+//   Missions (jetons-ssr.js ; seulement si la page charge les données des cartes).
+// - Série « Jetons Z » : un jeton animé par carte Z obtenue.
 
 const CLE_ICONE = "tcg-one-piece/icone";
 
@@ -25,10 +26,24 @@ function iconesProfil() {
       nom: carte.nom,
       image: [].concat(carte.illustration)[0],
       cadrage: carte.cadrage,
-      // Carte Z : jeton animé, avec la boucle de 2 secondes de la carte
+    })));
+  return [...ICONES_DE_BASE, ...jetons, ...jetonsZ()];
+}
+
+// Jetons Z : animés (la boucle de 2 secondes de la carte), offerts dès que la carte Z est dans la collection
+function jetonsZ() {
+  if (typeof lireCollection !== "function") return [];
+  const possedees = lireCollection();
+  return SERIES.flatMap(serie => serie.cartes
+    .filter(carte => carte.rang === 5 && possedees[carte.id])
+    .map(carte => ({
+      id: `z-${carte.id}`,
+      serie: "Jetons Z",
+      nom: carte.nom,
+      image: [].concat(carte.illustration)[0],
+      cadrage: carte.cadrage,
       video: carte.boucle,
     })));
-  return [...ICONES_DE_BASE, ...jetons];
 }
 
 function lireIcone() {
