@@ -23,8 +23,9 @@ const APPARENCES_PACK = {
   },
 };
 
-function creerPack(serie = SERIES[0]) {
-  const a = APPARENCES_PACK[serie.id] || APPARENCES_PACK["east-blue"];
+// apparence : celle de la série par défaut (APPARENCES_PACK) ; une autre peut être donnée (aperçus de design)
+function creerPack(serie = SERIES[0], apparence = APPARENCES_PACK[serie.id] || APPARENCES_PACK["east-blue"]) {
+  const a = apparence;
   const id = serie.id; // identifiants propres à chaque booster (plusieurs sur la même page)
   const lignes = [
     ...a.relief.map((couleur, i) => `<text fill="${couleur}" transform="translate(0 ${7 - i * 1.5})"><textPath href="#arc-titre-${id}" startOffset="50%">${a.titre}</textPath></text>`),
