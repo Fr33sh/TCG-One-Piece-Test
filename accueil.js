@@ -12,8 +12,8 @@ const choixBooster = document.querySelector(".choix-booster");
 const enOuverture = () => document.body.classList.contains("mode-ouverture");
 const enChoix = () => document.body.classList.contains("mode-booster");
 
-// Un booster par série (donnees/series.js)
-const zonesBoosters = SERIES.map(serie => {
+// Un booster par série dont le booster est prêt (donnees/series.js)
+const zonesBoosters = seriesAvecBooster().map(serie => {
   const zone = element("div", "zone-booster");
   zone.dataset.serie = serie.id;
   zone.tabIndex = 0;
