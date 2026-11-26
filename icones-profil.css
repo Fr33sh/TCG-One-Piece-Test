@@ -12,7 +12,14 @@
   box-shadow: var(--ombre-legere);
 }
 
-.icone-profil img {
+/* Jeton animé (carte Z) : contour prisma */
+.icone-profil--animee {
+  border-color: transparent;
+  background: linear-gradient(#0b0b0d, #0b0b0d) padding-box, var(--prisma-conique) border-box;
+}
+
+.icone-profil img,
+.icone-profil video {
   display: block;
   width: 100%;
   height: 100%;

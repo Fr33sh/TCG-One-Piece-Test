@@ -28,8 +28,9 @@ function enregistrerJetonsSsr(ids) {
   if (typeof signalerModification === "function") signalerModification();
 }
 
-// Toutes les SSR du jeu, série par série
-const cartesSsr = () => CARTES.filter(carte => carte.rang === 4);
+// Toutes les SSR et les Z du jeu, série par série (le jeton d'une Z est animé)
+const aUnJeton = carte => carte.rang >= 4;
+const cartesSsr = () => CARTES.filter(aUnJeton);
 
 // « verrouille » (carte pas encore obtenue), « pret » (obtenue, jeton à débloquer) ou « debloque »
 function etatJetonSsr(carte) {
@@ -39,7 +40,7 @@ function etatJetonSsr(carte) {
 
 // Débloque le jeton d'une SSR obtenue ; renvoie vrai si c'est fait
 function debloquerJetonSsr(carte) {
-  if (carte.rang !== 4 || etatJetonSsr(carte) !== "pret") return false;
+  if (!aUnJeton(carte) || etatJetonSsr(carte) !== "pret") return false;
   enregistrerJetonsSsr([...lireJetonsSsr(), carte.id]);
   return true;
 }

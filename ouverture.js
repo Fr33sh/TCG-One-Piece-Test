@@ -438,9 +438,16 @@ function preparerVideoTirage(tirage) {
   return preparerVideoCarte(source);
 }
 
-async function montrerVideoTirage(video) {
+// La carte s'illumine, sa vidéo s'ouvre depuis elle jusqu'au plein écran, puis s'y referme
+async function montrerVideoTirage(video, carte) {
   enMouvement = true;
-  await lancerVideoCarte(video);
+  const eclat = carte?.isConnected ? illuminerCarte(carte) : null;
+  if (eclat) await eclat.finished;
+  await lancerVideoCarte(video, { depuis: carte });
+  if (eclat) {
+    eclat.reverse();
+    await eclat.finished;
+  }
   enMouvement = false;
 }
 
@@ -483,7 +490,9 @@ function commencerRevelation() {
       const video = preparerVideoTirage(paquet.querySelector(".tirage[data-video]"));
       if (plusieursBoosters()) await revelerBoosterEnCours();
       else await afficherResume();
-      if (video) await montrerVideoTirage(video);
+      if (!video) return;
+      await attendre(700); // le temps que les cartes du résumé apparaissent
+      await montrerVideoTirage(video, coucheOuverture.querySelector(".resume .carte--rang-5"));
     });
     coucheOuverture.append(boutonToutReveler);
     animer(boutonToutReveler, [{ opacity: 0, translate: "-50% 12px" }, { opacity: 1, translate: "-50% 0" }], 350);
@@ -553,8 +562,8 @@ async function passerALaSuivante() {
       // La carte Z se retourne, on la voit un instant, puis sa vidéo passe en plein écran
       await retournement;
       enMouvement = true;
-      await attendre(500);
-      await montrerVideoTirage(video);
+      await attendre(300);
+      await montrerVideoTirage(video, pile[0].querySelector(".tirage__face--avant .carte"));
     }
   } else if (pile.length > 1) {
     jeter(pile[0]);

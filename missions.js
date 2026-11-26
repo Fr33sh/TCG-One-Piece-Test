@@ -110,11 +110,9 @@ function creerCaseJeton(carte) {
 
   const rond = document.createElement("span");
   rond.className = "jeton-ssr__rond";
-  const image = document.createElement("img");
-  image.src = [].concat(carte.illustration)[0];
-  image.alt = "";
-  image.style.objectPosition = carte.cadrage || "50% 30%";
-  rond.append(image);
+  // Jeton d'une Z : animé (sauf tant que la carte n'est pas obtenue)
+  rond.append(creerImageJeton([].concat(carte.illustration)[0], etat === "verrouille" ? null : carte.boucle, carte.cadrage || "50% 30%"));
+  if (carte.boucle) rond.classList.add("jeton-ssr__rond--anime");
   if (etat === "verrouille") rond.insertAdjacentHTML("beforeend", ICONE_CADENAS);
 
   const nom = document.createElement("span");
@@ -149,7 +147,7 @@ function afficherJetons() {
     titre.textContent = serie.nom;
     const grille = document.createElement("div");
     grille.className = "jetons-serie__grille";
-    grille.append(...serie.cartes.filter(carte => carte.rang === 4).map(creerCaseJeton));
+    grille.append(...serie.cartes.filter(aUnJeton).map(creerCaseJeton));
     bloc.append(titre, grille);
     return bloc;
   }));

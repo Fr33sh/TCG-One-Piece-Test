@@ -18,6 +18,7 @@ const carteZoom = document.querySelector(".zoom__carte");
 const retournable = document.querySelector(".zoom__retournable");
 const faceAvant = document.querySelector(".zoom__face--avant");
 const panneauRecyclage = document.querySelector(".recyclage");
+const indiceVideo = document.querySelector(".zoom__indice");
 
 let vignetteOuverte = null;
 let carteOuverte = null;
@@ -108,6 +109,7 @@ function ouvrirZoom(carte, vignette) {
   carteZoom.style.setProperty("--largeur-zoom", `${largeur}px`);
   faceAvant.replaceChildren(creerCarte(carte));
   faceAvant.style.visibility = "";
+  indiceVideo.hidden = !carte.video;
   retournable.style.transform = "";
   zoom.hidden = false;
   document.body.classList.add("zoom-actif");
@@ -122,6 +124,7 @@ function ouvrirZoom(carte, vignette) {
   fond.animate([{ opacity: 0 }, { opacity: 1 }], { duration: DUREE_ZOOM, easing: "ease" });
   boutonRetour.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: DUREE_ZOOM * 0.6, fill: "backwards" });
   panneauRecyclage.animate([{ opacity: 0, translate: "-50% 12px" }, { opacity: 1, translate: "-50% 0" }], { duration: 300, delay: DUREE_ZOOM * 0.6, fill: "backwards" });
+  if (carte.video) indiceVideo.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: DUREE_ZOOM * 0.6, fill: "backwards" });
   carteZoom.focus({ preventScroll: true });
 }
 
@@ -231,20 +234,36 @@ let departAppui = null;
 let videoParAppui = false;
 let ignorerClicJusqua = 0;
 
+const sceneZoom = document.querySelector(".zoom__scene");
+let eclatAppui = null; // la carte s'illumine pendant l'appui
+
+// La carte reprend son éclat normal, puis l'animation est retirée
+function eteindreCarte() {
+  const eclat = eclatAppui;
+  eclatAppui = null;
+  if (!eclat) return;
+  eclat.reverse();
+  eclat.finished.then(() => eclat.cancel(), () => {});
+}
+
 carteZoom.addEventListener("pointerdown", evenement => {
-  if (!carteOuverte?.video || enMouvement) return;
+  if (!carteOuverte?.video || enMouvement || eclatAppui) return;
   clearTimeout(minuterieAppui);
   departAppui = { x: evenement.clientX, y: evenement.clientY };
-  minuterieAppui = setTimeout(() => {
+  eclatAppui = illuminerCarte(sceneZoom, DUREE_APPUI_LONG);
+  minuterieAppui = setTimeout(async () => {
     minuterieAppui = null;
     videoParAppui = true;
-    lancerVideoCarte(carteOuverte.video, { muet: true });
+    await lancerVideoCarte(carteOuverte.video, { muet: true, depuis: carteZoom });
+    eteindreCarte();
   }, DUREE_APPUI_LONG);
 });
 
 function annulerAppui() {
+  if (!minuterieAppui) return;
   clearTimeout(minuterieAppui);
   minuterieAppui = null;
+  eteindreCarte();
 }
 
 document.addEventListener("pointermove", evenement => {

@@ -287,7 +287,22 @@
   background: var(--creux);
 }
 
-.jeton-ssr__rond img {
+/* Jeton d'une carte Z : anneau prisma autour de l'image animée */
+.jeton-ssr__rond--anime {
+  background: var(--prisma-conique);
+  box-shadow: 0 0 14px rgb(185 140 255 / 55%);
+}
+
+.jeton-ssr__rond--anime video,
+.jeton-ssr__rond--anime img {
+  inset: 3px !important;
+  width: calc(100% - 6px) !important;
+  height: calc(100% - 6px) !important;
+  border-radius: 50%;
+}
+
+.jeton-ssr__rond img,
+.jeton-ssr__rond video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -317,7 +332,8 @@
 }
 
 /* Pas encore obtenue : image éteinte, cadenas */
-.jeton-ssr--verrouille .jeton-ssr__rond img {
+.jeton-ssr--verrouille .jeton-ssr__rond img,
+.jeton-ssr--verrouille .jeton-ssr__rond video {
   filter: grayscale(1) brightness(0.3) blur(1px);
 }
 
