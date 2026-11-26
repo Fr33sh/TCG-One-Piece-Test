@@ -691,7 +691,7 @@ const CARTES_EAST_BLUE = [
     attaques: [],
     proprietes: "« Luffy… aide-moi… » Après huit ans à porter seule le poids d'Arlong, Nami appelle enfin à l'aide.",
     equipe: "Chapeaux de Paille", role: "Navigatrice",
-    illustration: "assets/illustrations/EB-060.png", cadrage: "50% 30%",
+    illustration: "assets/illustrations/EB-067.jpg", cadrage: "50% 50%",
     boucle: "assets/animations/EB-067-boucle.mp4",
     video: "assets/animations/EB-067.mp4",
   },

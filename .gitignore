@@ -1,2 +1,4 @@
 # Bibliothèques des outils (réinstallables avec « npm install » dans outils)
 node_modules/
+# Vidéos d'origine des cartes Z (les versions du jeu sont dans assets/animations)
+outils/sources/

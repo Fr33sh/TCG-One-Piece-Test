@@ -28,11 +28,12 @@ const recadrage = recadrages.at(-1);
 console.log("Recadrage de la boucle :", recadrage || "aucun");
 
 // 1. Vidéo entière
-lancer(["-i", entiere, "-c:v", "libx264", "-crf", "20", "-preset", "slow", "-pix_fmt", "yuv420p",
+// (les vidéos de téléphone ont souvent une cadence variable : on la fixe à 30 images/s pour n'en perdre aucune)
+lancer(["-i", entiere, "-vf", "fps=30", "-c:v", "libx264", "-crf", "20", "-preset", "slow", "-pix_fmt", "yuv420p",
   "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", join(racine, `assets/animations/${id}.mp4`)]);
 
 // 2. Boucle : l'extrait à l'endroit puis à l'envers, sans le son
-const filtres = `[0:v]${recadrage ? `crop=${recadrage},` : ""}split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0,format=yuv420p[v]`;
+const filtres = `[0:v]fps=30,${recadrage ? `crop=${recadrage},` : ""}split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0,format=yuv420p[v]`;
 lancer(["-i", extrait, "-filter_complex", filtres, "-map", "[v]", "-an", "-c:v", "libx264", "-crf", "23",
   "-preset", "slow", "-movflags", "+faststart", join(racine, `assets/animations/${id}-boucle.mp4`)]);
 
