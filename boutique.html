@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Boutique</title>
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="carte.css">
+  <link rel="stylesheet" href="bordures.css">
   <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="boutique.css">
   <link rel="stylesheet" href="navigation.css">
 </head>
 <body class="avec-navigation">
@@ -17,11 +20,12 @@
     </span>
   </header>
 
-  <!-- Le contenu de la boutique viendra ici -->
   <main class="liste-bulles">
-    <section class="bulle-page" aria-labelledby="titre-bientot">
-      <h2 class="bulle-page__titre" id="titre-bientot">Bientôt</h2>
-      <p class="bulle-page__texte">La boutique ouvre bientôt ses portes. Reviens vite !</p>
+    <!-- Bordures de cartes : chacune montrée sur une carte du jeu (remplie par boutique.js depuis bordures.js) -->
+    <section class="bulle-page" aria-labelledby="titre-bordures">
+      <h2 class="bulle-page__titre" id="titre-bordures">Bordures de cartes</h2>
+      <p class="bulle-page__texte">Change le cadre de tes cartes.</p>
+      <div class="bordures-boutique" data-bordures></div>
     </section>
   </main>
 
@@ -30,10 +34,17 @@
   <script src="reglages.js"></script>
   <script src="sons.js"></script>
   <script src="musique.js"></script>
+  <script src="donnees/cartes-east-blue.js"></script>
+  <script src="donnees/cartes-naruto.js"></script>
+  <script src="donnees/cartes-bleach.js"></script>
+  <script src="donnees/series.js"></script>
+  <script src="rendu-carte.js"></script>
   <script src="compte.js"></script>
   <script src="sauvegarde.js"></script>
   <script src="collection.js"></script>
   <script src="animas.js"></script>
+  <script src="bordures.js"></script>
+  <script src="boutique.js"></script>
   <script src="navigation.js"></script>
 </body>
 </html>

@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Bordures de cartes (aperçu temporaire)</title>
+  <title>Bordures de cartes, série 2 (aperçu temporaire)</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="carte.css">
   <style>
-    /* Page d'aperçu temporaire : 20 bordures de cartes à acheter, chacune posée sur une carte du jeu */
+    /* Page d'aperçu temporaire : 20 nouvelles bordures de cartes, chacune posée sur une carte du jeu */
     body {
       min-height: 100vh;
       padding: 28px 16px 60px;
@@ -57,181 +57,181 @@
 
     /* ── Les bordures : le fond de .carte fait le cadre extérieur, --lisere le filet intérieur ── */
 
-    .carte.b1 { /* Or royal */
-      background: linear-gradient(145deg, #fff2b0, #d4a22c 28%, #8a5a0c 52%, #f5d77a 74%, #a8761a);
-      --lisere: linear-gradient(180deg, #fff6c8, #b8861e);
-      --halo: 0 0 calc(var(--u) * 50) rgb(240 190 80 / 45%);
+    .carte.b1 { /* Bronze antique, patine verte */
+      background:
+        radial-gradient(ellipse at 15% 85%, rgb(70 150 125 / 45%), transparent 35%),
+        radial-gradient(ellipse at 85% 10%, rgb(70 150 125 / 35%), transparent 30%),
+        linear-gradient(145deg, #e2b07a, #a8682e 30%, #5e3514 55%, #c98c4c 78%, #7a4a20);
+      --lisere: #f0c99a;
+      --halo: 0 0 calc(var(--u) * 40) rgb(200 140 80 / 35%);
     }
 
-    .carte.b2 { /* Argent poli */
-      background: linear-gradient(145deg, #ffffff, #b9bcc6 25%, #6e717c 50%, #e4e6ec 75%, #8d909a);
-      --lisere: #f4f5f8;
-      --halo: 0 0 calc(var(--u) * 40) rgb(220 225 235 / 35%);
+    .carte.b2 { /* Or rose */
+      background: linear-gradient(145deg, #ffe3dc, #e8a598 30%, #b86b62 55%, #f6cfc6 78%, #c8877c);
+      --lisere: #fff0ec;
+      --halo: 0 0 calc(var(--u) * 50) rgb(240 160 150 / 45%);
     }
 
-    .carte.b3 { /* Nacre */
-      background: linear-gradient(145deg, #ffffff, #efe8fb 28%, #e2f5f7 52%, #fdeef3 76%, #ffffff);
-      --lisere: linear-gradient(135deg, #ffd9ea, #fff6c9, #d5fbe9, #d6ecff, #eadcff);
-      --halo: 0 0 calc(var(--u) * 50) rgb(255 255 255 / 40%);
+    .carte.b3 { /* Aurore boréale : voiles verts et violets qui glissent */
+      background: linear-gradient(100deg, #06121f, #1de9b6, #0a2a3a, #7c4dff, #06121f, #1de9b6) 0 0 / 300% 100%;
+      --lisere: #d9fff5;
+      --halo: 0 0 calc(var(--u) * 55) rgb(29 233 182 / 40%);
+      animation: glisse 8s linear infinite;
     }
 
-    .carte.b4 { /* Prisma vivant : l'arc-en-ciel tourne autour de la carte */
-      background: linear-gradient(120deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff, #ff7eb6) 0 0 / 300% 300%;
+    .carte.b4 { /* Coucher de soleil */
+      background: linear-gradient(180deg, #ffd27a, #ff8a5c 35%, #e0507a 65%, #6a2c8a);
+      --lisere: #fff3d6;
+      --halo: 0 0 calc(var(--u) * 50) rgb(255 130 100 / 45%);
+    }
+
+    .carte.b5 { /* Bambou */
+      background:
+        repeating-linear-gradient(0deg, transparent 0 calc(var(--u) * 150), #2d5a1e calc(var(--u) * 150) calc(var(--u) * 158)),
+        linear-gradient(90deg, #a6d46e, #5c9a32 50%, #a6d46e) 0 0 / calc(var(--u) * 40) 100%;
+      --lisere: #eef8d8;
+    }
+
+    .carte.b6 { /* Tatami : paille tressée, filet vert brocart */
+      background:
+        repeating-linear-gradient(90deg, rgb(0 0 0 / 12%) 0 calc(var(--u) * 2), transparent calc(var(--u) * 2) calc(var(--u) * 8)),
+        linear-gradient(160deg, #ddd497, #b5a95e);
+      --lisere: #1f3a2a;
+    }
+
+    .carte.b7 { /* Nuages blancs sur ciel bleu */
+      background:
+        radial-gradient(circle at 30% 60%, #fff 0 calc(var(--u) * 18), transparent calc(var(--u) * 19)) 0 0 / calc(var(--u) * 110) calc(var(--u) * 70),
+        radial-gradient(circle at 55% 45%, #fff 0 calc(var(--u) * 22), transparent calc(var(--u) * 23)) 0 0 / calc(var(--u) * 110) calc(var(--u) * 70),
+        radial-gradient(circle at 80% 62%, #fff 0 calc(var(--u) * 16), transparent calc(var(--u) * 17)) 0 0 / calc(var(--u) * 110) calc(var(--u) * 70),
+        linear-gradient(#7cc0ff, #3a86e0);
       --lisere: #fff;
-      --halo: 0 0 calc(var(--u) * 60) rgb(185 140 255 / 50%);
-      animation: defile-bordure 6s linear infinite;
+      --halo: 0 0 calc(var(--u) * 45) rgb(120 190 255 / 40%);
     }
 
-    .carte.b5 { /* Holographique : argent et éclat irisé qui passe */
+    .carte.b8 { /* Shōji : croisillons de bois sur papier */
       background:
-        linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 85%) 44%, rgb(124 200 255 / 55%) 50%, rgb(255 126 182 / 55%) 56%, transparent 70%) 0 0 / 250% 100%,
-        linear-gradient(145deg, #e8e8ee, #a9a9b6 50%, #f2f2f6);
-      --lisere: linear-gradient(135deg, #ffffff, #c9ccd6);
-      --halo: 0 0 calc(var(--u) * 45) rgb(200 220 255 / 40%);
-      animation: eclat-bordure 3.5s ease-in-out infinite;
+        linear-gradient(90deg, #6b4423 0 calc(var(--u) * 6), transparent calc(var(--u) * 6)) 0 0 / calc(var(--u) * 36) calc(var(--u) * 36),
+        linear-gradient(0deg, #6b4423 0 calc(var(--u) * 6), transparent calc(var(--u) * 6)) 0 0 / calc(var(--u) * 36) calc(var(--u) * 36),
+        #f6f1e4;
+      --lisere: #6b4423;
     }
 
-    .carte.b6 { /* Néon cyan */
-      background: #07070b;
-      --lisere: #3ff0ff;
-      box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) #3ff0ff, 0 0 calc(var(--u) * 90) rgb(63 240 255 / 55%);
-    }
-    .carte.b6 .carte__cadre { box-shadow: 0 0 calc(var(--u) * 24) #3ff0ff; }
-
-    .carte.b7 { /* Néon rose */
-      background: #0b0710;
-      --lisere: #ff4fd8;
-      box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) #ff4fd8, 0 0 calc(var(--u) * 90) rgb(255 79 216 / 55%);
-    }
-    .carte.b7 .carte__cadre { box-shadow: 0 0 calc(var(--u) * 24) #ff4fd8; }
-
-    .carte.b8 { /* Sakura : pétales sur fond rose */
-      background:
-        radial-gradient(circle, #fff3f7 0 calc(var(--u) * 9), transparent calc(var(--u) * 10)) 0 0 / calc(var(--u) * 90) calc(var(--u) * 90),
-        radial-gradient(circle, #ffd6e4 0 calc(var(--u) * 6), transparent calc(var(--u) * 7)) calc(var(--u) * 45) calc(var(--u) * 45) / calc(var(--u) * 90) calc(var(--u) * 90),
-        linear-gradient(160deg, #ffb7cf, #e5739f);
-      --lisere: #fff;
-      --halo: 0 0 calc(var(--u) * 50) rgb(255 160 195 / 45%);
-    }
-
-    .carte.b9 { /* Washi : papier japonais et filet d'encre */
-      background:
-        repeating-linear-gradient(80deg, rgb(120 100 70 / 6%) 0 calc(var(--u) * 3), transparent calc(var(--u) * 3) calc(var(--u) * 17)),
-        linear-gradient(160deg, #f7f2e6, #e6dcc6);
-      --lisere: #141414;
-    }
-
-    .carte.b10 { /* Trame manga : points noirs sur blanc */
-      background:
-        radial-gradient(circle, #111 0 32%, transparent 34%) 0 0 / calc(var(--u) * 26) calc(var(--u) * 26),
-        #fff;
+    .carte.b9 { /* Damier ichimatsu noir et blanc */
+      background: conic-gradient(#111 25%, #f2f2f2 0 50%, #111 0 75%, #f2f2f2 0) 0 0 / calc(var(--u) * 40) calc(var(--u) * 40);
       --lisere: #111;
     }
 
-    .carte.b11 { /* Flammes : dégradé de feu qui ondule */
-      background: linear-gradient(0deg, #ffe066, #ff8a1f 25%, #d4241c 50%, #ff8a1f 75%, #ffe066) 0 0 / 100% 200%;
-      --lisere: #ffd35a;
-      --halo: 0 0 calc(var(--u) * 60) rgb(255 110 30 / 55%);
-      animation: monte-bordure 2.5s linear infinite;
-    }
-
-    .carte.b12 { /* Océan : vagues seigaiha bleues */
+    .carte.b10 { /* Toxique : noir et vert acide lumineux */
       background:
-        radial-gradient(circle at 50% 100%, #0d3a70 0 calc(var(--u) * 12), #4f9bdc calc(var(--u) * 12) calc(var(--u) * 16), #1b5fa8 calc(var(--u) * 16) calc(var(--u) * 28), #4f9bdc calc(var(--u) * 28) calc(var(--u) * 32), #0d3a70 calc(var(--u) * 32) calc(var(--u) * 40), transparent calc(var(--u) * 40)) 0 0 / calc(var(--u) * 80) calc(var(--u) * 40),
-        radial-gradient(circle at 50% 100%, #0d3a70 0 calc(var(--u) * 12), #4f9bdc calc(var(--u) * 12) calc(var(--u) * 16), #1b5fa8 calc(var(--u) * 16) calc(var(--u) * 28), #4f9bdc calc(var(--u) * 28) calc(var(--u) * 32), #0d3a70 calc(var(--u) * 32) calc(var(--u) * 40), transparent calc(var(--u) * 40)) calc(var(--u) * 40) calc(var(--u) * 20) / calc(var(--u) * 80) calc(var(--u) * 40),
-        #0d3a70;
-      --lisere: #cfe8ff;
-      --halo: 0 0 calc(var(--u) * 45) rgb(80 160 230 / 40%);
+        radial-gradient(circle, rgb(166 255 0 / 45%) 0 calc(var(--u) * 5), transparent calc(var(--u) * 6)) 0 0 / calc(var(--u) * 60) calc(var(--u) * 60),
+        linear-gradient(160deg, #1a2a05, #070c00);
+      --lisere: #a6ff00;
+      box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) #a6ff00, 0 0 calc(var(--u) * 90) rgb(166 255 0 / 45%);
     }
+    .carte.b10 .carte__cadre { box-shadow: 0 0 calc(var(--u) * 24) #a6ff00; }
 
-    .carte.b13 { /* Éclair : violet orageux, filet jaune et noir */
-      background: linear-gradient(160deg, #2b1656, #120a28);
-      --lisere: repeating-linear-gradient(135deg, #ffe14d 0 calc(var(--u) * 14), #1a0f38 calc(var(--u) * 14) calc(var(--u) * 28));
-      --halo: 0 0 calc(var(--u) * 55) rgb(255 225 77 / 45%);
-    }
-    .carte.b13 .carte__cadre { padding: calc(var(--u) * 14); }
-
-    .carte.b14 { /* Glace */
-      background: linear-gradient(160deg, #f2fbff, #bfe6f7 35%, #8cc9e6 62%, #e6f7ff);
-      --lisere: #fff;
-      --halo: 0 0 calc(var(--u) * 55) rgb(160 225 255 / 50%);
-    }
-
-    .carte.b15 { /* Jade veiné d'or */
+    .carte.b11 { /* Lave : roche noire et coulées incandescentes */
       background:
-        radial-gradient(ellipse at 25% 15%, rgb(255 255 255 / 28%), transparent 40%),
-        radial-gradient(ellipse at 75% 85%, #0b5a3c, transparent 55%),
-        linear-gradient(150deg, #3fbf8a, #14805a 50%, #0a4a33);
-      --lisere: linear-gradient(180deg, #f7e7a8, #b8901e);
-      --halo: 0 0 calc(var(--u) * 45) rgb(60 190 130 / 40%);
+        radial-gradient(ellipse, #ffb300 0 10%, #ff5a00 25%, transparent 50%) 0 0 / calc(var(--u) * 140) calc(var(--u) * 110),
+        radial-gradient(ellipse, #ff7a00 0 12%, #c62800 30%, transparent 50%) calc(var(--u) * 70) calc(var(--u) * 55) / calc(var(--u) * 140) calc(var(--u) * 110),
+        linear-gradient(#1a0a05, #2a0f05);
+      --lisere: #ff8a1f;
+      --halo: 0 0 calc(var(--u) * 55) rgb(255 90 0 / 45%);
     }
 
-    .carte.b16 { /* Laque rouge et or */
-      background: linear-gradient(160deg, #c21a24, #6e0910);
-      --lisere: linear-gradient(180deg, #ffe7a0, #c08a1e);
-      box-shadow: inset 0 0 0 calc(var(--u) * 14) #8e0f17, inset 0 0 0 calc(var(--u) * 19) #e0b44a, 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 45) rgb(220 40 40 / 40%);
-    }
-
-    .carte.b17 { /* Saphir taillé */
-      background: conic-gradient(from 20deg, #0d2a6b, #3f7fe0, #0a1f52, #5c9bf5, #0d2a6b, #2f6fd6, #081a45, #4f8ff0, #0d2a6b);
-      --lisere: linear-gradient(180deg, #e3f0ff, #7fb3ff);
-      --halo: 0 0 calc(var(--u) * 55) rgb(80 140 255 / 50%);
-    }
-
-    .carte.b18 { /* Galaxie : poussière d'étoiles sur fond violet nuit */
+    .carte.b12 { /* Fumée : brume grise qui dérive */
       background:
-        radial-gradient(circle, #fff 0 calc(var(--u) * 3), transparent calc(var(--u) * 4)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 70),
-        radial-gradient(circle, rgb(255 255 255 / 70%) 0 calc(var(--u) * 2), transparent calc(var(--u) * 3)) calc(var(--u) * 33) calc(var(--u) * 21) / calc(var(--u) * 55) calc(var(--u) * 55),
-        radial-gradient(ellipse at 30% 30%, rgb(185 140 255 / 55%), transparent 55%),
-        radial-gradient(ellipse at 75% 75%, rgb(124 200 255 / 40%), transparent 55%),
-        #0c0820;
-      --lisere: linear-gradient(135deg, #b98cff, #7cc8ff);
-      --halo: 0 0 calc(var(--u) * 55) rgb(150 110 255 / 45%);
+        radial-gradient(ellipse, rgb(210 210 220 / 40%), transparent 60%) 0 0 / calc(var(--u) * 300) calc(var(--u) * 260),
+        radial-gradient(ellipse, rgb(160 160 175 / 35%), transparent 60%) calc(var(--u) * 150) calc(var(--u) * 130) / calc(var(--u) * 300) calc(var(--u) * 260),
+        #16161b;
+      --lisere: #b9b9c4;
+      animation: derive 10s linear infinite;
     }
 
-    .carte.b19 { /* Carbone */
+    .carte.b13 { /* Améthyste taillée */
+      background: conic-gradient(from 20deg, #3a0f6b, #9a5be0, #2a0a52, #b98cf5, #3a0f6b, #7d3fd6, #1f0845, #a77af0, #3a0f6b);
+      --lisere: linear-gradient(180deg, #f2e6ff, #b98cff);
+      --halo: 0 0 calc(var(--u) * 55) rgb(160 100 255 / 50%);
+    }
+
+    .carte.b14 { /* Émeraude taillée */
+      background: conic-gradient(from 20deg, #0a4a2a, #2fd67f, #063a20, #5cf0a0, #0a4a2a, #1fb866, #052e19, #4fe695, #0a4a2a);
+      --lisere: linear-gradient(180deg, #e3ffef, #6fe8a8);
+      --halo: 0 0 calc(var(--u) * 55) rgb(40 210 120 / 45%);
+    }
+
+    .carte.b15 { /* Rubis taillé */
+      background: conic-gradient(from 20deg, #6b0a1a, #e03a55, #520814, #f5607a, #6b0a1a, #c8243f, #45060f, #f04d68, #6b0a1a);
+      --lisere: linear-gradient(180deg, #ffe3e8, #ff7a8f);
+      --halo: 0 0 calc(var(--u) * 55) rgb(240 50 80 / 45%);
+    }
+
+    .carte.b16 { /* Pixel : gros carrés colorés, coins carrés */
+      border-radius: calc(var(--u) * 10);
+      background: conic-gradient(#ff4f63 25%, #ffd24f 0 50%, #4fd8ff 0 75%, #7dff8a 0) 0 0 / calc(var(--u) * 40) calc(var(--u) * 40);
+      --lisere: #111;
+    }
+    .carte.b16 .carte__cadre { border-radius: 0; padding: calc(var(--u) * 12); }
+    .carte.b16 .carte__interieur { border-radius: 0; }
+
+    .carte.b17 { /* Pop art : trame rouge sur jaune, gros trait noir */
       background:
-        radial-gradient(#000 15%, transparent 16%) 0 0 / calc(var(--u) * 40) calc(var(--u) * 40),
-        radial-gradient(#000 15%, transparent 16%) calc(var(--u) * 20) calc(var(--u) * 20) / calc(var(--u) * 40) calc(var(--u) * 40),
-        radial-gradient(rgb(255 255 255 / 10%) 15%, transparent 20%) 0 calc(var(--u) * 2) / calc(var(--u) * 40) calc(var(--u) * 40),
-        radial-gradient(rgb(255 255 255 / 10%) 15%, transparent 20%) calc(var(--u) * 20) calc(var(--u) * 22) / calc(var(--u) * 40) calc(var(--u) * 40),
-        #282828;
-      --lisere: #c8102e;
-      --halo: 0 0 calc(var(--u) * 40) rgb(200 16 46 / 35%);
+        radial-gradient(circle, #e53935 0 30%, transparent 32%) 0 0 / calc(var(--u) * 22) calc(var(--u) * 22),
+        #ffd600;
+      --lisere: #111;
+    }
+    .carte.b17 .carte__cadre { padding: calc(var(--u) * 14); }
+
+    .carte.b18 { /* Encre éclaboussée : taches noires sur blanc */
+      background:
+        radial-gradient(circle, #111 0 calc(var(--u) * 9), transparent calc(var(--u) * 10)) calc(var(--u) * 10) calc(var(--u) * 30) / calc(var(--u) * 130) calc(var(--u) * 170),
+        radial-gradient(circle, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 6)) calc(var(--u) * 60) 0 / calc(var(--u) * 90) calc(var(--u) * 110),
+        radial-gradient(circle, #111 0 calc(var(--u) * 14), transparent calc(var(--u) * 15)) calc(var(--u) * 90) calc(var(--u) * 120) / calc(var(--u) * 190) calc(var(--u) * 230),
+        radial-gradient(circle, #111 0 calc(var(--u) * 3), transparent calc(var(--u) * 4)) 0 calc(var(--u) * 15) / calc(var(--u) * 45) calc(var(--u) * 65),
+        #f8f8f8;
+      --lisere: #111;
     }
 
-    .carte.b20 { /* 魂 : notre symbole en motif sur fond noir */
+    .carte.b19 { /* Diamant : blanc glacé et étincelles qui scintillent */
       position: relative;
-      background: #0b0b0d;
-      --lisere: var(--prisma-diagonal);
-      --halo: 0 0 calc(var(--u) * 50) rgb(185 140 255 / 40%);
+      background: linear-gradient(145deg, #ffffff, #dff3ff 25%, #ffffff 45%, #cfe9ff 65%, #ffffff);
+      --lisere: linear-gradient(180deg, #ffffff, #bfe3ff);
+      --halo: 0 0 calc(var(--u) * 60) rgb(200 235 255 / 55%);
     }
-    .carte.b20::before {
+    .carte.b19::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: url("assets/logo/anima-symbole.svg") 0 0 / calc(var(--u) * 80) calc(var(--u) * 80);
-      opacity: 0.35;
+      background:
+        radial-gradient(circle, #9fd8ff 0 calc(var(--u) * 4), transparent calc(var(--u) * 7)) 0 0 / calc(var(--u) * 90) calc(var(--u) * 120),
+        radial-gradient(circle, #c9b8ff 0 calc(var(--u) * 3), transparent calc(var(--u) * 6)) calc(var(--u) * 45) calc(var(--u) * 60) / calc(var(--u) * 90) calc(var(--u) * 120);
+      animation: scintille 2.4s ease-in-out infinite;
     }
-    .carte.b20 .carte__cadre { position: relative; }
+    .carte.b19 .carte__cadre { position: relative; }
 
-    @keyframes defile-bordure {
-      to { background-position: 300% 300%; }
-    }
-
-    @keyframes eclat-bordure {
-      0% { background-position: 150% 0, 0 0; }
-      60%, 100% { background-position: -150% 0, 0 0; }
+    .carte.b20 { /* Rayures pastel */
+      background: repeating-linear-gradient(135deg, #ffd1e8 0 calc(var(--u) * 20), #fff3c4 calc(var(--u) * 20) calc(var(--u) * 40), #d4f8e8 calc(var(--u) * 40) calc(var(--u) * 60), #d6e9ff calc(var(--u) * 60) calc(var(--u) * 80), #e8dcff calc(var(--u) * 80) calc(var(--u) * 100));
+      --lisere: #fff;
     }
 
-    @keyframes monte-bordure {
-      to { background-position: 0 -200%; }
+    @keyframes glisse {
+      to { background-position: 150% 0; }
+    }
+
+    @keyframes derive {
+      to { background-position: calc(var(--u) * 300) calc(var(--u) * -260), calc(var(--u) * -150) calc(var(--u) * 390); }
+    }
+
+    @keyframes scintille {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <h1>Bordures de cartes</h1>
+  <h1>Bordures de cartes · série 2</h1>
   <p class="aide">Aperçu temporaire : dis-moi les numéros que tu gardes.</p>
   <div class="grille"></div>
 
@@ -241,32 +241,32 @@
   <script src="donnees/series.js"></script>
   <script src="rendu-carte.js"></script>
   <script>
-    const BORDURES = [
-      ["Or royal", "Cadre doré, reflets chauds"],
-      ["Argent poli", "Métal brossé, filet blanc"],
-      ["Nacre", "Blanc nacré, filet pastel irisé"],
-      ["Prisma vivant", "L'arc-en-ciel défile autour"],
-      ["Holographique", "Argent, éclat irisé qui passe"],
-      ["Néon cyan", "Cadre noir, lueur cyan"],
-      ["Néon rose", "Cadre noir, lueur rose"],
-      ["Sakura", "Rose, pétales de cerisier"],
-      ["Washi", "Papier japonais, filet d'encre"],
-      ["Trame manga", "Points noirs sur blanc"],
-      ["Flammes", "Feu qui ondule vers le haut"],
-      ["Océan", "Vagues japonaises bleues"],
-      ["Éclair", "Violet orage, filet jaune et noir"],
-      ["Glace", "Bleu givré, halo froid"],
-      ["Jade", "Pierre verte, filet d'or"],
-      ["Laque", "Rouge laqué, double filet d'or"],
-      ["Saphir", "Bleu taillé en facettes"],
-      ["Galaxie", "Étoiles sur violet nuit"],
-      ["Carbone", "Fibre de carbone, filet rouge"],
-      ["Âme", "Motif 魂 sur noir, filet prisma"],
+    const PROPOSITIONS = [
+      ["Bronze antique", "Bronze patiné de vert"],
+      ["Or rose", "Métal rosé, filet blanc"],
+      ["Aurore boréale", "Voiles verts et violets qui glissent"],
+      ["Coucher de soleil", "Du jaune au violet"],
+      ["Bambou", "Tiges vertes et leurs nœuds"],
+      ["Tatami", "Paille tressée, filet vert"],
+      ["Nuages", "Nuages blancs sur ciel bleu"],
+      ["Shōji", "Croisillons de bois sur papier"],
+      ["Ichimatsu", "Damier japonais noir et blanc"],
+      ["Toxique", "Noir et vert acide lumineux"],
+      ["Lave", "Roche noire et coulées de feu"],
+      ["Fumée", "Brume grise qui dérive"],
+      ["Améthyste", "Violet taillé en facettes"],
+      ["Émeraude", "Vert taillé en facettes"],
+      ["Rubis", "Rouge taillé en facettes"],
+      ["Pixel", "Gros carrés colorés, coins carrés"],
+      ["Pop art", "Trame rouge sur jaune"],
+      ["Encre", "Éclaboussures noires sur blanc"],
+      ["Diamant", "Blanc glacé, étincelles qui scintillent"],
+      ["Pastel", "Rayures douces arc-en-ciel"],
     ];
     const illustrees = CARTES.filter(carte => carte.illustration);
     const grille = document.querySelector(".grille");
-    BORDURES.forEach(([nom, description], i) => {
-      const carte = creerCarte(illustrees[Math.floor(i * illustrees.length / BORDURES.length)]);
+    PROPOSITIONS.forEach(([nom, description], i) => {
+      const carte = creerCarte(illustrees[Math.floor((i + 0.5) * illustrees.length / PROPOSITIONS.length)]);
       carte.classList.add(`b${i + 1}`);
       const figure = element("figure");
       const legende = element("figcaption", "", `${i + 1}. ${nom}`);

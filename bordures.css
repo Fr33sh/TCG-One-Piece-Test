@@ -1,0 +1,54 @@
+/* Bordures de cartes à acheter dans la Boutique (catalogue : bordures.js). Elles remplacent le cadre « Noir
+   lumineux » de carte.css : le fond de .carte fait le cadre extérieur, --lisere le filet intérieur, --halo la lueur. */
+
+/* Prisma vivant : l'arc-en-ciel défile autour de la carte, filet blanc */
+.carte.bordure--prisma-vivant {
+  background: linear-gradient(120deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff, #ff7eb6) 0 0 / 300% 300%;
+  --lisere: #fff;
+  --halo: 0 0 calc(var(--u) * 60) rgb(185 140 255 / 50%);
+  animation: bordure-defile 6s linear infinite;
+}
+
+/* Flammes : dégradé de feu qui ondule vers le haut, filet doré */
+.carte.bordure--flammes {
+  background: linear-gradient(0deg, #ffe066, #ff8a1f 25%, #d4241c 50%, #ff8a1f 75%, #ffe066) 0 0 / 100% 200%;
+  --lisere: #ffd35a;
+  --halo: 0 0 calc(var(--u) * 60) rgb(255 110 30 / 55%);
+  animation: bordure-monte 2.5s linear infinite;
+}
+
+/* Âme : notre symbole 魂 en motif sur fond noir, filet prisma */
+.carte.bordure--ame {
+  position: relative;
+  background: #0b0b0d;
+  --lisere: var(--prisma-diagonal);
+  --halo: 0 0 calc(var(--u) * 50) rgb(185 140 255 / 40%);
+}
+
+.carte.bordure--ame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: url("assets/logo/anima-symbole.svg") 0 0 / calc(var(--u) * 80) calc(var(--u) * 80);
+  opacity: 0.35;
+}
+
+.carte.bordure--ame .carte__cadre {
+  position: relative;
+}
+
+@keyframes bordure-defile {
+  to { background-position: 300% 300%; }
+}
+
+@keyframes bordure-monte {
+  to { background-position: 0 -200%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carte.bordure--prisma-vivant,
+  .carte.bordure--flammes {
+    animation: none;
+  }
+}
