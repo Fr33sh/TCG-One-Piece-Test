@@ -189,35 +189,44 @@ body {
   transition: padding-bottom 0.55s ease;
 }
 
-/* Les boosters des séries, en file qui déborde de l'écran et défile au doigt (accueil.js règle --defilement) */
+/* La roue des boosters : tous empilés au centre ; accueil.js donne à chacun son décalage et sa taille (--roue).
+   Le booster du centre est grand, au premier plan ; ses voisins plus petits dépassent derrière lui. */
 .boosters {
-  display: flex;
+  --l-roue: min(50vw, 205px);
+
+  position: relative;
   flex: none;
-  gap: 16px;
-  align-items: center;
-  width: max-content;
-  transform: translateX(var(--defilement, 0px));
-  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  width: 100%;
+  height: calc(var(--l-roue) * 1.93);
   touch-action: pan-y;
 }
 
-/* Pendant que le doigt glisse, la file le suit sans délai */
-.boosters--glisse {
-  transition: none;
+.boosters .booster {
+  --l: var(--l-roue);
 }
 
 .boosters .zone-booster {
-  flex: none;
-}
-
-.boosters .booster {
-  --l: min(40vw, 165px);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: calc(var(--l-roue) / -2);
+  transform: var(--roue, none);
 }
 
 .zone-booster {
   cursor: pointer;
-  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease, visibility 0s linear 0s;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease, visibility 0s linear 0s;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Pendant que le doigt glisse, la roue le suit sans délai */
+.boosters--glisse .zone-booster {
+  transition: none;
+}
+
+/* Les voisins, en retrait, sont un peu assombris */
+.boosters .zone-booster:not(.zone-booster--centre) .booster {
+  filter: brightness(0.7) drop-shadow(0 18px 22px rgb(0 0 0 / 45%));
 }
 
 .zone-booster:focus-visible {
@@ -388,7 +397,7 @@ body {
 }
 
 .mode-booster .zone-booster--choisie {
-  transform: translateX(var(--decalage-x, 0px)) translateY(-62px) scale(1.45);
+  transform: translateY(-62px) scale(1.15);
 }
 
 .mode-booster .zone-booster:not(.zone-booster--choisie) {
