@@ -4,8 +4,8 @@
 
 const CLE_ANIMAS = "tcg-one-piece/animas";
 
-// Animas gagnés par exemplaire recyclé, selon la rareté (A, S, SR, SSR)
-const VALEUR_RECYCLAGE = { 1: 1, 2: 5, 3: 10, 4: 20 };
+// Animas gagnés par exemplaire recyclé, selon la rareté (A, S, SR, SSR, Z ; valeur du Z PROVISOIRE, à confirmer)
+const VALEUR_RECYCLAGE = { 1: 1, 2: 5, 3: 10, 4: 20, 5: 50 };
 
 function lireAnimas() {
   try {

@@ -85,6 +85,54 @@
   padding: calc(var(--u) * 12);
 }
 
+/* ── Rang Z (3 au plus par collection) : « Prisma infini ». L'arc-en-ciel tourne autour de la carte, des reflets
+   irisés glissent sur l'image, la lueur change de couleur. ── */
+
+@property --angle-z {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.carte--rang-5 {
+  background: conic-gradient(from var(--angle-z), #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff, #ff7eb6);
+  --lisere: #fff;
+  animation: z-tourne 4s linear infinite, z-halo 4s ease-in-out infinite;
+}
+
+.carte--rang-5 .carte__cadre {
+  padding: calc(var(--u) * 12);
+}
+
+.carte--rang-5 .carte__interieur::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(125deg, rgb(255 126 182 / 40%), rgb(255 240 122 / 35%), rgb(125 255 196 / 35%), rgb(124 200 255 / 40%), rgb(185 140 255 / 40%), rgb(255 126 182 / 40%)) 0 0 / 300% 300%;
+  mix-blend-mode: color-dodge;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: z-reflets 6s linear infinite;
+}
+
+@keyframes z-tourne { to { --angle-z: 360deg; } }
+@keyframes z-reflets { to { background-position: 300% 300%; } }
+
+@keyframes z-halo {
+  0%, 100% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 80) rgb(255 126 182 / 60%); }
+  33% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 80) rgb(125 255 196 / 60%); }
+  66% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 80) rgb(124 200 255 / 60%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carte--rang-5,
+  .carte--rang-5 .carte__interieur::after {
+    animation: none;
+  }
+}
+
 /* ── En-tête : la rareté, en haut à droite ── */
 
 .carte__entete {
@@ -130,6 +178,12 @@
 .carte--rang-2 .carte__rang-lettre { --gemme: linear-gradient(180deg, #d4ecff, #3d82d8 60%, #163f8f); }
 .carte--rang-3 .carte__rang-lettre { --gemme: linear-gradient(180deg, #efe0ff, #9a63e0 60%, #5a2aa8); font-size: calc(var(--u) * 50); }
 .carte--rang-4 .carte__rang-lettre { --gemme: linear-gradient(180deg, #fff3b8, #e0aa2c 55%, #9c6a0e); font-size: calc(var(--u) * 78); }
+.carte--rang-5 .carte__rang-lettre {
+  --gemme: var(--prisma-diagonal, linear-gradient(135deg, #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff));
+  font-size: calc(var(--u) * 92);
+  -webkit-text-stroke: calc(var(--u) * 2) rgb(0 0 0 / 40%);
+  filter: drop-shadow(0 0 calc(var(--u) * 14) rgb(255 255 255 / 80%));
+}
 
 /* ── Illustration : elle occupe toute la carte, assombrie en haut (rareté) et en bas (textes) ── */
 
@@ -166,6 +220,11 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgb(0 0 0 / 45%) 0%, transparent 14%, transparent 56%, rgb(0 0 0 / 72%) 76%, rgb(0 0 0 / 90%) 100%);
+}
+
+/* Image animée (cartes Z) : une courte boucle vidéo, sans le son */
+.carte__image--video {
+  pointer-events: none;
 }
 
 .carte__image {
@@ -233,4 +292,53 @@
   text-align: right;
   text-transform: uppercase;
   color: var(--encre-douce);
+}
+
+/* ── Vidéo d'une carte Z en plein écran (video-carte.js) ── */
+
+.video-carte {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #000;
+}
+
+.video-carte__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-carte__fermer {
+  position: absolute;
+  top: max(14px, calc(var(--marge-haut, env(safe-area-inset-top)) + 6px));
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 55%);
+  color: #fff;
+  font: 700 18px / 1 "Lato", sans-serif;
+  cursor: pointer;
+}
+
+.video-carte__son {
+  position: absolute;
+  bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px));
+  left: 50%;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #0b0b0d;
+  font: 700 15px / 1 "Lato", sans-serif;
+  translate: -50% 0;
+  cursor: pointer;
+}
+
+.video-carte__son[hidden] {
+  display: none;
 }

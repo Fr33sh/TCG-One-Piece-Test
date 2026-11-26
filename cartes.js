@@ -223,7 +223,50 @@ function retourner(pendantFermeture = false) {
   if (!pendantFermeture) setTimeout(() => { enMouvement = false; }, DUREE_RETOURNEMENT);
 }
 
-carteZoom.addEventListener("click", () => retourner());
+// Carte Z : un appui maintenu sur la carte agrandie lance sa vidéo en plein écran (video-carte.js). Elle part
+// muette (le navigateur l'exige) et retrouve le son quand le doigt se lève.
+const DUREE_APPUI_LONG = 450;
+let minuterieAppui = null;
+let departAppui = null;
+let videoParAppui = false;
+let ignorerClicJusqua = 0;
+
+carteZoom.addEventListener("pointerdown", evenement => {
+  if (!carteOuverte?.video || enMouvement) return;
+  clearTimeout(minuterieAppui);
+  departAppui = { x: evenement.clientX, y: evenement.clientY };
+  minuterieAppui = setTimeout(() => {
+    minuterieAppui = null;
+    videoParAppui = true;
+    lancerVideoCarte(carteOuverte.video, { muet: true });
+  }, DUREE_APPUI_LONG);
+});
+
+function annulerAppui() {
+  clearTimeout(minuterieAppui);
+  minuterieAppui = null;
+}
+
+document.addEventListener("pointermove", evenement => {
+  if (minuterieAppui && Math.hypot(evenement.clientX - departAppui.x, evenement.clientY - departAppui.y) > 10) annulerAppui();
+}, true);
+document.addEventListener("pointercancel", annulerAppui, true);
+
+// Le doigt se lève : ce geste permet de rétablir le son ; le clic qui suit ne retourne pas la carte
+function finAppui() {
+  annulerAppui();
+  if (!videoParAppui) return;
+  videoParAppui = false;
+  ignorerClicJusqua = performance.now() + 500;
+  activerSonVideoCarte();
+}
+document.addEventListener("pointerup", finAppui, true);
+document.addEventListener("touchend", finAppui, true);
+
+carteZoom.addEventListener("click", () => {
+  if (performance.now() < ignorerClicJusqua) return;
+  retourner();
+});
 carteZoom.addEventListener("keydown", evenement => {
   if (evenement.key === "Enter" || evenement.key === " ") {
     evenement.preventDefault();

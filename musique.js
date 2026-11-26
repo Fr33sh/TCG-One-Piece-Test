@@ -411,7 +411,14 @@ function glisserVolume(gain, cible, duree) {
   gain.linearRampToValueAtTime(cible, maintenant + duree);
 }
 
-const volumeVoulu = morceau => morceau.volume * niveauSon("musique");
+// Sourdine pendant la vidéo d'une carte Z (video-carte.js)
+let sourdineMusique = false;
+const volumeVoulu = morceau => (sourdineMusique ? 0 : morceau.volume * niveauSon("musique"));
+
+function appliquerSourdine(sourdine) {
+  sourdineMusique = sourdine;
+  if (musique) glisserVolume(musique.volume.gain, volumeVoulu(musique.morceau), 0.4);
+}
 
 // Croche où reprendre : là où la page précédente s'est arrêtée, plus le temps passé depuis
 function crocheDeReprise(id) {
@@ -479,6 +486,7 @@ function lancerMorceau(id) {
 const MESSAGE_TOUCHER = "tcg-one-piece:toucher";
 const MESSAGE_MORCEAU = "tcg-one-piece:morceau:";
 const MESSAGE_QUEL_MORCEAU = "tcg-one-piece:quel-morceau";
+const MESSAGE_SOURDINE = "tcg-one-piece:sourdine:";
 
 const pageEmulateur = document.querySelector(".telephone__ecran") !== null;
 const pageDansEmulateur = window.parent !== window && !pageEmulateur;
@@ -489,6 +497,12 @@ function demanderMorceau(id) {
   morceauDemande = id;
   if (pageDansEmulateur) window.parent.postMessage(MESSAGE_MORCEAU + id, "*");
   else lancerMorceau(id);
+}
+
+// Coupe (ou rétablit) la musique, là où elle est jouée
+function mettreMusiqueEnSourdine(sourdine) {
+  if (pageDansEmulateur) window.parent.postMessage(MESSAGE_SOURDINE + (sourdine ? "1" : "0"), "*");
+  else appliquerSourdine(sourdine);
 }
 
 if (pageDansEmulateur) {
@@ -502,7 +516,9 @@ if (pageDansEmulateur) {
 } else {
   addEventListener("message", evenement => {
     if (evenement.data === MESSAGE_TOUCHER) preparerSon();
-    else if (typeof evenement.data === "string" && evenement.data.startsWith(MESSAGE_MORCEAU)) {
+    else if (typeof evenement.data === "string" && evenement.data.startsWith(MESSAGE_SOURDINE)) {
+      appliquerSourdine(evenement.data.endsWith("1"));
+    } else if (typeof evenement.data === "string" && evenement.data.startsWith(MESSAGE_MORCEAU)) {
       lancerMorceau(evenement.data.slice(MESSAGE_MORCEAU.length));
     }
   });

@@ -2,7 +2,7 @@
 // Une carte montre : l'illustration en pleine carte, sa rareté, son nom, sa description (2 lignes au plus),
 // son équipe, son rôle et son numéro. Les attaques, talents et PV des données ne sont plus affichés.
 
-const LETTRES_RANG = { 1: "A", 2: "S", 3: "SR", 4: "SSR" };
+const LETTRES_RANG = { 1: "A", 2: "S", 3: "SR", 4: "SSR", 5: "Z" };
 
 function element(balise, classe, texte) {
   const el = document.createElement(balise);
@@ -24,7 +24,19 @@ function creerCarte(carte) {
   entete.append(rang);
 
   const illustration = element("div", "carte__illustration");
-  if (carte.illustration) {
+  if (carte.boucle) {
+    // Carte animée (rang Z) : une boucle vidéo muette de 2 secondes, l'illustration sert d'image d'attente
+    const images = element("div", "carte__images");
+    const video = element("video", "carte__image carte__image--video");
+    Object.assign(video, { src: carte.boucle, poster: carte.illustration || "", muted: true, loop: true, autoplay: true, playsInline: true });
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("aria-label", carte.nom);
+    video.style.objectPosition = carte.cadrage || "50% 50%";
+    images.append(video);
+    illustration.classList.add("carte__illustration--image");
+    illustration.append(images);
+  } else if (carte.illustration) {
     // Une liste d'images (duos, trios) s'affiche côte à côte
     const images = element("div", "carte__images");
     for (const source of [].concat(carte.illustration)) {

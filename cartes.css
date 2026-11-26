@@ -366,6 +366,10 @@ html {
   aspect-ratio: 1260 / 1760;
   outline: none;
   cursor: pointer;
+  /* Appui maintenu (vidéo des cartes Z) : ni sélection ni menu du téléphone */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .zoom__retournable {

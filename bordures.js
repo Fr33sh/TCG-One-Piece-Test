@@ -11,4 +11,8 @@ const BORDURES = [
   { id: "amethyste", nom: "Améthyste", description: "Violet taillé en facettes." },
   { id: "rubis", nom: "Rubis", description: "Rouge taillé en facettes." },
   { id: "pastel", nom: "Pastel", description: "Rayures douces arc-en-ciel." },
+  { id: "celeste", nom: "Céleste", description: "De l'or en mouvement." },
+  { id: "cosmos", nom: "Cosmos", description: "Nébuleuse et étoiles qui scintillent." },
+  { id: "flamme-ame", nom: "Flamme d'âme", description: "Un feu violet qui monte." },
+  { id: "sceau-imperial", nom: "Sceau impérial", description: "Laque rouge, coins et filets d'or." },
 ];

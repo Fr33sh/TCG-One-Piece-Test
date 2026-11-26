@@ -264,7 +264,7 @@ function couperPack(pack, trace, sens) {
 // Cartes rares, juste après la déchirure : un carillon pour une SR, un éclat et des étoiles pour une SSR,
 // une fanfare pour un god pack (seul le son le plus fort est joué). Renvoie vrai s'il y a une SSR.
 function annoncerRaretes(booster, zone, ecran) {
-  const ssr = booster.cartes.some(carte => carte.rang === 4);
+  const ssr = booster.cartes.some(carte => carte.rang >= 4);
   if (booster.godPack) jouerGodPack(0.15);
   else if (ssr) jouerEclatSSR(0.15);
   else if (booster.cartes.some(carte => carte.rang === 3)) jouerCarillon(0.15);
@@ -376,6 +376,8 @@ function creerPaquet({ cartes, nouvelles }) {
     avant.style.visibility = "hidden";
     avant.append(creerCarte(carte));
     if (nouvelles[index]) avant.append(creerBadgeNouveau());
+    // Carte Z découverte pour la première fois : sa vidéo passera en plein écran (video-carte.js)
+    if (nouvelles[index] && carte.video) tirage.dataset.video = carte.video;
     const dos = element("div", "tirage__face tirage__face--dos");
     const image = element("img");
     image.src = "assets/cartes/dos.svg";
@@ -421,11 +423,25 @@ function retournerCarte(tirage) {
   tirage.classList.add("tirage--retournee");
   const retournable = tirage.querySelector(".tirage__retournable");
   setTimeout(() => { tirage.querySelector(".tirage__face--avant").style.visibility = ""; }, DUREE_RETOURNEMENT_CARTE / 2);
-  animer(retournable, [
+  return animer(retournable, [
     { transform: "rotateY(180deg) scale(1)" },
     { transform: "rotateY(90deg) scale(1.08)", offset: 0.5 },
     { transform: "rotateY(0deg) scale(1)" },
   ], DUREE_RETOURNEMENT_CARTE, { courbe: "cubic-bezier(0.45, 0.05, 0.35, 1)" }).then(() => { enMouvement = false; });
+}
+
+// Vidéo d'une carte Z pas encore vue : préparée pendant le toucher (pour avoir le son), lancée ensuite
+function preparerVideoTirage(tirage) {
+  const source = tirage?.dataset.video;
+  if (!source) return null;
+  delete tirage.dataset.video;
+  return preparerVideoCarte(source);
+}
+
+async function montrerVideoTirage(video) {
+  enMouvement = true;
+  await lancerVideoCarte(video);
+  enMouvement = false;
 }
 
 // Dix boosters : le paquet du booster suivant arrive de dos au centre
@@ -461,10 +477,13 @@ function commencerRevelation() {
   if (!boutonToutReveler) {
     boutonToutReveler = element("button", "bulle-choix bulle-ouverture bulle-tout-reveler", "Tout révéler");
     boutonToutReveler.type = "button";
-    boutonToutReveler.addEventListener("click", () => {
+    boutonToutReveler.addEventListener("click", async () => {
       if (phase !== "revelation" || enMouvement) return;
-      if (plusieursBoosters()) revelerBoosterEnCours();
-      else afficherResume();
+      // Une carte Z pas encore retournée montre quand même sa vidéo, une fois les cartes révélées
+      const video = preparerVideoTirage(paquet.querySelector(".tirage[data-video]"));
+      if (plusieursBoosters()) await revelerBoosterEnCours();
+      else await afficherResume();
+      if (video) await montrerVideoTirage(video);
     });
     coucheOuverture.append(boutonToutReveler);
     animer(boutonToutReveler, [{ opacity: 0, translate: "-50% 12px" }, { opacity: 1, translate: "-50% 0" }], 350);
@@ -528,7 +547,15 @@ function relacher(evenement) {
 async function passerALaSuivante() {
   const pile = cartesRestantes();
   if (!pile[0].classList.contains("tirage--retournee")) {
-    retournerCarte(pile[0]);
+    const video = preparerVideoTirage(pile[0]);
+    const retournement = retournerCarte(pile[0]);
+    if (video) {
+      // La carte Z se retourne, on la voit un instant, puis sa vidéo passe en plein écran
+      await retournement;
+      enMouvement = true;
+      await attendre(500);
+      await montrerVideoTirage(video);
+    }
   } else if (pile.length > 1) {
     jeter(pile[0]);
   } else if (session.index < session.boosters.length - 1) {
