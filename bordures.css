@@ -38,6 +38,61 @@
   position: relative;
 }
 
+/* Aurore boréale : voiles verts et violets qui glissent */
+.carte.bordure--aurore {
+  background: linear-gradient(100deg, #06121f, #1de9b6, #0a2a3a, #7c4dff, #06121f, #1de9b6) 0 0 / 300% 100%;
+  --lisere: #d9fff5;
+  --halo: 0 0 calc(var(--u) * 55) rgb(29 233 182 / 40%);
+  animation: bordure-glisse 8s linear infinite;
+}
+
+/* Toxique : noir et vert acide lumineux */
+.carte.bordure--toxique {
+  background:
+    radial-gradient(circle, rgb(166 255 0 / 45%) 0 calc(var(--u) * 5), transparent calc(var(--u) * 6)) 0 0 / calc(var(--u) * 60) calc(var(--u) * 60),
+    linear-gradient(160deg, #1a2a05, #070c00);
+  --lisere: #a6ff00;
+  box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) #a6ff00, 0 0 calc(var(--u) * 90) rgb(166 255 0 / 45%);
+}
+
+.carte.bordure--toxique .carte__cadre {
+  box-shadow: 0 0 calc(var(--u) * 24) #a6ff00;
+}
+
+/* Lave : roche noire et coulées incandescentes */
+.carte.bordure--lave {
+  background:
+    radial-gradient(ellipse, #ffb300 0 10%, #ff5a00 25%, transparent 50%) 0 0 / calc(var(--u) * 140) calc(var(--u) * 110),
+    radial-gradient(ellipse, #ff7a00 0 12%, #c62800 30%, transparent 50%) calc(var(--u) * 70) calc(var(--u) * 55) / calc(var(--u) * 140) calc(var(--u) * 110),
+    linear-gradient(#1a0a05, #2a0f05);
+  --lisere: #ff8a1f;
+  --halo: 0 0 calc(var(--u) * 55) rgb(255 90 0 / 45%);
+}
+
+/* Améthyste taillée en facettes */
+.carte.bordure--amethyste {
+  background: conic-gradient(from 20deg, #3a0f6b, #9a5be0, #2a0a52, #b98cf5, #3a0f6b, #7d3fd6, #1f0845, #a77af0, #3a0f6b);
+  --lisere: linear-gradient(180deg, #f2e6ff, #b98cff);
+  --halo: 0 0 calc(var(--u) * 55) rgb(160 100 255 / 50%);
+}
+
+/* Rubis taillé en facettes */
+.carte.bordure--rubis {
+  background: conic-gradient(from 20deg, #6b0a1a, #e03a55, #520814, #f5607a, #6b0a1a, #c8243f, #45060f, #f04d68, #6b0a1a);
+  --lisere: linear-gradient(180deg, #ffe3e8, #ff7a8f);
+  --halo: 0 0 calc(var(--u) * 55) rgb(240 50 80 / 45%);
+}
+
+/* Pastel : rayures douces arc-en-ciel, filet blanc */
+.carte.bordure--pastel {
+  background: repeating-linear-gradient(135deg, #ffd1e8 0 calc(var(--u) * 20), #fff3c4 calc(var(--u) * 20) calc(var(--u) * 40), #d4f8e8 calc(var(--u) * 40) calc(var(--u) * 60), #d6e9ff calc(var(--u) * 60) calc(var(--u) * 80), #e8dcff calc(var(--u) * 80) calc(var(--u) * 100));
+  --lisere: #fff;
+}
+
+@keyframes bordure-glisse {
+  to { background-position: 150% 0; }
+}
+
 @keyframes bordure-defile {
   to { background-position: 300% 300%; }
 }
@@ -48,7 +103,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .carte.bordure--prisma-vivant,
-  .carte.bordure--flammes {
+  .carte.bordure--flammes,
+  .carte.bordure--aurore {
     animation: none;
   }
 }
