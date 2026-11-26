@@ -48,7 +48,7 @@ function decalagePour(zone) {
   return piste.offsetParent.clientWidth / 2 - (zone.offsetLeft + zone.offsetWidth / 2);
 }
 
-function borner(valeur) {
+function bornerFile(valeur) {
   const extremes = [decalagePour(zonesBoosters[0]), decalagePour(zonesBoosters[zonesBoosters.length - 1])];
   return Math.min(Math.max(valeur, Math.min(...extremes)), Math.max(...extremes));
 }
@@ -63,7 +63,7 @@ function placerFile(valeur, anime = true) {
 function caler() {
   const proche = zonesBoosters.reduce((meilleure, zone) =>
     Math.abs(decalagePour(zone) - defilement) < Math.abs(decalagePour(meilleure) - defilement) ? zone : meilleure);
-  placerFile(borner(decalagePour(proche)));
+  placerFile(bornerFile(decalagePour(proche)));
 }
 
 piste.addEventListener("pointerdown", evenement => {
@@ -75,7 +75,7 @@ addEventListener("pointermove", evenement => {
   if (!glissement || evenement.pointerId !== glissement.pointeur) return;
   const dx = evenement.clientX - glissement.x;
   if (Math.abs(dx) > 8) glissement.bouge = true;
-  if (glissement.bouge) placerFile(borner(glissement.depart + dx), false);
+  if (glissement.bouge) placerFile(bornerFile(glissement.depart + dx), false);
 });
 
 function finirGlissement(evenement) {
@@ -100,7 +100,7 @@ function afficherChoixBooster(visible) {
   choixBooster.inert = !visible;
   for (const zone of zonesBoosters) zone.tabIndex = visible ? -1 : 0;
   // Retour à l'accueil : la file se recale sur le booster choisi
-  if (!visible) placerFile(borner(decalagePour(zoneBooster)));
+  if (!visible) placerFile(bornerFile(decalagePour(zoneBooster)));
 }
 
 // Le booster touché vient au centre de l'écran, les autres s'effacent. La file revient à sa place d'origine
@@ -118,4 +118,4 @@ document.querySelector(".bulle-retour").addEventListener("click", () => afficher
 
 afficherChoixBooster(false);
 // Au départ, le booster du milieu est centré
-placerFile(borner(decalagePour(zonesBoosters[Math.floor((zonesBoosters.length - 1) / 2)])), false);
+placerFile(bornerFile(decalagePour(zonesBoosters[Math.floor((zonesBoosters.length - 1) / 2)])), false);
