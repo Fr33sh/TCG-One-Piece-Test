@@ -8,7 +8,9 @@
   // Les fichiers du dossier sont servis tels quels (aucun build)
   "assets": {
     "directory": ".",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // Vidéos des cartes Z : servies par le Worker, qui sait les envoyer par morceaux (exigé par les iPhone)
+    "run_worker_first": ["/assets/animations/*"]
   },
   // Base de données des comptes et des amis (un seul Durable Object, stockage SQLite)
   "durable_objects": {

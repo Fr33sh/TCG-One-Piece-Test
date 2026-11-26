@@ -14,10 +14,47 @@ import { DurableObject } from "cloudflare:workers";
 export default {
   async fetch(requete, env) {
     const url = new URL(requete.url);
+    if (url.pathname.startsWith("/assets/animations/")) return servirVideo(requete, env);
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(requete);
     return env.SOCIAL.get(env.SOCIAL.idFromName("monde")).fetch(requete);
   },
 };
+
+// Vidéos des cartes Z (assets/animations, quelques Mo au plus) : Safari sur iPhone ne lit une vidéo que si le
+// serveur accepte d'en envoyer un morceau (en-tête « Range »), ce que Cloudflare ne fait pas pour les fichiers.
+async function servirVideo(requete, env) {
+  const fichier = await env.ASSETS.fetch(new Request(requete.url, { method: "GET" }));
+  if (!fichier.ok) return fichier;
+  const donnees = await fichier.arrayBuffer();
+  const taille = donnees.byteLength;
+  const entetes = new Headers(fichier.headers);
+  entetes.set("Accept-Ranges", "bytes");
+  entetes.delete("Content-Encoding");
+
+  const morceau = /^bytes=(\d*)-(\d*)$/.exec(requete.headers.get("Range") || "");
+  if (!morceau || (!morceau[1] && !morceau[2])) {
+    entetes.set("Content-Length", String(taille));
+    return new Response(requete.method === "HEAD" ? null : donnees, { status: 200, headers: entetes });
+  }
+
+  // « bytes=début-fin », « bytes=début- » ou « bytes=-nombre » (les derniers octets)
+  let debut;
+  let fin;
+  if (morceau[1]) {
+    debut = Number(morceau[1]);
+    fin = morceau[2] ? Math.min(Number(morceau[2]), taille - 1) : taille - 1;
+  } else {
+    debut = Math.max(0, taille - Number(morceau[2]));
+    fin = taille - 1;
+  }
+  if (debut >= taille || debut > fin) {
+    entetes.set("Content-Range", `bytes */${taille}`);
+    return new Response(null, { status: 416, headers: entetes });
+  }
+  entetes.set("Content-Range", `bytes ${debut}-${fin}/${taille}`);
+  entetes.set("Content-Length", String(fin - debut + 1));
+  return new Response(requete.method === "HEAD" ? null : donnees.slice(debut, fin + 1), { status: 206, headers: entetes });
+}
 
 const PSEUDO_VALIDE = /^[\p{L}\p{N}_-]{3,16}$/u;
 const NOMBRE_TAGS = 10000; // de #0000 à #9999
