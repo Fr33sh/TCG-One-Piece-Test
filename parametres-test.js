@@ -19,4 +19,13 @@ document.querySelector("[data-toutes-cartes]").addEventListener("click", () => {
   messageTest.textContent = `${CARTES.length} cartes ajoutées à ta collection (une de chaque).`;
 });
 
+// Les cartes Z sont retirées de la collection pour que la prochaine compte comme une découverte (avec sa vidéo)
+document.querySelector("[data-test-z]").addEventListener("click", () => {
+  const collection = lireCollection();
+  for (const carte of CARTES.filter(c => c.rang === 5)) delete collection[carte.id];
+  enregistrerCollection(collection);
+  demanderTestZ();
+  messageTest.textContent = "Ton prochain booster East Blue contiendra la Nami Z, comme une première découverte.";
+});
+
 afficherModeTest();

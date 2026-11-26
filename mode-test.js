@@ -11,6 +11,26 @@ function modeTest() {
   }
 }
 
+// « Prochain booster avec une Z » : le prochain booster d'une série qui a des cartes Z en contient une
+const CLE_TEST_Z = "tcg-one-piece/test-z";
+
+function demanderTestZ() {
+  try {
+    localStorage.setItem(CLE_TEST_Z, "1");
+  } catch {}
+}
+
+// Vrai une seule fois après la demande (le tirage consomme la demande)
+function consommerTestZ() {
+  try {
+    if (localStorage.getItem(CLE_TEST_Z) !== "1") return false;
+    localStorage.removeItem(CLE_TEST_Z);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function activerModeTest(actif) {
   try {
     if (actif) localStorage.setItem(CLE_MODE_TEST, "1");
