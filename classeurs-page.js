@@ -32,13 +32,11 @@ function afficherVueClasseurs(vue) {
   window.scrollTo(0, 0);
 }
 
-// ── Couverture d'un classeur (provisoire : un classeur sombre avec notre logo, en attendant le design choisi) ──
+// ── Couverture d'un classeur : « Cristal blanc », facettes claires et notre logo en noir ──
 
 function creerCouvertureClasseur() {
   const couverture = element("div", "couverture-classeur");
-  couverture.innerHTML = `
-    <span class="couverture-classeur__dos"><i></i><i></i><i></i></span>
-    <img class="couverture-classeur__logo" src="assets/logo/anima.svg" alt="">`;
+  couverture.innerHTML = `<img class="couverture-classeur__logo" src="assets/logo/anima-noir.svg" alt="">`;
   return couverture;
 }
 
