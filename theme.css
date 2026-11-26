@@ -55,6 +55,38 @@
   color-scheme: dark;
 }
 
+/* Onglets (Missions, Collection…) : une pastille par onglet, l'onglet ouvert en blanc */
+.onglets {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--bord);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.onglets__bouton {
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--texte-doux);
+  font: 400 15px / 1 var(--police-titre);
+  cursor: pointer;
+}
+
+.onglets__bouton[aria-selected="true"] {
+  background: #fff;
+  color: var(--encre);
+}
+
+.onglets__bouton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 /* Solde d'une monnaie (Animas…) : pastille sombre, la pièce puis le nombre ; rempli par animas.js */
 .solde {
   display: inline-flex;

@@ -47,6 +47,11 @@ function convertirNumeros(collection) {
   return { ...cartes, _version: VERSION_COLLECTION };
 }
 
+// Le numéro actuel d'une carte enregistrée sous une ancienne numérotation (classeurs.js)
+function convertirIdentifiant(id, depuisVersion = 0) {
+  return RENUMEROTATIONS.slice(depuisVersion).reduce((numero, correspondances) => correspondances[numero] || numero, id);
+}
+
 function lireCollection() {
   let collection;
   try {

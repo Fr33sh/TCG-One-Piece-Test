@@ -224,38 +224,6 @@
   border-color: rgb(125 255 196 / 35%);
 }
 
-/* ── Onglets : Quotidiennes / Jetons SSR ── */
-
-.onglets {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 4px;
-  border: 1px solid var(--bord);
-  border-radius: 999px;
-  background: var(--surface);
-}
-
-.onglets__bouton {
-  padding: 10px 8px;
-  border: 0;
-  border-radius: 999px;
-  background: none;
-  color: var(--texte-doux);
-  font: 400 15px / 1 var(--police-titre);
-  cursor: pointer;
-}
-
-.onglets__bouton[aria-selected="true"] {
-  background: #fff;
-  color: var(--encre);
-}
-
-.onglets__bouton:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-
 /* ── Jetons SSR : une grille par série ── */
 
 .jetons-compteur {

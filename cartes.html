@@ -26,11 +26,47 @@
   </header>
 
   <main>
-    <!-- Séries : un onglet par série, avec son illustration (rempli par cartes.js depuis donnees/series.js) -->
-    <section class="series"></section>
+    <!-- Deux onglets : les cartes, série par série, et les classeurs du joueur (classeurs-page.js) -->
+    <div class="onglets onglets--collection" role="tablist" aria-label="Collection">
+      <button class="onglets__bouton" type="button" role="tab" aria-selected="true" data-onglet="cartes">Cartes</button>
+      <button class="onglets__bouton" type="button" role="tab" aria-selected="false" data-onglet="classeurs">Classeurs</button>
+    </div>
 
-    <!-- Cartes de la série : celles pas encore obtenues sont des cases vides numérotées -->
-    <section class="apercu__grille" hidden></section>
+    <div data-panneau="cartes">
+      <!-- Séries : un onglet par série, avec son illustration (rempli par cartes.js depuis donnees/series.js) -->
+      <section class="series"></section>
+
+      <!-- Cartes de la série : celles pas encore obtenues sont des cases vides numérotées -->
+      <section class="apercu__grille" hidden></section>
+    </div>
+
+    <!-- Classeurs : la liste, un classeur ouvert (ses 20 places), ou le choix de ses cartes (classeurs-page.js) -->
+    <div data-panneau="classeurs" hidden>
+      <section class="classeurs" data-vue-classeurs="liste"></section>
+
+      <section class="classeur" data-vue-classeurs="ouvert" hidden>
+        <div class="classeur__entete">
+          <button class="petite-bulle-sombre" type="button" data-classeur-retour>← Mes classeurs</button>
+          <span class="classeur__compte" data-classeur-compte></span>
+        </div>
+        <h2 class="classeur__nom" data-classeur-nom></h2>
+        <div class="classeur__actions">
+          <button class="bouton-blanc" type="button" data-classeur-modifier>Choisir les cartes</button>
+          <button class="petite-bulle-sombre" type="button" data-classeur-renommer>Renommer</button>
+          <button class="petite-bulle-sombre petite-bulle-sombre--danger" type="button" data-classeur-supprimer>Supprimer</button>
+        </div>
+        <div class="apercu__grille classeur__grille" data-classeur-grille></div>
+      </section>
+
+      <section class="selection" data-vue-classeurs="selection" hidden>
+        <p class="selection__aide">Touche les cartes à mettre dans le classeur (20 au plus). Seules les cartes que tu possèdes sont proposées.</p>
+        <div data-selection-cartes></div>
+        <div class="selection__barre">
+          <span data-selection-compte></span>
+          <button class="bouton-blanc" type="button" data-selection-terminer>Terminer</button>
+        </div>
+      </section>
+    </div>
   </main>
   <nav class="navigation navigation--fixe" data-actif="collection"></nav>
 
@@ -87,6 +123,8 @@
   <script src="missions-quotidiennes.js"></script>
   <script src="animas.js"></script>
   <script src="cartes.js"></script>
+  <script src="classeurs.js"></script>
+  <script src="classeurs-page.js"></script>
   <script src="navigation.js"></script>
 </body>
 </html>
