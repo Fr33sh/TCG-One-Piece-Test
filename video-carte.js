@@ -70,11 +70,15 @@ function geometrieZoom(carte, video) {
   final.gauche = (largeurEcran - final.largeur) / 2;
   final.haut = (hauteurEcran - final.hauteur) / 2;
 
-  // Dans la carte, la boucle couvre l'illustration
+  // Dans la carte, la boucle couvre l'illustration, avec son cadrage (object-position, en %)
   const largeurDansCarte = Math.max(zone.width, zone.height / rapportBoucle);
+  const hauteurDansCarte = largeurDansCarte * rapportBoucle;
+  const [px, py] = (boucle?.style.objectPosition || "50% 50%").split(" ").map(valeur => (Number.isNaN(parseFloat(valeur)) ? 50 : parseFloat(valeur)) / 100);
+  const centreX = zone.left - (largeurDansCarte - zone.width) * px + largeurDansCarte / 2;
+  const centreY = zone.top - (hauteurDansCarte - zone.height) * py + hauteurDansCarte / 2;
   const echelle = largeurDansCarte / final.largeur;
-  const dx = zone.left + zone.width / 2 - largeurEcran / 2;
-  const dy = zone.top + zone.height / 2 - hauteurEcran / 2;
+  const dx = centreX - largeurEcran / 2;
+  const dy = centreY - hauteurEcran / 2;
   return {
     boucle,
     final,

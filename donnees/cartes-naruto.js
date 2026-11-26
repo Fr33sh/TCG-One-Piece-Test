@@ -1,6 +1,6 @@
 // Collection Naruto : données des cartes (personnages de l'arc du Pays des Vagues et d'avant). Collection complète.
 // camp : "konoha" | "brume" | "civil" (ne change pas l'apparence des cartes)
-// rang : 1 (A) · 2 (S) · 3 (SR) · 4 (SSR)
+// rang : 1 (A) · 2 (S) · 3 (SR) · 4 (SSR) · 5 (Z, 3 au plus par collection)
 // Numérotation : rang A, S, SR, SSR ; dans chaque rang les civils, puis Konoha, puis la Brume ; puis l'ordre de
 // l'histoire. Les images portent le numéro de leur carte (duos : une image par personnage, côte à côte).
 // illustration : images de l'anime (à remplacer avant toute diffusion) ; cadrage : point de l'image gardé visible.
@@ -180,5 +180,18 @@ const CARTES_NARUTO = [
     proprietes: "Fidèle outil de Zabuza, il manie les aiguilles et les miroirs de glace avec une douceur trompeuse.",
     equipe: "Brume", role: "Ninja déserteur",
     illustration: "assets/illustrations/NA-027.jpg", cadrage: "50% 30%",
+  },
+
+  // ── Z · Cartes ultimes (3 au plus par collection) : image animée ──
+  // boucle : l'extrait en aller-retour, muet, sur la carte ; video : la scène entière, avec le son, en plein écran
+  // (video-carte.js) ; jeton : le jeton de profil animé. Fabriqués par outils/animation.mjs.
+  {
+    id: "NA-028", nom: "Naruto Uzumaki", camp: "konoha", rang: 5,
+    proprietes: "« Ne touche pas à Iruka, sinon je te tue ! » Face à Mizuki, Naruto se dresse pour protéger son sensei.",
+    equipe: "Équipe 7", role: "Genin",
+    illustration: "assets/illustrations/NA-028.jpg", cadrage: "50% 30%",
+    boucle: "assets/animations/NA-028-boucle.mp4",
+    video: "assets/animations/NA-028.mp4",
+    jeton: "assets/icones-profil/NA-028.webp",
   },
 ];

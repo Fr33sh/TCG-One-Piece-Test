@@ -1,5 +1,5 @@
 // Prépare les vidéos d'une carte Z (outil local, non déployé) :
-//   node outils/animation.mjs EB-067 <vidéo entière> <extrait de 2 s>
+//   node outils/animation.mjs EB-067 <vidéo entière> <extrait de 2 s> [cadrage du jeton, 0 à 1]
 // - assets/animations/<id>.mp4 : la vidéo entière, sans retouche de l'image (seulement convertie en H.264/AAC
 //   pour être lue par tous les navigateurs) ;
 // - assets/animations/<id>-boucle.mp4 : l'extrait en aller-retour (boomerang), muet, bandes noires retirées ;
@@ -12,7 +12,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import ffmpeg from "ffmpeg-static";
 
-const [id, entiere, extrait] = process.argv.slice(2);
+// cadrage du jeton (facultatif, 0 à 1) : hauteur du carré gardé pour le jeton, 0 = en haut, 0.5 = au centre
+const [id, entiere, extrait, cadrageJeton = "0.5"] = process.argv.slice(2);
 if (!id || !entiere || !extrait) {
   console.error("Usage : node outils/animation.mjs <id> <vidéo entière> <extrait de 2 s>");
   process.exit(1);
@@ -45,7 +46,7 @@ lancer(["-i", extrait, "-frames:v", "1", ...(recadrage ? ["-vf", `crop=${recadra
 // 4. Jeton de profil : image animée (WebP) ronde du centre de la boucle, en aller-retour. Une image animée tourne
 // toujours, même là où le téléphone bloque la lecture automatique des vidéos (mode économie d'énergie).
 mkdirSync(join(racine, "assets/icones-profil"), { recursive: true });
-const jeton = `[0:v]${recadrage ? `crop=${recadrage},` : ""}crop='min(iw,ih)':'min(iw,ih)',scale=200:200:flags=lanczos,fps=20,split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0[v]`;
+const jeton = `[0:v]${recadrage ? `crop=${recadrage},` : ""}crop='min(iw,ih)':'min(iw,ih)':'(iw-min(iw,ih))/2':'(ih-min(iw,ih))*${Number(cadrageJeton)}',scale=200:200:flags=lanczos,fps=20,split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0[v]`;
 lancer(["-i", extrait, "-filter_complex", jeton, "-map", "[v]", "-an", "-c:v", "libwebp", "-quality", "72",
   "-compression_level", "6", "-loop", "0", join(racine, `assets/icones-profil/${id}.webp`)]);
 
