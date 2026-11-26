@@ -27,8 +27,8 @@
 }
 
 .pack {
-  /* Motif du logo de la collection, teinté aux couleurs du paquet, à la place des Poké Balls */
-  --motif: url("assets/packs/logo-motif-bleu.png");
+  /* Motif de notre symbole 魂, sur tous les boosters */
+  --motif: url("assets/logo/anima-symbole.svg");
   --tuile: calc(var(--l) * 0.22);
   --tuile-pied: calc(var(--l) * 0.14);
 
@@ -64,6 +64,12 @@
   content: "";
   position: absolute;
   inset: 0;
+}
+
+/* Motif discret, comme sur les autres boosters */
+.pack__entete::before,
+.pack__pied::before {
+  opacity: 0.3;
 }
 
 .pack__entete::before {
@@ -104,15 +110,6 @@
     0 calc(var(--l) * -0.006) 0 #0b0a09,
     calc(var(--l) * -0.006) 0 0 #0b0a09,
     calc(var(--l) * 0.005) calc(var(--l) * 0.01) 0 #5b4a39;
-}
-
-/* Le « O » de ONE PIECE est le logo de la collection */
-.pack__logo-o {
-  width: 0.92em;
-  height: 0.92em;
-  margin-right: 0.03em;
-  vertical-align: -0.12em;
-  filter: drop-shadow(0 calc(var(--l) * 0.005) 0 #0b0a09);
 }
 
 .pack__sous-titre {

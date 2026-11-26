@@ -4,7 +4,7 @@
 const APPARENCES_PACK = {
   "east-blue": {
     classe: "",
-    entete: `<span class="pack__logo"><img class="pack__logo-o" src="assets/packs/logo.png" alt="O">ne Piece</span>`,
+    entete: `<span class="pack__logo">One Piece</span>`,
     edition: "Pocket",
     illustration: `<img src="assets/packs/east-blue.jpg" alt="">`,
     titre: "EAST BLUE",
