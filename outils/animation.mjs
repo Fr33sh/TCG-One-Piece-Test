@@ -3,7 +3,8 @@
 // - assets/animations/<id>.mp4 : la vidéo entière, sans retouche de l'image (seulement convertie en H.264/AAC
 //   pour être lue par tous les navigateurs) ;
 // - assets/animations/<id>-boucle.mp4 : l'extrait en aller-retour (boomerang), muet, bandes noires retirées ;
-// - assets/illustrations/<id>.jpg : la première image de l'extrait (affichée le temps que la boucle charge).
+// - assets/illustrations/<id>.jpg : la première image de l'extrait (affichée le temps que la boucle charge) ;
+// - assets/icones-profil/<id>.webp : le jeton de profil animé.
 
 import { execFileSync, spawnSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
@@ -40,5 +41,12 @@ lancer(["-i", extrait, "-filter_complex", filtres, "-map", "[v]", "-an", "-c:v",
 // 3. Image d'attente
 lancer(["-i", extrait, "-frames:v", "1", ...(recadrage ? ["-vf", `crop=${recadrage}`] : []), "-q:v", "3",
   join(racine, `assets/illustrations/${id}.jpg`)]);
+
+// 4. Jeton de profil : image animée (WebP) ronde du centre de la boucle, en aller-retour. Une image animée tourne
+// toujours, même là où le téléphone bloque la lecture automatique des vidéos (mode économie d'énergie).
+mkdirSync(join(racine, "assets/icones-profil"), { recursive: true });
+const jeton = `[0:v]${recadrage ? `crop=${recadrage},` : ""}crop='min(iw,ih)':'min(iw,ih)',scale=200:200:flags=lanczos,fps=20,split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0[v]`;
+lancer(["-i", extrait, "-filter_complex", jeton, "-map", "[v]", "-an", "-c:v", "libwebp", "-quality", "72",
+  "-compression_level", "6", "-loop", "0", join(racine, `assets/icones-profil/${id}.webp`)]);
 
 console.log("Vidéos de", id, "prêtes.");

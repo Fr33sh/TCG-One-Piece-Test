@@ -694,5 +694,6 @@ const CARTES_EAST_BLUE = [
     illustration: "assets/illustrations/EB-067.jpg", cadrage: "50% 50%",
     boucle: "assets/animations/EB-067-boucle.mp4",
     video: "assets/animations/EB-067.mp4",
+    jeton: "assets/icones-profil/EB-067.webp", // jeton de profil animé (image animée, toujours en mouvement)
   },
 ];

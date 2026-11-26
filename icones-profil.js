@@ -30,7 +30,8 @@ function iconesProfil() {
   return [...ICONES_DE_BASE, ...jetons, ...jetonsZ()];
 }
 
-// Jetons Z : animés (la boucle de 2 secondes de la carte), offerts dès que la carte Z est dans la collection
+// Jetons Z : animés en permanence (image animée tirée de la boucle de 2 secondes de la carte), offerts dès que
+// la carte Z est dans la collection
 function jetonsZ() {
   if (typeof lireCollection !== "function") return [];
   const possedees = lireCollection();
@@ -40,9 +41,9 @@ function jetonsZ() {
       id: `z-${carte.id}`,
       serie: "Jetons Z",
       nom: carte.nom,
-      image: [].concat(carte.illustration)[0],
-      cadrage: carte.cadrage,
-      video: carte.boucle,
+      image: carte.jeton || [].concat(carte.illustration)[0],
+      cadrage: carte.jeton ? "" : carte.cadrage,
+      anime: true,
     })));
 }
 
@@ -69,7 +70,7 @@ function creerIconeProfil(id = lireIcone(), classe = "") {
   const icones = iconesProfil();
   const icone = icones.find(i => i.id === id) || icones.find(i => i.id === ICONE_DE_BASE);
   const jeton = document.createElement("span");
-  jeton.className = `icone-profil${icone.video ? " icone-profil--animee" : ""} ${classe}`.trim();
+  jeton.className = `icone-profil${icone.anime ? " icone-profil--animee" : ""} ${classe}`.trim();
   jeton.append(creerImageJeton(icone.image, icone.video, icone.cadrage));
   return jeton;
 }
