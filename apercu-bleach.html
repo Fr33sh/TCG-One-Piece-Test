@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Collection Bleach : choix des illustrations</title>
+  <!-- Page TEMPORAIRE : chaque carte de la collection Bleach en 2 versions (A et B), avec 2 images officielles de
+       l'anime (MyAnimeList, AniList). Les cartes sont les vraies cartes du jeu (rendu-carte.js, carte.css).
+       À supprimer après le choix. -->
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="carte.css">
+  <style>
+    body { margin: 0; padding: max(env(safe-area-inset-top), 24px) 14px 40px; background: var(--fond-eclaire) fixed; color: var(--texte); font-family: var(--police-texte); }
+    h1 { margin: 0; font: 400 24px var(--police-titre); text-align: center; }
+    .aide { margin: 6px auto 18px; max-width: 460px; color: var(--texte-doux); font-size: 14px; line-height: 1.4; text-align: center; }
+    .liste { display: flex; flex-direction: column; gap: 14px; max-width: 520px; margin: 0 auto; }
+    .bloc { padding: 12px; border: 1px solid var(--bord); border-radius: 18px; background: var(--surface); }
+    .bloc h2 { margin: 0 0 10px; font: 400 18px var(--police-titre); }
+    .bloc h2 span { color: var(--texte-faible); font-size: 14px; }
+    .versions { --largeur-carte: calc((min(100vw, 520px) - 28px - 24px - 12px) / 2); display: grid; grid-template-columns: repeat(2, var(--largeur-carte)); justify-content: center; gap: 12px; }
+    figure { position: relative; margin: 0; }
+    figcaption { position: absolute; top: -6px; left: -6px; z-index: 3; padding: 3px 10px; border-radius: 999px; background: #fff; color: var(--encre); font: 400 15px var(--police-titre); }
+    .absente { display: grid; place-items: center; aspect-ratio: 1260 / 1760; border: 1px dashed var(--bord-clair); border-radius: 14px; color: var(--texte-faible); font-size: 13px; text-align: center; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Collection Bleach : 24 cartes</h1>
+  <p class="aide">Chaque carte en 2 versions, avec 2 images de l'anime. Réponds par exemple « 1A 2B 3A… »
+    (ou « 5 aucune »). Menos Grande n'apparaît pas : aucune image trouvée, envoie-m'en une capture si tu veux la carte.</p>
+  <div class="liste"></div>
+
+  <script src="donnees/cartes-bleach.js"></script>
+  <script src="rendu-carte.js"></script>
+  <script>
+    // Images candidates (assets/bleach/candidats/<identifiant MyAnimeList>-A|B) de chaque carte ; une liste pour les duos
+    const CANDIDATS = {
+      "BL-001": ["4018", "1096"], "BL-002": ["4227", "9060"], "BL-003": ["12947"], "BL-004": ["8018", "3528"],
+      "BL-005": ["10139"], "BL-006": ["22844"], "BL-007": ["9362"], "BL-008": ["2553"], "BL-009": ["1094"],
+      "BL-010": ["15571"], "BL-011": ["1089"], "BL-012": ["22849"], "BL-013": ["9062"], "BL-014": ["27739"],
+      "BL-015": ["22952"], "BL-016": ["7"], "BL-017": ["575"], "BL-018": ["906"], "BL-019": ["7345"],
+      "BL-020": ["5"], "BL-021": ["210"], "BL-022": ["564"], "BL-023": ["6"], "BL-024": ["907"],
+    };
+    const EXTENSIONS = { "3528-B": "png" };
+    const ABSENTES = ["10139-B"];
+    const image = (id, version) => `assets/bleach/candidats/${id}-${version}.${EXTENSIONS[`${id}-${version}`] || "jpg"}`;
+
+    document.querySelector(".liste").append(...CARTES_BLEACH.map((carte, index) => {
+      const bloc = document.createElement("section");
+      bloc.className = "bloc";
+      bloc.innerHTML = `<h2>${index + 1} · ${carte.nom} <span>${carte.id} · ${LETTRES_RANG[carte.rang]}</span></h2>`;
+      const versions = document.createElement("div");
+      versions.className = "versions";
+      for (const version of ["A", "B"]) {
+        const figure = document.createElement("figure");
+        const ids = CANDIDATS[carte.id];
+        if (ids.some(id => ABSENTES.includes(`${id}-${version}`))) {
+          figure.innerHTML = `<div class="absente">Pas de 2e image trouvée</div>`;
+        } else {
+          const illustration = ids.map(id => image(id, version));
+          figure.append(creerCarte({ ...carte, illustration: illustration.length > 1 ? illustration : illustration[0], cadrage: "50% 30%" }));
+        }
+        figure.insertAdjacentHTML("beforeend", `<figcaption>${version}</figcaption>`);
+        versions.append(figure);
+      }
+      bloc.append(versions);
+      return bloc;
+    }));
+    document.fonts.ready.then(() => ajusterProprietes());
+  </script>
+</body>
+</html>

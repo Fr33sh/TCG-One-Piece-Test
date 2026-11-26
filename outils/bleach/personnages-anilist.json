@@ -1,0 +1,2459 @@
+﻿[
+    {
+        "id":  5,
+        "name":  {
+                     "full":  "Ichigo Kurosaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b5-a7bkJgjhhigE.png"
+                  }
+    },
+    {
+        "id":  6,
+        "name":  {
+                     "full":  "Rukia Kuchiki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b6-25WoBeWMZXBc.png"
+                  }
+    },
+    {
+        "id":  7,
+        "name":  {
+                     "full":  "Orihime Inoue"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b7-JdR4betokDjR.jpg"
+                  }
+    },
+    {
+        "id":  210,
+        "name":  {
+                     "full":  "Kisuke Urahara"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b210-mw01NrQfRjzT.png"
+                  }
+    },
+    {
+        "id":  245,
+        "name":  {
+                     "full":  "Toushirou Hitsugaya"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b245-buy3Cfn6IFSB.jpg"
+                  }
+    },
+    {
+        "id":  564,
+        "name":  {
+                     "full":  "Uryuu Ishida"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b564-a6LJitrjSfKC.jpg"
+                  }
+    },
+    {
+        "id":  575,
+        "name":  {
+                     "full":  "Yasutora Sado"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/575.jpg"
+                  }
+    },
+    {
+        "id":  904,
+        "name":  {
+                     "full":  "Rangiku Matsumoto"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b904-bdfi2xqHicCj.png"
+                  }
+    },
+    {
+        "id":  905,
+        "name":  {
+                     "full":  "Soi Fon"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b905-zKwCoIRiYJSr.png"
+                  }
+    },
+    {
+        "id":  906,
+        "name":  {
+                     "full":  "Renji Abarai"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b906-ImRjx5HFM8X6.png"
+                  }
+    },
+    {
+        "id":  907,
+        "name":  {
+                     "full":  "Byakuya Kuchiki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b907-kgnDKeMtEN5y.png"
+                  }
+    },
+    {
+        "id":  908,
+        "name":  {
+                     "full":  "Yoruichi Shihouin"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b908-JSYUkJLCw1f0.png"
+                  }
+    },
+    {
+        "id":  909,
+        "name":  {
+                     "full":  "Kenpachi Zaraki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b909-slhoFBon7oiH.jpg"
+                  }
+    },
+    {
+        "id":  910,
+        "name":  {
+                     "full":  "Yachiru Kusajishi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b910-cAC9g4i208Ou.png"
+                  }
+    },
+    {
+        "id":  911,
+        "name":  {
+                     "full":  "Zangetsu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b911-KgzOcvf4jhOh.png"
+                  }
+    },
+    {
+        "id":  1080,
+        "name":  {
+                     "full":  "Grimmjow Jaegerjaquez"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1080-JUNo2Or0UGZg.jpg"
+                  }
+    },
+    {
+        "id":  1081,
+        "name":  {
+                     "full":  "Ulquiorra Cifer"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1081-xLTqHfLL2I2W.png"
+                  }
+    },
+    {
+        "id":  1082,
+        "name":  {
+                     "full":  "Wonderweiss Margela"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1082-3wZlPgmoNW1j.png"
+                  }
+    },
+    {
+        "id":  1083,
+        "name":  {
+                     "full":  "Ryuuken Ishida"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1083-NnfsmUxq9493.png"
+                  }
+    },
+    {
+        "id":  1084,
+        "name":  {
+                     "full":  "Shinji Hirako"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1084-36qzqGdvxVLI.jpg"
+                  }
+    },
+    {
+        "id":  1085,
+        "name":  {
+                     "full":  "Kaname Tousen"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1085.jpg"
+                  }
+    },
+    {
+        "id":  1086,
+        "name":  {
+                     "full":  "Sousuke Aizen"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1086-qR9218BjZTC0.png"
+                  }
+    },
+    {
+        "id":  1087,
+        "name":  {
+                     "full":  "Gin Ichimaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1087-wMTny26FezYB.png"
+                  }
+    },
+    {
+        "id":  1088,
+        "name":  {
+                     "full":  "Jirou Sakuranosuke Shunsui Kyouraku"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1088-6oO10CmxZ1lP.jpg"
+                  }
+    },
+    {
+        "id":  1089,
+        "name":  {
+                     "full":  "Kon"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1089.jpg"
+                  }
+    },
+    {
+        "id":  1090,
+        "name":  {
+                     "full":  "Kuukaku Shiba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1090.jpg"
+                  }
+    },
+    {
+        "id":  1091,
+        "name":  {
+                     "full":  "Ganju Shiba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1091-yuxA8VXns4ui.png"
+                  }
+    },
+    {
+        "id":  1092,
+        "name":  {
+                     "full":  "Momo Hinamori"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1092.jpg"
+                  }
+    },
+    {
+        "id":  1093,
+        "name":  {
+                     "full":  "Izuru Kira"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1093-QmEOUj6fXYOK.png"
+                  }
+    },
+    {
+        "id":  1094,
+        "name":  {
+                     "full":  "Tatsuki Arisawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1094-NQUclNUVyIaF.jpg"
+                  }
+    },
+    {
+        "id":  1095,
+        "name":  {
+                     "full":  "Shuuhei Hisagi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1095-0vUC9qW8qXey.png"
+                  }
+    },
+    {
+        "id":  1096,
+        "name":  {
+                     "full":  "Yuzu Kurosaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1096.jpg"
+                  }
+    },
+    {
+        "id":  1151,
+        "name":  {
+                     "full":  "Ikkaku Madarame"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1151-izBrO6oWMvDv.png"
+                  }
+    },
+    {
+        "id":  1152,
+        "name":  {
+                     "full":  "Luppi Antenor"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1152-fBXUCtSJNi9P.png"
+                  }
+    },
+    {
+        "id":  1153,
+        "name":  {
+                     "full":  "D-Roy Rinker"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1153.jpg"
+                  }
+    },
+    {
+        "id":  1154,
+        "name":  {
+                     "full":  "Ilforte Grantz"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1154.jpg"
+                  }
+    },
+    {
+        "id":  1155,
+        "name":  {
+                     "full":  "Edrad Liones"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1155.jpg"
+                  }
+    },
+    {
+        "id":  1156,
+        "name":  {
+                     "full":  "Shawlong Qu Fong"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1156.jpg"
+                  }
+    },
+    {
+        "id":  1157,
+        "name":  {
+                     "full":  "Nakeem Greendina"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1157.jpg"
+                  }
+    },
+    {
+        "id":  1158,
+        "name":  {
+                     "full":  "Hiyori Sarugaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1158-El0ysCY1dLKy.png"
+                  }
+    },
+    {
+        "id":  1159,
+        "name":  {
+                     "full":  "Yammy Llargo"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/1159.jpg"
+                  }
+    },
+    {
+        "id":  1168,
+        "name":  {
+                     "full":  "Mayuri Kurotsuchi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1168-y2jsGtlJVv4z.png"
+                  }
+    },
+    {
+        "id":  1893,
+        "name":  {
+                     "full":  "Kaien Shiba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b1893-dd3KycfGEIGl.png"
+                  }
+    },
+    {
+        "id":  2161,
+        "name":  {
+                     "full":  "Hanatarou Yamada"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2161-DyKLTXn1hkcL.png"
+                  }
+    },
+    {
+        "id":  2340,
+        "name":  {
+                     "full":  "Love Aikawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/2340.jpg"
+                  }
+    },
+    {
+        "id":  2341,
+        "name":  {
+                     "full":  "Roujuuro Otoribashi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2341-9TX1HBmLggia.png"
+                  }
+    },
+    {
+        "id":  2342,
+        "name":  {
+                     "full":  "Mashiro Kuna"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2342-HgxxCTpDXn8P.png"
+                  }
+    },
+    {
+        "id":  2343,
+        "name":  {
+                     "full":  "Lisa Yadoumaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2343-UzmRMWkqWGhV.png"
+                  }
+    },
+    {
+        "id":  2344,
+        "name":  {
+                     "full":  "Kensei Muguruma"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2344-ZvQAiyfpcERl.png"
+                  }
+    },
+    {
+        "id":  2345,
+        "name":  {
+                     "full":  "Hachigen Ushouda"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/2345.jpg"
+                  }
+    },
+    {
+        "id":  2553,
+        "name":  {
+                     "full":  "Isshin Kurosaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2553-tDUlab4F0lFJ.png"
+                  }
+    },
+    {
+        "id":  2682,
+        "name":  {
+                     "full":  "Juushirou Ukitake"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b2682-4BB6qdB296iG.png"
+                  }
+    },
+    {
+        "id":  3095,
+        "name":  {
+                     "full":  "Nanao Ise"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3095-jgR7uWIcBnzL.png"
+                  }
+    },
+    {
+        "id":  3100,
+        "name":  {
+                     "full":  "Nemu Kurotsuchi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3100-RTZLrbclOLRh.jpg"
+                  }
+    },
+    {
+        "id":  3209,
+        "name":  {
+                     "full":  "Aaroniero Arruruerie"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3209-qEAXukEt8MRh.png"
+                  }
+    },
+    {
+        "id":  3210,
+        "name":  {
+                     "full":  "Nnoitra Gilga"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3210-QlxtHKmXjFk0.png"
+                  }
+    },
+    {
+        "id":  3211,
+        "name":  {
+                     "full":  "Szayel Aporro Grantz"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3211-zqoObUuMBvul.png"
+                  }
+    },
+    {
+        "id":  3212,
+        "name":  {
+                     "full":  "Coyote Starrk"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3212-F5qZe4NWlZq9.png"
+                  }
+    },
+    {
+        "id":  3217,
+        "name":  {
+                     "full":  "Tier Harribel"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3217-WahxtOqdRxJq.png"
+                  }
+    },
+    {
+        "id":  3501,
+        "name":  {
+                     "full":  "Nova"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/3501.jpg"
+                  }
+    },
+    {
+        "id":  3528,
+        "name":  {
+                     "full":  "Ururu Tsumugiya"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3528-KwSjRgsgYqW8.png"
+                  }
+    },
+    {
+        "id":  3845,
+        "name":  {
+                     "full":  "Retsu Unohana"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3845-B0r5OCEkdJOR.png"
+                  }
+    },
+    {
+        "id":  3911,
+        "name":  {
+                     "full":  "Yumichika Ayasegawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b3911-MPzJX9ra7TRN.png"
+                  }
+    },
+    {
+        "id":  4018,
+        "name":  {
+                     "full":  "Karin Kurosaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b4018-M4tKGEeRdOjD.png"
+                  }
+    },
+    {
+        "id":  4227,
+        "name":  {
+                     "full":  "Keigo Asano"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/4227.jpg"
+                  }
+    },
+    {
+        "id":  4298,
+        "name":  {
+                     "full":  "Sajin Komamura"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b4298-nuazBlSaHL7y.png"
+                  }
+    },
+    {
+        "id":  4357,
+        "name":  {
+                     "full":  "Mizuho Asano"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/4357.jpg"
+                  }
+    },
+    {
+        "id":  4730,
+        "name":  {
+                     "full":  "Nelliel Tu Oderschvank"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b4730-zvzowqOHaQL2.png"
+                  }
+    },
+    {
+        "id":  5176,
+        "name":  {
+                     "full":  "Kiyone Kotetsu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b5176-AsYPxjTxN5QH.png"
+                  }
+    },
+    {
+        "id":  5427,
+        "name":  {
+                     "full":  "Ririn"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/5427.jpg"
+                  }
+    },
+    {
+        "id":  5726,
+        "name":  {
+                     "full":  "Genryuusai Yamamoto"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b5726-mO7kc8Abka9J.jpg"
+                  }
+    },
+    {
+        "id":  5727,
+        "name":  {
+                     "full":  "Choujiro Sasakibe"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/5727.jpg"
+                  }
+    },
+    {
+        "id":  5728,
+        "name":  {
+                     "full":  "Marechiyo Oomaeda"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/5728.jpg"
+                  }
+    },
+    {
+        "id":  5985,
+        "name":  {
+                     "full":  "Jin Kariya"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/5985.jpg"
+                  }
+    },
+    {
+        "id":  6131,
+        "name":  {
+                     "full":  "Zommari Leroux"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b6131-OekXjKGIpZfA.png"
+                  }
+    },
+    {
+        "id":  7059,
+        "name":  {
+                     "full":  "Isane Kotetsu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b7059-X5eRgZ9ZtnUG.jpg"
+                  }
+    },
+    {
+        "id":  7345,
+        "name":  {
+                     "full":  "Grand Fisher"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/7345.jpg"
+                  }
+    },
+    {
+        "id":  7426,
+        "name":  {
+                     "full":  "Pesche Guatiche"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/7426.jpg"
+                  }
+    },
+    {
+        "id":  7429,
+        "name":  {
+                     "full":  "Cirucci Thunderwitch"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b7429-6bwRITWlAsnJ.png"
+                  }
+    },
+    {
+        "id":  7430,
+        "name":  {
+                     "full":  "Dordonii Alessandro Del Socacchio"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b7430-oZXzM4cbH8qc.png"
+                  }
+    },
+    {
+        "id":  8018,
+        "name":  {
+                     "full":  "Jinta Hanakari"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/8018.jpg"
+                  }
+    },
+    {
+        "id":  8021,
+        "name":  {
+                     "full":  "Dondochakka Birstanne"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/8021.jpg"
+                  }
+    },
+    {
+        "id":  8022,
+        "name":  {
+                     "full":  "Hinagiku"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/8022.jpg"
+                  }
+    },
+    {
+        "id":  8023,
+        "name":  {
+                     "full":  "Mabashi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/8023.jpg"
+                  }
+    },
+    {
+        "id":  8139,
+        "name":  {
+                     "full":  "Bawabawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/8139.jpg"
+                  }
+    },
+    {
+        "id":  9060,
+        "name":  {
+                     "full":  "Mizuiro Kojima"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/9060.jpg"
+                  }
+    },
+    {
+        "id":  9062,
+        "name":  {
+                     "full":  "Don Kan\u0027onji"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/9062.jpg"
+                  }
+    },
+    {
+        "id":  9198,
+        "name":  {
+                     "full":  "Yoshino Souma"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/9198.jpg"
+                  }
+    },
+    {
+        "id":  9206,
+        "name":  {
+                     "full":  "Ran\u0027Tao"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/9206.jpg"
+                  }
+    },
+    {
+        "id":  9362,
+        "name":  {
+                     "full":  "Fishbone D"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/9362.jpg"
+                  }
+    },
+    {
+        "id":  9509,
+        "name":  {
+                     "full":  "Zennosuke Kurumadani"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b9509-pRhyyXzY9zCY.jpg"
+                  }
+    },
+    {
+        "id":  10507,
+        "name":  {
+                     "full":  "Baraggan Louisenbairn"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/10507.jpg"
+                  }
+    },
+    {
+        "id":  10704,
+        "name":  {
+                     "full":  "Ashido Kanou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/10704.jpg"
+                  }
+    },
+    {
+        "id":  11328,
+        "name":  {
+                     "full":  "Lily"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/11328.jpg"
+                  }
+    },
+    {
+        "id":  11820,
+        "name":  {
+                     "full":  "Kuroud"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/11820.jpg"
+                  }
+    },
+    {
+        "id":  11931,
+        "name":  {
+                     "full":  "Shuusuke Amagai"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/11931.jpg"
+                  }
+    },
+    {
+        "id":  12381,
+        "name":  {
+                     "full":  "Rurichiyo Kasumiouji"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/12381.jpg"
+                  }
+    },
+    {
+        "id":  12947,
+        "name":  {
+                     "full":  "Chizuru Honshou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/12947.jpg"
+                  }
+    },
+    {
+        "id":  14144,
+        "name":  {
+                     "full":  "Daiji Hirasago"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/14144.jpg"
+                  }
+    },
+    {
+        "id":  14351,
+        "name":  {
+                     "full":  "Lilynette Gingerback"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/14351.jpg"
+                  }
+    },
+    {
+        "id":  14630,
+        "name":  {
+                     "full":  "Tesla Lindocruz"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/14630.jpg"
+                  }
+    },
+    {
+        "id":  15457,
+        "name":  {
+                     "full":  "Rin Tsubokura"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/15457.jpg"
+                  }
+    },
+    {
+        "id":  15571,
+        "name":  {
+                     "full":  "Tessai Tsukabishi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/15571.jpg"
+                  }
+    },
+    {
+        "id":  15692,
+        "name":  {
+                     "full":  "Maki Ichinose"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/15692.jpg"
+                  }
+    },
+    {
+        "id":  15795,
+        "name":  {
+                     "full":  "Findorr Calius"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/15795.jpg"
+                  }
+    },
+    {
+        "id":  16042,
+        "name":  {
+                     "full":  "Loly Aivirrne"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/16042.jpg"
+                  }
+    },
+    {
+        "id":  16303,
+        "name":  {
+                     "full":  "Rudbornn Chelute"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/16303.jpg"
+                  }
+    },
+    {
+        "id":  16573,
+        "name":  {
+                     "full":  "Ggio Vega"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/16573.jpg"
+                  }
+    },
+    {
+        "id":  17150,
+        "name":  {
+                     "full":  "Cyan Sung-Sun"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/17150.jpg"
+                  }
+    },
+    {
+        "id":  17960,
+        "name":  {
+                     "full":  "Emilou Apacci"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/17960.jpg"
+                  }
+    },
+    {
+        "id":  18461,
+        "name":  {
+                     "full":  "Tetsuzaemon Iba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b18461-WmBOltJcVJsg.png"
+                  }
+    },
+    {
+        "id":  18462,
+        "name":  {
+                     "full":  "Iceringer"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18462.jpg"
+                  }
+    },
+    {
+        "id":  18463,
+        "name":  {
+                     "full":  "Ryuusei Kenzaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18463.jpg"
+                  }
+    },
+    {
+        "id":  18464,
+        "name":  {
+                     "full":  "Gou Koga"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18464.jpg"
+                  }
+    },
+    {
+        "id":  18465,
+        "name":  {
+                     "full":  "Jidanbou Ikkanzaka"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18465.jpg"
+                  }
+    },
+    {
+        "id":  18658,
+        "name":  {
+                     "full":  "Rusaburou Enkougawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18658.jpg"
+                  }
+    },
+    {
+        "id":  18659,
+        "name":  {
+                     "full":  "Shuu Kannogi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18659.jpg"
+                  }
+    },
+    {
+        "id":  18964,
+        "name":  {
+                     "full":  "Hisana Kuchiki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/18964.jpg"
+                  }
+    },
+    {
+        "id":  19514,
+        "name":  {
+                     "full":  "Makoto Kibune"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/19514.jpg"
+                  }
+    },
+    {
+        "id":  20048,
+        "name":  {
+                     "full":  "Hanza Nukui"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/20048.jpg"
+                  }
+    },
+    {
+        "id":  20050,
+        "name":  {
+                     "full":  "Jinnai Douko"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/20050.jpg"
+                  }
+    },
+    {
+        "id":  20051,
+        "name":  {
+                     "full":  "Ryuu Kuzu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/20051.jpg"
+                  }
+    },
+    {
+        "id":  21634,
+        "name":  {
+                     "full":  "Charlotte Chuhlhourne"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/21634.jpg"
+                  }
+    },
+    {
+        "id":  21700,
+        "name":  {
+                     "full":  "Franceska Mila Rose"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/21700.jpg"
+                  }
+    },
+    {
+        "id":  22388,
+        "name":  {
+                     "full":  "Ayon"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22388.jpg"
+                  }
+    },
+    {
+        "id":  22844,
+        "name":  {
+                     "full":  "Souken Ishida"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22844.jpg"
+                  }
+    },
+    {
+        "id":  22845,
+        "name":  {
+                     "full":  "Ginrei Kuchiki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22845.jpg"
+                  }
+    },
+    {
+        "id":  22846,
+        "name":  {
+                     "full":  "Sentarou Kotsubaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22846.jpg"
+                  }
+    },
+    {
+        "id":  22847,
+        "name":  {
+                     "full":  "Gantenbainne Mosqueda"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22847.jpg"
+                  }
+    },
+    {
+        "id":  22849,
+        "name":  {
+                     "full":  "Masaki Kurosaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b22849-otOHGvyllWxD.png"
+                  }
+    },
+    {
+        "id":  22851,
+        "name":  {
+                     "full":  "Michiru Ogawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22851.jpg"
+                  }
+    },
+    {
+        "id":  22852,
+        "name":  {
+                     "full":  "Ryo Kunieda"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22852.jpg"
+                  }
+    },
+    {
+        "id":  22853,
+        "name":  {
+                     "full":  "Mahana Natsui"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22853.jpg"
+                  }
+    },
+    {
+        "id":  22854,
+        "name":  {
+                     "full":  "Misato Ochi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22854.jpg"
+                  }
+    },
+    {
+        "id":  22855,
+        "name":  {
+                     "full":  "Kagine"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22855.jpg"
+                  }
+    },
+    {
+        "id":  22857,
+        "name":  {
+                     "full":  "Reiichi Oshima"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22857.jpg"
+                  }
+    },
+    {
+        "id":  22858,
+        "name":  {
+                     "full":  "Harutoki Ide"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22858.jpg"
+                  }
+    },
+    {
+        "id":  22859,
+        "name":  {
+                     "full":  "Gitano Shigeo"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22859.jpg"
+                  }
+    },
+    {
+        "id":  22861,
+        "name":  {
+                     "full":  "Kaneda"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22861.jpg"
+                  }
+    },
+    {
+        "id":  22862,
+        "name":  {
+                     "full":  "Miyuki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22862.jpg"
+                  }
+    },
+    {
+        "id":  22863,
+        "name":  {
+                     "full":  "Hou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22863.jpg"
+                  }
+    },
+    {
+        "id":  22864,
+        "name":  {
+                     "full":  "Ryou Utagawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22864.jpg"
+                  }
+    },
+    {
+        "id":  22865,
+        "name":  {
+                     "full":  "Ugaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22865.jpg"
+                  }
+    },
+    {
+        "id":  22866,
+        "name":  {
+                     "full":  "Yoshi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22866.jpg"
+                  }
+    },
+    {
+        "id":  22867,
+        "name":  {
+                     "full":  "Cain"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22867.jpg"
+                  }
+    },
+    {
+        "id":  22868,
+        "name":  {
+                     "full":  "Sawatari"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22868.jpg"
+                  }
+    },
+    {
+        "id":  22875,
+        "name":  {
+                     "full":  "Yasochika Iemura"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22875.jpg"
+                  }
+    },
+    {
+        "id":  22877,
+        "name":  {
+                     "full":  "Harunobu Ogido"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22877.jpg"
+                  }
+    },
+    {
+        "id":  22878,
+        "name":  {
+                     "full":  "Rikichi Yuki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22878.jpg"
+                  }
+    },
+    {
+        "id":  22879,
+        "name":  {
+                     "full":  "Jiroubou Ikkanzaka"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22879.jpg"
+                  }
+    },
+    {
+        "id":  22882,
+        "name":  {
+                     "full":  "Tatsufusa Enjoji"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b22882-Xa1Nmd4oYn6b.png"
+                  }
+    },
+    {
+        "id":  22883,
+        "name":  {
+                     "full":  "Toshimori Umesada"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22883.jpg"
+                  }
+    },
+    {
+        "id":  22885,
+        "name":  {
+                     "full":  "Koukichirou Takezoe"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22885.jpg"
+                  }
+    },
+    {
+        "id":  22887,
+        "name":  {
+                     "full":  "Makizou Aramaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22887.jpg"
+                  }
+    },
+    {
+        "id":  22890,
+        "name":  {
+                     "full":  "Hiyosu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b22890-qDVOXNNnQslF.png"
+                  }
+    },
+    {
+        "id":  22892,
+        "name":  {
+                     "full":  "Akon"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b22892-3YTzrfhH52J2.png"
+                  }
+    },
+    {
+        "id":  22895,
+        "name":  {
+                     "full":  "Miyako Shiba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22895.jpg"
+                  }
+    },
+    {
+        "id":  22901,
+        "name":  {
+                     "full":  "Danzoumaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22901.jpg"
+                  }
+    },
+    {
+        "id":  22902,
+        "name":  {
+                     "full":  "Aoga"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22902.jpg"
+                  }
+    },
+    {
+        "id":  22904,
+        "name":  {
+                     "full":  "Kanisawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22904.jpg"
+                  }
+    },
+    {
+        "id":  22906,
+        "name":  {
+                     "full":  "Gengorou Onabara"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22906.jpg"
+                  }
+    },
+    {
+        "id":  22937,
+        "name":  {
+                     "full":  "Gyoukaku Kumoi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22937.jpg"
+                  }
+    },
+    {
+        "id":  22938,
+        "name":  {
+                     "full":  "Genga"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22938.jpg"
+                  }
+    },
+    {
+        "id":  22940,
+        "name":  {
+                     "full":  "Abirama Redder"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22940.jpg"
+                  }
+    },
+    {
+        "id":  22941,
+        "name":  {
+                     "full":  "Choe Neng Poww"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22941.jpg"
+                  }
+    },
+    {
+        "id":  22942,
+        "name":  {
+                     "full":  "Nirgge Parduoc"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22942.jpg"
+                  }
+    },
+    {
+        "id":  22943,
+        "name":  {
+                     "full":  "Medazeppi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22943.jpg"
+                  }
+    },
+    {
+        "id":  22944,
+        "name":  {
+                     "full":  "Menoly Mallia"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22944.jpg"
+                  }
+    },
+    {
+        "id":  22945,
+        "name":  {
+                     "full":  "Menis"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22945.jpg"
+                  }
+    },
+    {
+        "id":  22946,
+        "name":  {
+                     "full":  "Demora"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22946.jpg"
+                  }
+    },
+    {
+        "id":  22947,
+        "name":  {
+                     "full":  "Aldegor"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22947.jpg"
+                  }
+    },
+    {
+        "id":  22948,
+        "name":  {
+                     "full":  "Patros"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22948.jpg"
+                  }
+    },
+    {
+        "id":  22949,
+        "name":  {
+                     "full":  "Zonzain"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22949.jpg"
+                  }
+    },
+    {
+        "id":  22950,
+        "name":  {
+                     "full":  "Runuganga"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22950.jpg"
+                  }
+    },
+    {
+        "id":  22951,
+        "name":  {
+                     "full":  "Metastacia"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22951.jpg"
+                  }
+    },
+    {
+        "id":  22952,
+        "name":  {
+                     "full":  "Shrieker"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22952.jpg"
+                  }
+    },
+    {
+        "id":  22953,
+        "name":  {
+                     "full":  "Numb Chandelier"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22953.jpg"
+                  }
+    },
+    {
+        "id":  22954,
+        "name":  {
+                     "full":  "Bulbous G"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22954.jpg"
+                  }
+    },
+    {
+        "id":  22955,
+        "name":  {
+                     "full":  "Jibakurai"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22955.jpg"
+                  }
+    },
+    {
+        "id":  22956,
+        "name":  {
+                     "full":  "Acidwire"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22956.jpg"
+                  }
+    },
+    {
+        "id":  22957,
+        "name":  {
+                     "full":  "Hexapodus"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/22957.jpg"
+                  }
+    },
+    {
+        "id":  24133,
+        "name":  {
+                     "full":  "Muramasa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24133.jpg"
+                  }
+    },
+    {
+        "id":  24524,
+        "name":  {
+                     "full":  "Sode no Shirayuki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24524.jpg"
+                  }
+    },
+    {
+        "id":  24525,
+        "name":  {
+                     "full":  "Katen Kyoukotsu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24525.jpg"
+                  }
+    },
+    {
+        "id":  24526,
+        "name":  {
+                     "full":  "Kazeshini"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24526.jpg"
+                  }
+    },
+    {
+        "id":  24527,
+        "name":  {
+                     "full":  "Tobiume"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24527.jpg"
+                  }
+    },
+    {
+        "id":  24528,
+        "name":  {
+                     "full":  "Zabimaru (Female)"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24528.jpg"
+                  }
+    },
+    {
+        "id":  24705,
+        "name":  {
+                     "full":  "Oscar Joaquin de la Rosa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/24705.jpg"
+                  }
+    },
+    {
+        "id":  24771,
+        "name":  {
+                     "full":  "Haineko"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b24771-pg0kqRK29TbD.png"
+                  }
+    },
+    {
+        "id":  25368,
+        "name":  {
+                     "full":  "Heita Momoyama"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/25368.jpg"
+                  }
+    },
+    {
+        "id":  25881,
+        "name":  {
+                     "full":  "Hyourinmaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/25881.jpg"
+                  }
+    },
+    {
+        "id":  26546,
+        "name":  {
+                     "full":  "Houzukimaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/26546.jpg"
+                  }
+    },
+    {
+        "id":  27054,
+        "name":  {
+                     "full":  "Suzumebachi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/27054.jpg"
+                  }
+    },
+    {
+        "id":  27157,
+        "name":  {
+                     "full":  "Ruri\u0027iro Kujaku"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/27157.jpg"
+                  }
+    },
+    {
+        "id":  27387,
+        "name":  {
+                     "full":  "Senbonzakura"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/27387.jpg"
+                  }
+    },
+    {
+        "id":  27739,
+        "name":  {
+                     "full":  "Sora Inoue"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/27739.jpg"
+                  }
+    },
+    {
+        "id":  28723,
+        "name":  {
+                     "full":  "Koga Kuchiki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/28723.jpg"
+                  }
+    },
+    {
+        "id":  29307,
+        "name":  {
+                     "full":  "Zabimaru (Male)"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/29307.jpg"
+                  }
+    },
+    {
+        "id":  30779,
+        "name":  {
+                     "full":  "Wabisuke"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/30779.jpg"
+                  }
+    },
+    {
+        "id":  31362,
+        "name":  {
+                     "full":  "Kyouko Haida"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31362.jpg"
+                  }
+    },
+    {
+        "id":  31364,
+        "name":  {
+                     "full":  "Heita Toujoin"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31364.jpg"
+                  }
+    },
+    {
+        "id":  31365,
+        "name":  {
+                     "full":  "Kei Uehara"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31365.jpg"
+                  }
+    },
+    {
+        "id":  31366,
+        "name":  {
+                     "full":  "Mai Suzuki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31366.jpg"
+                  }
+    },
+    {
+        "id":  31368,
+        "name":  {
+                     "full":  "Aida"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31368.jpg"
+                  }
+    },
+    {
+        "id":  31369,
+        "name":  {
+                     "full":  "Inose"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31369.jpg"
+                  }
+    },
+    {
+        "id":  31370,
+        "name":  {
+                     "full":  "Kanou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31370.jpg"
+                  }
+    },
+    {
+        "id":  31373,
+        "name":  {
+                     "full":  "Eikichirou Saidou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31373.jpg"
+                  }
+    },
+    {
+        "id":  31375,
+        "name":  {
+                     "full":  "Koganehiko"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31375.jpg"
+                  }
+    },
+    {
+        "id":  31376,
+        "name":  {
+                     "full":  "Shiroganehiko"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31376.jpg"
+                  }
+    },
+    {
+        "id":  31377,
+        "name":  {
+                     "full":  "Horiuchi Hironari"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31377.jpg"
+                  }
+    },
+    {
+        "id":  31378,
+        "name":  {
+                     "full":  "Taichi Miyamoto"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31378.jpg"
+                  }
+    },
+    {
+        "id":  31379,
+        "name":  {
+                     "full":  "Kenji Yamashita"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31379.jpg"
+                  }
+    },
+    {
+        "id":  31380,
+        "name":  {
+                     "full":  "Mitsuru Ishino"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31380.jpg"
+                  }
+    },
+    {
+        "id":  31381,
+        "name":  {
+                     "full":  "Sadatomo Saionji"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31381.jpg"
+                  }
+    },
+    {
+        "id":  31382,
+        "name":  {
+                     "full":  "Shouta Toyokawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31382.jpg"
+                  }
+    },
+    {
+        "id":  31383,
+        "name":  {
+                     "full":  "Yui Toyokawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31383.jpg"
+                  }
+    },
+    {
+        "id":  31385,
+        "name":  {
+                     "full":  "Narunosuke"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31385.jpg"
+                  }
+    },
+    {
+        "id":  31386,
+        "name":  {
+                     "full":  "Ayame"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31386.jpg"
+                  }
+    },
+    {
+        "id":  31387,
+        "name":  {
+                     "full":  "Baigon"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31387.jpg"
+                  }
+    },
+    {
+        "id":  31388,
+        "name":  {
+                     "full":  "Shun\u0027ou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31388.jpg"
+                  }
+    },
+    {
+        "id":  31389,
+        "name":  {
+                     "full":  "Tsubaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31389.jpg"
+                  }
+    },
+    {
+        "id":  31390,
+        "name":  {
+                     "full":  "Gegetsuburi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31390.jpg"
+                  }
+    },
+    {
+        "id":  31391,
+        "name":  {
+                     "full":  "Sougyo no Kotowari"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31391.jpg"
+                  }
+    },
+    {
+        "id":  31395,
+        "name":  {
+                     "full":  "Dalk"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31395.jpg"
+                  }
+    },
+    {
+        "id":  31396,
+        "name":  {
+                     "full":  "Ritz"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31396.jpg"
+                  }
+    },
+    {
+        "id":  31397,
+        "name":  {
+                     "full":  "Nieder"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/31397.jpg"
+                  }
+    },
+    {
+        "id":  35867,
+        "name":  {
+                     "full":  "Shinobu Eishima"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/35867.jpg"
+                  }
+    },
+    {
+        "id":  36309,
+        "name":  {
+                     "full":  "Narrator"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b36309-6KM0riV4lqfN.jpg"
+                  }
+    },
+    {
+        "id":  37797,
+        "name":  {
+                     "full":  "Ban"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/37797.jpg"
+                  }
+    },
+    {
+        "id":  38393,
+        "name":  {
+                     "full":  "Shuren"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/38393.jpg"
+                  }
+    },
+    {
+        "id":  38471,
+        "name":  {
+                     "full":  "Kuugo Ginjou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b38471-hakxlfbUxEQO.png"
+                  }
+    },
+    {
+        "id":  38567,
+        "name":  {
+                     "full":  "Kakyou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/38567.jpg"
+                  }
+    },
+    {
+        "id":  38568,
+        "name":  {
+                     "full":  "Giriko Kutsuzawa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/38568.jpg"
+                  }
+    },
+    {
+        "id":  39609,
+        "name":  {
+                     "full":  "Riruka Dokugamine"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b39609-uFe2eljvz1Sn.png"
+                  }
+    },
+    {
+        "id":  41052,
+        "name":  {
+                     "full":  "Shuukurou Tsukishima"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b41052-qYaEYkyc7JIQ.png"
+                  }
+    },
+    {
+        "id":  41126,
+        "name":  {
+                     "full":  "Yukio Hans Vorarlberna"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b41126-zxwKFGt8PPm8.png"
+                  }
+    },
+    {
+        "id":  41563,
+        "name":  {
+                     "full":  "Jackie Tristan"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b41563-6FplDzkFGeyB.png"
+                  }
+    },
+    {
+        "id":  41640,
+        "name":  {
+                     "full":  "Haruko"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/41640.jpg"
+                  }
+    },
+    {
+        "id":  42385,
+        "name":  {
+                     "full":  "Nozomi Kujo"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/42385.jpg"
+                  }
+    },
+    {
+        "id":  42432,
+        "name":  {
+                     "full":  "Kageroza Inaba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/42432.jpg"
+                  }
+    },
+    {
+        "id":  42938,
+        "name":  {
+                     "full":  "Moe Shishigawara"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/42938.jpg"
+                  }
+    },
+    {
+        "id":  45769,
+        "name":  {
+                     "full":  "Verona"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/45769.jpg"
+                  }
+    },
+    {
+        "id":  45773,
+        "name":  {
+                     "full":  "Lumina"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/45773.jpg"
+                  }
+    },
+    {
+        "id":  48491,
+        "name":  {
+                     "full":  "Taikon"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/48491.jpg"
+                  }
+    },
+    {
+        "id":  48555,
+        "name":  {
+                     "full":  "Kaoru Unagiya"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/48555.jpg"
+                  }
+    },
+    {
+        "id":  48557,
+        "name":  {
+                     "full":  "Ikumi Unagiya"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b48557-H94I98rbMbEk.png"
+                  }
+    },
+    {
+        "id":  50115,
+        "name":  {
+                     "full":  "Gunjo"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/50115.jpg"
+                  }
+    },
+    {
+        "id":  50117,
+        "name":  {
+                     "full":  "Garogai"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/50117.jpg"
+                  }
+    },
+    {
+        "id":  57287,
+        "name":  {
+                     "full":  "Heizou Kasaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/57287.jpg"
+                  }
+    },
+    {
+        "id":  57289,
+        "name":  {
+                     "full":  "Izaemon Toudou"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/57289.jpg"
+                  }
+    },
+    {
+        "id":  58119,
+        "name":  {
+                     "full":  "Seizo Harugasaki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/58119.jpg"
+                  }
+    },
+    {
+        "id":  59491,
+        "name":  {
+                     "full":  "Masayoshi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/59491.jpg"
+                  }
+    },
+    {
+        "id":  59493,
+        "name":  {
+                     "full":  "Mayu"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/59493.jpg"
+                  }
+    },
+    {
+        "id":  59669,
+        "name":  {
+                     "full":  "Ouko Yushima"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/59669.jpg"
+                  }
+    },
+    {
+        "id":  59739,
+        "name":  {
+                     "full":  "Ashisogi Jizo"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/59739.jpg"
+                  }
+    },
+    {
+        "id":  77459,
+        "name":  {
+                     "full":  "Shin\u0027etsu Kisaragi"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/77459.jpg"
+                  }
+    },
+    {
+        "id":  85237,
+        "name":  {
+                     "full":  "Shinji"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85237.jpg"
+                  }
+    },
+    {
+        "id":  85239,
+        "name":  {
+                     "full":  "Ino"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85239.jpg"
+                  }
+    },
+    {
+        "id":  85241,
+        "name":  {
+                     "full":  "Hashigami"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85241.jpg"
+                  }
+    },
+    {
+        "id":  85245,
+        "name":  {
+                     "full":  "Gonryoumaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85245.jpg"
+                  }
+    },
+    {
+        "id":  85247,
+        "name":  {
+                     "full":  "Tenken"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85247.jpg"
+                  }
+    },
+    {
+        "id":  85249,
+        "name":  {
+                     "full":  "Minazuki"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85249.jpg"
+                  }
+    },
+    {
+        "id":  85251,
+        "name":  {
+                     "full":  "Hisagomaru"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85251.jpg"
+                  }
+    },
+    {
+        "id":  85255,
+        "name":  {
+                     "full":  "Battikaroa"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85255.jpg"
+                  }
+    },
+    {
+        "id":  85257,
+        "name":  {
+                     "full":  "Michel"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85257.jpg"
+                  }
+    },
+    {
+        "id":  85341,
+        "name":  {
+                     "full":  "Yokochini"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85341.jpg"
+                  }
+    },
+    {
+        "id":  85343,
+        "name":  {
+                     "full":  "Touba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85343.jpg"
+                  }
+    },
+    {
+        "id":  85345,
+        "name":  {
+                     "full":  "Sayori"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/85345.jpg"
+                  }
+    },
+    {
+        "id":  198648,
+        "name":  {
+                     "full":  "Yuichi  Shibata"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b198648-Nqvr4HzMy9Yv.jpg"
+                  }
+    },
+    {
+        "id":  218495,
+        "name":  {
+                     "full":  "Kukkapuuro"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b218495-Xz37Hw23gnxP.png"
+                  }
+    },
+    {
+        "id":  262725,
+        "name":  {
+                     "full":  "Toshirin"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b262725-vkvwf78BniBl.png"
+                  }
+    },
+    {
+        "id":  262726,
+        "name":  {
+                     "full":  "Nobutsune Seike"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b262726-TSKtbXnci1XZ.png"
+                  }
+    },
+    {
+        "id":  262727,
+        "name":  {
+                     "full":  "Ryouhei Toba"
+                 },
+        "image":  {
+                      "large":  "https://s4.anilist.co/file/anilistcdn/character/large/b262727-tA1R0lLRGcod.png"
+                  }
+    }
+]
