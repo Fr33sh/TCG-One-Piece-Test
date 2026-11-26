@@ -1,6 +1,6 @@
 // Collection Bleach : données des cartes (personnages du premier arc, « Shinigami remplaçant », épisodes 1 à 20).
 // camp : "humain" | "quincy" | "shinigami" | "hollow" (ne change pas l'apparence des cartes)
-// rang : 1 (A) · 2 (S) · 3 (SR) · 4 (SSR)
+// rang : 1 (A) · 2 (S) · 3 (SR) · 4 (SSR) · 5 (Z, 3 au plus par collection)
 // Numérotation : rang A, S, SR, SSR ; dans chaque rang les humains, puis les Quincy et les Shinigami, puis les
 // Hollows ; puis l'ordre de l'histoire. Les images portent le numéro de leur carte (duos : une image par personnage).
 // illustration : images de l'anime (à remplacer avant toute diffusion) ; cadrage : point de l'image gardé visible.
@@ -158,5 +158,18 @@ const CARTES_BLEACH = [
     proprietes: "Capitaine de la 6e division et chef du clan Kuchiki, d'un calme glacial, venu arrêter sa propre sœur.",
     equipe: "6e division", role: "Capitaine",
     illustration: "assets/illustrations/BL-024.jpg", cadrage: "50% 30%",
+  },
+
+  // ── Z · Cartes ultimes (3 au plus par collection) : image animée ──
+  // boucle : l'extrait en aller-retour, muet, sur la carte ; video : la scène entière, avec le son, en plein écran
+  // (video-carte.js) ; jeton : le jeton de profil animé. Fabriqués par outils/animation.mjs.
+  {
+    id: "BL-025", nom: "Rukia Kuchiki", camp: "shinigami", rang: 5,
+    proprietes: "« Je suis une Shinigami, une faucheuse d'âmes. » Ainsi commence tout, dans la chambre d'Ichigo.",
+    equipe: "13e division", role: "Shinigami",
+    illustration: "assets/illustrations/BL-025.jpg", cadrage: "50% 50%",
+    boucle: "assets/animations/BL-025-boucle.mp4",
+    video: "assets/animations/BL-025.mp4",
+    jeton: "assets/icones-profil/BL-025.webp",
   },
 ];

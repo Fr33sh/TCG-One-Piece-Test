@@ -25,7 +25,7 @@ document.querySelector("[data-test-z]").addEventListener("click", () => {
   for (const carte of CARTES.filter(c => c.rang === 5)) delete collection[carte.id];
   enregistrerCollection(collection);
   demanderTestZ();
-  messageTest.textContent = "Ton prochain booster East Blue ou Naruto contiendra sa carte Z, comme une première découverte.";
+  messageTest.textContent = "Ton prochain booster (East Blue, Naruto ou Bleach) contiendra sa carte Z, comme une première découverte.";
 });
 
 afficherModeTest();
