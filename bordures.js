@@ -30,6 +30,7 @@ const BORDURES = [
   { id: "feuilles", categorie: "petite", nom: "Feuilles d'automne", description: "Feuilles qui tombent en tournoyant." },
   { id: "poussiere-or", categorie: "petite", nom: "Poussière d'or", description: "Paillettes d'or qui scintillent sur du noir." },
   { id: "reflets-eau", categorie: "petite", nom: "Reflets d'eau", description: "La lumière ondule comme au fond d'une piscine." },
+  { id: "plumes", categorie: "petite", nom: "Plumes", description: "Plumes blanches qui descendent en planant." },
   // Animation classique : tout le cadre est en mouvement
   { id: "prisma-vivant", categorie: "classique", nom: "Prisma vivant", description: "L'arc-en-ciel défile autour de la carte." },
   { id: "celeste", categorie: "classique", nom: "Céleste", description: "De l'or en mouvement." },
@@ -39,6 +40,8 @@ const BORDURES = [
   { id: "courant", categorie: "classique", nom: "Courant électrique", description: "Filet rayé qui court autour de la carte." },
   { id: "ecailles", categorie: "classique", nom: "Écailles de dragon", description: "Écailles vertes et or qui glissent." },
   { id: "cristal", categorie: "classique", nom: "Cristal Anima", description: "Facettes noires, filet prisma, éclat qui traverse." },
+  { id: "circuit", categorie: "classique", nom: "Circuit", description: "Pistes cyan où courent des impulsions de lumière." },
+  { id: "damas", categorie: "classique", nom: "Damas doré", description: "Motif d'or sur noir, reflet qui passe." },
   // Grosse animation : mouvement rapide et lueur qui pulse
   { id: "flammes", categorie: "grosse", nom: "Flammes", description: "Un feu qui ondule vers le haut." },
   { id: "flamme-ame", categorie: "grosse", nom: "Flamme d'âme", description: "Un feu violet qui monte." },

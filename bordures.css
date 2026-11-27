@@ -602,6 +602,71 @@
   to { --rayon-bordure: calc(var(--u) * 26); }
 }
 
+/* ── Série 5 ── */
+
+/* Plumes : plumes blanches qui descendent en planant (petite animation) */
+.carte.bordure--plumes {
+  position: relative;
+  background: linear-gradient(180deg, #8fc8ff, #4a8ad8);
+  --lisere: #fff;
+  --halo: 0 0 calc(var(--u) * 40) rgb(150 200 255 / 35%);
+}
+
+.carte.bordure--plumes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse calc(var(--u) * 4) calc(var(--u) * 16), #fff 70%, transparent) 0 0 / calc(var(--u) * 90) calc(var(--u) * 140),
+    radial-gradient(ellipse calc(var(--u) * 3) calc(var(--u) * 11), rgb(255 255 255 / 85%) 70%, transparent) calc(var(--u) * 45) calc(var(--u) * 70) / calc(var(--u) * 90) calc(var(--u) * 140);
+  pointer-events: none;
+  animation: bordure-plumes 12s ease-in-out infinite;
+}
+
+.carte.bordure--plumes .carte__cadre {
+  position: relative;
+}
+
+@keyframes bordure-plumes {
+  0% { background-position: 0 0, calc(var(--u) * 45) calc(var(--u) * 70); }
+  50% { background-position: calc(var(--u) * 30) calc(var(--u) * 140), calc(var(--u) * 15) calc(var(--u) * 210); }
+  100% { background-position: 0 calc(var(--u) * 280), calc(var(--u) * 45) calc(var(--u) * 350); }
+}
+
+/* Circuit : pistes cyan où courent des impulsions de lumière (animation classique) */
+.carte.bordure--circuit {
+  background:
+    linear-gradient(90deg, transparent 0 40%, #7cf6ff 48%, transparent 56%) 0 0 / calc(var(--u) * 160) calc(var(--u) * 40),
+    linear-gradient(90deg, rgb(63 240 255 / 35%) 0 calc(var(--u) * 3), transparent calc(var(--u) * 3)) 0 0 / calc(var(--u) * 40) calc(var(--u) * 40),
+    linear-gradient(0deg, rgb(63 240 255 / 35%) 0 calc(var(--u) * 3), transparent calc(var(--u) * 3)) 0 0 / calc(var(--u) * 40) calc(var(--u) * 40),
+    #041218;
+  --lisere: #3ff0ff;
+  --halo: 0 0 calc(var(--u) * 45) rgb(63 240 255 / 35%);
+  animation: bordure-circuit 1.8s linear infinite;
+}
+
+@keyframes bordure-circuit {
+  to { background-position: calc(var(--u) * 160) 0, 0 0, 0 0, 0 0; }
+}
+
+/* Damas doré : motif d'or sur noir, reflet qui passe (animation classique) */
+.carte.bordure--damas {
+  background:
+    linear-gradient(115deg, transparent 38%, rgb(255 240 190 / 60%) 48%, transparent 58%) 0 0 / 250% 100%,
+    radial-gradient(circle at 50% 50%, transparent calc(var(--u) * 10), #c8962c calc(var(--u) * 11) calc(var(--u) * 13), transparent calc(var(--u) * 14)) 0 0 / calc(var(--u) * 50) calc(var(--u) * 50),
+    radial-gradient(circle at 50% 50%, #e8c060 0 calc(var(--u) * 4), transparent calc(var(--u) * 5)) calc(var(--u) * 25) calc(var(--u) * 25) / calc(var(--u) * 50) calc(var(--u) * 50),
+    #0d0b08;
+  --lisere: linear-gradient(180deg, #fbe39a, #b8861e);
+  --halo: 0 0 calc(var(--u) * 45) rgb(224 180 74 / 35%);
+  animation: bordure-damas 3.5s ease-in-out infinite;
+}
+
+@keyframes bordure-damas {
+  0% { background-position: 150% 0, 0 0, calc(var(--u) * 25) calc(var(--u) * 25), 0 0; }
+  65%, 100% { background-position: -150% 0, 0 0, calc(var(--u) * 25) calc(var(--u) * 25), 0 0; }
+}
+
 @keyframes bordure-scintille {
   0%, 100% { opacity: 0.25; }
   50% { opacity: 1; }
