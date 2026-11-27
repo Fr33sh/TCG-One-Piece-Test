@@ -52,37 +52,74 @@ body.page-boutique {
   bottom: calc(var(--hauteur-navigation) + 12px);
 }
 
-.bordures-boutique {
-  --largeur-carte: calc((min(100vw, 520px) - 32px - 28px - 20px) / 3);
+/* ── Bordures : une colonne par catégorie, côte à côte ; on fait glisser pour voir les suivantes ── */
+
+.colonnes-bordures {
+  --largeur-carte: 118px;
 
   display: grid;
-  grid-template-columns: repeat(3, var(--largeur-carte));
-  justify-content: center;
-  gap: 18px 10px;
+  grid-auto-columns: 146px;
+  grid-auto-flow: column;
+  gap: 10px;
+  margin: 0 -14px;
+  padding: 0 14px 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 14px;
+  scrollbar-width: none;
 }
 
-/* Une catégorie de bordures : titre souligné d'un trait prisma, puis ses bordures */
-.categorie-bordures + .categorie-bordures {
-  margin-top: 22px;
+.colonnes-bordures::-webkit-scrollbar {
+  display: none;
 }
 
-.categorie-bordures__titre {
+.colonne-bordures {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 12px 10px 14px;
+  border: 1px solid var(--bord);
+  border-radius: 16px;
+  background: var(--creux);
+  scroll-snap-align: start;
+}
+
+/* En-tête de colonne : la catégorie, soulignée d'un trait prisma, et les votes du joueur */
+.colonne-bordures__entete {
   position: relative;
-  margin: 0 4px 14px;
-  padding-bottom: 7px;
-  font: 400 17px / 1 var(--police-titre);
-  letter-spacing: 0.02em;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 52px;
+  padding-bottom: 8px;
+  text-align: center;
 }
 
-.categorie-bordures__titre::after {
+.colonne-bordures__entete::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
   width: 42px;
   height: 2px;
   border-radius: 2px;
   background: var(--prisma);
+  translate: -50% 0;
+}
+
+.colonne-bordures__titre {
+  font: 400 15px / 1.1 var(--police-titre);
+}
+
+.colonne-bordures__votes {
+  color: var(--texte-faible);
+  font: 700 11px / 1 var(--police-texte);
+}
+
+.colonne-bordures__liste {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .article-bordure {
@@ -106,6 +143,26 @@ body.page-boutique {
   font: 700 11px / 1.3 var(--police-texte);
 }
 
-.article-bordure__achat {
-  margin-top: auto;
+/* Bouton de vote : sombre, puis blanc avec une coche une fois le vote donné */
+.bouton-vote {
+  min-width: 92px;
+  padding: 8px 14px;
+  border: 1px solid var(--bord-clair);
+  border-radius: 999px;
+  background: var(--surface-haute);
+  color: var(--texte);
+  font: 400 13px / 1 var(--police-titre);
+  cursor: pointer;
 }
+
+.bouton-vote--vote {
+  border-color: #fff;
+  background: #fff;
+  box-shadow: 0 0 12px rgb(185 140 255 / 45%);
+  color: var(--encre);
+}
+
+.bouton-vote:active {
+  transform: translateY(1px);
+}
+

@@ -1,5 +1,6 @@
 // Serveur du jeu (Cloudflare Worker). Cloudflare sert lui-même les fichiers du jeu ; ce Worker ne répond
-// qu'aux adresses /api/… : connexion avec Discord, compte (pseudo#1234), sauvegarde en ligne et amis.
+// qu'aux adresses /api/… : connexion avec Discord, compte (pseudo#1234), sauvegarde en ligne, amis et votes pour
+// les cadres de la Boutique (résultats : GET /api/votes/resultats).
 // Toutes les données sont gardées dans un seul Durable Object « Social », avec sa propre base SQLite.
 //
 // Un compte est lié à un compte Discord. À chaque connexion Discord, le serveur remet au navigateur une
@@ -60,6 +61,7 @@ const PSEUDO_VALIDE = /^[\p{L}\p{N}_-]{3,16}$/u;
 const NOMBRE_TAGS = 10000; // de #0000 à #9999
 const TAILLE_MAX_SAUVEGARDE = 200000; // caractères
 const COOKIE_ETAT = "discord_etat";
+const MAX_VOTES_CATEGORIE = 5;
 
 class ErreurJeu extends Error {
   constructor(message, statut = 400) {
@@ -133,7 +135,54 @@ export class Social extends DurableObject {
         depuis INTEGER NOT NULL,
         PRIMARY KEY (joueur, ami)
       );
+      CREATE TABLE IF NOT EXISTS votes_cadres (
+        compte TEXT NOT NULL,
+        cadre TEXT NOT NULL,
+        categorie TEXT NOT NULL,
+        cree INTEGER NOT NULL,
+        PRIMARY KEY (compte, cadre)
+      );
     `);
+  }
+
+  // ── Votes pour les cadres de la Boutique : 5 au plus par catégorie et par joueur ──
+
+  // Catalogue des cadres (id → catégorie), lu dans bordures.js, le même fichier que le jeu
+  async catalogueCadres() {
+    if (!this.cadres) {
+      const fichier = await this.env.ASSETS.fetch("https://jeu.local/bordures.js");
+      if (!fichier.ok) throw new ErreurJeu("Le catalogue des cadres est introuvable.", 500);
+      const texte = await fichier.text();
+      this.cadres = new Map([...texte.matchAll(/\{\s*id:\s*"([^"]+)",\s*categorie:\s*"([^"]+)"/g)].map(m => [m[1], m[2]]));
+    }
+    return this.cadres;
+  }
+
+  mesVotes(moi) {
+    return { votes: this.sql.exec("SELECT cadre FROM votes_cadres WHERE compte = ?", moi.id).toArray().map(ligne => ligne.cadre) };
+  }
+
+  // Vote pour un cadre, ou retire le vote s'il existait
+  async voter(moi, corps) {
+    const cadre = String(corps.cadre ?? "");
+    const categorie = (await this.catalogueCadres()).get(cadre);
+    if (!categorie) throw new ErreurJeu("Ce cadre n'existe pas.", 404);
+    const dejaVote = this.sql.exec("SELECT 1 FROM votes_cadres WHERE compte = ? AND cadre = ?", moi.id, cadre).toArray().length > 0;
+    if (dejaVote) {
+      this.sql.exec("DELETE FROM votes_cadres WHERE compte = ? AND cadre = ?", moi.id, cadre);
+    } else {
+      const dansCategorie = this.sql.exec("SELECT COUNT(*) AS n FROM votes_cadres WHERE compte = ? AND categorie = ?", moi.id, categorie).one().n;
+      if (dansCategorie >= MAX_VOTES_CATEGORIE) throw new ErreurJeu(`Tu as déjà voté pour ${MAX_VOTES_CATEGORIE} cadres de cette catégorie : retire un vote pour en donner un autre.`);
+      this.sql.exec("INSERT INTO votes_cadres (compte, cadre, categorie, cree) VALUES (?, ?, ?, ?)", moi.id, cadre, categorie, Date.now());
+    }
+    return this.mesVotes(moi);
+  }
+
+  // Résultats : nombre de votes par cadre et nombre de votants (aucune donnée personnelle)
+  resultatsVotes() {
+    const votes = Object.fromEntries(this.sql.exec("SELECT cadre, COUNT(*) AS n FROM votes_cadres GROUP BY cadre").toArray().map(l => [l.cadre, l.n]));
+    const votants = this.sql.exec("SELECT COUNT(DISTINCT compte) AS n FROM votes_cadres").one().n;
+    return { votants, votes };
   }
 
   async fetch(requete) {
@@ -145,9 +194,14 @@ export class Social extends DurableObject {
     if (route === "GET /api/discord/retour") return this.retourDeDiscord(requete, url);
 
     try {
+      // Résultats des votes : publics, sans compte
+      if (route === "GET /api/votes/resultats") return enJson(this.resultatsVotes());
+
       const corps = requete.method === "POST" ? await requete.json().catch(() => ({})) : {};
       const moi = await this.compteConnecte(requete);
       switch (route) {
+        case "GET /api/votes": return enJson(this.mesVotes(moi));
+        case "POST /api/votes": return enJson(await this.voter(moi, corps));
         case "GET /api/compte": return enJson(this.decrireCompte(moi));
         case "POST /api/compte/pseudo": return enJson(this.choisirPseudo(moi, corps));
         case "GET /api/sauvegarde": return enJson(this.lireSauvegarde(moi));
