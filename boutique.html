@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="boutique.css">
   <link rel="stylesheet" href="navigation.css">
 </head>
-<body class="avec-navigation">
+<body class="avec-navigation page-boutique">
   <header class="barre-page">
     <h1 class="barre-page__titre">Boutique</h1>
     <span class="solde barre-page__solde" role="status" aria-label="Animas possédés">
@@ -20,14 +20,32 @@
     </span>
   </header>
 
+  <!-- Onglets du haut : la monnaie (boutique.js) -->
+  <div class="onglets onglets--relief boutique__monnaies" role="tablist" aria-label="Monnaie">
+    <button class="onglets__bouton" type="button" role="tab" aria-selected="true" data-monnaie="animas">Animas</button>
+    <button class="onglets__bouton" type="button" role="tab" aria-selected="false" data-monnaie="tokens">Tokens</button>
+  </div>
+
   <main class="liste-bulles">
-    <!-- Bordures de cartes : chacune montrée sur une carte du jeu (remplie par boutique.js depuis bordures.js) -->
-    <section class="bulle-page" aria-labelledby="titre-bordures">
+    <!-- Animas · Décorations : les bordures de cartes, chacune sur une carte du jeu (boutique.js, bordures.js) -->
+    <section class="bulle-page" data-rayon="animas-decorations" aria-labelledby="titre-bordures">
       <h2 class="bulle-page__titre" id="titre-bordures">Bordures de cartes</h2>
       <p class="bulle-page__texte">Change le cadre de tes cartes.</p>
       <div class="bordures-boutique" data-bordures></div>
     </section>
+
+    <!-- Rayon encore vide -->
+    <section class="bulle-page" data-rayon-vide hidden>
+      <h2 class="bulle-page__titre">Bientôt</h2>
+      <p class="bulle-page__texte">Ce rayon ouvre bientôt ses portes. Reviens vite !</p>
+    </section>
   </main>
+
+  <!-- Onglets du bas, juste au-dessus du menu : le rayon (boutique.js) -->
+  <div class="onglets onglets--relief boutique__rayons" role="tablist" aria-label="Rayon">
+    <button class="onglets__bouton" type="button" role="tab" aria-selected="true" data-rayon-onglet="decorations">Décorations</button>
+    <button class="onglets__bouton" type="button" role="tab" aria-selected="false" data-rayon-onglet="evenements">Événements</button>
+  </div>
 
   <nav class="navigation navigation--fixe" data-actif="boutique"></nav>
 

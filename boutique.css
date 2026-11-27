@@ -1,4 +1,56 @@
-/* Boutique : les bordures de cartes, trois par ligne */
+/* Boutique : deux barres d'onglets en relief (la monnaie en haut, le rayon en bas, au-dessus du menu), puis les
+   articles ; les bordures de cartes, trois par ligne. */
+
+/* Place pour les deux barres d'onglets */
+body.page-boutique {
+  padding-top: calc(var(--hauteur-barre) + 78px);
+  padding-bottom: calc(var(--hauteur-navigation) + 96px);
+}
+
+/* Barre d'onglets en relief : bombée, éclairée par le haut ; l'onglet ouvert est une pastille blanche surélevée */
+.onglets--relief {
+  position: fixed;
+  right: 16px;
+  left: 16px;
+  z-index: 4;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid var(--bord-clair);
+  background: linear-gradient(180deg, #2a2a33, #15151a);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    inset 0 -2px 0 rgb(0 0 0 / 45%),
+    0 8px 18px rgb(0 0 0 / 55%);
+}
+
+.onglets--relief .onglets__bouton {
+  padding: 11px 8px 10px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.onglets--relief .onglets__bouton[aria-selected="true"] {
+  background: linear-gradient(180deg, #ffffff, #e4e4ea);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 2px 0 #a9a9b6,
+    0 4px 10px rgb(0 0 0 / 50%);
+  transform: translateY(-1px);
+}
+
+.onglets--relief .onglets__bouton:active {
+  transform: translateY(1px);
+}
+
+/* Onglets du haut : sous la barre « Boutique » */
+.boutique__monnaies {
+  top: calc(var(--hauteur-barre) + 12px);
+}
+
+/* Onglets du bas : juste au-dessus du menu */
+.boutique__rayons {
+  bottom: calc(var(--hauteur-navigation) + 12px);
+}
 
 .bordures-boutique {
   --largeur-carte: calc((min(100vw, 520px) - 32px - 28px - 20px) / 3);
