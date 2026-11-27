@@ -539,6 +539,69 @@
   animation: bordure-tourne 0.9s linear infinite, bordure-pulse 0.9s ease-in-out infinite;
 }
 
+/* ── Série 4 ── */
+
+/* Reflets d'eau : la lumière ondule comme au fond d'une piscine (petite animation) */
+.carte.bordure--reflets-eau {
+  position: relative;
+  background: linear-gradient(160deg, #1fa3b3, #0a5a6e);
+  --lisere: #e6feff;
+  --halo: 0 0 calc(var(--u) * 40) rgb(80 220 240 / 30%);
+}
+
+.carte.bordure--reflets-eau::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse calc(var(--u) * 30) calc(var(--u) * 10), rgb(255 255 255 / 55%), transparent 70%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 60),
+    radial-gradient(ellipse calc(var(--u) * 12) calc(var(--u) * 26), rgb(220 255 255 / 45%), transparent 70%) calc(var(--u) * 40) calc(var(--u) * 30) / calc(var(--u) * 80) calc(var(--u) * 90);
+  pointer-events: none;
+  animation: bordure-reflets 7s ease-in-out infinite alternate;
+}
+
+.carte.bordure--reflets-eau .carte__cadre {
+  position: relative;
+}
+
+@keyframes bordure-reflets {
+  to { background-position: calc(var(--u) * 45) calc(var(--u) * 30), calc(var(--u) * -40) calc(var(--u) * 75); }
+}
+
+/* Cristal Anima : facettes noires, filet prisma, éclat qui traverse (animation classique) */
+.carte.bordure--cristal {
+  background:
+    linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 55%) 48%, rgb(185 140 255 / 40%) 52%, transparent 62%) 0 0 / 250% 100%,
+    linear-gradient(60deg, transparent 49%, rgb(255 255 255 / 14%) 50%, transparent 51%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 78),
+    linear-gradient(-60deg, transparent 49%, rgb(255 255 255 / 14%) 50%, transparent 51%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 78),
+    linear-gradient(0deg, transparent 49%, rgb(255 255 255 / 10%) 50%, transparent 51%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 78),
+    conic-gradient(from 30deg at 30% 25%, #1b1b21 0 25%, #121216 0 50%, #202027 0 75%, #0e0e11 0);
+  --lisere: var(--prisma-diagonal);
+  --halo: 0 0 calc(var(--u) * 50) rgb(185 140 255 / 35%);
+  animation: bordure-cristal 3.2s ease-in-out infinite;
+}
+
+@keyframes bordure-cristal {
+  0% { background-position: 150% 0, 0 0, 0 0, 0 0, 0 0; }
+  65%, 100% { background-position: -150% 0, 0 0, 0 0, 0 0, 0 0; }
+}
+
+/* Hyperespace : traînées d'étoiles qui jaillissent du centre à toute vitesse (grosse animation) */
+.carte.bordure--hyperespace {
+  background:
+    repeating-radial-gradient(circle at 50% 50%, transparent calc(var(--rayon-bordure)), rgb(200 225 255 / 90%) calc(var(--rayon-bordure) + var(--u) * 3), transparent calc(var(--rayon-bordure) + var(--u) * 8), transparent calc(var(--rayon-bordure) + var(--u) * 26)),
+    repeating-conic-gradient(from 0deg, rgb(255 255 255 / 85%) 0 0.8deg, transparent 0.8deg 7deg),
+    radial-gradient(circle, #2a3a8a, #02030f 70%);
+  --lisere: #cfe4ff;
+  --lueur: rgb(140 180 255 / 85%);
+  animation: bordure-hyperespace 0.4s linear infinite, bordure-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes bordure-hyperespace {
+  to { --rayon-bordure: calc(var(--u) * 26); }
+}
+
 @keyframes bordure-scintille {
   0%, 100% { opacity: 0.25; }
   50% { opacity: 1; }

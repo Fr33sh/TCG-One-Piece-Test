@@ -29,6 +29,7 @@ const BORDURES = [
   { id: "bulles", categorie: "petite", nom: "Bulles", description: "Bulles qui remontent doucement." },
   { id: "feuilles", categorie: "petite", nom: "Feuilles d'automne", description: "Feuilles qui tombent en tournoyant." },
   { id: "poussiere-or", categorie: "petite", nom: "Poussière d'or", description: "Paillettes d'or qui scintillent sur du noir." },
+  { id: "reflets-eau", categorie: "petite", nom: "Reflets d'eau", description: "La lumière ondule comme au fond d'une piscine." },
   // Animation classique : tout le cadre est en mouvement
   { id: "prisma-vivant", categorie: "classique", nom: "Prisma vivant", description: "L'arc-en-ciel défile autour de la carte." },
   { id: "celeste", categorie: "classique", nom: "Céleste", description: "De l'or en mouvement." },
@@ -37,6 +38,7 @@ const BORDURES = [
   { id: "pluie-numerique", categorie: "classique", nom: "Pluie numérique", description: "Traînées vertes qui tombent." },
   { id: "courant", categorie: "classique", nom: "Courant électrique", description: "Filet rayé qui court autour de la carte." },
   { id: "ecailles", categorie: "classique", nom: "Écailles de dragon", description: "Écailles vertes et or qui glissent." },
+  { id: "cristal", categorie: "classique", nom: "Cristal Anima", description: "Facettes noires, filet prisma, éclat qui traverse." },
   // Grosse animation : mouvement rapide et lueur qui pulse
   { id: "flammes", categorie: "grosse", nom: "Flammes", description: "Un feu qui ondule vers le haut." },
   { id: "flamme-ame", categorie: "grosse", nom: "Flamme d'âme", description: "Un feu violet qui monte." },
@@ -47,4 +49,5 @@ const BORDURES = [
   { id: "feu-de-glace", categorie: "grosse", nom: "Feu de glace", description: "Flammes bleues rapides." },
   { id: "onde-de-choc", categorie: "grosse", nom: "Onde de choc", description: "Anneaux de feu qui explosent du centre." },
   { id: "tornade", categorie: "grosse", nom: "Tornade", description: "Vent gris et blanc qui tourne à toute vitesse." },
+  { id: "hyperespace", categorie: "grosse", nom: "Hyperespace", description: "Traînées d'étoiles qui jaillissent du centre." },
 ];
