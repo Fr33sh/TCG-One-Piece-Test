@@ -61,6 +61,30 @@ body.page-boutique {
   gap: 18px 10px;
 }
 
+/* Une catégorie de bordures : titre souligné d'un trait prisma, puis ses bordures */
+.categorie-bordures + .categorie-bordures {
+  margin-top: 22px;
+}
+
+.categorie-bordures__titre {
+  position: relative;
+  margin: 0 4px 14px;
+  padding-bottom: 7px;
+  font: 400 17px / 1 var(--police-titre);
+  letter-spacing: 0.02em;
+}
+
+.categorie-bordures__titre::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 42px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--prisma);
+}
+
 .article-bordure {
   display: flex;
   flex-direction: column;

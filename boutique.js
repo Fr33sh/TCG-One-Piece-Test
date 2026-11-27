@@ -1,10 +1,10 @@
-// Boutique : les bordures de cartes (bordures.js), chacune montrée sur la même carte du jeu.
-// L'achat ouvrira quand le prix et l'application aux cartes seront décidés.
+// Boutique : les bordures de cartes (bordures.js), par catégorie d'animation, chacune montrée sur la même carte
+// du jeu. L'achat ouvrira quand le prix et l'application aux cartes seront décidés.
 
 const carteVitrine = CARTES.find(carte => carte.rang === 4 && carte.illustration) || CARTES[0];
 const vitrine = document.querySelector("[data-bordures]");
 
-vitrine.replaceChildren(...BORDURES.map(bordure => {
+function creerArticleBordure(bordure) {
   const article = element("article", "article-bordure");
   const carte = creerCarte(carteVitrine);
   carte.classList.add(`bordure--${bordure.id}`);
@@ -14,6 +14,14 @@ vitrine.replaceChildren(...BORDURES.map(bordure => {
   article.append(carte, element("h3", "article-bordure__nom", bordure.nom),
     element("p", "article-bordure__description", bordure.description), achat);
   return article;
+}
+
+vitrine.replaceChildren(...CATEGORIES_BORDURES.map(categorie => {
+  const bloc = element("div", "categorie-bordures");
+  const grille = element("div", "bordures-boutique");
+  grille.append(...BORDURES.filter(bordure => bordure.categorie === categorie.id).map(creerArticleBordure));
+  bloc.append(element("h3", "categorie-bordures__titre", categorie.nom), grille);
+  return bloc;
 }));
 
 document.fonts.ready.then(() => ajusterProprietes(vitrine));
