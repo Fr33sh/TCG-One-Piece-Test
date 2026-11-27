@@ -47,9 +47,15 @@ function jetonsZ() {
     })));
 }
 
+// Choix gardé : { id, _version } ; un jeton de carte (« ssr-BL-024 », « z-EB-067 ») suit les renumérotations
+// (collection.js). Les anciens choix, enregistrés seuls, datent de la numérotation 3.
 function lireIcone() {
   try {
-    const id = JSON.parse(localStorage.getItem(CLE_ICONE));
+    const sauvegarde = JSON.parse(localStorage.getItem(CLE_ICONE));
+    let id = typeof sauvegarde === "string" ? sauvegarde : sauvegarde?.id;
+    const version = typeof sauvegarde === "string" ? 3 : sauvegarde?._version ?? 3;
+    const jeton = /^(ssr|z)-(.+)$/.exec(id || "");
+    if (jeton && typeof convertirIdentifiant === "function") id = `${jeton[1]}-${convertirIdentifiant(jeton[2], version)}`;
     if (iconesProfil().some(icone => icone.id === id)) return id;
   } catch {}
   return ICONE_DE_BASE;
@@ -58,7 +64,8 @@ function lireIcone() {
 function choisirIcone(id) {
   if (!iconesProfil().some(icone => icone.id === id)) return;
   try {
-    localStorage.setItem(CLE_ICONE, JSON.stringify(id));
+    const version = typeof VERSION_COLLECTION === "number" ? VERSION_COLLECTION : 3;
+    localStorage.setItem(CLE_ICONE, JSON.stringify({ id, _version: version }));
   } catch {}
   // Copie en ligne pour les comptes liés à Discord (sauvegarde.js, si la page le charge)
   if (typeof signalerModification === "function") signalerModification();

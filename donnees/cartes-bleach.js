@@ -4,7 +4,7 @@
 // Numérotation : rang A, S, SR, SSR ; dans chaque rang les humains, puis les Quincy et les Shinigami, puis les
 // Hollows ; puis l'ordre de l'histoire. Les images portent le numéro de leur carte (duos : une image par personnage).
 // illustration : images de l'anime (à remplacer avant toute diffusion) ; cadrage : point de l'image gardé visible.
-// Menos Grande attend encore son image (la numérotation changera ; voir RENUMEROTATIONS dans collection.js).
+// Toute renumérotation s'ajoute à RENUMEROTATIONS dans collection.js, pour convertir les collections des joueurs.
 
 const CARTES_BLEACH = [
 
@@ -127,49 +127,55 @@ const CARTES_BLEACH = [
     equipe: "Hollow", role: "Chasseur d'âmes",
     illustration: "assets/illustrations/BL-019.jpg", cadrage: "50% 30%",
   },
+  {
+    id: "BL-020", nom: "Menos Grande", camp: "hollow", rang: 3,
+    proprietes: "Hollow géant surgi d'une déchirure du ciel, attiré par le défi d'Uryû. Ichigo et lui doivent s'allier.",
+    equipe: "Hollow", role: "Gillian",
+    illustration: "assets/illustrations/BL-020.jpg", cadrage: "50% 40%",
+  },
 
   // ── SSR ──
   {
-    id: "BL-020", nom: "Ichigo Kurosaki", camp: "humain", rang: 4,
+    id: "BL-021", nom: "Ichigo Kurosaki", camp: "humain", rang: 4,
     proprietes: "Lycéen qui voit les esprits, devenu Shinigami remplaçant pour protéger les siens, coûte que coûte.",
     equipe: "Karakura", role: "Shinigami remplaçant",
-    illustration: "assets/illustrations/BL-020.jpg", cadrage: "50% 30%",
-  },
-  {
-    id: "BL-021", nom: "Kisuke Urahara", camp: "humain", rang: 4,
-    proprietes: "Marchand au chapeau rayé et à l'éventail, bien plus dangereux et renseigné qu'il ne le laisse croire.",
-    equipe: "Boutique Urahara", role: "Marchand",
     illustration: "assets/illustrations/BL-021.jpg", cadrage: "50% 30%",
   },
   {
-    id: "BL-022", nom: "Uryû Ishida", camp: "quincy", rang: 4,
-    proprietes: "Dernier des Quincy, archer orgueilleux qui jure de prouver la supériorité des siens sur les Shinigami.",
-    equipe: "Quincy", role: "Dernier Quincy",
+    id: "BL-022", nom: "Kisuke Urahara", camp: "humain", rang: 4,
+    proprietes: "Marchand au chapeau rayé et à l'éventail, bien plus dangereux et renseigné qu'il ne le laisse croire.",
+    equipe: "Boutique Urahara", role: "Marchand",
     illustration: "assets/illustrations/BL-022.jpg", cadrage: "50% 30%",
   },
   {
-    id: "BL-023", nom: "Rukia Kuchiki", camp: "shinigami", rang: 4,
-    proprietes: "Shinigami qui a confié ses pouvoirs à un humain, un crime qui pourrait lui coûter la vie.",
-    equipe: "13e division", role: "Shinigami",
+    id: "BL-023", nom: "Uryû Ishida", camp: "quincy", rang: 4,
+    proprietes: "Dernier des Quincy, archer orgueilleux qui jure de prouver la supériorité des siens sur les Shinigami.",
+    equipe: "Quincy", role: "Dernier Quincy",
     illustration: "assets/illustrations/BL-023.jpg", cadrage: "50% 30%",
   },
   {
-    id: "BL-024", nom: "Byakuya Kuchiki", camp: "shinigami", rang: 4,
+    id: "BL-024", nom: "Rukia Kuchiki", camp: "shinigami", rang: 4,
+    proprietes: "Shinigami qui a confié ses pouvoirs à un humain, un crime qui pourrait lui coûter la vie.",
+    equipe: "13e division", role: "Shinigami",
+    illustration: "assets/illustrations/BL-024.jpg", cadrage: "50% 30%",
+  },
+  {
+    id: "BL-025", nom: "Byakuya Kuchiki", camp: "shinigami", rang: 4,
     proprietes: "Capitaine de la 6e division et chef du clan Kuchiki, d'un calme glacial, venu arrêter sa propre sœur.",
     equipe: "6e division", role: "Capitaine",
-    illustration: "assets/illustrations/BL-024.jpg", cadrage: "50% 30%",
+    illustration: "assets/illustrations/BL-025.jpg", cadrage: "50% 30%",
   },
 
   // ── Z · Cartes ultimes (3 au plus par collection) : image animée ──
   // boucle : l'extrait en aller-retour, muet, sur la carte ; video : la scène entière, avec le son, en plein écran
   // (video-carte.js) ; jeton : le jeton de profil animé. Fabriqués par outils/animation.mjs.
   {
-    id: "BL-025", nom: "Rukia Kuchiki", camp: "shinigami", rang: 5,
+    id: "BL-026", nom: "Rukia Kuchiki", camp: "shinigami", rang: 5,
     proprietes: "« Je suis une Shinigami, une faucheuse d'âmes. » Ainsi commence tout, dans la chambre d'Ichigo.",
     equipe: "13e division", role: "Shinigami",
-    illustration: "assets/illustrations/BL-025.jpg", cadrage: "50% 50%",
-    boucle: "assets/animations/BL-025-boucle.mp4",
-    video: "assets/animations/BL-025.mp4",
-    jeton: "assets/icones-profil/BL-025.webp",
+    illustration: "assets/illustrations/BL-026.jpg", cadrage: "50% 50%",
+    boucle: "assets/animations/BL-026-boucle.mp4",
+    video: "assets/animations/BL-026.mp4",
+    jeton: "assets/icones-profil/BL-026.webp",
   },
 ];

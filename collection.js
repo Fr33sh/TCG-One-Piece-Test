@@ -27,6 +27,11 @@ const RENUMEROTATIONS = [
     "NA-017": "NA-022", "NA-018": "NA-023", "NA-019": "NA-024", "NA-020": "NA-025", "NA-021": "NA-026",
     "NA-022": "NA-027",
   },
+  // Version 4 (27/11/2026) : Menos Grande devient BL-020, les SSR et la Z de Bleach avancent d'un numéro
+  {
+    "BL-020": "BL-021", "BL-021": "BL-022", "BL-022": "BL-023", "BL-023": "BL-024", "BL-024": "BL-025",
+    "BL-025": "BL-026",
+  },
 ];
 const VERSION_COLLECTION = RENUMEROTATIONS.length;
 
