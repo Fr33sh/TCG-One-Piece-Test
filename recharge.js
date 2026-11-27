@@ -50,7 +50,6 @@ function etatRecharge(maintenant = Date.now()) {
 // et le temps déjà écoulé vers le prochain (une heure entamée compte pour un Sceau entier).
 // Réserve pleine : le temps est arrêté, rien n'est écoulé vers le suivant.
 function coutSceaux(nombre, maintenant = Date.now()) {
-  if (modeTest()) return 0; // Mode test (mode-test.js) : boosters illimités
   const { reserve, restant } = etatRecharge(maintenant);
   if (reserve >= nombre) return 0;
   const ecoule = reserve >= RESERVE_MAX ? 0 : DUREE_RECHARGE - restant;
@@ -61,11 +60,6 @@ const peutOuvrir = nombre => coutSceaux(nombre) <= lireSceaux();
 
 // Retire des boosters de la réserve, en complétant avec des Sceaux si besoin ; renvoie faux s'il n'y en a pas assez
 function utiliserBoosters(nombre) {
-  // Mode test (mode-test.js) : rien n'est consommé
-  if (modeTest()) {
-    if (typeof progresserMission === "function") progresserMission("boosters", nombre);
-    return true;
-  }
   const maintenant = Date.now();
   const { reserve } = etatRecharge(maintenant);
   const cout = coutSceaux(nombre, maintenant);
@@ -112,7 +106,7 @@ function afficherRecharge() {
   const { reserve, progression, restant } = etatRecharge();
   remplissageRecharge.style.width = `${progression * 100}%`;
   barreRecharge.setAttribute("aria-valuenow", Math.floor(progression * 100));
-  tempsRecharge.textContent = modeTest() ? "Illimité (test)" : reserve >= RESERVE_MAX ? "Réserve pleine" : formaterDuree(restant);
+  tempsRecharge.textContent = reserve >= RESERVE_MAX ? "Réserve pleine" : formaterDuree(restant);
   afficherReserve(reserve);
   compteurSceaux.textContent = lireSceaux();
   afficherCoutBouton(".bulle-choix--un", 1);

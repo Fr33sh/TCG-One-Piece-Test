@@ -33,9 +33,7 @@ function ordonnerCartes(cartes) {
 // Tire un booster de la série donnée (donnees/series.js)
 function tirerBooster(serie = SERIES[0]) {
   const godPack = Math.random() * 100 < CHANCE_GOD_PACK;
-  const rangs = godPack ? [...RANGS_GOD_PACK] : TAUX_PAR_CARTE.map(tirerRang);
-  // Mode test (mode-test.js, TEMPORAIRE) : une Z demandée en 5e carte, si la série en a
-  if (serie.cartes.some(carte => carte.rang === 5) && typeof consommerTestZ === "function" && consommerTestZ()) rangs[4] = 5;
+  const rangs = godPack ? RANGS_GOD_PACK : TAUX_PAR_CARTE.map(tirerRang);
   const cartes = rangs.map(rang => {
     // Une série encore incomplète peut manquer d'un rang : on prend alors le rang inférieur le plus proche
     let possibles = [];
