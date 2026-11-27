@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Nouveaux cadres, série 2 (aperçu temporaire)</title>
+  <title>Nouveaux cadres, série 3 (aperçu temporaire)</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="carte.css">
   <style>
-    /* Page d'aperçu temporaire : les 14 cadres qui manquent encore pour avoir 10 cadres par catégorie */
+    /* Page d'aperçu temporaire : les 6 cadres qui manquent encore pour avoir 10 cadres par catégorie */
     body {
       min-height: 100vh;
       padding: 28px 16px 60px;
@@ -76,12 +76,6 @@
       initial-value: 0px;
     }
 
-    @property --teinte {
-      syntax: "<color>";
-      inherits: true;
-      initial-value: #ff4f63;
-    }
-
     .carte.calque {
       position: relative;
     }
@@ -104,188 +98,96 @@
     }
 
     @keyframes tourne { to { --angle: 360deg; } }
-    @keyframes scintille { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-
-    /* ══ Non animées ══ */
-
-    .n1 { /* Automne : feuilles rousses */
-      background:
-        radial-gradient(ellipse calc(var(--u) * 22) calc(var(--u) * 12), #ffcf4a 90%, transparent) 0 0 / calc(var(--u) * 90) calc(var(--u) * 90),
-        radial-gradient(ellipse calc(var(--u) * 14) calc(var(--u) * 20), #e2401c 90%, transparent) calc(var(--u) * 45) calc(var(--u) * 40) / calc(var(--u) * 90) calc(var(--u) * 90),
-        radial-gradient(ellipse calc(var(--u) * 16) calc(var(--u) * 10), #a8361a 90%, transparent) calc(var(--u) * 20) calc(var(--u) * 65) / calc(var(--u) * 90) calc(var(--u) * 90),
-        linear-gradient(160deg, #e8882c, #8a2c12);
-      --lisere: #fff1d6;
-      --halo: 0 0 calc(var(--u) * 40) rgb(230 120 40 / 35%);
-    }
-
-    .n2 { /* Origami : papier blanc plié */
-      background:
-        conic-gradient(from 45deg at 50% 50%, #ffffff 0 25%, #e9e9ef 0 50%, #f6f6f9 0 75%, #dcdce4 0) 0 0 / calc(var(--u) * 120) calc(var(--u) * 120),
-        #f2f2f6;
-      --lisere: #1a1a1f;
-    }
 
     /* ══ Petite animation ══ */
 
-    .q1 { /* Bulles qui remontent doucement */
-      background: linear-gradient(180deg, #0f6a78, #06303a);
-      --lisere: #d6fbff;
+    .r1 { /* Lanternes : lanternes de papier qui s'envolent doucement */
+      background: linear-gradient(180deg, #0c1230, #1c1438);
+      --lisere: #ffd9a0;
+      --halo: 0 0 calc(var(--u) * 45) rgb(255 170 80 / 30%);
+    }
+    .r1::before {
+      background:
+        radial-gradient(ellipse calc(var(--u) * 9) calc(var(--u) * 12), #ffe7a8 0 40%, #ff9a3c 75%, rgb(255 140 50 / 35%) 100%, transparent calc(var(--u) * 20)) 0 0 / calc(var(--u) * 100) calc(var(--u) * 150),
+        radial-gradient(ellipse calc(var(--u) * 6) calc(var(--u) * 8), #ffe7a8 0 40%, #ff7a2a 75%, rgb(255 120 40 / 35%) 100%, transparent calc(var(--u) * 14)) calc(var(--u) * 50) calc(var(--u) * 75) / calc(var(--u) * 100) calc(var(--u) * 150);
+      animation: lanternes 14s linear infinite;
+    }
+    @keyframes lanternes {
+      to { background-position: calc(var(--u) * 20) calc(var(--u) * -300), calc(var(--u) * 40) calc(var(--u) * -225); }
+    }
+
+    .r2 { /* Reflets d'eau : la lumière ondule comme au fond d'une piscine */
+      background: linear-gradient(160deg, #1fa3b3, #0a5a6e);
+      --lisere: #e6feff;
       --halo: 0 0 calc(var(--u) * 40) rgb(80 220 240 / 30%);
     }
-    .q1::before {
+    .r2::before {
       background:
-        radial-gradient(circle, transparent calc(var(--u) * 6), rgb(220 250 255 / 85%) calc(var(--u) * 7), transparent calc(var(--u) * 9)) 0 0 / calc(var(--u) * 80) calc(var(--u) * 120),
-        radial-gradient(circle, transparent calc(var(--u) * 3), rgb(220 250 255 / 70%) calc(var(--u) * 4), transparent calc(var(--u) * 6)) calc(var(--u) * 40) calc(var(--u) * 60) / calc(var(--u) * 80) calc(var(--u) * 120);
-      animation: bulles 8s linear infinite;
+        radial-gradient(ellipse calc(var(--u) * 30) calc(var(--u) * 10), rgb(255 255 255 / 55%), transparent 70%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 60),
+        radial-gradient(ellipse calc(var(--u) * 12) calc(var(--u) * 26), rgb(220 255 255 / 45%), transparent 70%) calc(var(--u) * 40) calc(var(--u) * 30) / calc(var(--u) * 80) calc(var(--u) * 90);
+      animation: reflets 7s ease-in-out infinite alternate;
     }
-    @keyframes bulles {
-      to { background-position: calc(var(--u) * 10) calc(var(--u) * -240), calc(var(--u) * 30) calc(var(--u) * -180); }
-    }
-
-    .q2 { /* Nuit étoilée : une étoile filante passe de temps en temps */
-      background:
-        radial-gradient(circle, #fff 0 calc(var(--u) * 2.5), transparent calc(var(--u) * 4)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 80),
-        radial-gradient(circle, rgb(255 255 255 / 60%) 0 calc(var(--u) * 1.5), transparent calc(var(--u) * 3)) calc(var(--u) * 35) calc(var(--u) * 30) / calc(var(--u) * 50) calc(var(--u) * 60),
-        linear-gradient(180deg, #0a1030, #1d1450);
-      --lisere: #fff6c9;
-    }
-    .q2::before {
-      background: linear-gradient(135deg, transparent 46%, rgb(255 255 255 / 0%) 47%, #fff 50%, transparent 50.6%) 0 0 / 300% 300%;
-      animation: filante 5s ease-in infinite;
-    }
-    @keyframes filante {
-      0%, 70% { background-position: 100% 100%; opacity: 0; }
-      72% { opacity: 1; }
-      90% { background-position: 0 0; opacity: 1; }
-      100% { background-position: 0 0; opacity: 0; }
-    }
-
-    .q3 { /* Feuilles d'automne qui tombent en tournoyant */
-      background: linear-gradient(160deg, #3a2418, #1a0e08);
-      --lisere: #ffb04a;
-    }
-    .q3::before {
-      background:
-        radial-gradient(ellipse calc(var(--u) * 10) calc(var(--u) * 6), #ff8a2a 90%, transparent) 0 0 / calc(var(--u) * 110) calc(var(--u) * 110),
-        radial-gradient(ellipse calc(var(--u) * 7) calc(var(--u) * 10), #e2401c 90%, transparent) calc(var(--u) * 55) calc(var(--u) * 45) / calc(var(--u) * 110) calc(var(--u) * 110),
-        radial-gradient(ellipse calc(var(--u) * 8) calc(var(--u) * 5), #ffcf4a 90%, transparent) calc(var(--u) * 25) calc(var(--u) * 80) / calc(var(--u) * 110) calc(var(--u) * 110);
-      animation: feuilles 10s linear infinite;
-    }
-    @keyframes feuilles {
-      to { background-position: calc(var(--u) * -110) calc(var(--u) * 220), calc(var(--u) * -55) calc(var(--u) * 265), calc(var(--u) * -85) calc(var(--u) * 300); }
-    }
-
-    .q4 { /* Battement de cœur : cadre rouge qui bat deux fois, puis se repose */
-      background: linear-gradient(160deg, #e0263c, #6a0a16);
-      --lisere: #ffd6dc;
-      animation: coeur 1.6s ease-in-out infinite;
-    }
-    @keyframes coeur {
-      0%, 40%, 100% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) rgb(255 60 90 / 40%); }
-      12%, 30% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 90) rgb(255 60 90 / 85%); }
-      20% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 45) rgb(255 60 90 / 50%); }
-    }
-
-    .q5 { /* Poussière d'or : noir absolu, paillettes d'or qui scintillent */
-      background: #050506;
-      --lisere: linear-gradient(180deg, #fff2b0, #b8861e);
-      --halo: 0 0 calc(var(--u) * 45) rgb(255 200 80 / 35%);
-    }
-    .q5 .carte__cadre { padding: calc(var(--u) * 7); }
-    .q5::before {
-      background:
-        radial-gradient(circle, #ffe9a0 0 calc(var(--u) * 3), transparent calc(var(--u) * 5)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 90),
-        radial-gradient(circle, #f5c842 0 calc(var(--u) * 2), transparent calc(var(--u) * 4)) calc(var(--u) * 35) calc(var(--u) * 45) / calc(var(--u) * 70) calc(var(--u) * 90),
-        radial-gradient(circle, #fff 0 calc(var(--u) * 1.5), transparent calc(var(--u) * 3)) calc(var(--u) * 15) calc(var(--u) * 60) / calc(var(--u) * 50) calc(var(--u) * 70);
-      animation: scintille 2.2s ease-in-out infinite;
+    @keyframes reflets {
+      to { background-position: calc(var(--u) * 45) calc(var(--u) * 30), calc(var(--u) * -40) calc(var(--u) * 75); }
     }
 
     /* ══ Animation classique ══ */
 
-    .k1 { /* Ondes : cercles qui s'élargissent depuis le centre */
-      background: repeating-radial-gradient(circle at 50% 50%, #0d1f5a calc(var(--rayon)), #4f9bff calc(var(--rayon) + var(--u) * 6), #0d1f5a calc(var(--rayon) + var(--u) * 14), #0d1f5a calc(var(--rayon) + var(--u) * 40));
-      --lisere: #cfe4ff;
-      --halo: 0 0 calc(var(--u) * 45) rgb(80 150 255 / 40%);
-      animation: ondes 1.6s linear infinite;
-    }
-    @keyframes ondes {
-      to { --rayon: calc(var(--u) * 40); }
+    .s1 { /* Kaléidoscope : éventail de couleurs qui tourne */
+      background: repeating-conic-gradient(from var(--angle), #ff4f63 0 15deg, #ffd24f 15deg 30deg, #4fd8ff 30deg 45deg, #8a4fff 45deg 60deg);
+      --lisere: #fff;
+      --halo: 0 0 calc(var(--u) * 45) rgb(255 255 255 / 30%);
+      animation: tourne 7s linear infinite;
     }
 
-    .k2 { /* Sucre d'orge : rayures rouges et blanches qui défilent */
-      background: repeating-linear-gradient(135deg, #e0263c 0 calc(var(--u) * 20), #ffffff calc(var(--u) * 20) calc(var(--u) * 40));
-      --lisere: #e0263c;
-      animation: sucre 1.6s linear infinite;
+    .s2 { /* Ruban prisma : rayures arc-en-ciel qui défilent */
+      background: repeating-linear-gradient(135deg,
+        #ff7eb6 0 calc(var(--u) * 14), #ffb86b calc(var(--u) * 14) calc(var(--u) * 28),
+        #fff07a calc(var(--u) * 28) calc(var(--u) * 42), #7dffc4 calc(var(--u) * 42) calc(var(--u) * 56),
+        #7cc8ff calc(var(--u) * 56) calc(var(--u) * 70), #b98cff calc(var(--u) * 70) calc(var(--u) * 84));
+      --lisere: #fff;
+      --halo: 0 0 calc(var(--u) * 50) rgb(185 140 255 / 40%);
+      animation: ruban 2.5s linear infinite;
     }
-    @keyframes sucre {
-      to { background-position: calc(var(--u) * 56.57) 0; }
+    @keyframes ruban {
+      to { background-position: calc(var(--u) * 118.79) 0; }
     }
 
-    .k3 { /* Dunes : sable doré qui ondule */
+    .s3 { /* Cristal Anima : facettes noires, filet prisma, éclat qui traverse */
       background:
-        radial-gradient(ellipse calc(var(--u) * 60) calc(var(--u) * 18) at 50% 100%, #f7d48a 60%, transparent 62%) 0 0 / calc(var(--u) * 120) calc(var(--u) * 36),
-        radial-gradient(ellipse calc(var(--u) * 60) calc(var(--u) * 18) at 50% 100%, #c8902c 60%, transparent 62%) calc(var(--u) * 60) calc(var(--u) * 18) / calc(var(--u) * 120) calc(var(--u) * 36),
-        #e0aa4a;
-      --lisere: #fff3d6;
-      --halo: 0 0 calc(var(--u) * 40) rgb(240 190 90 / 35%);
-      animation: dunes 5s linear infinite;
+        linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 55%) 48%, rgb(185 140 255 / 40%) 52%, transparent 62%) 0 0 / 250% 100%,
+        linear-gradient(60deg, transparent 49%, rgb(255 255 255 / 14%) 50%, transparent 51%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 78),
+        linear-gradient(-60deg, transparent 49%, rgb(255 255 255 / 14%) 50%, transparent 51%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 78),
+        linear-gradient(0deg, transparent 49%, rgb(255 255 255 / 10%) 50%, transparent 51%) 0 0 / calc(var(--u) * 90) calc(var(--u) * 78),
+        conic-gradient(from 30deg at 30% 25%, #1b1b21 0 25%, #121216 0 50%, #202027 0 75%, #0e0e11 0);
+      --lisere: var(--prisma-diagonal);
+      --halo: 0 0 calc(var(--u) * 50) rgb(185 140 255 / 35%);
+      animation: cristal 3.2s ease-in-out infinite;
     }
-    @keyframes dunes {
-      to { background-position: calc(var(--u) * 240) 0, calc(var(--u) * 300) calc(var(--u) * 18), 0 0; }
-    }
-
-    .k4 { /* Écailles de dragon : vertes et or, qui glissent */
-      --ecaille: radial-gradient(circle at 50% 0, #1f8a4a 0 calc(var(--u) * 18), #f0d27a calc(var(--u) * 18) calc(var(--u) * 21), #0e4a26 calc(var(--u) * 21) calc(var(--u) * 26), transparent calc(var(--u) * 26));
-      background:
-        var(--ecaille) 0 0 / calc(var(--u) * 50) calc(var(--u) * 30),
-        var(--ecaille) calc(var(--u) * 25) calc(var(--u) * 15) / calc(var(--u) * 50) calc(var(--u) * 30),
-        #0e4a26;
-      --lisere: linear-gradient(180deg, #fbe39a, #b8861e);
-      --halo: 0 0 calc(var(--u) * 40) rgb(60 190 110 / 35%);
-      animation: ecailles 3s linear infinite;
-    }
-    @keyframes ecailles {
-      to { background-position: 0 calc(var(--u) * 60), calc(var(--u) * 25) calc(var(--u) * 75), 0 0; }
+    @keyframes cristal {
+      0% { background-position: 150% 0, 0 0, 0 0, 0 0, 0 0; }
+      65%, 100% { background-position: -150% 0, 0 0, 0 0, 0 0, 0 0; }
     }
 
     /* ══ Grosse animation ══ */
 
-    .h1 { /* Onde de choc : anneaux de feu qui explosent du centre, lueur qui claque */
-      background: repeating-radial-gradient(circle at 50% 50%, #1a0602 calc(var(--rayon)), #ffd27a calc(var(--rayon) + var(--u) * 6), #ff5a00 calc(var(--rayon) + var(--u) * 14), #1a0602 calc(var(--rayon) + var(--u) * 30));
-      --lisere: #fff3d6;
-      --lueur: rgb(255 140 40 / 90%);
-      animation: choc 0.6s linear infinite, pulse 0.6s ease-in-out infinite;
+    .t1 { /* Hyperespace : traînées d'étoiles qui jaillissent du centre à toute vitesse */
+      background:
+        repeating-radial-gradient(circle at 50% 50%, transparent calc(var(--rayon)), rgb(200 225 255 / 90%) calc(var(--rayon) + var(--u) * 3), transparent calc(var(--rayon) + var(--u) * 8), transparent calc(var(--rayon) + var(--u) * 26)),
+        repeating-conic-gradient(from 0deg, rgb(255 255 255 / 85%) 0 0.8deg, transparent 0.8deg 7deg),
+        radial-gradient(circle, #2a3a8a, #02030f 70%);
+      --lisere: #cfe4ff;
+      --lueur: rgb(140 180 255 / 85%);
+      animation: hyperespace 0.4s linear infinite, pulse 0.8s ease-in-out infinite;
     }
-    @keyframes choc {
-      to { --rayon: calc(var(--u) * 30); }
-    }
-
-    .h2 { /* Stroboscope : couleurs vives qui changent très vite */
-      background: radial-gradient(circle, #fff 0, var(--teinte) 70%);
-      --lisere: #fff;
-      box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 100) var(--teinte);
-      animation: strobo 1.2s steps(1) infinite;
-    }
-    @keyframes strobo {
-      0% { --teinte: #ff4f63; }
-      17% { --teinte: #ffd24f; }
-      33% { --teinte: #4fff8a; }
-      50% { --teinte: #4fd8ff; }
-      67% { --teinte: #8a4fff; }
-      83% { --teinte: #ff4fd8; }
-    }
-
-    .h3 { /* Tornade : vent gris et blanc qui tourne à toute vitesse */
-      background: repeating-conic-gradient(from var(--angle), #f2f2f6 0 8deg, #6a6a76 8deg 20deg, #2a2a32 20deg 30deg, #b9b9c4 30deg 40deg);
-      --lisere: #fff;
-      --lueur: rgb(220 225 240 / 70%);
-      animation: tourne 0.9s linear infinite, pulse 0.9s ease-in-out infinite;
+    @keyframes hyperespace {
+      to { --rayon: calc(var(--u) * 26); }
     }
   </style>
 </head>
 <body>
-  <h1>Nouveaux cadres · série 2</h1>
-  <p class="aide">Aperçu temporaire : ce qui manque encore pour avoir 10 cadres par catégorie. Dis-moi les codes que tu gardes.</p>
+  <h1>Nouveaux cadres · série 3</h1>
+  <p class="aide">Aperçu temporaire : les derniers cadres pour avoir 10 cadres par catégorie. Dis-moi les codes que tu gardes.</p>
   <div data-categories></div>
 
   <script src="donnees/cartes-east-blue.js"></script>
@@ -296,27 +198,17 @@
   <script>
     // [classe, nom, description, calque d'effets ?]
     const CATEGORIES = [
-      ["Non animées", "2 manquants", [
-        ["n1", "Automne", "Feuilles rousses sur fond orangé"],
-        ["n2", "Origami", "Papier blanc plié, filet noir"],
+      ["Petite animation", "2 manquants", [
+        ["r1", "Lanternes", "Lanternes de papier qui s'envolent doucement", true],
+        ["r2", "Reflets d'eau", "La lumière ondule comme au fond d'une piscine", true],
       ]],
-      ["Petite animation", "5 manquants", [
-        ["q1", "Bulles", "Bulles qui remontent doucement", true],
-        ["q2", "Nuit étoilée", "Une étoile filante passe de temps en temps", true],
-        ["q3", "Feuilles d'automne", "Feuilles qui tombent en tournoyant", true],
-        ["q4", "Battement de cœur", "Le cadre bat deux fois, puis se repose"],
-        ["q5", "Poussière d'or", "Paillettes d'or qui scintillent sur du noir", true],
+      ["Animation classique", "3 manquants", [
+        ["s1", "Kaléidoscope", "Éventail de couleurs qui tourne"],
+        ["s2", "Ruban prisma", "Rayures arc-en-ciel qui défilent"],
+        ["s3", "Cristal Anima", "Facettes noires, filet prisma, éclat qui traverse"],
       ]],
-      ["Animation classique", "4 manquants", [
-        ["k1", "Ondes", "Cercles qui s'élargissent depuis le centre"],
-        ["k2", "Sucre d'orge", "Rayures rouges et blanches qui défilent"],
-        ["k3", "Dunes", "Sable doré qui ondule"],
-        ["k4", "Écailles de dragon", "Écailles vertes et or qui glissent"],
-      ]],
-      ["Grosse animation", "3 manquants", [
-        ["h1", "Onde de choc", "Anneaux de feu qui explosent du centre"],
-        ["h2", "Stroboscope", "Couleurs vives qui changent très vite"],
-        ["h3", "Tornade", "Vent gris et blanc qui tourne à toute vitesse"],
+      ["Grosse animation", "1 manquant", [
+        ["t1", "Hyperespace", "Traînées d'étoiles qui jaillissent du centre"],
       ]],
     ];
     const illustrees = CARTES.filter(carte => carte.illustration && carte.rang < 5);
@@ -325,7 +217,7 @@
     for (const [titre, manquants, cadres] of CATEGORIES) {
       const grille = element("div", "grille");
       for (const [classe, nom, description, calque] of cadres) {
-        const carte = creerCarte(illustrees[(rang++ * 11 + 3) % illustrees.length]);
+        const carte = creerCarte(illustrees[(rang++ * 13 + 5) % illustrees.length]);
         carte.classList.add(classe);
         if (calque) carte.classList.add("calque");
         const figure = element("figure");
