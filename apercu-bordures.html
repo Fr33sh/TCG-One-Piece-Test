@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Nouveaux cadres (aperçu temporaire)</title>
+  <title>Nouveaux cadres, série 2 (aperçu temporaire)</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="carte.css">
   <style>
-    /* Page d'aperçu temporaire : les 27 cadres qui manquent pour avoir 10 cadres par catégorie */
+    /* Page d'aperçu temporaire : les 14 cadres qui manquent encore pour avoir 10 cadres par catégorie */
     body {
       min-height: 100vh;
       padding: 28px 16px 60px;
@@ -70,13 +70,18 @@
       initial-value: 0deg;
     }
 
-    @property --neon {
-      syntax: "<color>";
-      inherits: true;
-      initial-value: #3ff0ff;
+    @property --rayon {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 0px;
     }
 
-    /* Calque d'effets (particules, rayons…) posé sur le cadre, sous la carte elle-même */
+    @property --teinte {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: #ff4f63;
+    }
+
     .carte.calque {
       position: relative;
     }
@@ -93,7 +98,6 @@
       position: relative;
     }
 
-    /* Lueur qui pulse, à la couleur --lueur */
     @keyframes pulse {
       0%, 100% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 35) var(--lueur); }
       50% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 110) var(--lueur); }
@@ -101,330 +105,187 @@
 
     @keyframes tourne { to { --angle: 360deg; } }
     @keyframes scintille { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-    @keyframes defile { to { background-position: 300% 300%; } }
-    @keyframes monte { to { background-position: 0 -200%; } }
 
     /* ══ Non animées ══ */
 
-    .f1 { /* Marbre noir */
+    .n1 { /* Automne : feuilles rousses */
       background:
-        linear-gradient(115deg, transparent 40%, rgb(255 255 255 / 40%) 40.6%, transparent 42%),
-        linear-gradient(60deg, transparent 62%, rgb(255 255 255 / 28%) 62.5%, transparent 63.8%),
-        linear-gradient(150deg, transparent 20%, rgb(255 255 255 / 22%) 20.5%, transparent 21.5%),
-        linear-gradient(20deg, transparent 80%, rgb(255 255 255 / 18%) 80.4%, transparent 81.2%),
-        radial-gradient(ellipse at 30% 20%, #3a3a42, transparent 60%),
-        #0e0e10;
-      --lisere: #e8e8ee;
+        radial-gradient(ellipse calc(var(--u) * 22) calc(var(--u) * 12), #ffcf4a 90%, transparent) 0 0 / calc(var(--u) * 90) calc(var(--u) * 90),
+        radial-gradient(ellipse calc(var(--u) * 14) calc(var(--u) * 20), #e2401c 90%, transparent) calc(var(--u) * 45) calc(var(--u) * 40) / calc(var(--u) * 90) calc(var(--u) * 90),
+        radial-gradient(ellipse calc(var(--u) * 16) calc(var(--u) * 10), #a8361a 90%, transparent) calc(var(--u) * 20) calc(var(--u) * 65) / calc(var(--u) * 90) calc(var(--u) * 90),
+        linear-gradient(160deg, #e8882c, #8a2c12);
+      --lisere: #fff1d6;
+      --halo: 0 0 calc(var(--u) * 40) rgb(230 120 40 / 35%);
     }
 
-    .f2 { /* Kintsugi : céramique noire réparée à l'or */
+    .n2 { /* Origami : papier blanc plié */
       background:
-        linear-gradient(32deg, transparent 48%, #e0b44a 48.4%, #fbe39a 48.8%, transparent 49.4%),
-        linear-gradient(-58deg, transparent 30%, #e0b44a 30.3%, #fbe39a 30.6%, transparent 31%),
-        linear-gradient(80deg, transparent 70%, #e0b44a 70.3%, transparent 70.7%),
-        linear-gradient(-20deg, transparent 15%, #e0b44a 15.3%, transparent 15.7%),
-        linear-gradient(160deg, #1f1f24, #0a0a0c);
-      --lisere: linear-gradient(180deg, #fbe39a, #b8861e);
-      --halo: 0 0 calc(var(--u) * 40) rgb(224 180 74 / 30%);
-    }
-
-    .f3 { /* Vitrail */
-      background:
-        repeating-linear-gradient(60deg, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 70)),
-        repeating-linear-gradient(-60deg, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 70)),
-        repeating-linear-gradient(0deg, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 60)),
-        conic-gradient(from 10deg, #c62840, #e8a020, #2f9a5a, #2a6fd0, #7a3fc0, #c62840, #e8a020, #2a6fd0, #c62840);
-      --lisere: #111;
-      --halo: 0 0 calc(var(--u) * 40) rgb(255 200 120 / 30%);
+        conic-gradient(from 45deg at 50% 50%, #ffffff 0 25%, #e9e9ef 0 50%, #f6f6f9 0 75%, #dcdce4 0) 0 0 / calc(var(--u) * 120) calc(var(--u) * 120),
+        #f2f2f6;
+      --lisere: #1a1a1f;
     }
 
     /* ══ Petite animation ══ */
 
-    .p1 { /* Lucioles */
-      background: linear-gradient(160deg, #0f2a1c, #05110a);
-      --lisere: #c8ff9a;
-      --halo: 0 0 calc(var(--u) * 40) rgb(200 255 120 / 30%);
+    .q1 { /* Bulles qui remontent doucement */
+      background: linear-gradient(180deg, #0f6a78, #06303a);
+      --lisere: #d6fbff;
+      --halo: 0 0 calc(var(--u) * 40) rgb(80 220 240 / 30%);
     }
-    .p1::before {
+    .q1::before {
       background:
-        radial-gradient(circle, #f4ff8a 0 calc(var(--u) * 4), rgb(220 255 100 / 40%) calc(var(--u) * 7), transparent calc(var(--u) * 12)) 0 0 / calc(var(--u) * 110) calc(var(--u) * 130),
-        radial-gradient(circle, #e2ff6a 0 calc(var(--u) * 3), rgb(220 255 100 / 30%) calc(var(--u) * 6), transparent calc(var(--u) * 10)) calc(var(--u) * 55) calc(var(--u) * 70) / calc(var(--u) * 110) calc(var(--u) * 130);
-      animation: scintille 3.5s ease-in-out infinite;
+        radial-gradient(circle, transparent calc(var(--u) * 6), rgb(220 250 255 / 85%) calc(var(--u) * 7), transparent calc(var(--u) * 9)) 0 0 / calc(var(--u) * 80) calc(var(--u) * 120),
+        radial-gradient(circle, transparent calc(var(--u) * 3), rgb(220 250 255 / 70%) calc(var(--u) * 4), transparent calc(var(--u) * 6)) calc(var(--u) * 40) calc(var(--u) * 60) / calc(var(--u) * 80) calc(var(--u) * 120);
+      animation: bulles 8s linear infinite;
+    }
+    @keyframes bulles {
+      to { background-position: calc(var(--u) * 10) calc(var(--u) * -240), calc(var(--u) * 30) calc(var(--u) * -180); }
     }
 
-    .p2 { /* Neige */
-      background: linear-gradient(180deg, #1b2c58, #0a1228);
-      --lisere: #ffffff;
-    }
-    .p2::before {
+    .q2 { /* Nuit étoilée : une étoile filante passe de temps en temps */
       background:
-        radial-gradient(circle, #fff 0 calc(var(--u) * 4), transparent calc(var(--u) * 6)) 0 0 / calc(var(--u) * 90) calc(var(--u) * 90),
-        radial-gradient(circle, rgb(255 255 255 / 75%) 0 calc(var(--u) * 2.5), transparent calc(var(--u) * 4)) calc(var(--u) * 30) calc(var(--u) * 20) / calc(var(--u) * 60) calc(var(--u) * 60);
-      animation: neige 9s linear infinite;
+        radial-gradient(circle, #fff 0 calc(var(--u) * 2.5), transparent calc(var(--u) * 4)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 80),
+        radial-gradient(circle, rgb(255 255 255 / 60%) 0 calc(var(--u) * 1.5), transparent calc(var(--u) * 3)) calc(var(--u) * 35) calc(var(--u) * 30) / calc(var(--u) * 50) calc(var(--u) * 60),
+        linear-gradient(180deg, #0a1030, #1d1450);
+      --lisere: #fff6c9;
     }
-    @keyframes neige {
-      to { background-position: calc(var(--u) * 20) calc(var(--u) * 180), calc(var(--u) * 10) calc(var(--u) * 200); }
+    .q2::before {
+      background: linear-gradient(135deg, transparent 46%, rgb(255 255 255 / 0%) 47%, #fff 50%, transparent 50.6%) 0 0 / 300% 300%;
+      animation: filante 5s ease-in infinite;
+    }
+    @keyframes filante {
+      0%, 70% { background-position: 100% 100%; opacity: 0; }
+      72% { opacity: 1; }
+      90% { background-position: 0 0; opacity: 1; }
+      100% { background-position: 0 0; opacity: 0; }
     }
 
-    .p3 { /* Pétales de sakura qui tombent */
-      background: linear-gradient(160deg, #ffc3d6, #e8789f);
-      --lisere: #fff;
-      --halo: 0 0 calc(var(--u) * 45) rgb(255 160 195 / 40%);
+    .q3 { /* Feuilles d'automne qui tombent en tournoyant */
+      background: linear-gradient(160deg, #3a2418, #1a0e08);
+      --lisere: #ffb04a;
     }
-    .p3::before {
+    .q3::before {
       background:
-        radial-gradient(ellipse calc(var(--u) * 9) calc(var(--u) * 5), #fff5f8 90%, transparent) 0 0 / calc(var(--u) * 100) calc(var(--u) * 100),
-        radial-gradient(ellipse calc(var(--u) * 6) calc(var(--u) * 4), #ffe1ea 90%, transparent) calc(var(--u) * 50) calc(var(--u) * 40) / calc(var(--u) * 80) calc(var(--u) * 80);
-      animation: petales 11s linear infinite;
+        radial-gradient(ellipse calc(var(--u) * 10) calc(var(--u) * 6), #ff8a2a 90%, transparent) 0 0 / calc(var(--u) * 110) calc(var(--u) * 110),
+        radial-gradient(ellipse calc(var(--u) * 7) calc(var(--u) * 10), #e2401c 90%, transparent) calc(var(--u) * 55) calc(var(--u) * 45) / calc(var(--u) * 110) calc(var(--u) * 110),
+        radial-gradient(ellipse calc(var(--u) * 8) calc(var(--u) * 5), #ffcf4a 90%, transparent) calc(var(--u) * 25) calc(var(--u) * 80) / calc(var(--u) * 110) calc(var(--u) * 110);
+      animation: feuilles 10s linear infinite;
     }
-    @keyframes petales {
-      to { background-position: calc(var(--u) * 100) calc(var(--u) * 200), calc(var(--u) * 130) calc(var(--u) * 200); }
-    }
-
-    .p4 { /* Clair de lune : argent qui respire doucement */
-      background: linear-gradient(145deg, #f4f6fb, #b6bccb 30%, #6f7686 55%, #e3e7ef 80%, #9aa1b0);
-      --lisere: #fff;
-      --lueur: rgb(200 215 255 / 55%);
-      animation: pulse 4.5s ease-in-out infinite;
+    @keyframes feuilles {
+      to { background-position: calc(var(--u) * -110) calc(var(--u) * 220), calc(var(--u) * -55) calc(var(--u) * 265), calc(var(--u) * -85) calc(var(--u) * 300); }
     }
 
-    .p5 { /* Nacre vivante : reflet doux qui passe de temps en temps */
+    .q4 { /* Battement de cœur : cadre rouge qui bat deux fois, puis se repose */
+      background: linear-gradient(160deg, #e0263c, #6a0a16);
+      --lisere: #ffd6dc;
+      animation: coeur 1.6s ease-in-out infinite;
+    }
+    @keyframes coeur {
+      0%, 40%, 100% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) rgb(255 60 90 / 40%); }
+      12%, 30% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 90) rgb(255 60 90 / 85%); }
+      20% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 45) rgb(255 60 90 / 50%); }
+    }
+
+    .q5 { /* Poussière d'or : noir absolu, paillettes d'or qui scintillent */
+      background: #050506;
+      --lisere: linear-gradient(180deg, #fff2b0, #b8861e);
+      --halo: 0 0 calc(var(--u) * 45) rgb(255 200 80 / 35%);
+    }
+    .q5 .carte__cadre { padding: calc(var(--u) * 7); }
+    .q5::before {
       background:
-        linear-gradient(115deg, transparent 35%, rgb(255 255 255 / 90%) 48%, rgb(214 236 255 / 70%) 52%, transparent 65%) 0 0 / 250% 100%,
-        linear-gradient(145deg, #ffffff, #efe8fb 28%, #e2f5f7 52%, #fdeef3 76%, #ffffff);
-      --lisere: linear-gradient(135deg, #ffd9ea, #fff6c9, #d5fbe9, #d6ecff, #eadcff);
-      --halo: 0 0 calc(var(--u) * 45) rgb(255 255 255 / 35%);
-      animation: reflet-lent 6s ease-in-out infinite;
-    }
-    @keyframes reflet-lent {
-      0% { background-position: 150% 0, 0 0; }
-      45%, 100% { background-position: -150% 0, 0 0; }
-    }
-
-    .p6 { /* Pluie */
-      background: linear-gradient(180deg, #2a3446, #121822);
-      --lisere: #b9cbe6;
-    }
-    .p6::before {
-      background:
-        radial-gradient(ellipse calc(var(--u) * 1.5) calc(var(--u) * 14), rgb(190 215 255 / 75%), transparent) 0 0 / calc(var(--u) * 26) calc(var(--u) * 80),
-        radial-gradient(ellipse calc(var(--u) * 1.2) calc(var(--u) * 10), rgb(190 215 255 / 55%), transparent) calc(var(--u) * 13) calc(var(--u) * 40) / calc(var(--u) * 26) calc(var(--u) * 80);
-      animation: pluie 1.6s linear infinite;
-    }
-    @keyframes pluie {
-      to { background-position: 0 calc(var(--u) * 160), calc(var(--u) * 13) calc(var(--u) * 200); }
-    }
-
-    .p7 { /* Encre qui ondule : noir, gris et blanc qui glissent lentement */
-      background: linear-gradient(120deg, #0b0b0d, #3a3a42, #f0f0f4, #3a3a42, #0b0b0d, #3a3a42, #f0f0f4) 0 0 / 300% 300%;
-      --lisere: #f0f0f4;
-      animation: defile 16s linear infinite;
-    }
-
-    .p8 { /* Braises qui montent */
-      background: linear-gradient(0deg, #3a1208, #120604);
-      --lisere: #ff9a3c;
-      --halo: 0 0 calc(var(--u) * 45) rgb(255 120 40 / 35%);
-    }
-    .p8::before {
-      background:
-        radial-gradient(circle, #ffd27a 0 calc(var(--u) * 3), rgb(255 120 40 / 50%) calc(var(--u) * 5), transparent calc(var(--u) * 8)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 110),
-        radial-gradient(circle, #ff8a3c 0 calc(var(--u) * 2), transparent calc(var(--u) * 5)) calc(var(--u) * 35) calc(var(--u) * 50) / calc(var(--u) * 70) calc(var(--u) * 110);
-      animation: braises 7s linear infinite, scintille 2.4s ease-in-out infinite;
-    }
-    @keyframes braises {
-      to { background-position: calc(var(--u) * 10) calc(var(--u) * -220), calc(var(--u) * 25) calc(var(--u) * -170); }
+        radial-gradient(circle, #ffe9a0 0 calc(var(--u) * 3), transparent calc(var(--u) * 5)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 90),
+        radial-gradient(circle, #f5c842 0 calc(var(--u) * 2), transparent calc(var(--u) * 4)) calc(var(--u) * 35) calc(var(--u) * 45) / calc(var(--u) * 70) calc(var(--u) * 90),
+        radial-gradient(circle, #fff 0 calc(var(--u) * 1.5), transparent calc(var(--u) * 3)) calc(var(--u) * 15) calc(var(--u) * 60) / calc(var(--u) * 50) calc(var(--u) * 70);
+      animation: scintille 2.2s ease-in-out infinite;
     }
 
     /* ══ Animation classique ══ */
 
-    .c1 { /* Océan : vagues japonaises qui défilent */
-      --vague: radial-gradient(circle at 50% 100%, #0d3a70 0 calc(var(--u) * 12), #4f9bdc calc(var(--u) * 12) calc(var(--u) * 16), #1b5fa8 calc(var(--u) * 16) calc(var(--u) * 28), #4f9bdc calc(var(--u) * 28) calc(var(--u) * 32), #0d3a70 calc(var(--u) * 32) calc(var(--u) * 40), transparent calc(var(--u) * 40));
+    .k1 { /* Ondes : cercles qui s'élargissent depuis le centre */
+      background: repeating-radial-gradient(circle at 50% 50%, #0d1f5a calc(var(--rayon)), #4f9bff calc(var(--rayon) + var(--u) * 6), #0d1f5a calc(var(--rayon) + var(--u) * 14), #0d1f5a calc(var(--rayon) + var(--u) * 40));
+      --lisere: #cfe4ff;
+      --halo: 0 0 calc(var(--u) * 45) rgb(80 150 255 / 40%);
+      animation: ondes 1.6s linear infinite;
+    }
+    @keyframes ondes {
+      to { --rayon: calc(var(--u) * 40); }
+    }
+
+    .k2 { /* Sucre d'orge : rayures rouges et blanches qui défilent */
+      background: repeating-linear-gradient(135deg, #e0263c 0 calc(var(--u) * 20), #ffffff calc(var(--u) * 20) calc(var(--u) * 40));
+      --lisere: #e0263c;
+      animation: sucre 1.6s linear infinite;
+    }
+    @keyframes sucre {
+      to { background-position: calc(var(--u) * 56.57) 0; }
+    }
+
+    .k3 { /* Dunes : sable doré qui ondule */
       background:
-        var(--vague) 0 0 / calc(var(--u) * 80) calc(var(--u) * 40),
-        var(--vague) calc(var(--u) * 40) calc(var(--u) * 20) / calc(var(--u) * 80) calc(var(--u) * 40),
-        #0d3a70;
-      --lisere: #cfe8ff;
-      --halo: 0 0 calc(var(--u) * 45) rgb(80 160 230 / 40%);
-      animation: vagues 4s linear infinite;
+        radial-gradient(ellipse calc(var(--u) * 60) calc(var(--u) * 18) at 50% 100%, #f7d48a 60%, transparent 62%) 0 0 / calc(var(--u) * 120) calc(var(--u) * 36),
+        radial-gradient(ellipse calc(var(--u) * 60) calc(var(--u) * 18) at 50% 100%, #c8902c 60%, transparent 62%) calc(var(--u) * 60) calc(var(--u) * 18) / calc(var(--u) * 120) calc(var(--u) * 36),
+        #e0aa4a;
+      --lisere: #fff3d6;
+      --halo: 0 0 calc(var(--u) * 40) rgb(240 190 90 / 35%);
+      animation: dunes 5s linear infinite;
     }
-    @keyframes vagues {
-      to { background-position: calc(var(--u) * 160) 0, calc(var(--u) * 200) calc(var(--u) * 20), 0 0; }
-    }
-
-    .c2 { /* Néon arc-en-ciel : la lueur change de couleur */
-      background: #07070b;
-      --lisere: var(--neon);
-      box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) var(--neon), 0 0 calc(var(--u) * 90) var(--neon);
-      animation: neon 6s linear infinite;
-    }
-    .c2 .carte__cadre { box-shadow: 0 0 calc(var(--u) * 24) var(--neon); }
-    @keyframes neon {
-      0%, 100% { --neon: #3ff0ff; }
-      25% { --neon: #b98cff; }
-      50% { --neon: #ff4fd8; }
-      75% { --neon: #a6ff00; }
+    @keyframes dunes {
+      to { background-position: calc(var(--u) * 240) 0, calc(var(--u) * 300) calc(var(--u) * 18), 0 0; }
     }
 
-    .c3 { /* Holographique : argent, éclat irisé qui passe */
+    .k4 { /* Écailles de dragon : vertes et or, qui glissent */
+      --ecaille: radial-gradient(circle at 50% 0, #1f8a4a 0 calc(var(--u) * 18), #f0d27a calc(var(--u) * 18) calc(var(--u) * 21), #0e4a26 calc(var(--u) * 21) calc(var(--u) * 26), transparent calc(var(--u) * 26));
       background:
-        linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 85%) 44%, rgb(124 200 255 / 55%) 50%, rgb(255 126 182 / 55%) 56%, transparent 70%) 0 0 / 250% 100%,
-        linear-gradient(145deg, #e8e8ee, #a9a9b6 50%, #f2f2f6);
-      --lisere: linear-gradient(135deg, #ffffff, #c9ccd6);
-      --halo: 0 0 calc(var(--u) * 45) rgb(200 220 255 / 40%);
-      animation: holo 3s ease-in-out infinite;
+        var(--ecaille) 0 0 / calc(var(--u) * 50) calc(var(--u) * 30),
+        var(--ecaille) calc(var(--u) * 25) calc(var(--u) * 15) / calc(var(--u) * 50) calc(var(--u) * 30),
+        #0e4a26;
+      --lisere: linear-gradient(180deg, #fbe39a, #b8861e);
+      --halo: 0 0 calc(var(--u) * 40) rgb(60 190 110 / 35%);
+      animation: ecailles 3s linear infinite;
     }
-    @keyframes holo {
-      0% { background-position: 150% 0, 0 0; }
-      60%, 100% { background-position: -150% 0, 0 0; }
-    }
-
-    .c4 { /* Pluie numérique : traînées vertes qui tombent */
-      background:
-        linear-gradient(180deg, transparent 0 55%, rgb(80 255 120 / 85%) 96%, #d8ffe0 100%) 0 0 / calc(var(--u) * 14) calc(var(--u) * 90),
-        linear-gradient(180deg, transparent 0 65%, rgb(80 255 120 / 60%) 100%) calc(var(--u) * 7) calc(var(--u) * 40) / calc(var(--u) * 14) calc(var(--u) * 120),
-        #021006;
-      --lisere: #50ff78;
-      --halo: 0 0 calc(var(--u) * 45) rgb(80 255 120 / 35%);
-      animation: code 2.2s linear infinite;
-    }
-    @keyframes code {
-      to { background-position: 0 calc(var(--u) * 180), calc(var(--u) * 7) calc(var(--u) * 280), 0 0; }
-    }
-
-    .c5 { /* Damier qui défile */
-      background: conic-gradient(#111 25%, #f2f2f2 0 50%, #111 0 75%, #f2f2f2 0) 0 0 / calc(var(--u) * 40) calc(var(--u) * 40);
-      --lisere: #ff4f63;
-      --halo: 0 0 calc(var(--u) * 40) rgb(255 79 99 / 30%);
-      animation: damier 2.5s linear infinite;
-    }
-    @keyframes damier {
-      to { background-position: calc(var(--u) * 80) calc(var(--u) * 80); }
-    }
-
-    .c6 { /* Givre scintillant : reflets glacés qui traversent le cadre */
-      background:
-        repeating-linear-gradient(120deg, transparent 0 calc(var(--u) * 40), rgb(255 255 255 / 65%) calc(var(--u) * 48), transparent calc(var(--u) * 56) calc(var(--u) * 120)) 0 0 / 200% 200%,
-        linear-gradient(160deg, #f2fbff, #bfe6f7 35%, #8cc9e6 62%, #e6f7ff);
-      --lisere: #fff;
-      --halo: 0 0 calc(var(--u) * 50) rgb(160 225 255 / 50%);
-      animation: givre 5s linear infinite;
-    }
-    @keyframes givre {
-      to { background-position: calc(var(--u) * 139) 0, 0 0; }
-    }
-
-    .c7 { /* Tourbillon : spirale violette et bleue qui tourne */
-      background: conic-gradient(from var(--angle), #1a0a3a, #4f2ab8, #0b0820, #7cc8ff, #1a0a3a, #b98cff, #0b0820, #4f2ab8, #1a0a3a);
-      --lisere: #e8dcff;
-      --halo: 0 0 calc(var(--u) * 55) rgb(140 100 255 / 45%);
-      animation: tourne 5s linear infinite;
-    }
-
-    .c8 { /* Courant électrique : filet rayé qui court autour de la carte */
-      background: linear-gradient(160deg, #0a1a4a, #050b1f);
-      --halo: 0 0 calc(var(--u) * 50) rgb(124 200 255 / 45%);
-    }
-    .c8 .carte__cadre {
-      padding: calc(var(--u) * 13);
-      background: repeating-linear-gradient(135deg, #7cc8ff 0 calc(var(--u) * 10), #0a1a40 calc(var(--u) * 10) calc(var(--u) * 30));
-      animation: courant 0.9s linear infinite;
-    }
-    @keyframes courant {
-      to { background-position: calc(var(--u) * 42.43) 0; }
+    @keyframes ecailles {
+      to { background-position: 0 calc(var(--u) * 60), calc(var(--u) * 25) calc(var(--u) * 75), 0 0; }
     }
 
     /* ══ Grosse animation ══ */
 
-    .g1 { /* Foudre : le cadre s'illumine d'éclairs */
-      background: linear-gradient(160deg, #0a1a4a, #1d4fd8 50%, #0a1a4a);
-      --lisere: #e6f3ff;
-      animation: foudre 2.2s linear infinite;
+    .h1 { /* Onde de choc : anneaux de feu qui explosent du centre, lueur qui claque */
+      background: repeating-radial-gradient(circle at 50% 50%, #1a0602 calc(var(--rayon)), #ffd27a calc(var(--rayon) + var(--u) * 6), #ff5a00 calc(var(--rayon) + var(--u) * 14), #1a0602 calc(var(--rayon) + var(--u) * 30));
+      --lisere: #fff3d6;
+      --lueur: rgb(255 140 40 / 90%);
+      animation: choc 0.6s linear infinite, pulse 0.6s ease-in-out infinite;
     }
-    .g1::before {
-      background: radial-gradient(ellipse at 50% 30%, #fff, rgb(160 210 255 / 70%) 60%, transparent 90%);
-      opacity: 0;
-      animation: flash 2.2s linear infinite;
-    }
-    @keyframes flash {
-      0%, 84%, 89%, 94%, 100% { opacity: 0; }
-      86%, 91% { opacity: 1; }
-    }
-    @keyframes foudre {
-      0%, 84%, 89%, 94%, 100% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 50) rgb(60 130 255 / 55%); }
-      86%, 91% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 150) rgb(220 240 255 / 100%); }
+    @keyframes choc {
+      to { --rayon: calc(var(--u) * 30); }
     }
 
-    .g2 { /* Tempête prisma : l'arc-en-ciel tourne à toute vitesse */
-      background: conic-gradient(from var(--angle), #ff7eb6, #ffb86b, #fff07a, #7dffc4, #7cc8ff, #b98cff, #ff7eb6);
+    .h2 { /* Stroboscope : couleurs vives qui changent très vite */
+      background: radial-gradient(circle, #fff 0, var(--teinte) 70%);
       --lisere: #fff;
-      --lueur: rgb(255 255 255 / 75%);
-      animation: tourne 1.4s linear infinite, pulse 1.4s ease-in-out infinite;
+      box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 100) var(--teinte);
+      animation: strobo 1.2s steps(1) infinite;
+    }
+    @keyframes strobo {
+      0% { --teinte: #ff4f63; }
+      17% { --teinte: #ffd24f; }
+      33% { --teinte: #4fff8a; }
+      50% { --teinte: #4fd8ff; }
+      67% { --teinte: #8a4fff; }
+      83% { --teinte: #ff4fd8; }
     }
 
-    .g3 { /* Supernova : rayons dorés qui tournent, éclat qui explose */
-      background: radial-gradient(circle, #fff 0, #ffe39a 30%, #ff8a3c 60%, #6a1a8a 90%);
+    .h3 { /* Tornade : vent gris et blanc qui tourne à toute vitesse */
+      background: repeating-conic-gradient(from var(--angle), #f2f2f6 0 8deg, #6a6a76 8deg 20deg, #2a2a32 20deg 30deg, #b9b9c4 30deg 40deg);
       --lisere: #fff;
-      --lueur: rgb(255 210 120 / 85%);
-      animation: pulse 1.2s ease-in-out infinite;
-    }
-    .g3::before {
-      background: repeating-conic-gradient(from var(--angle), rgb(255 255 255 / 75%) 0 5deg, transparent 5deg 15deg);
-      animation: tourne 3s linear infinite;
-    }
-
-    .g4 { /* Magma : lave qui coule vite, lueur qui gronde */
-      --coulee: radial-gradient(ellipse, #ffe066 0 10%, #ff5a00 28%, transparent 52%);
-      background:
-        var(--coulee) 0 0 / calc(var(--u) * 140) calc(var(--u) * 110),
-        var(--coulee) calc(var(--u) * 70) calc(var(--u) * 55) / calc(var(--u) * 140) calc(var(--u) * 110),
-        linear-gradient(#2a0a04, #120402);
-      --lisere: #ffb13c;
-      --lueur: rgb(255 90 0 / 80%);
-      animation: magma 2.4s linear infinite, pulse 1.2s ease-in-out infinite;
-    }
-    @keyframes magma {
-      to { background-position: 0 calc(var(--u) * -220), calc(var(--u) * 70) calc(var(--u) * -165), 0 0; }
-    }
-
-    .g5 { /* Trou noir : spirale qui aspire, halo violet intense */
-      background: conic-gradient(from var(--angle), #000, #6a2ab8 8%, #000 18%, #b98cff 28%, #000 40%, #4f2ab8 55%, #000 68%, #e0c8ff 78%, #000 90%);
-      --lisere: #b98cff;
-      --lueur: rgb(150 90 255 / 85%);
-      animation: tourne 1.8s linear infinite, pulse 1.8s ease-in-out infinite;
-    }
-
-    .g6 { /* Aura dorée : énergie qui jaillit vers le haut */
-      background: linear-gradient(0deg, #fff8c8, #ffd84a 25%, #ff9a1a 50%, #ffd84a 75%, #fff8c8) 0 0 / 100% 200%;
-      --lisere: #fff;
-      --lueur: rgb(255 210 60 / 90%);
-      animation: monte 0.8s linear infinite, pulse 0.8s ease-in-out infinite;
-    }
-
-    .g7 { /* Glitch : le cadre se brouille par à-coups, en rouge et cyan */
-      background: repeating-linear-gradient(0deg, #0b0b0d 0 calc(var(--u) * 18), #ff2a6a calc(var(--u) * 18) calc(var(--u) * 22), #0b0b0d calc(var(--u) * 22) calc(var(--u) * 40), #2af0ff calc(var(--u) * 40) calc(var(--u) * 44));
-      --lisere: #fff;
-      animation: glitch 0.9s steps(1) infinite;
-    }
-    @keyframes glitch {
-      0% { background-position: 0 0; box-shadow: calc(var(--u) * -12) 0 0 #ff2a6a, calc(var(--u) * 12) 0 0 #2af0ff; }
-      20% { background-position: 0 calc(var(--u) * 13); box-shadow: calc(var(--u) * 10) calc(var(--u) * 4) 0 #ff2a6a, calc(var(--u) * -10) calc(var(--u) * -4) 0 #2af0ff; }
-      40% { background-position: 0 calc(var(--u) * 31); box-shadow: 0 0 calc(var(--u) * 60) rgb(42 240 255 / 60%); }
-      60% { background-position: 0 calc(var(--u) * 7); box-shadow: calc(var(--u) * -16) calc(var(--u) * 2) 0 #2af0ff, calc(var(--u) * 16) 0 0 #ff2a6a; }
-      80% { background-position: 0 calc(var(--u) * 24); box-shadow: 0 0 calc(var(--u) * 60) rgb(255 42 106 / 60%); }
-    }
-
-    .g8 { /* Feu de glace : flammes bleues rapides */
-      background: linear-gradient(0deg, #e6fbff, #5fd8ff 25%, #1450c8 50%, #5fd8ff 75%, #e6fbff) 0 0 / 100% 200%;
-      --lisere: #e6fbff;
-      --lueur: rgb(95 216 255 / 85%);
-      animation: monte 1.3s linear infinite, pulse 1.3s ease-in-out infinite;
+      --lueur: rgb(220 225 240 / 70%);
+      animation: tourne 0.9s linear infinite, pulse 0.9s ease-in-out infinite;
     }
   </style>
 </head>
 <body>
-  <h1>Nouveaux cadres</h1>
-  <p class="aide">Aperçu temporaire : de quoi avoir 10 cadres par catégorie. Dis-moi les codes que tu gardes.</p>
+  <h1>Nouveaux cadres · série 2</h1>
+  <p class="aide">Aperçu temporaire : ce qui manque encore pour avoir 10 cadres par catégorie. Dis-moi les codes que tu gardes.</p>
   <div data-categories></div>
 
   <script src="donnees/cartes-east-blue.js"></script>
@@ -435,40 +296,27 @@
   <script>
     // [classe, nom, description, calque d'effets ?]
     const CATEGORIES = [
-      ["Non animées", "3 manquants", [
-        ["f1", "Marbre noir", "Pierre noire veinée de blanc"],
-        ["f2", "Kintsugi", "Céramique noire réparée à l'or"],
-        ["f3", "Vitrail", "Verre coloré serti de plomb"],
+      ["Non animées", "2 manquants", [
+        ["n1", "Automne", "Feuilles rousses sur fond orangé"],
+        ["n2", "Origami", "Papier blanc plié, filet noir"],
       ]],
-      ["Petite animation", "8 manquants", [
-        ["p1", "Lucioles", "Petites lumières qui s'allument et s'éteignent", true],
-        ["p2", "Neige", "Flocons qui tombent doucement", true],
-        ["p3", "Sakura", "Pétales qui tombent en biais", true],
-        ["p4", "Clair de lune", "Argent qui brille et respire lentement"],
-        ["p5", "Nacre vivante", "Un reflet doux passe de temps en temps"],
-        ["p6", "Pluie", "Gouttes fines qui tombent", true],
-        ["p7", "Encre", "Noir, gris et blanc qui glissent lentement"],
-        ["p8", "Braises", "Étincelles qui montent et scintillent", true],
+      ["Petite animation", "5 manquants", [
+        ["q1", "Bulles", "Bulles qui remontent doucement", true],
+        ["q2", "Nuit étoilée", "Une étoile filante passe de temps en temps", true],
+        ["q3", "Feuilles d'automne", "Feuilles qui tombent en tournoyant", true],
+        ["q4", "Battement de cœur", "Le cadre bat deux fois, puis se repose"],
+        ["q5", "Poussière d'or", "Paillettes d'or qui scintillent sur du noir", true],
       ]],
-      ["Animation classique", "8 manquants", [
-        ["c1", "Océan", "Vagues japonaises qui défilent"],
-        ["c2", "Néon arc-en-ciel", "La lueur change de couleur"],
-        ["c3", "Holographique", "Argent, éclat irisé qui passe"],
-        ["c4", "Pluie numérique", "Traînées vertes qui tombent"],
-        ["c5", "Damier", "Damier noir et blanc qui défile"],
-        ["c6", "Givre", "Reflets glacés qui traversent le cadre"],
-        ["c7", "Tourbillon", "Spirale violette et bleue qui tourne"],
-        ["c8", "Courant électrique", "Filet rayé qui court autour de la carte"],
+      ["Animation classique", "4 manquants", [
+        ["k1", "Ondes", "Cercles qui s'élargissent depuis le centre"],
+        ["k2", "Sucre d'orge", "Rayures rouges et blanches qui défilent"],
+        ["k3", "Dunes", "Sable doré qui ondule"],
+        ["k4", "Écailles de dragon", "Écailles vertes et or qui glissent"],
       ]],
-      ["Grosse animation", "8 manquants", [
-        ["g1", "Foudre", "Éclairs qui illuminent le cadre", true],
-        ["g2", "Tempête prisma", "Arc-en-ciel qui tourne à toute vitesse"],
-        ["g3", "Supernova", "Rayons dorés qui tournent, éclat qui pulse", true],
-        ["g4", "Magma", "Lave qui coule vite, lueur qui gronde"],
-        ["g5", "Trou noir", "Spirale qui aspire, halo violet"],
-        ["g6", "Aura dorée", "Énergie qui jaillit vers le haut"],
-        ["g7", "Glitch", "Le cadre se brouille par à-coups"],
-        ["g8", "Feu de glace", "Flammes bleues rapides"],
+      ["Grosse animation", "3 manquants", [
+        ["h1", "Onde de choc", "Anneaux de feu qui explosent du centre"],
+        ["h2", "Stroboscope", "Couleurs vives qui changent très vite"],
+        ["h3", "Tornade", "Vent gris et blanc qui tourne à toute vitesse"],
       ]],
     ];
     const illustrees = CARTES.filter(carte => carte.illustration && carte.rang < 5);
@@ -477,7 +325,7 @@
     for (const [titre, manquants, cadres] of CATEGORIES) {
       const grille = element("div", "grille");
       for (const [classe, nom, description, calque] of cadres) {
-        const carte = creerCarte(illustrees[(rang++ * 7) % illustrees.length]);
+        const carte = creerCarte(illustrees[(rang++ * 11 + 3) % illustrees.length]);
         carte.classList.add(classe);
         if (calque) carte.classList.add("calque");
         const figure = element("figure");

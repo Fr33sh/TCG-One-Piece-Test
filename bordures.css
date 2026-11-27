@@ -156,6 +156,249 @@
   position: relative;
 }
 
+/* ── Outils communs aux cadres suivants ── */
+
+@property --angle-bordure {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --neon-bordure {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #3ff0ff;
+}
+
+/* Calque d'effets (particules, rayons) posé sur le cadre, sous la carte elle-même */
+.carte.bordure--lucioles,
+.carte.bordure--sakura,
+.carte.bordure--braises,
+.carte.bordure--supernova {
+  position: relative;
+}
+
+.carte.bordure--lucioles::before,
+.carte.bordure--sakura::before,
+.carte.bordure--braises::before,
+.carte.bordure--supernova::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.carte.bordure--lucioles .carte__cadre,
+.carte.bordure--sakura .carte__cadre,
+.carte.bordure--braises .carte__cadre,
+.carte.bordure--supernova .carte__cadre {
+  position: relative;
+}
+
+/* Lueur qui pulse, à la couleur --lueur */
+@keyframes bordure-pulse {
+  0%, 100% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 35) var(--lueur); }
+  50% { box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 110) var(--lueur); }
+}
+
+@keyframes bordure-tourne { to { --angle-bordure: 360deg; } }
+
+/* ── Non animé ── */
+
+/* Vitrail : verre coloré serti de plomb */
+.carte.bordure--vitrail {
+  background:
+    repeating-linear-gradient(60deg, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 70)),
+    repeating-linear-gradient(-60deg, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 70)),
+    repeating-linear-gradient(0deg, #111 0 calc(var(--u) * 5), transparent calc(var(--u) * 5) calc(var(--u) * 60)),
+    conic-gradient(from 10deg, #c62840, #e8a020, #2f9a5a, #2a6fd0, #7a3fc0, #c62840, #e8a020, #2a6fd0, #c62840);
+  --lisere: #111;
+  --halo: 0 0 calc(var(--u) * 40) rgb(255 200 120 / 30%);
+}
+
+/* ── Petite animation ── */
+
+/* Lucioles : petites lumières qui s'allument et s'éteignent */
+.carte.bordure--lucioles {
+  background: linear-gradient(160deg, #0f2a1c, #05110a);
+  --lisere: #c8ff9a;
+  --halo: 0 0 calc(var(--u) * 40) rgb(200 255 120 / 30%);
+}
+
+.carte.bordure--lucioles::before {
+  background:
+    radial-gradient(circle, #f4ff8a 0 calc(var(--u) * 4), rgb(220 255 100 / 40%) calc(var(--u) * 7), transparent calc(var(--u) * 12)) 0 0 / calc(var(--u) * 110) calc(var(--u) * 130),
+    radial-gradient(circle, #e2ff6a 0 calc(var(--u) * 3), rgb(220 255 100 / 30%) calc(var(--u) * 6), transparent calc(var(--u) * 10)) calc(var(--u) * 55) calc(var(--u) * 70) / calc(var(--u) * 110) calc(var(--u) * 130);
+  animation: bordure-scintille 3.5s ease-in-out infinite;
+}
+
+/* Sakura : pétales qui tombent en biais */
+.carte.bordure--sakura {
+  background: linear-gradient(160deg, #ffc3d6, #e8789f);
+  --lisere: #fff;
+  --halo: 0 0 calc(var(--u) * 45) rgb(255 160 195 / 40%);
+}
+
+.carte.bordure--sakura::before {
+  background:
+    radial-gradient(ellipse calc(var(--u) * 9) calc(var(--u) * 5), #fff5f8 90%, transparent) 0 0 / calc(var(--u) * 100) calc(var(--u) * 100),
+    radial-gradient(ellipse calc(var(--u) * 6) calc(var(--u) * 4), #ffe1ea 90%, transparent) calc(var(--u) * 50) calc(var(--u) * 40) / calc(var(--u) * 80) calc(var(--u) * 80);
+  animation: bordure-petales 11s linear infinite;
+}
+
+@keyframes bordure-petales {
+  to { background-position: calc(var(--u) * 100) calc(var(--u) * 200), calc(var(--u) * 130) calc(var(--u) * 200); }
+}
+
+/* Braises : étincelles qui montent et scintillent */
+.carte.bordure--braises {
+  background: linear-gradient(0deg, #3a1208, #120604);
+  --lisere: #ff9a3c;
+  --halo: 0 0 calc(var(--u) * 45) rgb(255 120 40 / 35%);
+}
+
+.carte.bordure--braises::before {
+  background:
+    radial-gradient(circle, #ffd27a 0 calc(var(--u) * 3), rgb(255 120 40 / 50%) calc(var(--u) * 5), transparent calc(var(--u) * 8)) 0 0 / calc(var(--u) * 70) calc(var(--u) * 110),
+    radial-gradient(circle, #ff8a3c 0 calc(var(--u) * 2), transparent calc(var(--u) * 5)) calc(var(--u) * 35) calc(var(--u) * 50) / calc(var(--u) * 70) calc(var(--u) * 110);
+  animation: bordure-braises 7s linear infinite, bordure-scintille 2.4s ease-in-out infinite;
+}
+
+@keyframes bordure-braises {
+  to { background-position: calc(var(--u) * 10) calc(var(--u) * -220), calc(var(--u) * 25) calc(var(--u) * -170); }
+}
+
+/* ── Animation classique ── */
+
+/* Océan : vagues japonaises qui défilent */
+.carte.bordure--ocean {
+  --vague: radial-gradient(circle at 50% 100%, #0d3a70 0 calc(var(--u) * 12), #4f9bdc calc(var(--u) * 12) calc(var(--u) * 16), #1b5fa8 calc(var(--u) * 16) calc(var(--u) * 28), #4f9bdc calc(var(--u) * 28) calc(var(--u) * 32), #0d3a70 calc(var(--u) * 32) calc(var(--u) * 40), transparent calc(var(--u) * 40));
+  background:
+    var(--vague) 0 0 / calc(var(--u) * 80) calc(var(--u) * 40),
+    var(--vague) calc(var(--u) * 40) calc(var(--u) * 20) / calc(var(--u) * 80) calc(var(--u) * 40),
+    #0d3a70;
+  --lisere: #cfe8ff;
+  --halo: 0 0 calc(var(--u) * 45) rgb(80 160 230 / 40%);
+  animation: bordure-vagues 4s linear infinite;
+}
+
+@keyframes bordure-vagues {
+  to { background-position: calc(var(--u) * 160) 0, calc(var(--u) * 200) calc(var(--u) * 20), 0 0; }
+}
+
+/* Néon arc-en-ciel : la lueur change de couleur */
+.carte.bordure--neon {
+  background: #07070b;
+  --lisere: var(--neon-bordure);
+  box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 50) rgb(0 0 0 / 45%), 0 0 calc(var(--u) * 30) var(--neon-bordure), 0 0 calc(var(--u) * 90) var(--neon-bordure);
+  animation: bordure-neon 6s linear infinite;
+}
+
+.carte.bordure--neon .carte__cadre {
+  box-shadow: 0 0 calc(var(--u) * 24) var(--neon-bordure);
+}
+
+@keyframes bordure-neon {
+  0%, 100% { --neon-bordure: #3ff0ff; }
+  25% { --neon-bordure: #b98cff; }
+  50% { --neon-bordure: #ff4fd8; }
+  75% { --neon-bordure: #a6ff00; }
+}
+
+/* Pluie numérique : traînées vertes qui tombent */
+.carte.bordure--pluie-numerique {
+  background:
+    linear-gradient(180deg, transparent 0 55%, rgb(80 255 120 / 85%) 96%, #d8ffe0 100%) 0 0 / calc(var(--u) * 14) calc(var(--u) * 90),
+    linear-gradient(180deg, transparent 0 65%, rgb(80 255 120 / 60%) 100%) calc(var(--u) * 7) calc(var(--u) * 40) / calc(var(--u) * 14) calc(var(--u) * 120),
+    #021006;
+  --lisere: #50ff78;
+  --halo: 0 0 calc(var(--u) * 45) rgb(80 255 120 / 35%);
+  animation: bordure-code 2.2s linear infinite;
+}
+
+@keyframes bordure-code {
+  to { background-position: 0 calc(var(--u) * 180), calc(var(--u) * 7) calc(var(--u) * 280), 0 0; }
+}
+
+/* Courant électrique : filet rayé qui court autour de la carte */
+.carte.bordure--courant {
+  background: linear-gradient(160deg, #0a1a4a, #050b1f);
+  --halo: 0 0 calc(var(--u) * 50) rgb(124 200 255 / 45%);
+}
+
+.carte.bordure--courant .carte__cadre {
+  padding: calc(var(--u) * 13);
+  background: repeating-linear-gradient(135deg, #7cc8ff 0 calc(var(--u) * 10), #0a1a40 calc(var(--u) * 10) calc(var(--u) * 30));
+  animation: bordure-courant 0.9s linear infinite;
+}
+
+@keyframes bordure-courant {
+  to { background-position: calc(var(--u) * 42.43) 0; }
+}
+
+/* ── Grosse animation ── */
+
+/* Supernova : rayons dorés qui tournent, éclat qui pulse */
+.carte.bordure--supernova {
+  background: radial-gradient(circle, #fff 0, #ffe39a 30%, #ff8a3c 60%, #6a1a8a 90%);
+  --lisere: #fff;
+  --lueur: rgb(255 210 120 / 85%);
+  animation: bordure-pulse 1.2s ease-in-out infinite;
+}
+
+.carte.bordure--supernova::before {
+  background: repeating-conic-gradient(from var(--angle-bordure), rgb(255 255 255 / 75%) 0 5deg, transparent 5deg 15deg);
+  animation: bordure-tourne 3s linear infinite;
+}
+
+/* Magma : lave qui coule vite, lueur qui gronde */
+.carte.bordure--magma {
+  --coulee: radial-gradient(ellipse, #ffe066 0 10%, #ff5a00 28%, transparent 52%);
+  background:
+    var(--coulee) 0 0 / calc(var(--u) * 140) calc(var(--u) * 110),
+    var(--coulee) calc(var(--u) * 70) calc(var(--u) * 55) / calc(var(--u) * 140) calc(var(--u) * 110),
+    linear-gradient(#2a0a04, #120402);
+  --lisere: #ffb13c;
+  --lueur: rgb(255 90 0 / 80%);
+  animation: bordure-magma 2.4s linear infinite, bordure-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes bordure-magma {
+  to { background-position: 0 calc(var(--u) * -220), calc(var(--u) * 70) calc(var(--u) * -165), 0 0; }
+}
+
+/* Trou noir : spirale qui aspire, halo violet intense */
+.carte.bordure--trou-noir {
+  background: conic-gradient(from var(--angle-bordure), #000, #6a2ab8 8%, #000 18%, #b98cff 28%, #000 40%, #4f2ab8 55%, #000 68%, #e0c8ff 78%, #000 90%);
+  --lisere: #b98cff;
+  --lueur: rgb(150 90 255 / 85%);
+  animation: bordure-tourne 1.8s linear infinite, bordure-pulse 1.8s ease-in-out infinite;
+}
+
+/* Glitch : le cadre se brouille par à-coups, en rouge et cyan */
+.carte.bordure--glitch {
+  background: repeating-linear-gradient(0deg, #0b0b0d 0 calc(var(--u) * 18), #ff2a6a calc(var(--u) * 18) calc(var(--u) * 22), #0b0b0d calc(var(--u) * 22) calc(var(--u) * 40), #2af0ff calc(var(--u) * 40) calc(var(--u) * 44));
+  --lisere: #fff;
+  animation: bordure-glitch 0.9s steps(1) infinite;
+}
+
+@keyframes bordure-glitch {
+  0% { background-position: 0 0; box-shadow: calc(var(--u) * -12) 0 0 #ff2a6a, calc(var(--u) * 12) 0 0 #2af0ff; }
+  20% { background-position: 0 calc(var(--u) * 13); box-shadow: calc(var(--u) * 10) calc(var(--u) * 4) 0 #ff2a6a, calc(var(--u) * -10) calc(var(--u) * -4) 0 #2af0ff; }
+  40% { background-position: 0 calc(var(--u) * 31); box-shadow: 0 0 calc(var(--u) * 60) rgb(42 240 255 / 60%); }
+  60% { background-position: 0 calc(var(--u) * 7); box-shadow: calc(var(--u) * -16) calc(var(--u) * 2) 0 #2af0ff, calc(var(--u) * 16) 0 0 #ff2a6a; }
+  80% { background-position: 0 calc(var(--u) * 24); box-shadow: 0 0 calc(var(--u) * 60) rgb(255 42 106 / 60%); }
+}
+
+/* Feu de glace : flammes bleues rapides */
+.carte.bordure--feu-de-glace {
+  background: linear-gradient(0deg, #e6fbff, #5fd8ff 25%, #1450c8 50%, #5fd8ff 75%, #e6fbff) 0 0 / 100% 200%;
+  --lisere: #e6fbff;
+  --lueur: rgb(95 216 255 / 85%);
+  animation: bordure-monte 1.3s linear infinite, bordure-pulse 1.3s ease-in-out infinite;
+}
+
 @keyframes bordure-scintille {
   0%, 100% { opacity: 0.25; }
   50% { opacity: 1; }
@@ -185,7 +428,10 @@
   .carte.bordure--celeste,
   .carte.bordure--cosmos,
   .carte.bordure--cosmos::before,
-  .carte.bordure--flamme-ame {
+  .carte.bordure--flamme-ame,
+  .carte[class*="bordure--"]::before,
+  .carte[class*="bordure--"],
+  .carte[class*="bordure--"] .carte__cadre {
     animation: none;
   }
 }
